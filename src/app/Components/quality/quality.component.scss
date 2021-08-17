@@ -1,0 +1,78 @@
+.mat-form-field-outline {
+    background: #990000!important;
+    border-radius: 5px!important;
+}
+.mat-form-field-flex{
+    height: 59px!important;
+}
+.mat-input-element{
+    height: 40px;
+}
+.mat-form-field-wrapper{
+    background: #990000!important;
+}
+
+::ng-deep .mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 330px;
+}
+.textlo{
+    color: black !important;
+
+}
+
+.filter_sec .filter_fields {
+    align-items: end !important;
+}
+
+mat-dialog-content.mat-typography.mat-dialog-content {
+    margin: 0 !important;
+}
+
+.spinner {
+    background: #262932;
+    height: 100vh;
+    opacity: 0.9;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    z-index: 999;
+  }
+  
+  .spinner img {
+    width: 90px;
+    margin-top: -130px;
+  }
+
+  .point{
+      cursor: pointer;
+  }
+
+  .total_parts div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quality_ip_page .line_machines_list .line_machine_item .line_mac_box .total_parts{
+    padding: 0px 8px;
+}
+.quality_ip_page .line_machines_list .line_machine_item .line_mac_box .total_parts span{
+    font-size: 30px;
+   
+    font-weight: 500;
+}
+.mt-12{
+    margin-top: -12px;
+}
+.accepted_parts{
+    cursor: pointer;
+}
