@@ -13,7 +13,7 @@
 
         <div class="dashboardline_page">
             <div class="dashboardline_list left_side side_sec">
-                <div class="inner_card" *ngFor="let val of alname"
+                <div class="inner_card" [ngClass]="classList" *ngFor="let val of alname"
                     (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">
                     <div class="dashboardline_item active" (click)="onClick(val)"
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'DISCONNECT'">

@@ -154,9 +154,17 @@ progress.disconnect { color: #939393; }
   }
 }
 
-@media  (max-width: 1024px){
+@media only screen and (max-width: 1024px)  {
   .dashboardline_page .right_side.side_sec {
     display: block;
+}
+.trpiu{
+  text-indent: 50px;
+  letter-spacing: 3px;
+  display: flex;
+  position: absolute;
+  left: 11.5rem;
+  top: -.5rem;
 }
 .circle_chart.utilize_chart {
   width: 100%;
@@ -229,6 +237,15 @@ progress.disconnect { color: #939393; }
    height: 97.5vh;
 }
 }
+// @media only screen and (min-width: 834px){
+//   .trpiu{
+   
+//     display: flex;
+//     position: absolute;
+//     left: 8.5rem;
+//     top: -0.5rem;
+// }
+// }
 @media  (max-width: 768px){
   .line_desc .line_mac_target {
     display: flex;
@@ -249,7 +266,12 @@ progress.disconnect { color: #939393; }
 .trpiu{
   position: absolute;
   display: flex;
-  left: 122px;
+  left: 130px;
+  align-items: center;
+  top: 0.1rem;
+}
+.volkomn, .volkom{
+  width: 20px;
 }
 .circle_chart.as-chart-height {
        
@@ -400,8 +422,8 @@ and (-webkit-min-device-pixel-ratio: 2)
   
   display: flex !important;
   position: absolute;
-  right: -151px;
-  top: 8px;
+  right: -143px;
+  top: -4px;
 }
 .justify-content-left{
   justify-content:left;
@@ -424,7 +446,7 @@ and (-webkit-min-device-pixel-ratio: 2)
 }
 .trpiu {
  
-  left: 182px;
+  left: 206px;
 }
 .as-chart-height {
   height: auto;
@@ -466,7 +488,8 @@ and (-webkit-min-device-pixel-ratio: 2)
   padding: 0px 0px 0px 0px;
 }
 .spindle_loader .circle_chart {
-  width: 56% !important;
+  width: 31% !important;
+    margin-right: 75px;
 }
 .spindle_loader .circle_chart .chart_text{
   position: absolute;
@@ -514,3 +537,30 @@ white-space: nowrap;
   margin-left: -28px;
 }
 }
+
+@media (min-width: 1920px) and (max-width: 2560px)  {
+  .inner_card{
+      display: flex;
+      // width: 16%;
+      width: 33%;
+      height: 17vh;
+      // flex-wrap: wrap;
+      // flex: 3;
+  }
+  .inner_card.nine{
+    width: 50%;
+  }
+  .inner_card.fifteen{
+    width: 33%;
+  }
+  .inner_card.twenty{
+    width: 25%;
+  }
+  .inner_card.forty {
+    width: 25%;
+    height: 8.5vh;
+}
+
+  
+}
+ 

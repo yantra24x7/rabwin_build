@@ -28,7 +28,7 @@ const routes: Routes = [{ path: '', component: DashboardlineComponent }];
     //  "showTitle": true,
     //  "showSubtitle": false,
       backgroundStrokeWidth: 0,
-      backgroundPadding: 8,
+      backgroundPadding: 0,
      // "responsive": true,
       space: -8,
       toFixed: 0,

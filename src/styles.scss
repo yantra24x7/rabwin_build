@@ -249,6 +249,10 @@ h6 {
 
 }
 
+    .shift_view.box_sec{
+        margin-top: 10px;
+    }
+    
 .page_title_sec {
       -webkit-display: flex;
     -moz-display: flex;
@@ -834,7 +838,7 @@ table {
 
     .filter_sec .filter_fields .filter_field .mat-form-field {
         max-width: 100%;
-        width: 100% !important;
+        width: 118px !important;
     }
 
 
@@ -1889,7 +1893,7 @@ table.table.report_table {
             background: transparent;
             text-align: center;
             border-radius: 10px;
-            margin-right: 10px;
+            // margin-right: 10px;
             margin-bottom: 5px;
             max-width: 100%;
             
@@ -1913,6 +1917,8 @@ table.table.report_table {
                         border-top-left-radius: 10px;
                         border-bottom-left-radius: 10px;
                         padding-right: 5px;
+                        width: 16%;
+
                         
                                            ul{
                                             margin-bottom: 5px;
@@ -2138,6 +2144,7 @@ table.table.report_table {
                     .bar{
                         background: #fff;
                         border:0;
+                        width: 100%;
                         &.run{
                             // background: #04C984;
                         }
@@ -2355,7 +2362,7 @@ table.table.report_table {
                 padding: 16px;
                 margin-left: 10px;
                 border-radius: 5px;
-                margin-bottom: 10px;
+                
                 .chart_sub_title{
                     font-size: 18px;
                     color: #fff;
@@ -2999,6 +3006,10 @@ body .componentForm .time_field_bg{
             }
         }
         @media only screen and (max-width:768px) {
+            .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+               
+                width: 100%;
+            }
            body .tablet_page .page .machine_lmw_page .machine_prod {
                 margin: 0 10px 10px 0;
                 padding: 16px 16px 16px 16px;
@@ -3764,6 +3775,7 @@ span.material-icons.one {
     
     border-radius: 10px;
     margin-top: 1rem;
+
 }
 .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
     margin: .5rem 0;
@@ -3809,6 +3821,7 @@ span.material-icons.one {
   .page .section_top_padding .page_title_sec h2 {
       font-size: 13px;
       text-align: center;
+      margin-bottom: 0;
   }
 
   .shift_details .box_sec.last_update_view p.time_date {
@@ -3870,7 +3883,7 @@ span.material-icons.one {
 
 .filter_sec .filter_fields {
     
-    display: block !important;
+    display: flex !important;
     }
 
     .mat-form-field-appearance-legacy .mat-form-field-wrapper {
@@ -3945,6 +3958,17 @@ span.material-icons.one {
   }
 
   @media only screen and (max-width: 768px) {
+    .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart{
+        border-radius: 10px 10px 0 0;
+margin-top: 10px;
+
+    }
+    .dashboard_page_sec .line_desc {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-radius: 0 0 10px 10px;
+        }
+        
     .machine_status_list, .line_list, .time_sec, .line_mac_target, .circle_chart ul li p {
         
         display: block;
@@ -3961,6 +3985,9 @@ span.material-icons.one {
     
     .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
         width: 100%;
+        height: 140px;
+min-height: 24vh;
+
     }
     
     .dashboard_page_sec .line_desc {
@@ -3993,6 +4020,23 @@ span.material-icons.one {
   }
 
   @media only screen and (max-width: 1024px) {
+    .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+               
+        width: 100%;
+    }
+    .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+       
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+       
+        border-radius: 10px 10px 0 0;
+    }
+    .dashboard_page_sec .line_desc {
+       
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-radius: 0 0 10px 10px;
+    }
     .machine_status_list, .line_list, .time_sec, .line_mac_target, .circle_chart ul li p {
         
         display: block;
@@ -4035,6 +4079,8 @@ span.material-icons.one {
 
     .idle_reason_page .idle_reason_list .idle_reason_item, .quality_ip_page .line_machines_list .line_machine_item, .machines_collections .machine_prod, .dashboard_page_sec .line_list .line_item {
         width: 48%;
+        margin-top: 1rem;
+        margin-right: 15px;
     }
 
   }
@@ -4284,6 +4330,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
         flex-direction: row;
         flex-wrap: wrap;
         flex: 1;
+        margin-left: 10px;
     }
     .dashboardline_page .right_side .overall_utilization > h3 {
         position: absolute;
@@ -4326,11 +4373,11 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     }
     
 
-    .dashboardline_page .right_side.side_sec .utilization_load {
-        width: 100%;
-        display: flex;
-        margin-top: 3rem;
-    }
+    // .dashboardline_page .right_side.side_sec .utilization_load {
+    //     width: 100%;
+    //     display: flex;
+    //     margin-top: 3rem;
+    // }
     
   /****************TEST***********************/
     
@@ -4383,6 +4430,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
 }
 .dashboardline_page .right_side .utilization_load .bg {
     width: inherit;
+    padding: 12px;
 }
 .line_desc .line_mac_target .box_bg span {
     margin-right: 6px;
@@ -4422,3 +4470,125 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     justify-content: left !important;
 }
 }
+
+@media (min-width: 1920px) and (max-width: 2560px)  {
+   
+    .dashboardline_list{
+        height: auto ;
+    overflow: auto;
+     
+    }
+    .dashboardline_item{
+      -webkit-display: flex;
+      -moz-display: flex;
+      -ms-display: flex;
+      -o-display: flex;
+      display: flex;
+      -moz-justify-content: space-between;
+      -ms-justify-content: space-between;
+      -o-justify-content: space-between;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .dashboardline_page .right_side {
+        display: flex;
+        flex-direction: column;
+    }
+    .circle_chart.utilize_chart {
+        width: 100%;
+    }
+    .dashboardline_page .right_side.side_sec .utilization_load {
+        width: 100%;
+        display: flex;
+        margin-top: 3rem;
+    }
+    .as-chart-height {
+        height: 41vh;
+        width: 50%;
+    }
+    .dashboardline_page .right_side .overall_utilization .job_desc p{
+        font-size: 31px;
+    }
+    .dashboardline_page .right_side .overall_utilization{
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    }
+    .dashboardline_page .right_side .overall_utilization .job_desc {
+        margin: 14vh 78px;
+        line-height: 40px;
+        position: absolute;
+    right: 0;
+    }
+    .dashboardline_page .right_side .overall_utilization .line_desc{
+        width: 100%;
+        margin-top: -3rem;
+    }
+    .line_desc .time_sec li p {
+        font-size: 22px;
+        white-space: nowrap;
+        margin-top: 1rem;
+    }
+    .dashboardline_page .right_side .utilization_load .bg .chart_sub_title {
+        font-size: 22px;
+    }
+    .dashboardline_page .right_side .utilization_load .bg.axis_chart .circle_chart .chart_text h3 {
+        font-size: 22px !important;
+        margin-top: 13px;
+    }
+        .dashboardline_page .right_side .utilization_load .bg .circle_chart .chart_text h3 {
+            font-size: 26px !important;
+        }
+        .circle_chart .chart_text p {
+            font-size: 14px;
+        }
+    .circle_chart ul {
+        justify-content: space-evenly;
+        margin-top: 1rem;
+    }
+    .dashboardline_page .right_side .overall_utilization >  h3{
+        position: absolute;
+        right: 50%;
+        top: 5%;
+    }
+
+    .dashboardline_page .dashboardline_list .fifteen .dashboardline_item h3{
+        font-size: 38px;
+    }
+    .dashboardline_page .dashboardline_list .fifteen .dashboardline_item p{
+        font-size: 19px;
+        margin-top: 24px;
+    }
+    .dashboardline_page .dashboardline_list .fifteen .dashboardline_item span{
+        font-size: 40px;;
+        margin: auto;
+    }
+    .dashboardline_page .dashboardline_list .twenty .dashboardline_item h3 {
+        font-size: 26px;
+    }
+    .dashboardline_page .dashboardline_list .twenty .dashboardline_item p {
+        font-size: 14px;
+        margin-top: 24px;
+    }
+    .dashboardline_page .dashboardline_list .twenty .dashboardline_item span {
+        font-size: 38px;
+        margin: auto;
+    }
+    .dashboardline_page .dashboardline_list .forty .dashboardline_item h3 {
+        font-size: 21px;
+    }
+    .dashboardline_page .dashboardline_list .forty .dashboardline_item p {
+        font-size: 15px;
+        margin-top: 4px;
+    }
+    .dashboardline_page .dashboardline_list .forty .dashboardline_item span{
+        font-size: 30px;
+    margin: auto;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    }
+
+  }

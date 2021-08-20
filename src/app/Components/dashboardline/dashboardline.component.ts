@@ -44,7 +44,8 @@ export class DashboardlineComponent implements OnInit {
   axis5:any;
   spindle_load:any;
   selectedItem: any;
- 
+  machine_tot_length:any;
+  classList:any;
   constructor(public dialog: MatDialog,private service: DashboardService,private route:ActivatedRoute,private nav: NavbarService, private fb: FormBuilder,) {
     this.nav.show();
     this.lname = this.route.snapshot.queryParamMap.get('line_name');
@@ -53,6 +54,23 @@ export class DashboardlineComponent implements OnInit {
 
     this.service.form_line(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
         this.myLoader = false;
+
+
+        this.machine_tot_length = res.length;
+        
+        if (this.machine_tot_length <= 9){
+          this.classList="nine";
+        }
+        else if (this.machine_tot_length > 10 && this.machine_tot_length < 16){
+          this.classList = "fifteen";
+        }
+        else if (this.machine_tot_length > 16 && this.machine_tot_length < 21){
+          this.classList = "twenty";
+        }
+        else if (this.machine_tot_length >  41){
+          this.classList = "forty";
+        }
+          
     this.fline = res[0].line;
     this.fname = res[0].machine;
     this.selectedItem = res[0].machine;
