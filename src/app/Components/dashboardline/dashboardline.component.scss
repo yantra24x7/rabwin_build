@@ -148,6 +148,7 @@ progress.disconnect::-webkit-progress-value { background:#A8A8A8; }
 progress.disconnect { color: #939393; }
 
 
+
 @media only screen and (max-width: 600px) {
   .dashboardline_page .dashboardline_list.left_side .dashboardline_item{
     width: 100%!important;
@@ -165,6 +166,7 @@ progress.disconnect { color: #939393; }
   position: absolute;
   left: 11.5rem;
   top: -.5rem;
+  align-items: center;
 }
 .circle_chart.utilize_chart {
   width: 100%;
@@ -173,7 +175,7 @@ progress.disconnect { color: #939393; }
   text-align: left;
 }
 .overall_utilization .circle_chart .chart_text {
-  left: 85px;
+  left: 74px;
 }
 .dashboardline_page .right_side .overall_utilization .job_desc {
   line-height: 30px;
@@ -363,7 +365,7 @@ and (-webkit-min-device-pixel-ratio: 2)
   position: absolute;
   left: 35%;
   // text-align: left;
-  top: 104px;
+  top: 89px;
 }
 .line_desc .line_mac_target {
   margin-top: 28px;
@@ -406,7 +408,7 @@ and (-webkit-min-device-pixel-ratio: 2)
 }
 .overall_utilization .chart_text {
   left: 50%;
-    top: 40%;
+    top: 35%;
 }
 .circle_chart {
   margin: auto;
@@ -491,19 +493,49 @@ and (-webkit-min-device-pixel-ratio: 2)
   width: 31% !important;
     margin-right: 75px;
 }
+.overall_efficiency .circle_chart {
+  width: 31% !important;
+  margin-right: 92px;
+}
 .spindle_loader .circle_chart .chart_text{
   position: absolute;
   top: 50%;
   left: 50%;
+}
+.overall_efficiency .circle_chart  .chart_text{position: absolute;
+top: 50%;
+left: 50%;
 }
 .page {
  
   height: 95vh;
 }
 }
-@media only screen and (min-width: 1366px) and (max-width: 1920px)   {
+@media only screen  and (min-width: 1200px)  {
+  .volkomn, .volkom{
+    width: 20px;
+    height: 20px;
+  }
+  .line_desc .line_mac_target {
+    // margin-top: 28px; */
+    position: absolute;
+    top: 6px;
+    right: -39px;
+    flex-direction: column;
+  }
+  .line_desc .time_sec li p{
+    white-space: nowrap;
+}
+.utilization_load .circle_chart {
+  position: relative;
+  margin: auto;
+}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1920px)  {
   .dashboardline_page .right_side .overall_utilization .job_desc {
     right: 130px;
+    top: 30px;
 }
   .inner_card{
     display: flex;
@@ -517,7 +549,7 @@ white-space: nowrap;
 .line_desc .line_mac_target {
   margin-top: 28px;
   position: absolute;
-  top: -3px;
+  top: 24px;
   right: -29px;
   flex-direction: column;
 }
@@ -533,8 +565,17 @@ white-space: nowrap;
 }
 .circle_chart.as-chart-height {
        
-  margin: 0 ;
-  margin-left: -28px;
+  margin: 0;
+  margin-left: -24px;
+  margin-top: 30px;
+}
+.as-chart-height {
+  height: 27vh;
+  width: 38%;
+}
+.overall_utilization .chart_text {
+  left: 50%;
+  top: 39%;
 }
 }
 
@@ -561,6 +602,32 @@ white-space: nowrap;
     height: 8.5vh;
 }
 
+.dashboardline_page .right_side .overall_utilization .job_desc {
   
+  right: 192px;
+}
+.line_desc .line_mac_target {
+  margin-top: 100px;
+  position: absolute;
+  top: 14px;
+  right: -11px;
+  flex-direction: column;
+}
+.circle_chart.as-chart-height {
+  margin: 0;
+  margin-left: -46px;
+  margin-top: 100px;
+}
+.as-chart-height {
+  height: 15vh;
+  width: 38%;
+}
+.overall_utilization .chart_text {
+  left: 50%;
+  top: 50%;
+}
+.dashboardline_page .right_side .overall_utilization .job_desc p {
+  font-size: 31px;
+}
 }
  

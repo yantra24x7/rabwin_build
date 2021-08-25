@@ -36,7 +36,7 @@
       
 
 
-        <div class="filter_sec mt-10 filter_align">
+        <div class="filter_sec mt-10 filter_align as-quality">
             <form [formGroup]="login" (ngSubmit)="logintest('true')">
                 <div class="filter_fields">
 
@@ -122,7 +122,7 @@
 
             </div>
             <div class="line_machines_list">
-                <div class="line_machine_item active" *ngFor="let qua of get_report" style="width: 36%;">
+                <div class="line_machine_item active quality-width" *ngFor="let qua of get_report" >
                     <div class="line_mac_box" >
                          <div class="edit"  *ngIf = "get_report1?.length > 0">
                             <mat-icon class="v-align-middle display" (click)="openDialog(qua)">create</mat-icon>
@@ -131,35 +131,35 @@
                             <h3>{{qua.machine_name}}</h3>
 
                         </div>
-                        <div class="total_parts" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div class="total_parts as-total_parts" >
                             <div>
-                                <p class="text-nowrap" style="font-size: 28px;">Total Parts Produced <mat-icon class="v-align-middle display">arrow_forward
+                                <p class="text-nowrap font-size-28" >Total Parts Produced <mat-icon class="v-align-middle display">arrow_forward
                                 </mat-icon> 
                                 </p>  
                             <span >{{qua.actual}} </span>
                             </div>
-                            <div class="mt-12">
-                                <p style="font-size: 28px;">NCQ <mat-icon class="v-align-middle display">arrow_forward
+                            <div class="">
+                                <p class="font-size-28">NCQ <mat-icon class="v-align-middle display">arrow_forward
                                 </mat-icon> 
                                 </p>
                                 <span>{{qua.ncq}} </span>
                             </div>
                         </div>
-                        <div class="total_parts" style="display: flex; flex-direction: column; align-items: stretch; padding-top: .5rem;">
-                            <div class="mt-12" style="border: 1px solid gray; margin: -3px;justify-content: end; padding: 8px;">
-                                <p style="font-size: 20px; white-space: nowrap; padding-right: 20px;">Route Card No
+                        <div class="total_parts as-total_parts-1" >
+                            <div class="mt-12 as-border-1" >
+                                <p class="as-p" >Route Card No
                                 </p>
-                                <span style="font-size: 26px;word-break: break-all;">{{qua.root_card}} </span>
+                                <span class="as-span" >{{qua.root_card}} </span>
                             </div>
-                            <div class="mt-12"  style="border: 1px solid gray; margin: -3px; justify-content: end; padding: 8px; border-top: 0;">
-                                <p style="font-size: 20px; white-space: nowrap; padding-right: 20px;">Operation No 
+                            <div class="mt-12 as-border-2" >
+                                <p class="as-p" >Operation No 
                                 </p>
-                                <span style="font-size: 26px;word-break: break-all;">{{qua.ope_no}}</span>
+                                <span class="as-span" >{{qua.ope_no}}</span>
                             </div>
-                            <div class="mt-12"  style="border: 1px solid gray; margin: -3px;justify-content: end; padding: 8px; border-top: 0;margin-bottom: 6px;">
-                                <p style="font-size: 20px; white-space: nowrap; padding-right: 20px;">Operator Name 
+                            <div class="mt-12 as-border-3"  >
+                                <p class="as-p" >Operator Name 
                                 </p>
-                                <span style="font-size: 26px;word-break: break-all;">{{qua.operator}}</span>
+                                <span class="as-span" >{{qua.operator}}</span>
                             </div>
                            
                         </div>
@@ -197,14 +197,14 @@
                                     </div>
                                     <!-- <button type="button" class="btn btn_gray">Go</button> -->
                                 </div>
-                                <div class="filter_field" style="font-weight: 400; text-align: left; margin: 5px 0; font-size: 20px;">
+                                <div class="filter_field q-remarks">
                                     <mat-label> Remarks</mat-label>
-                                    <mat-form-field appearance="outline" style="    border-radius: 5px;background: #1e1c1c;width: 100%;border: 1px solid #666363; height: 50px;">
-                                        <input matInput placeholder="Enter Reason Name" [formControl]="reason" style="font-size: 20px; line-height: 5;  margin-top: -11px;">
+                                    <mat-form-field appearance="outline" class="q-remarks-field" >
+                                        <input matInput placeholder="Enter Reason Name" class="q-remarks-input" [formControl]="reason" >
                                     </mat-form-field>
                                 </div>
-                                <div class="accepted_parts" style="justify-content: center;    margin-top: 1rem;" (click)="reas(get_report)">
-                                    <h3 style="padding: 5px;" >Submit</h3>
+                                <div class="accepted_parts q-submit" (click)="reas(get_report)">
+                                    <h3 class="q-submit-h3" >Submit</h3>
                                     
                                 </div>
                             </form>

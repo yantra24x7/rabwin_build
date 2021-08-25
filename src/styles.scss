@@ -117,6 +117,10 @@ button:focus {
 
 /* SCROLL BAR */
 
+
+.page, .sidenav {
+    scrollbar-width: thin;
+  }
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -1202,11 +1206,7 @@ table.table td .highlit {
   }
 
 
-  @media (min-width: 1200px){
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1600px;
-    }
-  }
+ 
 
 
   .filter_sec .datepicker_field .mat-form-field-flex {
@@ -1963,7 +1963,7 @@ table.table.report_table {
                         border: 2px solid #6A6A6A;
                         // border-bottom-left-radius: 10px;
                         // border-bottom-right-radius: 10px;
-                        width: 45%;
+                        width: 48%;
                         display: flex;
                         h2{
                             font-weight: 400;
@@ -2077,7 +2077,9 @@ table.table.report_table {
             }
         }
     }
-
+    .dashboard_page_sec .line_list .line_item .line_item_content .machinestatus_sec_inner .machine_status_list h3{
+        padding-top: 8px;
+     }
     // Common for dashboard and dashboardLine
     
     .line_desc{
@@ -2085,7 +2087,7 @@ table.table.report_table {
         padding-top:8px;
         
         .line_mac_target{
-            margin-top: 15px;
+            margin-top: 13px;
             .box_bg{
                 padding: 0px 10px 5px 10px;
                 width: 48%;
@@ -2118,7 +2120,7 @@ table.table.report_table {
                 &.parts_count_box{
                     margin-left: 10px;
                     span{
-                        color: #7e7e7e;
+                        color: #fff;
                     }
                 }
             }
@@ -2227,7 +2229,11 @@ table.table.report_table {
      -moz-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
       -o-flex-wrap: wrap;
-         flex-wrap: wrap;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-content: flex-start;
+      padding-top: 2px;
+   
         }
 
     .dashboardline_page{
@@ -2286,7 +2292,7 @@ table.table.report_table {
                 }
                 p{
                     margin: 0;
-                    font-size: 13px;
+                    font-size: 12px;
                     color: #D1D1D1;
                     margin-bottom: 20px;
                     font-family: "Mulish", sans-serif;
@@ -2444,7 +2450,7 @@ table.table.report_table {
     .line_machines_list{
         .line_machine_item{
             position: relative;
-            width: 24%;
+            // width: 24%;
             margin: 0 5px 10px 0;
             // background: #201e1ecc;
             // border: 1px solid #333;
@@ -2603,7 +2609,7 @@ table.table.report_table {
                                     justify-content: center;
                                     .filter_field{
                                         width: 30%;
-                                        margin-right: 10px;
+                                        margin-right: 10px !important;
                                         .mat-form-field {
                                             width: 100%;
                                             font-size: 20px;
@@ -2714,7 +2720,12 @@ table.table.report_table {
 
 
 
-
+    .as-quality .filter_field.date_picker .mat-icon-button {
+            width: 10px !important;
+    }
+     .as-quality .filter_field.date_picker button {
+        padding: 2px 0px !important;
+    }
 
     // Machine registration page
     .machines_collections {
@@ -2994,6 +3005,129 @@ body .componentForm .time_field_bg{
     font-size: 20px!important;
 }
         // Responsive styles
+        @media (min-width: 1200px){
+            .container, .container-lg, .container-md, .container-sm, .container-xl {
+                max-width: 1600px;
+            }
+           
+            .dashboardline_list {
+                height: 78vh;
+                overflow: auto;
+              }
+              .dashboardline_page .right_side.side_sec {
+                display: block;
+              }
+              .circle_chart.utilize_chart {
+                width: 100%;
+            }
+            .circle_chart {
+                position: relative;
+               
+              }
+              .dashboardline_page .right_side .overall_utilization {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                flex: 1;
+                margin-left: 10px;
+              }
+              
+              .dashboardline_page .right_side .overall_utilization > h3 {
+                position: absolute;
+                right: 50%;
+                top: 5%;
+              }
+              .dashboardline_page .right_side .overall_utilization > h3 {
+                position: absolute;
+                right: 40%;
+                top: 2%;
+                font-size: 22px;}
+                .dashboardline_page .right_side .overall_utilization .job_desc {
+                  margin: 2vh 4px 2vh;
+                  line-height: 26px;
+                  position: inherit;
+                 
+              }
+              .dashboardline_page .right_side .overall_utilization .job_desc p {
+               
+                font-size: 17px;
+              }
+              .as-chart-height {
+                height: 15vh;
+               
+            }
+           
+            .circle_chart ul {
+              justify-content: space-evenly;
+              margin-top: 0.25rem;
+            }
+            .line_desc  .line_mac_target  .box_bg  {
+              padding: 2px 40px 2px 40px;
+              margin-top: 9px;
+              white-space: nowrap;
+            }
+            .dashboardline_page .right_side .overall_utilization .line_desc .line_mac_target .box_bg {
+              display: grid;
+              align-items: center;
+              justify-content: center;
+            }
+            .dashboardline_page .right_side .overall_utilization .line_desc {
+              width: 100%;
+              margin-top: 1rem;
+            }
+            .circle_chart .chart_text {
+              position: absolute;
+              top: 71%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            .dashboardline_page .dashboardline_list .dashboardline_item h3 {
+              color: #fff;
+              margin: 0;
+              font-size: 24px;
+            }
+            .dashboardline_page .right_side.side_sec .utilization_load {
+              width: 100%;
+              display: flex;
+              margin-top: 0.25rem;
+              justify-content: space-between;
+            }
+            .dashboardline_page .right_side .utilization_load .bg .chart_sub_title {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: auto;
+            }
+            .dashboardline_page .right_side .utilization_load .bg .chart_sub_title {
+              font-size: 18px;
+              color: #fff;
+              text-transform: capitalize;
+            }
+            .trpiu {
+              display: flex !important;
+              position: absolute;
+              left: 120px;
+              top: 8px;
+            }
+            .dashboardline_page .right_side .utilization_load .bg {
+              border: 1px solid #2E2E2E;
+              background: #242424;
+              padding: 4px;
+              margin-left: 10px;
+              border-radius: 5px;
+            }
+            .right_side .utilization_load .bg {
+            
+              width: 100%;
+            }
+            
+            .overall_efficiency .circle_chart .chart_text, .spindle_loader .circle_chart .chart_text{
+              top: 50%;
+            }
+            .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{
+                padding: 3px;
+            }
+          }
         @media only screen and (max-width:1024px) {
             .idle_reason_page .idle_reason_list .idle_reason_item h3{
                 font-size: 16px;
@@ -3001,9 +3135,9 @@ body .componentForm .time_field_bg{
             .dashboardline_page .side_sec{
                 width: 100%!important;
             }
-            body .quality_ip_page .line_machines_list .line_machine_item{
-                width: 48%!important;
-            }
+            // body .quality_ip_page .line_machines_list .line_machine_item{
+            //     width: 48%!important;
+            // }
         }
         @media only screen and (max-width:768px) {
             .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
@@ -3599,12 +3733,13 @@ body .compare_page .chart_sec .ulitization_chart {
     display: flex;
 }   
 .dashboard_page_sec .line_desc{
-   width: 40%;
-   padding:5px 10px;
-   border: 2px solid #646569;
-   background: #4a4a4a;
-   border-top-right-radius: 10px;
+    width: 40%;
+    padding: 3px 10px;
+    border: 2px solid #646569;
+    background: #4a4a4a;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+ 
 }
 
 rect.highcharts-background {
@@ -3918,6 +4053,7 @@ span.material-icons.one {
 
     .quality_ip_page .line_machines_list .line_machine_item .line_mac_box .total_parts {
         padding: 10px;
+        display: block;
     }
     .quality_ip_page .line_machines_list .line_machine_item .accepted_parts{
         padding: 10px;
@@ -4005,7 +4141,7 @@ min-height: 24vh;
     }
 
     .circle_chart_left {
-        width: 100% !important;
+        width: 100%;
     }
 
     .dashboard_page_sec .line_desc_inner {
@@ -4070,7 +4206,7 @@ min-height: 24vh;
     }
 
     .circle_chart_left {
-        width: 100% !important;
+        width: 100%;
     }
 
     .line_desc {
@@ -4085,10 +4221,19 @@ min-height: 24vh;
 
   }
 
+  
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+        width: 100%;
+        height: auto;
+        min-height: 24vh;
+}
+}
 
   @media screen and (max-width: 768px) and (min-width: 600px) {
     .idle_reason_page .idle_reason_list .idle_reason_item, .quality_ip_page .line_machines_list .line_machine_item, .machines_collections .machine_prod, .dashboard_page_sec .line_list .line_item {
-        width: 47%;
+        width: 70%;
     }
     .dashboard_page_sec .circle_chart_inner {
         display: block;
@@ -4148,11 +4293,7 @@ min-height: 24vh;
 //   }
 
 
-@media(max-width:360px){
-    .header .company_name h1 {
-        font-size: 21px;
-    }
-}
+
 
 @media screen and (max-width: 1024px) and (min-width: 600px) {
     .shift_sec .shift_card {
@@ -4237,6 +4378,13 @@ min-height: 24vh;
 .sidenav_logo {
     display: block !important;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .header .company_name h1 {
+        font-size: 19px;
+    }
+}
+
 @media (min-width: 769px)
 {.sidenav .sidenav_logo {
     display: block !important;
@@ -4430,7 +4578,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
 }
 .dashboardline_page .right_side .utilization_load .bg {
     width: inherit;
-    padding: 12px;
+    padding: 6px;
 }
 .line_desc .line_mac_target .box_bg span {
     margin-right: 6px;
@@ -4473,6 +4621,10 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
 
 @media (min-width: 1920px) and (max-width: 2560px)  {
    
+    .dashboardline_page .right_side .utilization_load .bg.axis_chart .circle_chart .chart_text {
+        top: 28%;
+        left: 50%;
+    }
     .dashboardline_list{
         height: auto ;
     overflow: auto;
@@ -4501,10 +4653,17 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     .dashboardline_page .right_side.side_sec .utilization_load {
         width: 100%;
         display: flex;
-        margin-top: 3rem;
+        margin-top: 1rem;
+        height: 20vh;
+    }
+    .trpiu {
+        display: flex !important;
+        position: absolute;
+        left: 188px;
+        top: 0px;
     }
     .as-chart-height {
-        height: 41vh;
+        height: 16vh;
         width: 50%;
     }
     .dashboardline_page .right_side .overall_utilization .job_desc p{
@@ -4517,14 +4676,14 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     flex: 1;
     }
     .dashboardline_page .right_side .overall_utilization .job_desc {
-        margin: 14vh 78px;
+        margin: 11vh -24px 2vh; // margin: 10vh 78px;
         line-height: 40px;
-        position: absolute;
+        position: inherit;
     right: 0;
     }
     .dashboardline_page .right_side .overall_utilization .line_desc{
         width: 100%;
-        margin-top: -3rem;
+        margin-top: 1rem;
     }
     .line_desc .time_sec li p {
         font-size: 22px;
@@ -4557,12 +4716,19 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     .dashboardline_page .dashboardline_list .fifteen .dashboardline_item h3{
         font-size: 38px;
     }
-    .dashboardline_page .dashboardline_list .fifteen .dashboardline_item p{
+    // .dashboardline_page .dashboardline_list .fifteen .dashboardline_item p{
+    //     font-size: 19px;
+    //     margin-top: 24px;
+    // }
+
+    .dashboardline_page .dashboardline_list .fifteen .dashboardline_item p {
         font-size: 19px;
         margin-top: 24px;
-    }
+     }
+     
+     
     .dashboardline_page .dashboardline_list .fifteen .dashboardline_item span{
-        font-size: 40px;;
+        font-size: 40px;
         margin: auto;
     }
     .dashboardline_page .dashboardline_list .twenty .dashboardline_item h3 {

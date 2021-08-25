@@ -23,7 +23,7 @@ import { DatePipe } from '@angular/common';
       backgroundStrokeWidth: 12,
       backgroundPadding: 0,
       radius: 36,
-      space: -17,
+      space: -14,
       "subtitle": [
         "OEE"
       ],
@@ -34,10 +34,11 @@ import { DatePipe } from '@angular/common';
   "titleColor": "#ffffff",
       toFixed: 0,
       maxPercent: 100,
-      outerStrokeWidth: 17,
-      innerStrokeWidth: 17,
+      outerStrokeWidth: 14,
+      innerStrokeWidth: 14,
       "showSubtitle": true,
-      "showUnits": false
+      "showUnits": false,
+      outerStrokeLinecap: "square",
     })
   
   ],

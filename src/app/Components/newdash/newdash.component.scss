@@ -999,8 +999,89 @@ text-align: center;
   }
   .page .section_top_padding .page_title_sec {
     margin-bottom: 7px;
-    margin-right: 12px;
+    margin-right: -6px;
 }
 .dashboard_page_sec{
   margin-top: -22px;
+}
+@media only screen and (min-width: 1200px) {
+  .line_desc .line_mac_target .box_bg {
+    padding: 0px 4px 5px 4px;
+    
+    white-space: nowrap;
+}
+.circle_chart .circle_chart_right .chart_text {
+  left: -10px !important;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+
+  padding: 2px 10px;
+ 
+}
+.line_desc .line_mac_target .box_bg span {
+  margin-right: 6px;
+  font-size: 30px;
+}
+.dashboard_page_sec .circle_chart .chart_text h3 {
+  font-size: 30px !important;
+}
+.dashboard_page_sec .line_desc {
+  padding: 0px 3px;
+}
+
+
+
+.dashboard_page_sec .line_list .line_item .line_item_content h3 {
+  font-size: 14px;
+  margin-bottom: -14px;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+  height: 15vh;
+}
+
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+  height: 15vh;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec .machine_status_list {
+  
+  margin: 3px 0 0px 0;
+}
+.line_desc .line_mac_target .box_bg span {
+ 
+  line-height: 24px;
+ }
+ .dashboard_page_sec .time_sec {
+  margin-top: 6px;
+}
+// .line_desc .line_mac_target {
+//   margin-top: 100px;
+//   position: absolute;
+//   top: 14px;
+//   right: -11px;
+//   flex-direction: column;
+// }
+.line_desc .line_mac_target .box_bg {
+  padding: 0px 4px 0px 4px;
+  width: 60%;
+}
+.machinestatus_sec_inner{
+  overflow: auto;
+  padding: 0;
+  scrollbar-width: thin;
+margin-top: -1px;
+}
+
+.line_desc .line_mac_target {
+  margin-top: 11px;
+}
+.page .section_top_padding .page_title_sec {
+  margin-bottom: 4px;
+  margin-top: -6px;
+}
+
+}
+@media (min-width: 1920px) and (max-width: 2560px){
+  .line_desc .time_sec li p {
+    white-space: normal;
+}
 }
