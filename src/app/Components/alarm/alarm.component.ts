@@ -4,6 +4,8 @@ import { PageEvent, MatPaginator} from '@angular/material/paginator';
 import { AlarmService} from '../../Service/app/alarm.service';
 import { MatSort,MatTableDataSource,} from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import Swal from 'sweetalert2';
+import { ExportService } from '../shared/export.service'; 
 
 
 declare var gtag;
@@ -16,6 +18,8 @@ declare var gtag;
 export class AlarmComponent implements OnInit {
   alarmHistory: any; 
   pageNo: any;
+  export_excel: any[] = [];
+
   page_size= 20;
   searchText :any =[];
   reason:any;
@@ -28,7 +32,7 @@ export class AlarmComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
  
-  constructor(private nav:NavbarService,private alarmService:AlarmService) {
+  constructor(private nav:NavbarService,private alarmService:AlarmService,private exportService: ExportService) {
     this.nav.show();
    }
   //  pageEvent: PageEvent;
@@ -81,6 +85,38 @@ export class AlarmComponent implements OnInit {
 
       })  
     }
+  }
+  downlosd(){
+    Swal.fire("Download Successfully")
+  }
+
+  export(){
+
+
+    this.alarmService.alarm_history4().pipe(untilDestroyed(this)).subscribe( res => {
+      
+ 
+      this.alarmHistory = res.alarm_histories;
+     this.total_count =res.alarms_count;
+ 
+      if(this.alarmHistory.length==0){
+       Swal.fire('Exporting!, No Data Found')
+     }else{
+     for(var i=0;i<this.alarmHistory.length;i++){
+       Swal.fire('Download Successfully')
+ 
+       this.export_excel.push({
+          "S.No": i+1,
+ 
+ 
+  
+ 
+       });
+     }
+       this.exportService.exportAsExcelFile(this.export_excel, 'Efficiency Report Details');
+   }
+   })
+ 
   }
   ngOnDestroy() {}
 }

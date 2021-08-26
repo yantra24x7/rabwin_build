@@ -30,12 +30,12 @@ export class KpiDashboardComponent implements OnInit {
   ngOnInit() {
 
     this.myLoader = true;
+
     this.service.god().subscribe(res =>{
       this.machine_response = res;
       console.log(this.machine_response)
       
-      this.myLoader = false;
-      setTimeout (() => {
+      this.myLoader = false; 
 
       for(let i in this.machine_response){
         this.chart_loop = this.machine_response[i].data;
@@ -137,15 +137,23 @@ export class KpiDashboardComponent implements OnInit {
          ]
          });
       }
-    }, 1000);
        
   })
+  setInterval(() => {   
+    
+    this.service.god().subscribe(res =>{
+      this.machine_response = res;
+      console.log(this.machine_response)
+    })      
+  }, 100000);
 
 
 
 
   
 }
+
+
 
 
 

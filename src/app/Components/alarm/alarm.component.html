@@ -14,15 +14,19 @@
 
         <mat-icon class="v-align-middle display">search</mat-icon>
       </div>
+
+      <!-- <div class="table_export" (click)="downlosd()">
+        <button class="export_btn" mat-raised-button (click)="export()"> Export</button>
+        </div> -->
     </div>
     <mat-card class="card_sec">
       <mat-card-content class="table_responsive">
-        <table class="row" mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+        <table class="row" mat-table  [dataSource]="dataSource" class="mat-elevation-z0">
 
           <!-- <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> # </th>
             <td mat-cell *matCellDef="let i=index;"> {{i+1}} </td>
-
+ 
           </ng-container> --> 
 
           <!-- Name Column -->
@@ -39,7 +43,7 @@
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="axis">
-            <th mat-header-cell *matHeaderCellDef> Axis Number </th>
+            <th mat-header-cell *matHeaderCellDef> Alarm Number </th>
             <td mat-cell *matCellDef="let element"> {{element.number|| '---'}} </td>
           </ng-container>
 
