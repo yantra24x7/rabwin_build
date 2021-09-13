@@ -353,7 +353,88 @@ ul.pie_charts_utilizations {
 //   display: inline-block;
 //   width: 100%;
 // }
+@media(max-width: 320px){
+  .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart{
+    height: auto;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{
+height: auto;
+}
+}
 
+@media (max-width: 1366px){
+
+  .dashboard_page_sec .time_sec{
+    margin-top: 0 !important;
+}
+.line_desc .line_mac_target .box_bg{
+        display: flex;
+}
+.line_desc .line_mac_target .box_bg p{
+        margin: 8px 0px 0px 7px;
+}
+
+.dashboard_page_sec .line_desc .line_mac_target .box_bg p{
+    white-space: nowrap;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .circle_chart{
+        height: 15vh;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{
+    height: 15vh;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec .machine_status_list{
+    margin: 0;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content h3{
+        font-size: 18px;
+    margin-bottom: -14px;
+}
+.line_desc .line_mac_target .box_bg{
+    padding: 0px 10px 0px 10px;
+   width: 59%;
+}
+
+.shift_details .box_sec.shift_view .view_box span {
+    font-size: 18px;}
+.shift_details .box_sec.last_update_view p{
+        line-height: 14px;
+}
+.shift_details .box_sec.last_update_view p.time_date::after{
+        top: 7px;
+}
+.line_desc .line_mac_target .box_bg span{
+        font-size: 32px;
+        line-height: 28px;
+}
+.shift_details .box_sec{
+    padding: 3px 15px;
+}
+.shift_details, .shift_details .box_sec, .shift_details .btn_link{
+    font-size: 14px;
+}
+
+.last_update_view.box_sec {
+  margin-top: 8px;
+}
+.page .section_top_padding .page_title_sec{
+        margin-bottom: 3px;
+}
+.dashboard_page_sec .line_list .line_item{
+    margin-bottom: 2px;
+}
+.dashboard_page_sec .circle_chart .chart_text h3{
+        font-size: 32px !important;
+}
+}
+@media(max-width: 1024px){
+  .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart{
+    height: auto;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{
+height: auto;
+}
+}
 @media (max-width: 1440px) {
 
 .scroll {
@@ -1004,6 +1085,36 @@ text-align: center;
 .dashboard_page_sec{
   margin-top: -22px;
 }
+
+
+@media only screen and (min-width: 834px) and (max-width: 1112px)  {
+  
+.filter_sec .filter_fields {
+  
+  -o-flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+}
+
+
+@media only screen and (min-width: 834px) and (max-width: 1112px)  and (orientation: landscape){
+  .circle_chart .circle_chart_right .chart_text {
+    left: -9px !important;
+}
+.line_desc .line_mac_target .box_bg {
+  display: block;
+}
+.line_desc .time_sec li span {
+  font-size: 20px;
+}
+.filter_sec .filter_fields {
+  
+  -o-flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+}
+
+
 @media only screen and (min-width: 1200px) {
   .line_desc .line_mac_target .box_bg {
     padding: 0px 4px 5px 4px;

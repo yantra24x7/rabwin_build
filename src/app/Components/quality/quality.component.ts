@@ -17,7 +17,9 @@ export class QualityComponent implements OnInit {
   daterangepicker:any;
   module_response:any;
   startDate:any;
-  fiesr_date:any;
+  takum_id:any;
+  g_report2:any;
+  fiesr_date:any; 
   e_id:any;
   shift_response:any;
   get_report1:any;
@@ -118,6 +120,7 @@ export class QualityComponent implements OnInit {
 
     this.service.get_rreport(this.e_id).subscribe(res =>{
       this.g_report1 = res;
+      console.log(this.g_report1)
     })
         this.myLoader = true;
 
@@ -199,17 +202,26 @@ export class QualityComponent implements OnInit {
   }
 
   reas(rep){
+    console.log(rep)
     console.log(rep[0].id.$oid)
+    this.takum_id = rep[0].id.$oid;
+    console.log(this.takum_id);
+    this.service.get_rreport(this.takum_id).subscribe(res =>{
+      console.log(res);
+      this.g_report2 = res;
+      console.log(this.g_report2.edit_reason)
+
+    })
     console.log(this.reason.value)
     // console.log(this.get_report);
-    let index = this.get_report[0].edit_reason
-    console.log(index)
+    // let takum = this.g_report2.edit_reason
+    // console.log(index)
    
-     this.get_report[0].id.$oid = rep[0].id.$oid
-         this.get_report[0].edit_reason= [this.reason.value];
-  
+    //  this.get_report[0].id.$oid = rep[0].id.$oid
+         this.g_report2.edit_reason= [this.reason.value];
+  console.log(this.g_report2.edit_reason)
         // this.get_report.route_card_report[index] = rep;
-        console.log(this.get_report[0])
+        console.log(this.g_report2)
         this.myLoader = true;
   
         this.service.put_rreport(this.get_report[0]).subscribe(res =>{
@@ -280,6 +292,7 @@ export class Add {
 this.myLoader1 = true;
       this.service.get_rreport(this.e_id).subscribe(res =>{
         this.g_report = res;
+        console.log(this.g_report)
         this.myLoader1 = false;
 
         this.get_report = res.route_card_report;
@@ -350,8 +363,9 @@ this.myLoader1 = true;
       // this.g_report.edit_reason= [this.reason.value];
 
       this.g_report.route_card_report[index] = rep;
+      console.log(this.g_report)
       this.myLoader1 = true;
-
+       
       this.service.put_rreport(this.g_report).subscribe(res =>{
         this.myLoader1 = false;
 

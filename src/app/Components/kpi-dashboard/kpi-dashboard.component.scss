@@ -12,7 +12,7 @@
         text{
         fill: #fff!important;
         }
-    }
+    } 
 
 ::ng-deep .highcharts-yaxis-grid {
     .highcharts-grid-line {
@@ -299,7 +299,27 @@
 
 
 // Responsive style
-
+@media only screen and (min-width: 834px) and (max-width: 1112px)  {
+    #page_area.page .machine_list .machine_item {
+        width: 31%;
+        margin: 0px 6px 14px 6px;
+    }
+   
+    }
+    
+    
+    @media only screen and (min-width: 834px) and (max-width: 1112px)  and (orientation: landscape){
+        #page_area.page .machine_list .machine_item {
+            width: 22%;
+            margin: 0px 11px 17px 12px;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+       
+    #page_area.page .machine_list .machine_item {
+        margin: 0px 11px 17px 12px;
+    }
+    }
 @media only screen and (max-width:768px){
     #page_area {
         &.page{

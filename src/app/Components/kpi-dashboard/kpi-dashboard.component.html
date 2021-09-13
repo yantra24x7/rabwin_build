@@ -11,6 +11,26 @@
                     OEE Dashboard
                 </h2>
 
+                <div class="last_update_view box_sec">
+                    <mat-icon class="v-align-middle display">query_builder</mat-icon>
+                    <p class="time_date">Last Update <br>
+                      Time &amp; Date</p>
+          
+                    <!-- <p>
+                      <span>
+                      {{today | date:'h:mm:ss a'  }} <br>
+                      </span>
+                      <span>{{ltime | date:'dd-MM-yyyy h:mm:ss a'}}</span>
+                    </p> -->
+          
+                    <p><span>
+                      {{ltime | date:'h:mm:ss a'  }} <br>
+                      </span>
+                      <span>{{ltime | date:'dd-MM-yyyy'}}</span>
+                    </p>
+                  </div>
+    
+
                    <!-- <div >
                             <figure >
                                 <div id="container"></div>
@@ -34,6 +54,7 @@
                 </ul> -->
             </div>
 
+    
             <div class="machine_list" >
                 
                 <div class="machine_item"  *ngFor ="let machine of machine_response;let i = index"  [class.stop]="machine.status === 'STOP'" [class.active]="machine.status === 'OPERATE'" [class.idle]="machine.status === 'DISCONNECT'">

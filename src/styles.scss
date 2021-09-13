@@ -1964,6 +1964,7 @@ table.table.report_table {
                         // border-bottom-left-radius: 10px;
                         // border-bottom-right-radius: 10px;
                         width: 48%;
+                        // width: 41%;
                         display: flex;
                         h2{
                             font-weight: 400;
@@ -2788,7 +2789,7 @@ table.table.report_table {
             border-radius: 5px;
             cursor: pointer;
             border: 2px solid #343539;
-            width: 24%;
+            width: 23%;
             color: #828587;
             text-align: center;
             &:last-child {
@@ -4263,6 +4264,48 @@ min-height: 24vh;
     }
   }
 
+
+
+  @media only screen and (min-width: 834px) and (max-width: 1112px) {
+    .idle_reason_page .idle_reason_list .idle_reason_item, .quality_ip_page .line_machines_list .line_machine_item, .machines_collections .machine_prod, .dashboard_page_sec .line_list .line_item {
+     
+      margin-right: 10px;
+  }
+  .machinestatus_sec_inner {
+    
+    height: 120px;
+  }
+  .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{width: 41%;}
+  }
+  @media only screen and (min-width: 834px) and (max-width: 1112px)  {
+    .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+        width: 100%;
+    }
+}
+  @media only screen and (min-width: 834px) and (max-width: 1112px) and (orientation: landscape) {
+    .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec{width: 41%;}
+  .machinestatus_sec_inner  {
+    height: 104px;
+    overflow: auto;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+  
+    width: 19%;
+}
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+   
+    .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+        width: 100%;
+    }
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape){
+       
+        .dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+            width: 48%;
+        }
+        }
+        
   @media screen and (max-width: 1024px) and (min-width: 768px) {
 
     .line_desc {
@@ -4292,6 +4335,17 @@ min-height: 24vh;
 
 //   }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+    .dashboard_page_sec .line_list .line_item .line_item_content .circle_chart {
+        width: 100%;
+    }
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+  width: 100%;
+}
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec {
+    width: 100%;
+}
+}
 
 
 

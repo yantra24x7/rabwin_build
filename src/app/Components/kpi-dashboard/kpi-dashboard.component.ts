@@ -10,7 +10,7 @@ import { AlarmService} from '../../Service/app/alarm.service';
   styleUrls: ['./kpi-dashboard.component.scss']
 })
 export class KpiDashboardComponent implements OnInit {
-
+  ltime:any;
   Highcharts: typeof Highcharts = Highcharts;
   machine_response:any;
   parts:any;allcycletime:any;
@@ -34,7 +34,8 @@ export class KpiDashboardComponent implements OnInit {
     this.service.god().subscribe(res =>{
       this.machine_response = res;
       console.log(this.machine_response)
-      
+      this.ltime = this.machine_response[0].up_time;
+      console.log(this.ltime)
       this.myLoader = false; 
 
       for(let i in this.machine_response){
@@ -143,6 +144,8 @@ export class KpiDashboardComponent implements OnInit {
     
     this.service.god().subscribe(res =>{
       this.machine_response = res;
+      this.ltime = this.machine_response[0].up_time;
+      console.log(this.ltime)
       console.log(this.machine_response)
     })      
   }, 100000);

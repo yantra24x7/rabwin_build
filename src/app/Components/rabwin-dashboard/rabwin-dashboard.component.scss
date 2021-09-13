@@ -1058,6 +1058,24 @@ color:blueviolet;
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+@media only screen and (min-width: 834px) and (max-width: 1112px)  and (orientation: landscape){
+  .circle_chart .circle_chart_right .chart_text {
+    left: 108px;
+}
+.line_desc .line_mac_target .box_bg {
+  display: block;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+  .circle_chart .circle_chart_right .chart_text {
+    left: 289px;
+}
+
+}
+
+
 @media only screen and (min-width: 1200px) {
   .circle_chart .circle_chart_right .chart_text {
     left: 120px;

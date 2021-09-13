@@ -115,6 +115,14 @@
         </li>
 
 
+        <li [routerLink]="['/cycle']"  (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">timelapse
+            </mat-icon>
+            <span>Cycle Time chart</span>
+          </a>
+        </li>
+
         
         <li [routerLink]="['/idle_reason']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
@@ -292,6 +300,15 @@
           </a>
         </li>
 
+
+        <li [routerLink]="['/cycle']"  (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">timelapse
+            </mat-icon>
+            <span>Cycle Time chart</span>
+          </a>
+        </li>
+
         <li [routerLink]="['/idle_reason']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">assignment
@@ -339,7 +356,7 @@
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">notifications
             </mat-icon>
-            <span>Alarm</span>
+            <span>Alarms</span>
           </a>
         </li>
 
