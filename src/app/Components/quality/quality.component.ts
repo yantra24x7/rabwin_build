@@ -165,7 +165,7 @@ export class QualityComponent implements OnInit {
 
  
   logintest(s) {
-    this.myLoader = true;
+    this.myLoader = false;
 
     this.status = s;
 
@@ -202,29 +202,27 @@ export class QualityComponent implements OnInit {
   }
 
   reas(rep){
-    console.log(rep)
-    console.log(rep[0].id.$oid)
     this.takum_id = rep[0].id.$oid;
-    console.log(this.takum_id);
     this.service.get_rreport(this.takum_id).subscribe(res =>{
-      console.log(res);
       this.g_report2 = res;
-      console.log(this.g_report2.edit_reason)
 
     })
+    console.log(this.get_report[0].id.$oid)
+
     console.log(this.reason.value)
-    // console.log(this.get_report);
-    // let takum = this.g_report2.edit_reason
-    // console.log(index)
-   
-    //  this.get_report[0].id.$oid = rep[0].id.$oid
-         this.g_report2.edit_reason= [this.reason.value];
-  console.log(this.g_report2.edit_reason)
-        // this.get_report.route_card_report[index] = rep;
-        console.log(this.g_report2)
+    
+         this.get_report[0].edit_reason= [this.reason.value];
+         console.log(this.get_report[0].edit_reason)
+         this.get_report[0].id = this.get_report[0].id.$oid
+
+        console.log(this.get_report[0].id)
+        console.log(this.get_report)
+        console.log(this.get_report[0])
+
         this.myLoader = true;
   
         this.service.put_rreport(this.get_report[0]).subscribe(res =>{
+          console.log(res);
           this.myLoader = false;
         
          Swal.fire("Updated Successfully")
@@ -338,7 +336,7 @@ this.myLoader1 = true;
   //  this.g_report.push({'id':this.e_id});
   //  console.log(this.g_report)
   // var arraynew = ['Geeks', 'for', 'Geeks'];
-    var obj = {
+    var obj = { 
       id:this.e_id
     }
   

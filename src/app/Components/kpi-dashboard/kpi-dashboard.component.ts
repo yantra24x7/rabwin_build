@@ -148,7 +148,7 @@ export class KpiDashboardComponent implements OnInit {
       console.log(this.ltime)
       console.log(this.machine_response)
     })      
-  }, 100000);
+  }, 200000);
 
 
 

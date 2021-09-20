@@ -23,16 +23,26 @@ declare var gtag;
 })
 export class CycleComponent implements OnInit {
   cycle_start1:any;
+  c_duration:any;
+  l_duration:any;
+
   displayedColumns: string[] = ['position', 'date', 'line', 'machine_name','shift_num','time','operator','operator_id','op_no','root_card','target','actual','ncq','accept','reject','rework','efficiency','utilisation','run_time','idle_time','alarm_time','disconnect','duration'];
   dataSource = new MatTableDataSource();
   // animal: string;
+  parts = [];
+
+  load_end1:any;
   cycle_end1:any;
   Highcharts = Highcharts;
   cycle_start_end:any;
   chartOptions: any;
+  load_start1:any;
   partn_length:any;
   data_push:any;
   // name: string;
+  load_min_duration:any[]= []
+  data_load_start2: any[]= []
+  cycle_min_duration: any[]= []
   data_cycle_start :any[]= []
   date:any;
   reportblock:any;
@@ -60,6 +70,11 @@ export class CycleComponent implements OnInit {
   public minDate: Object = new Date(new Date().setMonth(new Date().getMonth() - 1));
   machine_response: any;
   shift_response: any;
+  sec: any;
+
+  cycle_start_end2:any;
+  data_cycle_start_time: any[] = [];
+  data_load_start_time: any[] = [];
   login: FormGroup;
   get_report: any;
   first_loading: any;
@@ -75,11 +90,21 @@ export class CycleComponent implements OnInit {
   dat1: string;
   dat2: string;
   begin: any;
+  load_start_end:any;
   end: string;
   types: any;
   sdate: string;
   edate: string;
-
+  xazxis: string;
+  dataaxiss: any[] = [];
+  secondsToMinutes(time) {
+    let min = Math.floor(time / 60);
+    this.sec = Math.floor(time % 60);
+     if (this.sec.toString().length == 1) {
+     this.sec = '0' + this.sec;
+     }
+     return min + '.' + this.sec;
+}
   constructor(private datepipe: DatePipe, private nav: NavbarService, private service: ReportService, public dialog: MatDialog, private fb: FormBuilder, private exportService: ExportService) {
     this.nav.show();
    
@@ -159,7 +184,6 @@ export class CycleComponent implements OnInit {
 
 
     this.rolename = localStorage.getItem('role_name');
-    console.log(this.rolename);
 
   this.login = this.fb.group({
       line:[""],
@@ -270,7 +294,6 @@ export class CycleComponent implements OnInit {
   logintest(s) {
     this.status = s;
     // this.myLoader = true;
-     console.log(this.login.value)
      let register = {
              "module":this.login.value.line,
              "machine_name": this.login.value.machine_name,
@@ -294,89 +317,154 @@ export class CycleComponent implements OnInit {
           //   }
      this.service.overall_report(register).subscribe(res => {
              this.get_report = res;
+             this.parts = [];
+
              for (var i in this.get_report) {
-
+              
              for(let m in this.get_report[i].chart_data){
-              //  console.log(this.get_report[i].chart_data[m].cycle_start)
-              //  console.log(this.get_report[i].chart_data[m].cycle_end)
-
+              var run = parseFloat(m)
+              var part = run * 1 + 1;
+              this.parts.push(part);
+              this.c_duration = this.get_report[i].chart_data[m].cycl_duration
+              this.l_duration = this.get_report[i].chart_data[m].load_duration
+               var cycle1 = this.secondsToMinutes(this.c_duration);
+               var cycle2 = this.secondsToMinutes(this.l_duration);
+               
                this.cycle_start1   = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].cycle_start, 'HH:mm:ss');
                this.cycle_end1 = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].cycle_end, 'HH:mm:ss');
-               
-              this.cycle_start_end = this.cycle_start1 + '-' + this.cycle_end1
-               
-               console.log(this.cycle_start_end)
+               this.load_start1   = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].load_start, 'HH:mm:ss');
+               this.load_end1 = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].load_end, 'HH:mm:ss');
+               this.cycle_start_end = this.cycle_start1 + '-' + this.cycle_end1
+               this.load_start_end = this.load_start1 + '-' + this.load_end1
+            
+              
+              
             if (this.cycle_start_end  != ""){
-             this.data_cycle_start.push(parseInt(this.cycle_start_end))
-  
+             this.data_cycle_start_time.push(this.cycle_start_end)
+              this.data_load_start_time.push(this.load_start_end)
+            this.data_cycle_start.push(parseInt(this.cycle_start_end))
+            this.data_load_start2.push(parseInt(this.load_start_end))
+            this.cycle_min_duration.push(parseInt(cycle1))
+            this.load_min_duration.push(parseInt(cycle2))
+            this.xazxis = this.load_start_end + '-' + this.cycle_start_end
+            console.log( "cycle" ,this.data_cycle_start_time)
+            console.log( "load" ,this.data_load_start_time)
+
+            this.dataaxiss.push(this.xazxis)
+            console.log( this.dataaxiss)
+
             }
-          }
+        
+
+                   }
         }
+        console.log(this.load_min_duration);
+        console.log(this.cycle_min_duration);
+
         // let result = parseInt(data_cycle_start);
 
        
 
-      console.log(this.data_cycle_start);
-     
 
              Highcharts.chart('container', {
               chart: { 
-                type: 'column'
+                type: 'column',
+                zoomType: 'xy',
+
               },
               title: {
-                text: 'Monthly Average Rainfall'
+                text: 'Cycle Time Chart'
               },
-              subtitle: {
-                text: 'Source: WorldClimate.com'
+              // subtitle: {
+              //   text: 'Source: WorldClimate.com'
+              // },
+              credits:{
+                    enabled:false
               },
               xAxis: {
-                categories: [ ],
-            
+                // categories: this.data_cycle_start_time,
+                // categories: this.data_load_start_time,
+                categories:this.dataaxiss,
                 // title: {
-                //   text: 'command'
+                //   text: 'Cycle Time'
                 // },
                 crosshair: true
               },
               yAxis: {
-                // min: 0,
-               
+                min: 0,
                 title: {
-                  text: 'Time'
-                }
+                    text: 'Time(min)'
+                },
               },
+              // tooltip: {
+              //   headerFormat: '<span style="font-size:10px"></span><table>',
+              //   pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              //     '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+              //   footerFormat: '</table>',
+              //   shared: true,
+              //   useHTML: true
+              // },
               tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                  '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-              },
+                formatter: function() {
+                    return '' + this.x ;
+  
+            }
+        },
               plotOptions: {
                 column: {
-                  pointPadding: 0.2,
-                  borderWidth: 0
+                  borderWidth: 0,
+                  groupPadding:0,
+                  pointPadding: 0,
+                  //pointWidth: 75
                 }
               },
+              colors: ['#F7A35C','#90ED7D'],
+
               series: [
                 
              
               {
-                name: 'Cycle Start',
+                name: 'Load/Unload Time',
                 type:undefined,
+                data: this.load_min_duration,
 
-                data: this.data_cycle_start
+                dataLabels: {
+                  enabled: true,
+                  color: '#292b2c',
+                  align: 'center',
+                  format: '{point.y} min', 
+        
+                  y: 0,
+                  style: {
+                      fontSize: '10px',
+                      fontWeight: 'normal',
+                  }
+              },
             
               }, 
-              // {
-              //   name: 'Cycle end',
-              //   type:undefined,
+              {
+                name: 'Cycle Time',
+                type:undefined,
 
-              //   data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+                data: this.cycle_min_duration,
+                dataLabels: {
+                  enabled: true,
+                  color: '#292b2c',
+                  align: 'center',
+                  format: '{point.y} min', 
+        
+                  y: 0,
+                  style: {
+                      fontSize: '10px',
+                      fontWeight: 'normal',
+                  }
+              },
             
-              // }
+              }
             ]
             });
+
+         
             //  this.data_push.push( this.get_report[i].chart_data[j]);
             // console.log(this.data_push)
             //  this.data.push( this.machine_response[i].data[j].time);
