@@ -12,7 +12,7 @@
         text{
         fill: #fff!important;
         }
-    } 
+    }  
 
 ::ng-deep .highcharts-yaxis-grid {
     .highcharts-grid-line {
@@ -272,7 +272,8 @@ h2.sub_title {
                     }
                 }
                 .machine_body{
-                    background: #f8130159;
+                    // background: #f8130159;
+                    background: #daa5a159;
                     .parts_sec{
                         background: #f81301ab;
                         color: #fff;
@@ -441,3 +442,74 @@ h2.sub_title {
     font-weight: 600;
 }
 
+@media only screen and (min-width: 1920px)   {
+    #page_area.page .machine_list .machine_item .machine_body .metrics li p
+    {
+        font-size: 36px ;
+    }
+    
+    #page_area.page .machine_list .machine_item .machine_body .metrics li span{
+         font-size: 50px ;
+    }
+   .activemenu #page_area.page .machine_list .machine_item .machine_header .machine_title .machine_name h3
+    {
+        font-size: 67px ;
+    }
+    #page_area.page .machine_list .machine_item .machine_header .machine_title .machine_name h3
+    {
+        font-size: 65px ;
+    }
+    #page_area.page .machine_list .machine_item .machine_body .machine_values p
+    {
+        font-size: 50px;
+        padding: 0;
+        font-weight: 500;
+    }
+    #page_area.page .machine_list .machine_item .machine_body .parts_sec p{
+        font-size: 50px ;
+    }
+    
+    #page_area.page .machine_list .machine_item {
+        width: 32%;
+        // margin: 0px 7px 20px 7px;
+        margin:0px 11px 20px 11px;
+    }
+    ::ng-deep circle-progress tspan:nth-child(1) {
+        font-size: 54px;
+    }
+    ::ng-deep circle-progress tspan:nth-child(2) {
+        font-size: 50px;
+    }
+    ::ng-deep circle-progress tspan:nth-child(3) {
+        font-size: 47px;
+    }
+    .machine_item .machine_header .machine_title .material-icons{
+        font-size: 66px;
+        margin-top: 6px;
+}
+#page_area.page .machine_list .machine_item .machine_header .status i {
+    font-size: 40px;
+}
+#page_area.page .page_title_sec .sub_title {
+    font-size: 25px;
+}
+#page_area.page .machine_list .machine_item .machine_header {
+   
+    align-items: center;
+}
+#page_area.page .machine_list .machine_item .machine_body .progress_bar {
+    
+    padding-top: 20px;
+}
+#page_area.page .machine_list .machine_item .machine_body .metrics {
+  
+    padding: 5px 15px 15px 15px;
+}
+#page_area.page .machine_list .machine_item .machine_body .metrics li p {
+  
+    margin-block-end: -.5em;
+}
+#page_area.page .machine_list .machine_item .machine_header .status {
+    margin: 0 -7px;
+}
+}

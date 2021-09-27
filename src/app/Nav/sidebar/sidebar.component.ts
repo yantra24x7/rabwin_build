@@ -47,7 +47,7 @@ export class SidebarComponent implements OnInit {
 
     this.servie.true().pipe(untilDestroyed(this)).subscribe(res=>{
       localStorage.setItem('sign', res);
-
+     
 
     })
 
@@ -102,11 +102,13 @@ export class SidebarComponent implements OnInit {
       }
       else{
         this.route.navigateByUrl('/rabwin_dashboard');
+        if(window.innerWidth  < 600){
+          this.toggleSidebar();
+        }
 
       }
-      if(window.innerWidth  < 600){
-        this.toggleSidebar();
-      }
+  // debugger
+     
 
     })
   
@@ -114,11 +116,39 @@ export class SidebarComponent implements OnInit {
 
    
   }
+  oeeclick(){
+    let assidebar = document.querySelector('.sidenav');
+    let body = document.querySelector('body');
+     if(window.innerWidth  >= 1920 || window.innerWidth  < 600){
+      this.toggleSidebar();
+    //   if(assidebar.classList.contains('sss' || '' ))    
+    // {
+    //   assidebar.classList.add('sidebar-hidden');
+    //     body.classList.add('activemenu');
+    //     assidebar.classList.remove('sss');
+    // }
+    // else
+    // { 
+    //   assidebar.classList.remove('sidebar-hidden');
+    //   body.classList.remove('activemenu');
+    //   assidebar.classList.add('sss');
+    
+    // }
+    }
 
+     
+  
+  }
   shifting(){
+   
+   
     if(window.innerWidth  < 600){
       this.toggleSidebar();
     }
+    
+ 
+   
+    
   }
   ngOnChanges(changes: SimpleChanges) {
     if(changes.navStatus.currentValue){
@@ -129,8 +159,14 @@ export class SidebarComponent implements OnInit {
 
       this.rolename = localStorage.getItem('role_name');
       this.available =  localStorage.getItem('disable');
+      if(window.innerWidth  < 600){
+        this.toggleSidebar();
+      }
+     
 
     }
+  
+     
 
 } 
  view() {
@@ -169,8 +205,36 @@ toggleSidebar() {
  
     this.sidebarToggled = !this.sidebarToggled;
     console.log(this.sidebarToggled );
-    // debugger
+    //  debugger
     if(window.innerWidth  < 600){
+      if(assidebar.classList.contains('sss' || '' ))    
+      {
+        assidebar.classList.add('sidebar-hidden');
+          body.classList.add('activemenu');
+          assidebar.classList.remove('sss');
+      }
+      else
+      { 
+        assidebar.classList.remove('sidebar-hidden');
+        body.classList.remove('activemenu');
+        assidebar.classList.add('sss');
+      
+      }
+    }
+   else if (window.innerWidth  >= 1920){
+      //   if(assidebar.classList.contains('sss' || '' ))    
+    // {
+    //   assidebar.classList.add('sidebar-hidden');
+    //     body.classList.add('activemenu');
+    //     assidebar.classList.remove('sss');
+    // }
+    // else
+    // { 
+    //   assidebar.classList.remove('sidebar-hidden');
+    //   body.classList.remove('activemenu');
+    //   assidebar.classList.add('sss');
+    
+    // }
       if(assidebar.classList.contains('sss' || '' ))    
       {
         assidebar.classList.add('sidebar-hidden');

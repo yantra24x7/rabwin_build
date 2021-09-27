@@ -51,7 +51,7 @@
 </mat-toolbar>
 
 
-<div class="sidenav "  id="sidebar" *ngIf="nav.visible" >
+<div class="sidenav sss"  id="sidebar" *ngIf="nav.visible" >
   
   <div class="sidenav_view" *ngIf="rolename === 'QA'">
     <a href="javascript:;" class="sidenav_logo">
@@ -106,7 +106,7 @@
           </a>
         </li>
 
-        <li [routerLink]="['/kpi-dashboard']"  (click)="shifting()" routerLinkActive="active-link">
+        <li [routerLink]="['/kpi-dashboard']"  (click)="oeeclick()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">dashboard
             </mat-icon>
@@ -292,7 +292,9 @@
         </li>
 
 
-        <li [routerLink]="['/kpi-dashboard']"  routerLinkActive="active-link">
+        <li [routerLink]="['/kpi-dashboard']"  (click)="oeeclick()"
+
+        routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">dashboard
             </mat-icon>
@@ -361,6 +363,23 @@
         </li>
 
       
+
+        <li [routerLink]="['/operator_registration']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">account_circle
+            </mat-icon>
+            <span>Operator</span>
+          </a>
+        </li>
+
+
+        <li [routerLink]="['/reason_lmw']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">list
+            </mat-icon>
+            <span>Reason</span>
+          </a>
+        </li>
       
         <!-- <li [routerLink]="['/idle_reason']" routerLinkActive="active-link">
           <a href="javascript:;">

@@ -12,9 +12,7 @@ import Swal from 'sweetalert2';
 import * as Highcharts from 'highcharts';
 
 
-// require('highcharts/modules/exporting')(Highcharts);
-// require('highcharts/modules/export-data')(Highcharts);
-// require('highcharts/modules/annotations')(Highcharts);
+
 declare var gtag;
 @Component({
   selector: 'app-cycle',
@@ -318,13 +316,16 @@ export class CycleComponent implements OnInit {
      this.service.overall_report(register).subscribe(res => {
              this.get_report = res;
              this.parts = [];
-
+            this.load_min_duration = [];
+            this.cycle_min_duration = [];
+            this.dataaxiss = [];
              for (var i in this.get_report) {
               
              for(let m in this.get_report[i].chart_data){
               var run = parseFloat(m)
               var part = run * 1 + 1;
               this.parts.push(part);
+              console.log(this.parts.length)
               this.c_duration = this.get_report[i].chart_data[m].cycl_duration
               this.l_duration = this.get_report[i].chart_data[m].load_duration
                var cycle1 = this.secondsToMinutes(this.c_duration);
@@ -337,7 +338,7 @@ export class CycleComponent implements OnInit {
                this.cycle_start_end = this.cycle_start1 + '-' + this.cycle_end1
                this.load_start_end = this.load_start1 + '-' + this.load_end1
             
-              
+              console.log(this.load_start_end);
               
             if (this.cycle_start_end  != ""){
              this.data_cycle_start_time.push(this.cycle_start_end)
@@ -346,7 +347,9 @@ export class CycleComponent implements OnInit {
             this.data_load_start2.push(parseInt(this.load_start_end))
             this.cycle_min_duration.push(parseInt(cycle1))
             this.load_min_duration.push(parseInt(cycle2))
-            this.xazxis = this.load_start_end + '-' + this.cycle_start_end
+          
+            this.xazxis = part + '(' +this.load_start_end+ ')-(' + this.cycle_start_end + ')'
+            console.log(this.xazxis)
             console.log( "cycle" ,this.data_cycle_start_time)
             console.log( "load" ,this.data_load_start_time)
 
@@ -375,19 +378,27 @@ export class CycleComponent implements OnInit {
               title: {
                 text: 'Cycle Time Chart'
               },
-              // subtitle: {
-              //   text: 'Source: WorldClimate.com'
-              // },
+              exporting: {
+                buttons: {
+                  contextButton: {
+                    menuItems: ["printChart", "separator", "downloadPNG", "downloadPDF"]
+                }
+              }
+            },
+              subtitle: {
+                text: 'Total Parts Produced : ' + this.parts.length
+              },
               credits:{
                     enabled:false
               },
               xAxis: {
                 // categories: this.data_cycle_start_time,
                 // categories: this.data_load_start_time,
+
                 categories:this.dataaxiss,
-                // title: {
-                //   text: 'Cycle Time'
-                // },
+                title: {
+                  text: 'Parts Count(Load/Unload Time)-(Cycle Time)'
+                },
                 crosshair: true
               },
               yAxis: {
