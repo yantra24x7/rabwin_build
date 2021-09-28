@@ -1,4 +1,4 @@
-import { Component, OnInit , HostListener, ElementRef} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../../Nav/navbar.service';
 import * as Highcharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
@@ -11,10 +11,6 @@ import { AlarmService} from '../../Service/app/alarm.service';
 })
 export class KpiDashboardComponent implements OnInit {
   ltime:any;
-  topPosToStartShowing = 100;
-  isShow: boolean;
-
-  @HostListener('window:scroll')
   Highcharts: typeof Highcharts = Highcharts;
   machine_response:any;
   parts:any;allcycletime:any;
@@ -31,22 +27,8 @@ export class KpiDashboardComponent implements OnInit {
     this.nav.show();
    }
 
-   checkScroll() {
-      
-    // window의 scroll top
-    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
-
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-    console.log('[scroll]', scrollPosition);
-    
-    if (scrollPosition >= this.topPosToStartShowing) {
-      this.isShow = true;
-    } else {
-      this.isShow = false;
-    }
-  }
   ngOnInit() {
+
     this.myLoader = true;
 
     this.service.god().subscribe(res =>{
@@ -158,7 +140,6 @@ export class KpiDashboardComponent implements OnInit {
       }
        
   })
- 
   setInterval(() => {   
     
     this.service.god().subscribe(res =>{
@@ -166,7 +147,7 @@ export class KpiDashboardComponent implements OnInit {
       this.ltime = this.machine_response[0].up_time;
       console.log(this.ltime)
       console.log(this.machine_response)
-    })   
+    })      
   }, 200000);
 
 
@@ -176,13 +157,7 @@ export class KpiDashboardComponent implements OnInit {
 }
 
 
-gotoTop() {
-  window.scroll({ 
-    // top: 1000, 
-    // left: 0, 
-    // behavior: 'smooth' 
-  });
-}
+
 
 
 }

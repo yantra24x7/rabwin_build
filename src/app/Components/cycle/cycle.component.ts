@@ -11,7 +11,11 @@ import { ExportService } from '../shared/export.service';
 import Swal from 'sweetalert2';
 import * as Highcharts from 'highcharts';
 
+require('highcharts/modules/exporting')(Highcharts);
+require('highcharts/modules/export-data')(Highcharts);
+require('highcharts/modules/annotations')(Highcharts);
 
+declare var require: any
 
 declare var gtag;
 @Component({
@@ -375,16 +379,11 @@ export class CycleComponent implements OnInit {
                 zoomType: 'xy',
 
               },
+            
               title: {
                 text: 'Cycle Time Chart'
               },
-              exporting: {
-                buttons: {
-                  contextButton: {
-                    menuItems: ["printChart", "separator", "downloadPNG", "downloadPDF"]
-                }
-              }
-            },
+             
               subtitle: {
                 text: 'Total Parts Produced : ' + this.parts.length
               },
