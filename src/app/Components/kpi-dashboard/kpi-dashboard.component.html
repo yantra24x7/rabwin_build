@@ -2,6 +2,12 @@
     <div *ngIf="myLoader" class="spinner">
         <img src="assets/images/spinner.gif">
     </div>
+
+    <!-- <div class="frame" (scroll)="scrolled($event)" #scrollframe>
+        <div *ngFor="let item of items" class="item" #item>
+          Item
+        </div>
+      </div> -->
     <div class="section_top_padding">
         <div class="container-fluid">
             <div class="page_title_sec">
@@ -10,15 +16,18 @@
                 </h2>
 
 
+
                 <div class="d-flex justify-content-end">
                     <h2 class="sub_title">
                         Last Update Time & Date
-                    </h2>
+                    </h2> 
 
                     <h2 class="sub_title">
                         {{ltime | date:'h:mm:ss a'  }}<br>
                         {{ltime | date:'dd-MM-yyyy'}} </h2>
                 </div>
+
+   
                 <!-- <div >
                             <figure >
                                 <div id="container"></div>
@@ -41,10 +50,18 @@
                       
                 </ul> -->
             </div>
-
-
-            <div class="machine_list">
-
+            <!-- <div>Some tags before</div>
+            <owl-carousel-o [options]="customOptions" class="machine_list">
+                <ng-container class="machine_item" *ngFor="let machine of machine_response;let i = index"
+                [class.stop]="machine.status === 'STOP'" [class.active]="machine.status === 'OPERATE'"
+                [class.idle]="machine.status === 'DISCONNECT'">
+            <ng-template carouselSlide><h3>{{machine?.machine}}</h3></ng-template>  
+           </ng-container>
+          </owl-carousel-o>
+          <div>Some tags after</div> -->
+      
+        
+            <div class="machine_list" >
                 <div class="machine_item" *ngFor="let machine of machine_response;let i = index"
                     [class.stop]="machine.status === 'STOP'" [class.active]="machine.status === 'OPERATE'"
                     [class.idle]="machine.status === 'DISCONNECT'">
@@ -116,6 +133,7 @@
                     </div>
 
                 </div>
+
 
                 <!-- <div class="machine_item idle">
                     <div class="machine_header">
@@ -253,3 +271,8 @@
   </div> -->
     <!-- <button (click)="renderchart()">Chart Display</button> -->
 </section>
+
+<!-- <button (click)="container.scrollTop =change" class="test123" >👆</button> -->
+
+
+

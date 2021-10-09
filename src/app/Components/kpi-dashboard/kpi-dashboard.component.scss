@@ -2,6 +2,44 @@
    ::ng-deep rect.highcharts-background {
     opacity: .3;
 } 
+.carousel-caption{
+    background-color: #11d525;
+}
+.frame {
+    height: 95%;
+        position: absolute;
+    width: 100%;
+    top: 0;
+    margin-top: 10px;
+    background-color: gray;
+    overflow: scroll;
+  }
+  
+//   .item {
+//     padding: 120px 50px;
+//     margin: 20px;
+//     background-color: white;
+//   }
+.owl-carousel .owl-item {
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-touch-callout: none;
+    color: yellowgreen;
+}
+.owl-item.ng-tns-c11-20.active.ng-trigger.ng-trigger-autoHeight.ng-star-inserted {
+    color: violet;
+}
+button.test123 {
+    position: fixed;
+    bottom: 40px;
+    right: 5px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    z-index: 1;
+  }
 ::ng-deep circle-progress{
     tspan {
         font-weight: 600;

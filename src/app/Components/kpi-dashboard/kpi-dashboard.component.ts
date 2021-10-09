@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit, ViewChild, ViewChildren, ElementRef,   QueryList, HostListener} from '@angular/core';
 import { NavbarService } from '../../Nav/navbar.service';
 import * as Highcharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
 import { AlarmService} from '../../Service/app/alarm.service';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-kpi-dashboard',
   templateUrl: './kpi-dashboard.component.html',
-  styleUrls: ['./kpi-dashboard.component.scss']
+  styleUrls: ['./kpi-dashboard.component.scss'],
+  providers: [NgbCarouselConfig] 
 })
 export class KpiDashboardComponent implements OnInit {
+
+ 
   ltime:any;
-  Highcharts: typeof Highcharts = Highcharts;
+  change = 0;
+  itemList : number[]=[];
+    Highcharts: typeof Highcharts = Highcharts;
   machine_response:any;
   parts:any;allcycletime:any;
   hour:any;
@@ -23,24 +30,62 @@ export class KpiDashboardComponent implements OnInit {
   chart_loop:any;
   power: any;
   reflect: any;
-  constructor(private nav : NavbarService ,private http:HttpClient,private service:AlarmService) {
+  viewHeight: number;
+  time: number;
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 10,
+    autoplay: true,
+    animateOut: 'slideOutUp',
+  animateIn: 'slideInUp',
+        // autoplayTimeout: 5000,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
+  // 620
+  // 1160
+  // 1680
+  // 2210
+  // 2750
+  // 3280
+  // 3830
+  constructor(config: NgbCarouselConfig,private nav : NavbarService ,private http:HttpClient,private service:AlarmService) {
     this.nav.show();
+    config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
+  
    }
 
   ngOnInit() {
-
     this.myLoader = true;
-
+    console.log(this.change)
     this.service.god().subscribe(res =>{
       this.machine_response = res;
-      console.log(this.machine_response)
       this.ltime = this.machine_response[0].up_time;
-      console.log(this.ltime)
       this.myLoader = false; 
 
       for(let i in this.machine_response){
         this.chart_loop = this.machine_response[i].data;
-        console.log(this.chart_loop)  
         this.data = []
         this.data1 = []
 
@@ -51,8 +96,7 @@ export class KpiDashboardComponent implements OnInit {
          this.reflect = this.machine_response[i].status;
        
         }
-        console.log(this.data)
-        console.log(this.data1)
+      
          
           var name="partcycle" + i;
           
@@ -145,18 +189,32 @@ export class KpiDashboardComponent implements OnInit {
     this.service.god().subscribe(res =>{
       this.machine_response = res;
       this.ltime = this.machine_response[0].up_time;
-      console.log(this.ltime)
-      console.log(this.machine_response)
-    })      
+    
+    })  
+    
+    // console.log(this.change)
+    // this.change =  this.change+ 400
+    
+    // this.scrollToTop(this.change);
+    // console.log(this.scrollToTop)
+    // this.change
+
   }, 200000);
 
-
+// $(function(){
+//     $('.carousel').carousel({
+//       interval: 2000
+//     });
+// });
 
 
   
 }
 
-
+// scrollToTop(el) {
+//     el.scrollTop = this.change;
+   
+// }
 
 
 

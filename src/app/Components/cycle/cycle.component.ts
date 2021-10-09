@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit,  ViewChild, ViewChildren, ElementRef,   QueryList, HostListener} from '@angular/core';
 import { NavbarService } from '../../Nav/navbar.service';
 import { ReportService } from '../../Service/app/report.service';
 import { MatSort,MatTableDataSource,} from '@angular/material'; 
@@ -24,15 +24,18 @@ declare var gtag;
   styleUrls: ['./cycle.component.scss']
 })
 export class CycleComponent implements OnInit {
+
+
   cycle_start1:any;
   c_duration:any;
   l_duration:any;
-
+  startDate:any;
   displayedColumns: string[] = ['position', 'date', 'line', 'machine_name','shift_num','time','operator','operator_id','op_no','root_card','target','actual','ncq','accept','reject','rework','efficiency','utilisation','run_time','idle_time','alarm_time','disconnect','duration'];
   dataSource = new MatTableDataSource();
   // animal: string;
   parts = [];
-
+  test_sec_cycle :any[]=[]
+  test_sec_load :any[]=[]
   load_end1:any;
   cycle_end1:any;
   Highcharts = Highcharts;
@@ -113,11 +116,16 @@ export class CycleComponent implements OnInit {
   
   }
 
+  
+
+ 
   downlosd(){
     Swal.fire("Download Successfully")
   }
 
 
+
+ 
 
     addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
         this.date = event.value;
@@ -233,15 +241,18 @@ export class CycleComponent implements OnInit {
         let hadok = localStorage.getItem('SHHIFT');
         this.service.first_page_loading().subscribe(res => {
           this.first_loading = res; 
-          this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
-          this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
-          this.login.patchValue({
+          // this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
+          // this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
+          // this.login.patchValue({
          
 
 
-            date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+          //   date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+          // })
+          this.dat1 = new DatePipe('en-US').transform(res.from_date, 'yyyy-MM-dd');
+          this.login.patchValue({
+            date : this.dat1
           })
-
           // this.stamps = { begin: this.datepipe.transform(begin, 'yyyy-MM-dd'), end: this.datepipe.transform(end, 'yyyy-MM-dd') };
 
           
@@ -295,12 +306,13 @@ export class CycleComponent implements OnInit {
 
   logintest(s) {
     this.status = s;
+    this.dat1 = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
     // this.myLoader = true;
      let register = {
              "module":this.login.value.line,
              "machine_name": this.login.value.machine_name,
              "shift_num": this.login.value.shift_num,
-             "date": this.sdate + '-' + this.edate,
+             "date": this.dat1 + '-' + this.dat1,
              "type":this.login.value.type
           }
 
@@ -322,6 +334,8 @@ export class CycleComponent implements OnInit {
              this.parts = [];
             this.load_min_duration = [];
             this.cycle_min_duration = [];
+            this.test_sec_load = [];
+            this.test_sec_cycle = [];
             this.dataaxiss = [];
              for (var i in this.get_report) {
               
@@ -329,12 +343,12 @@ export class CycleComponent implements OnInit {
               var run = parseFloat(m)
               var part = run * 1 + 1;
               this.parts.push(part);
-              console.log(this.parts.length)
               this.c_duration = this.get_report[i].chart_data[m].cycl_duration
               this.l_duration = this.get_report[i].chart_data[m].load_duration
+              console.log(this.l_duration);
                var cycle1 = this.secondsToMinutes(this.c_duration);
                var cycle2 = this.secondsToMinutes(this.l_duration);
-               
+               console.log(cycle1);
                this.cycle_start1   = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].cycle_start, 'HH:mm:ss');
                this.cycle_end1 = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].cycle_end, 'HH:mm:ss');
                this.load_start1   = new DatePipe('en-US').transform(this.get_report[i].chart_data[m].load_start, 'HH:mm:ss');
@@ -342,31 +356,29 @@ export class CycleComponent implements OnInit {
                this.cycle_start_end = this.cycle_start1 + '-' + this.cycle_end1
                this.load_start_end = this.load_start1 + '-' + this.load_end1
             
-              console.log(this.load_start_end);
               
             if (this.cycle_start_end  != ""){
              this.data_cycle_start_time.push(this.cycle_start_end)
               this.data_load_start_time.push(this.load_start_end)
+              this.test_sec_load.push(parseFloat(cycle2));
+              this.test_sec_cycle.push(parseFloat(cycle1));
             this.data_cycle_start.push(parseInt(this.cycle_start_end))
             this.data_load_start2.push(parseInt(this.load_start_end))
             this.cycle_min_duration.push(parseInt(cycle1))
             this.load_min_duration.push(parseInt(cycle2))
           
             this.xazxis = part + '(' +this.load_start_end+ ')-(' + this.cycle_start_end + ')'
-            console.log(this.xazxis)
-            console.log( "cycle" ,this.data_cycle_start_time)
-            console.log( "load" ,this.data_load_start_time)
 
             this.dataaxiss.push(this.xazxis)
-            console.log( this.dataaxiss)
 
             }
-        
+            console.log(this.test_sec_load,this.test_sec_cycle)
+            console.log(this.load_min_duration)
+            console.log(this.cycle_min_duration)
+
 
                    }
         }
-        console.log(this.load_min_duration);
-        console.log(this.cycle_min_duration);
 
         // let result = parseInt(data_cycle_start);
 
@@ -401,11 +413,11 @@ export class CycleComponent implements OnInit {
                 crosshair: true
               },
               yAxis: {
-                min: 0,
+                 min: 0,
                 title: {
                     text: 'Time(min)'
                 },
-              },
+               },
               // tooltip: {
               //   headerFormat: '<span style="font-size:10px"></span><table>',
               //   pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -436,7 +448,7 @@ export class CycleComponent implements OnInit {
               {
                 name: 'Load/Unload Time',
                 type:undefined,
-                data: this.load_min_duration,
+                data: this.test_sec_load,
 
                 dataLabels: {
                   enabled: true,
@@ -456,7 +468,7 @@ export class CycleComponent implements OnInit {
                 name: 'Cycle Time',
                 type:undefined,
 
-                data: this.cycle_min_duration,
+                data: this.test_sec_cycle,
                 dataLabels: {
                   enabled: true,
                   color: '#292b2c',
