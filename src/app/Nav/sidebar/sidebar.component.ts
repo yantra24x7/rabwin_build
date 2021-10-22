@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   count_machine:any;
   pri: any;
   primaryColor: string;
-
+  modu_name:any;
     opened: boolean;
     public sidebarToggled = false;
   show1: boolean;
@@ -156,7 +156,7 @@ export class SidebarComponent implements OnInit {
       console.log(this.pri);
       this.changeTheme(this.pri);
       this.tenant_name = localStorage.getItem('ten_name');
-
+      this.modu_name = localStorage.getItem('mod_name');
       this.rolename = localStorage.getItem('role_name');
       this.available =  localStorage.getItem('disable');
       if(window.innerWidth  < 600){

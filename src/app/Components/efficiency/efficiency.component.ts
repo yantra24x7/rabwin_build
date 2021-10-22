@@ -92,7 +92,7 @@ export class EfficiencyComponent implements OnInit {
       // this.login.patchValue({
       //   machine_name: this.machine_response[0], 
       // })
-      this.service.getshift().subscribe(res => {
+      this.service.getshift(this.module_response[0]).subscribe(res => {
         this.shift_response = res;
         this.login.patchValue({
           shift_num: this.shift_response[0].shift_no,
@@ -143,6 +143,14 @@ export class EfficiencyComponent implements OnInit {
     
    
       }) 
+
+      this.service.getshift(this.reportblock).subscribe(res => {
+        this.shift_response = res;
+        this.login.patchValue({
+          shift_num: this.shift_response[0].shift_no,
+        })
+      })
+
     }
   export(){
    let register = {

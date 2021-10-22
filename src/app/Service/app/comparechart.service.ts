@@ -33,15 +33,15 @@ export class ComparechartService {
    getmachines():Observable<any>{
     return this.http.get('machine_list')
  }
- getshift():Observable<any>{
-   return this.http.get('shifts') 
- }
+ getshift(data):Observable<any>{
+  return this.http.get('shifts?module=' +data)
+}
  machine_get():Observable<any>{
    return this.http.get('machine_list')
  }
  
- shift_get():Observable<any>{
-  return this.http.get('shifts')
+ shift_get(data):Observable<any>{
+  return this.http.get('shifts?module=' +data)
 }
  overall_compare(register):Observable<any>{
   return this.http.get('compare_report?machine_name=' + register.machine_name +'&&module='+ register.module +'&&shift_num=' +register.shift_num +'&&from_date='+ register.date + '&&select_type=' + register.type)

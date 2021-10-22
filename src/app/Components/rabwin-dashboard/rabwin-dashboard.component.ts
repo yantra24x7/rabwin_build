@@ -16,11 +16,11 @@ export class RabwinDashboardComponent implements OnInit {
   a_dashboard:any; 
   valuen:any; 
   data:any;
-  s_num:any;
+  s_num:any; 
   ltime:any;
   myLoader = false;
   today: number = Date.now();
-
+  rolename:any;
   constructor(private router:Router,private nav:NavbarService,private service: DashboardService) {
     this.nav.show();
     setInterval(() => {this.today = Date.now()}, 1);
@@ -30,6 +30,9 @@ export class RabwinDashboardComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.rolename = localStorage.getItem('role_name');
+
    this.myLoader = true;
 
     this.service.andon().pipe(untilDestroyed(this)).subscribe(res=>{

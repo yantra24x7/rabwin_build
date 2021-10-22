@@ -16,7 +16,11 @@
         <h1 class="d-none d-sm-none d-lg-block"> {{tenant_name}}</h1>
         
   
-        <h1 class="d-lg-none d-sm-block">{{tenant_name}}</h1>
+        <h1 class="d-lg-none d-sm-block">{{tenant_name}}</h1><br>
+
+
+        <h1 class="d-none d-sm-none d-lg-block" *ngIf="rolename === 'Supervisor' || rolename === 'QA'">{{modu_name}} Module</h1>
+
         <!-- <input id="color_pick" type="color" value="#ff0000" (change)="pickRedInt()"> -->
      
         
@@ -29,7 +33,9 @@
       </a>
       <a class="logout">
         <div class="dropdown">
+         
           <div class="user_account">
+            
             <div class="text-right">
               <p>Welcome {{rolename}}</p>
 

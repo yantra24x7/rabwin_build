@@ -36,6 +36,19 @@
 
             <div class="form_field">
                 <mat-form-field appearance="outline">
+                    <mat-select placeholder="Select Module" matNativeControl required
+                        formControlName="module">
+                        <mat-option value="all" *ngIf="rolename === 'Admin'">All</mat-option>
+                        <mat-option *ngFor="let mod of module_response" [value]="mod">
+                          {{mod}}
+                      </mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form_field">
+                <mat-form-field appearance="outline">
                     <mat-label>Shift Number</mat-label>
                     <input matInput formControlName="shift_no" type="number" min="1">
                     <mat-error *ngIf="shiftForm.controls['shift_no'].errors?.required" placeholder="0">Shift Number is

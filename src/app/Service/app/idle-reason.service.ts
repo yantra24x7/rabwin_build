@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class IdleReasonService {
+export class IdleReasonService { 
     pageNo: any;
  
   constructor(private http:HttpClient,) { }
@@ -21,9 +21,9 @@ export class IdleReasonService {
   getmachines():Observable<any>{
     return this.http.get('machine_list')
  }
- getshift():Observable<any>{
-   return this.http.get('shifts')
- }
+ getshift(data):Observable<any>{
+  return this.http.get('shifts?module=' +data)
+}
  overall_report(register):Observable<any>{ 
 
  

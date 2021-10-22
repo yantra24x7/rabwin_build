@@ -122,6 +122,15 @@ export class ReportComponent implements OnInit {
       let hadokmac = localStorage.getItem('MACHINE');
    
       })
+
+      this.service.getshift(this.reportblock).subscribe(res => {
+        this.shift_response = res;
+        this.login.patchValue({
+          shift_num: this.shift_response[0].shift_no,
+        })
+        localStorage.setItem('SHHIFT', this.shift_response[0].shift_no);
+
+      })
     }
 
 
@@ -198,7 +207,7 @@ export class ReportComponent implements OnInit {
     //   this.login.patchValue({
     //     machine_name: this.machine_response[0],
     //   })
-      this.service.getshift().subscribe(res => {
+      this.service.getshift(this.module_response[0]).subscribe(res => {
         this.shift_response = res;
         this.login.patchValue({
           shift_num: this.shift_response[0].shift_no,

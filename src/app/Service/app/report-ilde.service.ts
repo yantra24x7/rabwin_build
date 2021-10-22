@@ -11,9 +11,9 @@ export class ReportIldeService {
   getmachines():Observable<any>{
     return this.http.get('machine_list')
  }
- getshift():Observable<any>{
-   return this.http.get('shifts')
- }
+ getshift(data):Observable<any>{
+  return this.http.get('shifts?module=' +data)
+}
  getmodule():Observable<any>{
   return this.http.get('module_filters')
 } 

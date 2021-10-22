@@ -14,9 +14,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class KpiDashboardComponent implements OnInit {
 
- 
   ltime:any;
-  change = 0;
+  change = 380;
   itemList : number[]=[];
     Highcharts: typeof Highcharts = Highcharts;
   machine_response:any;
@@ -75,7 +74,10 @@ export class KpiDashboardComponent implements OnInit {
     config.pauseOnHover = true;
   
    }
-
+   scrollToTop(el) {
+    el.scrollTop = this.change;
+   
+}
   ngOnInit() {
     this.myLoader = true;
     console.log(this.change)
@@ -192,12 +194,12 @@ export class KpiDashboardComponent implements OnInit {
     
     })  
     
-    // console.log(this.change)
-    // this.change =  this.change+ 400
-    
-    // this.scrollToTop(this.change);
-    // console.log(this.scrollToTop)
-    // this.change
+    console.log(this.change)
+ 
+
+    this.scrollToTop(this.change);
+    console.log(this.scrollToTop)
+    this.change
 
   }, 200000);
 

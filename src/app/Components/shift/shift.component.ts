@@ -20,7 +20,7 @@ export class ShiftComponent implements OnInit {
   controls: any;
   myLoader = false;
   shifts: any;
-  displayedColumns: string[] = ['start_time', 'end_time', 'total_hour','actual_hour','break_time','action'];
+  displayedColumns: string[] = ['start_time', 'end_time', 'total_hour','actual_hour','break_time','module','action'];
   dataSource = new MatTableDataSource();
   constructor(private nav: NavbarService, public dialog: MatDialog, private shift: ShiftService, private toast: ToastrService) {
     this.nav.show();
@@ -95,6 +95,7 @@ export class ShiftComponent implements OnInit {
 export class Add {
   shiftForm: FormGroup;
   difference: any;
+  module_response:any;
   value: any;
   myLoader = false;
   meridian = true;
@@ -114,11 +115,20 @@ export class Add {
   }
 
   ngOnInit() {
+
+    
+    this.shift.getmodule().subscribe(res => {
+      this.module_response = res;
+    
+
+      })
     if (this.value.new) {
       this.shiftForm = this.fb.group({
         start_time: ["", Validators.required],
         end_time: ["", Validators.required],
         break_time: ["", Validators.required],
+        module:["", Validators.required],
+
         shift_no: ["", Validators.required],
         start_day: ["", Validators.required],
         end_day: ["", Validators.required],
@@ -129,6 +139,8 @@ export class Add {
         start_time: [this.TimeAM(shift.start_time),Validators.required],
         end_time: [this.TimeAM(shift.end_time),Validators.required],
         break_time: [this.Time(shift.break_time),Validators.required],
+        module:["", Validators.required],
+
         shift_no: [this.value.edit_shift.shift_no,Validators.required],
         start_day: [this.value.edit_shift.start_day,Validators.required],
         end_day: [this.value.edit_shift.end_day,Validators.required],

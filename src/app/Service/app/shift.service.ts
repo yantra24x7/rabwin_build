@@ -21,4 +21,8 @@ export class ShiftService {
   shift_delete(id: any) {
     return this.http.delete('shifts/' + id);
   }
+
+  getmodule():Observable<any>{
+    return this.http.get('module_filters')
+ }
 }

@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.service.geto().pipe(untilDestroyed(this)).subscribe(res=>{
-console.log(res);
-    })
+ 
     this.Signup = localStorage.getItem('sign');
     // if(this.signup === 'false'){
     //   alert("no signup")
@@ -67,6 +65,7 @@ console.log(res);
     }
    
     this.service.signin(val).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res.module[0])
       localStorage.setItem('token', res.access_token);
       localStorage.setItem('tenant_id', res.tenant_id);
       localStorage.setItem('usertype_id', res.usertype_id);
@@ -74,6 +73,8 @@ console.log(res);
       localStorage.setItem('id', res.id)
       localStorage.setItem('role_name', res.role);
       localStorage.setItem('ten_name', res.tenant);
+      localStorage.setItem('mod_name', res.module[0]);
+
       // localStorage.setItem('color_theme',res.clr_code)
 
 

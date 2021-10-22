@@ -6,16 +6,15 @@
     <div class="page_title_sec">
       <h2>Dashboard - Overall Efficiency</h2>
        <div class="shift_details">
-        <div class="shift_view box_sec">
+        <div class="shift_view box_sec" *ngIf="rolename === 'Supervisor' || rolename === 'QA'">
 
-          
-<div class="gobtn" [routerLink]="['/newdash']">
+<div class="gobtn" [routerLink]="['/newdash']" >
   <span>GO</span>
 </div>
           <!-- <mat-icon class="v-align-middle display">check_circle
           </mat-icon> -->
          <h2> <b><p>Current Shift</p></b></h2>
-          <div class="view_box">
+          <div class="view_box"  >
             <span>{{s_num}}</span>
           </div>
         </div>

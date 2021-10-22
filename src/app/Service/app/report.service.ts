@@ -43,7 +43,10 @@ put_rreport(data: any):Observable<any> {
  operat(register):Observable<any>{
    return this.http.get('operator_filters?machine_name=' + register.machine_name +'&&module='+ register.module +'&&shift_num=' +register.shift_num +'&&from_date='+ register.date)
  }
-  getshift():Observable<any>{
+  getshift(data):Observable<any>{
+    return this.http.get('shifts?module=' +data)
+  }
+  getshifteff():Observable<any>{
     return this.http.get('shifts')
   }
   overall_report(register):Observable<any>{
