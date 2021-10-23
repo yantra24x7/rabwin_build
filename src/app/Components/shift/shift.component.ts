@@ -167,8 +167,12 @@ export class Add {
       this.myLoader = true;
       this.shift.shift_create(data).pipe(untilDestroyed(this)).subscribe(res => {
         this.myLoader = false;
+        if(res.msg){
         Swal.fire(res.msg);
-
+      }
+      else{
+        Swal.fire("created Successfully");
+      }
         this.dialogRef.close();
       })
     } else {
