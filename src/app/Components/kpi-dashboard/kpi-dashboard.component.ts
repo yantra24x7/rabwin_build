@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, ViewChild, ViewChildren, ElementRef,   QueryList, HostListener} from '@angular/core';
+import { Component, OnInit,AfterViewInit, ViewChild, AfterViewChecked,ViewChildren, ElementRef,   QueryList, HostListener} from '@angular/core';
 import { NavbarService } from '../../Nav/navbar.service';
 import * as Highcharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
@@ -12,10 +12,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./kpi-dashboard.component.scss'],
   providers: [NgbCarouselConfig] 
 })
-export class KpiDashboardComponent implements OnInit {
+export class KpiDashboardComponent implements OnInit,  AfterViewChecked {
+  @ViewChild('scrollBottom',{static: false}) private scrollBottom: ElementRef;
 
   ltime:any;
-  change = 380;
+  change = 0;
   itemList : number[]=[];
     Highcharts: typeof Highcharts = Highcharts;
   machine_response:any;
@@ -83,6 +84,8 @@ export class KpiDashboardComponent implements OnInit {
     console.log(this.change)
     this.service.god().subscribe(res =>{
       this.machine_response = res;
+      console.log(this.change)
+
       this.ltime = this.machine_response[0].up_time;
       this.myLoader = false; 
 
@@ -193,15 +196,19 @@ export class KpiDashboardComponent implements OnInit {
       this.ltime = this.machine_response[0].up_time;
     
     })  
-    
+    this.change = this.change + 400
     console.log(this.change)
- 
+    if(this.change >= 1200){
+      this.change = 0
+    }
+  
+    this.scrollToBottom(); 
 
-    this.scrollToTop(this.change);
-    console.log(this.scrollToTop)
-    this.change
-
+   
   }, 200000);
+
+  // this.scrollToBottom();
+
 
 // $(function(){
 //     $('.carousel').carousel({
@@ -211,6 +218,21 @@ export class KpiDashboardComponent implements OnInit {
 
 
   
+}
+
+ngAfterViewChecked() {        
+  this.scrollToBottom();        
+ } 
+
+ 
+scrollToBottom(): void {
+
+    // setInterval(() => { 
+  
+      this.scrollBottom.nativeElement.scrollTop = this.change;
+
+
+    // },200000);
 }
 
 // scrollToTop(el) {
