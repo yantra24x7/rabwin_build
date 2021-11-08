@@ -38,7 +38,7 @@ const routes: Routes = [{ path: '', component: DashboardlineComponent }];
       innerStrokeWidth: 8,
       imageHeight: 20,
       imageWidth: 20,
-      lazy: true,
+      // lazy: true,
 
 
 

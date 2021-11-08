@@ -205,7 +205,9 @@ export class KpiDashboardComponent implements OnInit,  AfterViewChecked {
     this.scrollToBottom(); 
 
    
-  }, 200000);
+  // }, 200000);
+}, 100000);
+
 
   // this.scrollToBottom();
 
