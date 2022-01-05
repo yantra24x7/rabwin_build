@@ -139,6 +139,7 @@
     </mat-card> -->
     <mat-card class="card_sec">
       <mat-card-content class="table_responsive">
+        <div class="example-container">
         <table class="row" mat-table  matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z0">
 
           <ng-container matColumnDef="position">
@@ -201,13 +202,7 @@
             </ng-container>
 
 
-
-         
-
-
-           
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true !important"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         
@@ -217,6 +212,7 @@
         <!-- <mat-paginator [length]="total_count" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions"
           (page)="pageEvent($event)">
         </mat-paginator> -->
+      </div>
       </mat-card-content>
 
       <mat-card-content *ngIf="dataSource.filteredData.length==0" class="no_data_found">

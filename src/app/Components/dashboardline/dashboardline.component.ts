@@ -370,6 +370,17 @@ export class DashboardlineComponent implements OnInit {
 
     })
   }
+  openDialogs(): void {
+    const dialogRef = this.dialog.open(Dialogs, {
+      width: '7500px',
+      height: '580px',
+      
+
+    }); 
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
   onClick(item) {
     this.selectedItem = item;
   }
@@ -851,6 +862,16 @@ export class Dialog {
   ngOnDestroy() { }
 
 
+}
+
+@Component({
+  selector: 'dialog-page',
+  templateUrl: 'dialogs.html',
+  styleUrls: ['./dashboardline.component.scss']
+
+})
+export class Dialogs {
+  myLoader1 = false;
 }
 
 

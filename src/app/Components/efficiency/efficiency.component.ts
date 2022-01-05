@@ -55,6 +55,9 @@ export class EfficiencyComponent implements OnInit {
   new_date1: any;
   g_report:any;
   rolename:any;
+  arrcount: any=[];
+  arrcount1: any=[];
+  count: number;
   constructor(private datepipe: DatePipe, private nav: NavbarService, private service: ReportService, private fb: FormBuilder, private exportService: ExportService) {
     this.nav.show()
   }
@@ -232,6 +235,18 @@ export class EfficiencyComponent implements OnInit {
         this.g_report = res[0];
         this.get_report = res[0].route_card_report;
         this.fina = res;
+        this.arrcount=[];
+        this.arrcount1=[];
+        this.count=0
+        for(let i=0;i<this.fina.length;i++){
+          for(let j=0;j<this.fina[i].route_card_report.length;j++){
+             this.count=this.count+1
+             this.arrcount1.push(this.count)
+             }
+          this.arrcount.push(this.arrcount1)
+          this.arrcount1=[]
+        }
+        console.log(this.arrcount)
         // this.dataSource = new MatTableDataSource(this.get_report);
      
 

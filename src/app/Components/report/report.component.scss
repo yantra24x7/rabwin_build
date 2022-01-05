@@ -48,3 +48,11 @@ th.mat-header-cell.cdk-column-disconnect.mat-column-disconnect.ng-star-inserted 
     width: max-content !important; 
     margin-bottom: 1rem;
 }
+// mat-card.card_sec.mat-card {
+//     height: 65vh;
+//     overflow-y: scroll;
+// }
+.example-container {
+        height: 65vh;
+    overflow: auto;
+  }

@@ -14,32 +14,32 @@
         <div class="dashboardline_page">
             <div class="dashboardline_list left_side side_sec">
                 <div class="inner_card" [ngClass]="classList" *ngFor="let val of alname"
-                    (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">
-                    <div class="dashboardline_item active" (click)="onClick(val)"
+                    >
+                    <div class="dashboardline_item active" 
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'DISCONNECT'">
                         <div>
-                            <h3>{{val?.machine}}</h3>
-                            <p>Machine Disconnect</p>
+                            <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
+                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Disconnect</p>
                         </div>
                         <span>{{val?.run}}%</span>
                     </div>
 
-                    <div class="dashboardline_item run" (click)="onClick(val)"
+                    <div class="dashboardline_item run" 
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'OPERATE'">
                         <div>
-                            <h3>{{val?.machine}}</h3>
-                            <p>Machine Running</p>
+                            <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
+                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Running</p>
                         </div>
                         <span>{{val?.run}}%</span>
                     </div>
 
-                    <div class="dashboardline_item idle" (click)="onClick(val)"
+                    <div class="dashboardline_item idle" 
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'STOP'">
                         <div>
-                            <h3>{{val?.machine}}</h3>
-                            <p>{{val?.reason}}</p>
+                            <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
+                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.reason}}</p>
                         </div>
-                        <span>{{val?.run}}%</span>
+                        <span >{{val?.run}}%</span>
                     </div>
                 </div>
                 <div *ngIf="alname?.length==0">

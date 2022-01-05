@@ -75,11 +75,10 @@
             <div class="table_wrapper">
                 <table class="table report_table" *ngIf="lnth?.length>0">
                     <thead>
-                        <tr></tr>
-                        <tr class="sticky">
+                        
+                        <tr  class="sicky">
                             <th>S.no</th>
                             <th class="date">Date</th>
-
                             <th>Shift</th>
                             <th>Line</th>
                             <th>Machine Name</th>
@@ -103,13 +102,15 @@
                           
                         </tr>
                     </thead>
-                    <tbody *ngFor="let gating of fina;let i = index">
+                    
+                    <tbody *ngFor="let gating of fina;let i = index;">
                       <!-- {{gating.accept}} -->
-                        <tr *ngFor="let show_report of gating.route_card_report;let i = index">
-                            <td>{{i+1}}</td>
+                        <tr *ngFor="let show_report of gating.route_card_report;let j = index">
+                          
+                            <td>{{arrcount[i][j]}}</td>
                             <td>{{g_report?.date | date:'dd-MM-yyyy'}}</td>
 
-                            <td>{{g_report?.shift_num || '---'}}</td>
+                            <td>{{gating?.shift_num || '---'}}</td>
                             <td>{{show_report?.line || '---'}}</td>
 
                              <td>{{g_report?.machine_name || '---'}}</td>
