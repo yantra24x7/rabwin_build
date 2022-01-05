@@ -273,6 +273,13 @@
             <span>Reason</span>
           </a>
         </li>
+        <li [routerLink]="['/loghistory']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">list
+            </mat-icon>
+            <span>Log Activity</span>
+          </a>
+        </li>
       </ul>
     </div>
 

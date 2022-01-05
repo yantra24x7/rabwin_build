@@ -46,8 +46,8 @@ const routes: Routes = [
 { path: 'newdash', loadChildren: () => import('./Components/newdash/newdash.module').then(m => m.NewdashModule) },
   
 { path: 'cycle', loadChildren: () => import('./Components/cycle/cycle.module').then(m => m.CycleModule) },
-  
-    
+
+{path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule)}
 ]
     
 @NgModule({
