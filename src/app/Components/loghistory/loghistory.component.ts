@@ -8,7 +8,8 @@ import { UserService } from 'src/app/Service/app/user.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { PageEvent, MatPaginator} from '@angular/material/paginator';
-
+import { LogService } from 'src/app/Service/app/loghistory.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-loghistory',
   templateUrl: './loghistory.component.html',
@@ -27,7 +28,8 @@ export class LoghistoryComponent implements OnInit {
     pageSizeOptions:any;
   total_count: any;
 
-  constructor(private nav: NavbarService, private fb: FormBuilder, public dialog: MatDialog, private userService: UserService, private toast: ToastrService) {
+  constructor(private nav: NavbarService, private fb: FormBuilder, public dialog: MatDialog, private userService: UserService, private toast: ToastrService,
+    public router:Router) {
     this.nav.show();
   }
   ngOnInit() {
@@ -90,24 +92,17 @@ export class LoghistoryComponent implements OnInit {
     });
   }
   user_edit(user, id) {
-    const dialogRef = this.dialog.open(modal, {
-      width: '450px',
-      height: 'auto',
-      data: { edit_user: user, user_id: id }
-    });
+    localStorage.setItem("ids",JSON.stringify(user))
+    this.router.navigate(['/logactivity'])
+    // const dialogRef = this.dialog.open(modal, {
+    //   width: '450px',
+    //   height: 'auto',
+    //   data: { edit_user: user, user_id: id }
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.getUsers();
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.getUsers();
+    // });
   }
   ngOnDestroy() { }
-}
-@Component({
-  selector: 'modal-page',
-  templateUrl: 'modal.html',
-  // styleUrls: ['./user-management.component.scss']
-
-})
-export class modal {
-
 }

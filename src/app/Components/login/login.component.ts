@@ -108,7 +108,10 @@ export class LoginComponent implements OnInit {
           }
           else if (res.shift_data === false && data === 'QA') {
             Swal.fire("Please Contact Yantra 24x7")
+          }else if(res.shift_data === true && data === "Yantra_Admin"){
+            this.router.navigateByUrl('/loghistory');
           }
+         
         })
       }
 

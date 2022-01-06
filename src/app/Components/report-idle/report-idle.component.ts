@@ -63,7 +63,11 @@ fiesr_date:any;
   chart_loop:any;
   mac_response:any;
   reportblock:any;
-  constructor(private exportService: ExportService,private nav:NavbarService,private service:ReportIldeService,private fb:FormBuilder  ) { 
+  sdate: string;
+  edate: string;
+  dat1: string;
+  dat2: string;
+  constructor(private datepipe: DatePipe,private exportService: ExportService,private nav:NavbarService,private service:ReportIldeService,private fb:FormBuilder  ) { 
     this.nav.show()
   }
 
@@ -149,14 +153,15 @@ fiesr_date:any;
           })
           this.service.first_page_loading().subscribe(res => {
             this.first_loading = res;
-            this.fiesr_date = new DatePipe('en-US').transform(res.from_date, 'yyyy-MM-dd');
-
+            this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
+            this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
             this.login.patchValue({
-              // date : [this.first_loading]
-              date : this.fiesr_date
-
+           date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
             })
-  
+            localStorage.setItem('SDATE', this.first_loading['from_date']);
+            localStorage.setItem('EDATE', this.first_loading['to_date']);
+            this.sdate = localStorage.getItem('SDATE');
+            this.edate = localStorage.getItem('EDATE');
             this.myLoader = false;
 
             this.logintest('true');
@@ -176,12 +181,14 @@ fiesr_date:any;
   chart(){
     this.chartlist = true;
     this.reportList = false;
-    this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
+    // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
+    this.sdate = localStorage.getItem('SDATE');
+    this.edate = localStorage.getItem('EDATE');
     let volko_chart = {
       "module":this.login.value.line,
    "machine": this.login.value.machine_name,
    "shift": this.login.value.shift_num,
-   "date": this.login.value.date + '-' + this.login.value.date
+   "date": this.sdate + '-' + this.edate
  }
 
    this.service.Idle_chart(volko_chart).subscribe(res => {
@@ -245,7 +252,7 @@ fiesr_date:any;
     this.myLoader = false;
 
     this.g_report = res[0];
-    this.get_report = res[0].data;
+    this.get_report = res;
     this.totl = res[0].total;   
      if(this.get_report.length==0){
       Swal.fire('Exporting!, No Data Found')
@@ -274,17 +281,23 @@ fiesr_date:any;
  }  
  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
   this.date = event.value;
+        this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
+        this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
+        localStorage.setItem('SDATE', this.sdate);
+        localStorage.setItem('EDATE', this.edate);
 }
   logintest(s) { 
     this.reportList = true;
     this.chartlist = false;
     this.status = s;
-    this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
+    this.sdate = localStorage.getItem('SDATE');
+    this.edate = localStorage.getItem('EDATE');
+    // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
          let register = {
            "module":this.login.value.line,
         "machine": this.login.value.machine_name,
         "shift": this.login.value.shift_num,
-        "date": this.login.value.date + '-' + this.login.value.date
+        "date": this.sdate + '-' + this.edate
       }
  this.myLoader = true;
 

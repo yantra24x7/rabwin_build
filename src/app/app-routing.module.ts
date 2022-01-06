@@ -47,7 +47,8 @@ const routes: Routes = [
   
 { path: 'cycle', loadChildren: () => import('./Components/cycle/cycle.module').then(m => m.CycleModule) },
 
-{path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule)}
+{path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule)},
+{path:'logactivity',loadChildren: ()=>import('./Components/logdetails/logdetails.module').then(m=>m.LogdetailModule)}
 ]
     
 @NgModule({
