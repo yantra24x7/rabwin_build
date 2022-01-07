@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../../Nav/navbar.service';
 import { ReportIldeService } from '../../Service/app/report-ilde.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { ExportService } from '../shared/export.service';
 import Swal from 'sweetalert2';    
@@ -67,6 +67,15 @@ fiesr_date:any;
   edate: string;
   dat1: string;
   dat2: string;
+  data1: any=[];
+  count: number;
+  array: any=[];
+  array1: any=[];
+  totals: number;
+
+  toppings = new FormControl();
+  selectedMachines:any=[];
+  selectedShifts:any=[];
   constructor(private datepipe: DatePipe,private exportService: ExportService,private nav:NavbarService,private service:ReportIldeService,private fb:FormBuilder  ) { 
     this.nav.show()
   }
@@ -114,6 +123,37 @@ fiesr_date:any;
         })
       })
     }
+    events(event){
+      console.log(event.value)
+   if(event.value[0]==1){
+    if(event.value[0]==1){
+      this.selectedMachines=this.mac_response.map(x=>{return x})
+      }
+    }else if(event.value[1]==2 || event.value[0]==2){
+      this.selectedMachines=[]
+    }
+    else{
+      
+    }
+    console.log(this.selectedMachines)
+    }
+    events1(eventss1){
+      console.log(eventss1.value)
+   if(eventss1.value[0]==100){
+    if(eventss1.value[0]==100){
+      this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
+      }
+    }else if(eventss1.value[1]==200 || eventss1.value[0]==200){
+      this.selectedShifts=[]
+    }
+    else{
+      
+    }
+    console.log(this.selectedShifts)
+    }
+
+
+ 
     ngOnInit() {
 
       this.rolename = localStorage.getItem('role_name');
@@ -137,9 +177,10 @@ fiesr_date:any;
         })
         this.service.line(this.module_response[0]).subscribe(res => {
           this.mac_response=res;
-      
+          this.selectedMachines=[]
+          this.selectedMachines.push(this.mac_response[0])
           this.login.patchValue({
-            machine_name: this.mac_response[0],
+            machine_name: this.selectedMachines,
           })
       this.service.getmachines().subscribe(res => {
         this.machine_response = res;
@@ -148,8 +189,10 @@ fiesr_date:any;
         // })
         this.service.getshift(this.module_response[0]).subscribe(res => {
           this.shift_response = res;
+          this.selectedShifts=[];
+          this.selectedShifts.push(this.shift_response[0].shift_no)
           this.login.patchValue({
-            shift_num: this.shift_response[0].shift_no,
+            shift_num: this.selectedShifts,
           })
           this.service.first_page_loading().subscribe(res => {
             this.first_loading = res;
@@ -186,8 +229,10 @@ fiesr_date:any;
     this.edate = localStorage.getItem('EDATE');
     let volko_chart = {
       "module":this.login.value.line,
-   "machine": this.login.value.machine_name,
-   "shift": this.login.value.shift_num,
+  //  "machine": this.login.value.machine_name.split(','),
+  //  "shift": this.login.value.shift_num.split(','),
+  "machine": this.selectedMachines,
+  "shift":this.selectedShifts,
    "date": this.sdate + '-' + this.edate
  }
 
@@ -295,8 +340,8 @@ fiesr_date:any;
     // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
          let register = {
            "module":this.login.value.line,
-        "machine": this.login.value.machine_name,
-        "shift": this.login.value.shift_num,
+        "machine": this.selectedMachines,
+        "shift": this.selectedShifts,
         "date": this.sdate + '-' + this.edate
       }
  this.myLoader = true;
@@ -306,15 +351,18 @@ fiesr_date:any;
         this.myLoader = false;
 
         this.g_report = res[0];
-        this.get_report = res[0].data;
+        this.get_report = res
+        console.log(this.get_report)
         this.totl = res[0].total;
         if(this.totl == '0'){
           Swal.fire("No Idle Reason Report Found")
           let datas = this.totl;
         }
 
-        
-
+        this.totals=0
+     for(let i=0;i<res.length;i++){
+       this.totals= this.totals+ res[i].total
+       }
      
 
 
@@ -322,21 +370,25 @@ fiesr_date:any;
          
 
 
-        this.get_duration = this.toHoursMinutesSeconds(res[0].total);
+        this.get_duration = this.toHoursMinutesSeconds(this.totals);
         this.data = []
-
+        this.data1 = []
+        this.count=0
+        this.array=[]
+        this.array1=[]
         for(let i in this.get_report){
-
-          this.chart_loop = this.toHoursMinutesSeconds(this.get_report[i].time);
-          this.data.push(this.chart_loop);
-
-     
-
-
-
-        
+          for(let j in this.get_report[i].data){
+          this.chart_loop = this.toHoursMinutesSeconds(this.get_report[i]['data'][j].time);
+          this.data1.push(this.chart_loop);
+          this.count=this.count+1;
+          this.array1.push(this.count)
+          }
+          this.data.push(this.data1);
+          this.array.push(this.array1)
+          this.array1=[]
+          this.data1=[]
         }
-
+         console.log(this.data)
       })
     
   }

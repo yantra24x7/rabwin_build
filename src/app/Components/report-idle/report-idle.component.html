@@ -24,32 +24,51 @@
 
                             </mat-select>
                         </mat-form-field>
+                       
                     </div>
                 <div class="filter_field">
                         <!--have commmented out conditions feel free to use them again *ngIf="type == 'ShiftWise'" -->
-                        <mat-form-field appearance="outline">
+                        <!-- <mat-form-field appearance="outline">
                             <mat-select placeholder="Select Machine" matNativeControl required
-                                formControlName="machine_name">
+                                formControlName="machine_name"> -->
                                 <!-- <mat-option value="all">All</mat-option> -->
 
-                                <mat-option *ngFor="let machine of mac_response" [value]="machine">
+                                <!-- <mat-option *ngFor="let machine of mac_response" [value]="machine">
                                     {{machine}}
                                 </mat-option>
                             </mat-select>
-                        </mat-form-field>
+                        </mat-form-field> -->
+
+                        <mat-form-field>
+                          
+                            <mat-select placeholder="machine_name" formControlName="machine_name"  [(value)]="selectedMachines" multiple (selectionChange)="events($event)">
+                                <mat-option [value]="1" >All</mat-option>
+                                <mat-option [value]="2">clear All</mat-option>
+                                <mat-option *ngFor="let machine of mac_response" [value]="machine">{{machine}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                     </div>
                     <div class="filter_field">
                         <!--have commmented out conditions feel free to use them again *ngIf="type == 'ShiftWise'" -->
-                        <mat-form-field appearance="outline">
+                        <!-- <mat-form-field appearance="outline">
                             <mat-select placeholder="Select Shift" matNativeControl required
-                                formControlName="shift_num">
+                                formControlName="shift_num"> -->
                                 <!-- <mat-option value="all">All</mat-option> -->
 
-                                <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no">
+                                <!-- <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no">
                                     {{shift.shift_no}}
                                 </mat-option>
                             </mat-select>
-                        </mat-form-field>
+                        </mat-form-field> -->
+
+                        <mat-form-field>
+
+                            <mat-select placeholder="shift_num" formControlName="shift_num"  [(value)]="selectedShifts" multiple (selectionChange)="events1($event)">
+                             <mat-option [value]="100" >All</mat-option>
+                                <mat-option [value]="200">clear All</mat-option>
+                                <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no">{{shift.shift_no}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                     </div>
                     <div class="filter_field date_picker" color="primary">
                       
@@ -115,18 +134,18 @@
                         </tr>
                     </thead>
                     <tbody *ngFor="let show_report of get_report; let i = index" >
-                        <tr *ngIf="no_data?.length > 0">
-                            <td>{{i+1}}</td>
-                            <td>{{g_report?.date || '---'}}</td>
-                            <td>{{g_report?.shift_no || '---'}}</td>
+                        <tr *ngFor="let show_reports of show_report.data; let j = index">
+                            <td>{{array[i][j]}}</td>
+                            <td>{{show_report?.date || '---'}}</td>
+                            <td>{{show_report?.shift_no || '---'}}</td>
 
-                            <td>{{g_report?.machine_name || '---'}}</td>
+                            <td>{{show_report?.machine_name || '---'}}</td>
                              <!-- <td>{{g_report?.time || '---'}}</td> -->
-                            <td>{{show_report?.idle_reason }}</td>
-                            <td>{{show_report?.idle_start | date:'yyyy-MM-dd ; HH:mm:ss'}}</td>
+                            <td>{{show_reports?.idle_reason }}</td>
+                            <td>{{show_reports?.idle_start | date:'yyyy-MM-dd ; HH:mm:ss'}}</td>
                          
-                            <td>{{show_report?.idle_end | date:'yyyy-MM-dd ; HH:mm:ss'}}</td>
-                            <td>{{data[i]}}</td>
+                            <td>{{show_reports?.idle_end | date:'yyyy-MM-dd ; HH:mm:ss'}}</td>
+                            <td>{{data[i][j]}}</td>
                         </tr>
                     </tbody>
                 </table>

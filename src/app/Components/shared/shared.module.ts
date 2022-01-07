@@ -9,7 +9,7 @@ import {
   MatGridListModule, MatStepperModule, MatTreeModule,
   MatSnackBarModule, MatTabsModule, MatDialogModule, MatTableModule,
   MatCheckboxModule, MatNativeDateModule, MatPaginatorModule,
-  MatButtonToggleModule, MatToolbarModule, MatTooltipModule
+  MatButtonToggleModule, MatToolbarModule, MatTooltipModule,
 } from '@angular/material';
 import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
