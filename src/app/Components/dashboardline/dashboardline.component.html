@@ -19,7 +19,7 @@
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'DISCONNECT'">
                         <div>
                             <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
-                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Disconnect</p>
+                            <p (click)="onClick(val)" (click)="openDialogs(val?.machine)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Disconnect</p>
                         </div>
                         <span>{{val?.run}}%</span>
                     </div>
@@ -28,7 +28,7 @@
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'OPERATE'">
                         <div>
                             <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
-                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Running</p>
+                            <p (click)="onClick(val)" (click)="openDialogs(val?.machine)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">Machine Running</p>
                         </div>
                         <span>{{val?.run}}%</span>
                     </div>
@@ -37,7 +37,7 @@
                         [ngClass]="{ 'as-selected': val == selectedItem }" *ngIf="val.status === 'STOP'">
                         <div>
                             <h3 (click)="onClick(val)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.machine}}</h3>
-                            <p (click)="onClick(val)" (click)="openDialogs()" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.reason}}</p>
+                            <p (click)="onClick(val)" (click)="openDialogs(val?.machine)" (click)="valvo(val?.line,val?.machine,val?.run,val?.run_time,val?.stop,val?.disconnect,val?.reason)">{{val?.reason}}</p>
                         </div>
                         <span >{{val?.run}}%</span>
                     </div>
@@ -136,7 +136,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chart_sub_title">Overall Efficiency</div>
+                        <div class="m-auto">
+                            <div class="chart_sub_title">Overall Efficiency</div>
+                                <div class="chart_sub_title" style="color: red;" *ngIf="operator?.effe>100">
+                                    Input Error</div>
+                        </div>
+                      
+                     
                     </div>
 
                     <div class="spindle_loader d-flex bg">
@@ -148,12 +154,12 @@
 
                         <!-- *ngIf="spi_count > 0" -->
                         <div class="circle_chart">
-                            
-                                <div (click)="openDialog(spid_check_line,spid_check_machine)" *ngIf="spi_count > '0'">
+                            <span>Spindle</span>
+                                <div  >
                                     <div class="trpiu">
-                                        <img class="volkomn" src="assets/images/tool-touch.png">
+                                        <img class="volkomn" src="assets/images/tool-touch.png" (click)="openDialog(spid_check_line,spid_check_machine,'spindle')">
                                         <!-- <img class="volkom" src="assets/images/chart tes.png">   -->
-                                        <img class="volkom" src="assets/images/PngItem_2961898 (1).png">
+                                        <img class="volkom" src="assets/images/PngItem_2961898 (1).png" (click)="openDialog(spid_check_line,spid_check_machine,'feed')">
                                         <!-- <i class="fa-area-chart" aria-hidden="true"></i> -->
                                     </div>
                                     <!-- <mat-icon class="vtr">opacity</mat-icon> -->
@@ -176,8 +182,10 @@
                         <div id="container-speed" class="chart-container"></div>
                     </figure> -->
                     <div class="m-auto">
-                        <div class="chart_sub_title">Max value : {{sp_mac_value}}</div>
-                        <div class="chart_sub_title justify-content-left">Spindle Load</div>
+                        <div class="chart_sub_title">Speed Max: {{sp_mac_value}}, OT: {{speedover}}</div>
+                        <!-- <div class="chart_sub_title justify-content-left">Spindle Load</div> -->
+                        <div class="chart_sub_title">Feed Max: {{feedmaxvalue}}, OT: {{feedover}}</div>
+                        <!-- <div class="chart_sub_title justify-content-left">Feed Load</div> -->
                     </div>
                        
                     </div>

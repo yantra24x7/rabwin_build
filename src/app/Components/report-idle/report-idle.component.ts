@@ -287,10 +287,12 @@ fiesr_date:any;
 
   }
       export(){
+        this.sdate = localStorage.getItem('SDATE');
+        this.edate = localStorage.getItem('EDATE');
    let register = {
-    "machine": this.login.value.machine_name,
-    "shift": this.login.value.shift_num,
-    "date": this.login.value.date
+    "machine": this.selectedMachines,
+    "shift": this.selectedShifts,
+    "date": this.sdate + '-' + this.edate
       }
   this.service.overall_report(register).subscribe(res => {
     this.no_data = res;

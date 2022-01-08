@@ -6,7 +6,7 @@
     <mat-icon mat-dialog-close  class="v-align-middle display" matTooltip="Close">close
     </mat-icon>
 </div>
-<!-- <h4>Spindle Count : {{spindlecount}}</h4> -->
+<h4>Reason</h4>
 
 
 <br>
@@ -17,12 +17,14 @@
     <th>S.NO</th>
     <th>Start Time</th>
     <th>End Time</th>
-    <th>Reached Value</th>
+    <th>Reason</th>
+    <th>Idle Time</th>
 </tr>
-<!-- <tr *ngFor="let VAPMS of sppivaluedle; let i = index" class="tadbel_data_view">
+<tr *ngFor="let VAPMS of sppivaluedle; let i = index" class="tadbel_data_view">
     <td>{{i+1}}</td>
-    <td>{{VAPMS[0] | date:'dd-MM-yyyy ; HH:mm:ss'}}</td>
-    <td>{{VAPMS[1] | date:'dd-MM-yyyy ; HH:mm:ss'}}</td>
-    <td>{{VAPMS[2]}}</td>
-</tr> -->
+    <td>{{VAPMS.start | date:'dd-MM-yyyy ; HH:mm:ss a'}}</td>
+    <td>{{VAPMS.end | date:'dd-MM-yyyy ; HH:mm:ss a'}}</td>
+    <td>{{VAPMS.reason}}</td>
+    <td>{{datas[i]}}</td>
+</tr>
 </table>
