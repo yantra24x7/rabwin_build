@@ -7,15 +7,15 @@
 //     height: 65vh;
 //     overflow-y: auto;
 // }
-.table_wrapper {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-}
-.sicky{
-    position: sticky;
-    overflow-y: auto;
-}
+// .table_wrapper {
+//     width: 100%;
+//     table-layout: fixed;
+//     border-collapse: collapse;
+// }
+// .sicky{
+//     position: sticky;
+//     overflow-y: auto;
+// }
 
 
 // .table_wrapper tbody{
@@ -32,3 +32,24 @@
 //     padding: 5px 20px;
 //     width: 200px;
 // }
+
+.table_wrapper {
+    overflow-y: auto;
+    height: 65vh;
+  }
+  
+  .table_wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table_wrapper th,
+  .table_wrapper td {
+    padding: 8px 16px;
+  }
+  
+  .table_wrapper th {
+    position: sticky;
+    top: 0;
+    // background: #eee;
+  }

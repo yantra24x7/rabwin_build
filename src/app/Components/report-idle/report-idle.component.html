@@ -111,19 +111,27 @@
         </div>
         
         <mat-card class="card_sec"  *ngIf="reportList">
+            <h5 class="table-heading">Idle Reason Report</h5>
             <div class="table_wrapper">
+                
                 <table class="table">
                     <thead>
+                        
                         <tr>
                             <th rowspan="2">S.no</th>
                             <th rowspan="2">Date</th>
 
                             <th rowspan="2">Shift</th>
                             <th rowspan="2">Machine Name</th>
+                            <th>Reason</th>
+                            <th>Start Time</th>
+                            
+                            <th>End Time</th>
+                            <th>Duration</th>
                             <!-- <th rowspan="2">Time</th> -->
-                            <th colspan="11">Idle Reason Report</th>
+                            
                         </tr>
-                        <tr>
+                        <!-- <tr>
                          
                             <th>Reason</th>
                             <th>Start Time</th>
@@ -131,7 +139,7 @@
                             <th>End Time</th>
                             <th>Duration</th>
                            
-                        </tr>
+                        </tr> -->
                     </thead>
                     <tbody *ngFor="let show_report of get_report; let i = index" >
                         <tr *ngFor="let show_reports of show_report.data; let j = index">

@@ -289,6 +289,13 @@
       <span>Log Activity</span>
     </a>
   </li>
+  <li [routerLink]="['/Spindle']" (click)="shifting()" routerLinkActive="active-link">
+    <a href="javascript:;">
+      <mat-icon class="v-align-middle display">timelapse
+      </mat-icon>
+      <span>Spindle</span>
+    </a>
+  </li>
   </ul>
 </div>
     <div *ngIf="rolename === 'Supervisor'" class="sidenav_view">
