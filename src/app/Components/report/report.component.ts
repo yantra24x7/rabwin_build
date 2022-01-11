@@ -73,6 +73,7 @@ export class ReportComponent implements OnInit {
   types: any;
   sdate: string;
   edate: string;
+  d: Date;
 
   constructor(private datepipe: DatePipe, private nav: NavbarService, private service: ReportService, public dialog: MatDialog, private fb: FormBuilder, private exportService: ExportService) {
     this.nav.show();
@@ -94,6 +95,7 @@ export class ReportComponent implements OnInit {
   } 
 
     addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+      console.log("triggered")
         this.date = event.value;
         this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
         this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
@@ -167,7 +169,7 @@ export class ReportComponent implements OnInit {
     }
   ngOnInit() {
 
-
+    this.d = new Date(1999, 1, 1);
     this.rolename = localStorage.getItem('role_name');
     console.log(this.rolename);
 

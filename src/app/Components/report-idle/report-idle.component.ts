@@ -76,6 +76,7 @@ fiesr_date:any;
   toppings = new FormControl();
   selectedMachines:any=[];
   selectedShifts:any=[];
+  bool: boolean;
   constructor(private datepipe: DatePipe,private exportService: ExportService,private nav:NavbarService,private service:ReportIldeService,private fb:FormBuilder  ) { 
     this.nav.show()
   }
@@ -124,7 +125,7 @@ fiesr_date:any;
       })
     }
     events(event){
-      console.log(event.value)
+      // console.log(event.value)
    if(event.value[0]==1){
     if(event.value[0]==1){
       this.selectedMachines=this.mac_response.map(x=>{return x})
@@ -135,10 +136,10 @@ fiesr_date:any;
     else{
       
     }
-    console.log(this.selectedMachines)
+    // console.log(this.selectedMachines)
     }
     events1(eventss1){
-      console.log(eventss1.value)
+      // console.log(eventss1.value)
    if(eventss1.value[0]==100){
     if(eventss1.value[0]==100){
       this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
@@ -149,7 +150,7 @@ fiesr_date:any;
     else{
       
     }
-    console.log(this.selectedShifts)
+    // console.log(this.selectedShifts)
     }
 
 
@@ -301,26 +302,57 @@ fiesr_date:any;
     this.g_report = res[0];
     this.get_report = res;
     this.totl = res[0].total;   
-     if(this.get_report.length==0){
-      Swal.fire('Exporting!, No Data Found')
-    }else{
+    this.bool=true;
+    // for(let k=0;k<this.get_report.length;k++){
+    //   if(this.get_report[k].data.length==0){
+    //       this.bool=false;
+    //    }
+    // }
+
+    this.totals=0
+    for(let i=0;i<res.length;i++){
+      this.totals= this.totals+ res[i].total
+      }
+      if(this.totals == 0){
+       Swal.fire("No Idle Reason Report Found")
+     }
+    //  if(this.bool==false){
+    //   Swal.fire('Exporting!, No Data Found')
+    // }
+    else{
       Swal.fire('Download Successfully')
 
-    for(var i=0;i<this.get_report.length;i++){
+    // for(var i=0;i<this.get_report.length;i++){
 
-      this.export_excel.push({
-         "S.No": i+1,
-         "Date": this.g_report.date || '---',
-         "Shift": this.g_report.shift_no || '---',
-         "Machine Name": this.g_report.machine_name || '---',
-         "Reason":this.get_report[i].idle_reason || '---',
-         "Start Time": this.get_report[i].idle_start || '---',
-         "End Time": this.get_report[i].idle_end || '---',
-         "Duration": this.toHoursMinutesSeconds(this.get_report[i].time) || '---',
+    //   this.export_excel.push({
+    //      "S.No": i+1,
+    //      "Date": this.g_report.date || '---',
+    //      "Shift": this.g_report.shift_no || '---',
+    //      "Machine Name": this.g_report.machine_name || '---',
+    //      "Reason":this.get_report[i].idle_reason || '---',
+    //      "Start Time": this.get_report[i].idle_start || '---',
+    //      "End Time": this.get_report[i].idle_end || '---',
+    //      "Duration": this.toHoursMinutesSeconds(this.get_report[i].time) || '---',
          
 
+    //   });
+    // }
+
+    for(var i=0;i<this.get_report.length;i++){
+      for(var j=0;j<this.get_report[i].data.length;j++){
+      this.export_excel.push({
+         "S.No": this.array[i][j],
+         "Date": this.get_report[i].date || '---',
+         "Shift": this.get_report[i].shift_no || '---',
+         "Machine Name": this.get_report[i].machine_name || '---',
+         "Reason":this.get_report[i].data[j].idle_reason || '---',
+         "Start Time": this.get_report[i].data[j].idle_start || '---',
+         "End Time": this.get_report[i].data[j].idle_end || '---',
+         "Duration": this.data[i][j] || '---',
+        
       });
-    }
+    }}
+
       this.exportService.exportAsExcelFile(this.export_excel, 'Idle Reason Report');
   }
   })
@@ -354,17 +386,17 @@ fiesr_date:any;
 
         this.g_report = res[0];
         this.get_report = res
-        console.log(this.get_report)
+        // console.log(this.get_report)
         this.totl = res[0].total;
-        if(this.totl == '0'){
-          Swal.fire("No Idle Reason Report Found")
-          let datas = this.totl;
-        }
+       
 
         this.totals=0
      for(let i=0;i<res.length;i++){
        this.totals= this.totals+ res[i].total
        }
+       if(this.totals == 0){
+        Swal.fire("No Idle Reason Report Found")
+      }
      
 
 
@@ -390,7 +422,7 @@ fiesr_date:any;
           this.array1=[]
           this.data1=[]
         }
-         console.log(this.data)
+        //  console.log(this.data)
       })
     
   }
