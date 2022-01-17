@@ -124,33 +124,32 @@ fiesr_date:any;
         })
       })
     }
-    events(event){
-      // console.log(event.value)
-   if(event.value[0]==1){
-    if(event.value[0]==1){
+
+    events2(event){
+   if(event==1){
       this.selectedMachines=this.mac_response.map(x=>{return x})
-      }
-    }else if(event.value[1]==2 || event.value[0]==2){
+    }
+    else if(event==2){
       this.selectedMachines=[]
     }
     else{
       
     }
-    // console.log(this.selectedMachines)
+
     }
     events1(eventss1){
-      // console.log(eventss1.value)
-   if(eventss1.value[0]==100){
-    if(eventss1.value[0]==100){
+     
+   if(eventss1==1){
+  
       this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
-      }
-    }else if(eventss1.value[1]==200 || eventss1.value[0]==200){
+    
+    }else if(eventss1==2){
       this.selectedShifts=[]
     }
     else{
       
     }
-    // console.log(this.selectedShifts)
+    
     }
 
 
