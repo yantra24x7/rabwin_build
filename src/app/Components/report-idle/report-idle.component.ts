@@ -110,8 +110,10 @@ fiesr_date:any;
 
     this.service.line(this.reportblock).subscribe(res => {
       this.mac_response=res;
+      this.selectedMachines=[]
+      this.selectedMachines.push(this.mac_response[0])
       this.login.patchValue({
-        machine_name: this.mac_response[0],
+        machine_name: this.selectedMachines,
       })
     
    
@@ -119,8 +121,10 @@ fiesr_date:any;
 
       this.service.getshift(this.reportblock).subscribe(res => {
         this.shift_response = res;
+        this.selectedShifts=[];
+        this.selectedShifts.push(this.shift_response[0].shift_no)
         this.login.patchValue({
-          shift_num: this.shift_response[0].shift_no,
+          shift_num: this.selectedShifts,
         })
       })
     }
