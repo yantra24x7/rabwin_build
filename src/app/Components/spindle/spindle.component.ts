@@ -27,7 +27,7 @@ export class SpindleComponent implements OnInit {
         zoomType: 'x'
       },
       title: {
-        text: 'USD to EUR exchange rate over time'
+        text: 'Spindle'
       },
       subtitle: {
         text: document.ontouchstart === undefined ?
@@ -38,7 +38,7 @@ export class SpindleComponent implements OnInit {
       },
       yAxis: {
         title: {
-          text: 'Exchange rate'
+          text: 'Spindle Speed'
         }
       },
       legend: {

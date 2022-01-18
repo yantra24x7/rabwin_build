@@ -11,7 +11,7 @@
 
 <br>
 
-
+<div class="table_wrapper">
 <table>
 <tr>
     <th>S.NO</th>
@@ -27,4 +27,8 @@
     <td>{{VAPMS.reason}}</td>
     <td>{{datas[i]}}</td>
 </tr>
+<div class="fo-center" *ngIf="sppivaluedle.length==0" >
+    <h4 >No Data Found</h4>
+    </div>
 </table>
+</div>
