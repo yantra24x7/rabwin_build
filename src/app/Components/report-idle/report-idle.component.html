@@ -42,7 +42,12 @@
                         <mat-form-field>
                           
                             <mat-select placeholder="machine_name" formControlName="machine_name"  [(value)]="selectedMachines" multiple >
-                                <button color="primary" mat-raised-button (click)="events2('1')">All</button>   <button color="primary" mat-raised-button (click)="events2('2')">clear All</button>
+                                <!-- <button color="primary" mat-raised-button (click)="events2('1')">All</button>   <button color="primary" mat-raised-button (click)="events2('2')">Clear All</button> -->
+                                <div class="select-all">
+                                    <mat-checkbox [(ngModel)]="allSelected"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (change)="toggleAllSelection()">All</mat-checkbox>
+                                </div>
                                 <mat-option *ngFor="let machine of mac_response" [value]="machine">{{machine}}</mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -63,7 +68,12 @@
                         <mat-form-field>
 
                             <mat-select placeholder="shift_num" formControlName="shift_num"  [(value)]="selectedShifts" multiple >
-                                <button color="primary" mat-raised-button (click)="events1('1')">All</button>   <button color="primary" mat-raised-button (click)="events1('2')">clear All</button>
+                                <!-- <button color="primary" mat-raised-button (click)="events1('1')">All</button>   <button color="primary" mat-raised-button (click)="events1('2')">Clear All</button> -->
+                                <div class="select-all">
+                                    <mat-checkbox [(ngModel)]="allSelecteds"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (change)="toggleAllSelections()">All</mat-checkbox>
+                                </div>
                                 <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no">{{shift.shift_no}}</mat-option>
                             </mat-select>
                           </mat-form-field>

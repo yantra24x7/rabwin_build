@@ -77,6 +77,8 @@ fiesr_date:any;
   selectedMachines:any=[];
   selectedShifts:any=[];
   bool: boolean;
+  allSelected=false;
+  allSelecteds=false;
   constructor(private datepipe: DatePipe,private exportService: ExportService,private nav:NavbarService,private service:ReportIldeService,private fb:FormBuilder  ) { 
     this.nav.show()
   }
@@ -129,31 +131,45 @@ fiesr_date:any;
       })
     }
 
-    events2(event){
-   if(event==1){
-      this.selectedMachines=this.mac_response.map(x=>{return x})
-    }
-    else if(event==2){
-      this.selectedMachines=[]
-    }
-    else{
+  //   events2(event){
+  //  if(event==1){
+  //     this.selectedMachines=this.mac_response.map(x=>{return x})
+  //   }
+  //   else if(event==2){
+  //     this.selectedMachines=[]
+  //   }
+  //   else{
       
-    }
+  //   }
 
-    }
-    events1(eventss1){
+  //   }
+  //   events1(eventss1){
      
-   if(eventss1==1){
+  //  if(eventss1==1){
   
-      this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
+  //     this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
     
-    }else if(eventss1==2){
-      this.selectedShifts=[]
-    }
-    else{
+  //   }else if(eventss1==2){
+  //     this.selectedShifts=[]
+  //   }
+  //   else{
       
-    }
+  //   }
     
+  //   }
+    toggleAllSelection() {
+      if (this.allSelected) {
+        this.selectedMachines=this.mac_response.map(x=>{return x})
+      } else {
+        this.selectedMachines=[]
+      }
+    }
+    toggleAllSelections(){
+      if (this.allSelecteds) {
+        this.selectedShifts=this.shift_response.map(x=>{return x.shift_no})
+      } else {
+        this.selectedShifts=[]
+      }
     }
 
 
