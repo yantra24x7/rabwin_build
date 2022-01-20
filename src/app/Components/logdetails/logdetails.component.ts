@@ -18,6 +18,7 @@ export class LogdetailsComponent implements OnInit {
   id: any;
   pageNo: number;
   myLoader: boolean;
+  pageSizeOptions:any;   
   constructor(public service:LogService,private nav: NavbarService,) {
     this.nav.show();
    }
