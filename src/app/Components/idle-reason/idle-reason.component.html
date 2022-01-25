@@ -212,12 +212,13 @@
         <!-- <mat-paginator [length]="total_count" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions"
           (page)="pageEvent($event)">
         </mat-paginator> -->
+        <mat-card-content *ngIf="dataSource.filteredData.length==0" class="no_data_found">
+          <h2>No data found</h2>
+        </mat-card-content>
       </div>
       </mat-card-content>
 
-      <mat-card-content *ngIf="dataSource.filteredData.length==0" class="no_data_found">
-        <h2>No data found</h2>
-      </mat-card-content>
+     
     </mat-card>
     
   </div>
