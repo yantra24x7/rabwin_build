@@ -24,12 +24,14 @@ export class LogdetailsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.myLoader = true;
     this.id =JSON.parse(localStorage.getItem("ids"))
     console.log(this.id)
     this.pageNo =1;
     this.service.getlog(this.id._id.$oid,this.pageNo).pipe(untilDestroyed(this)).subscribe( res => {
       this.log=res['track']
       this.total_count=res['track_count']
+      this.myLoader = false;
       console.log(res)
       this.dataSource = new MatTableDataSource(this.log)
     })
