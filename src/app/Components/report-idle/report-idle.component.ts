@@ -365,8 +365,8 @@ fiesr_date:any;
          "Shift": this.get_report[i].shift_no || '---',
          "Machine Name": this.get_report[i].machine_name || '---',
          "Reason":this.get_report[i].data[j].idle_reason || '---',
-         "Start Time": this.get_report[i].data[j].idle_start || '---',
-         "End Time": this.get_report[i].data[j].idle_end || '---',
+         "Start Time":this.datepipe.transform(this.get_report[i].data[j].idle_start, 'yyyy-MM-dd')  || '---',
+         "End Time": this.datepipe.transform(this.get_report[i].data[j].idle_end , 'yyyy-MM-dd')|| '---',
          "Duration": this.data[i][j] || '---',
         
       });
