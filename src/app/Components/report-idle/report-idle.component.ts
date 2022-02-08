@@ -260,8 +260,8 @@ fiesr_date:any;
          "Shift": this.g_report.shift_no || '---',
          "Machine Name": this.g_report.machine_name || '---',
          "Reason":this.get_report[i].idle_reason || '---',
-         "Start Time": this.get_report[i].idle_start || '---',
-         "End Time": this.get_report[i].idle_end || '---',
+         "Start Time": new DatePipe('en-US').transform(this.get_report[i].idle_start, 'MM/dd/yyyy; HH:mm:ss a') || '---',
+         "End Time":new DatePipe('en-US').transform(this.get_report[i].idle_end , 'MM/dd/yyyy; HH:mm:ss a') || '---',
          "Duration": this.toHoursMinutesSeconds(this.get_report[i].time) || '---',
          
 
