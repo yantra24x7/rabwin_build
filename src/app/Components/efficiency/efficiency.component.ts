@@ -184,10 +184,10 @@ export class EfficiencyComponent implements OnInit {
          "Mode":this.get_report[i].mode || '---',
 
          "Route Card Number": this.get_report[i].card_no || '---',
-         "Route Card Start Time": this.get_report[i].rout_start || '---',
+         "Route Card Start Time":new DatePipe('en-US').transform(this.get_report[i].rout_start, 'MM/dd/yyyy; HH:mm:ss a') || '---' ,
        
-         "Route Card End Time": this.get_report[i].rout_end || '---',
-         "Duration": this.g_report.duration || '---',
+         "Route Card End Time":new DatePipe('en-US').transform(this.get_report[i].rout_end, 'MM/dd/yyyy; HH:mm:ss a') || '---' ,
+                  "Duration": this.g_report.duration || '---',
 
          "Target": this.get_report[i].tar ,
          "Actual": this.get_report[i].actual ,

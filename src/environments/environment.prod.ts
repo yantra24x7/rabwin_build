@@ -7,7 +7,7 @@ export const environment = {
   //serverUrl: 'http://182.72.104.66:4456/api/v1/',
    //serverUrl: 'http://13.235.142.89:81/api/v1/',
   //  serverUrl: 'http://192.168.1.166:3000//api/v1/',
-  serverUrl: 'http://3.7.120.8:3000//api/v1/',
+  serverUrl: 'http://192.168.2.113:80/api/v1/',
    //serverUrl: 'http://192.168.1.191:3001//api/v1/',
    //serverUrl: 'http://65.0.250.235:3000//api/v1/',
 
