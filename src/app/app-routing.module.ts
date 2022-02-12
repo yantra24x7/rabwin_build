@@ -36,7 +36,7 @@ const routes: Routes = [
   
 { path: 'efficiency', loadChildren: () => import('./Components/efficiency/efficiency.module').then(m => m.EfficiencyModule) },
   
-{ path: 'rabwin_dashboard', loadChildren: () => import('./Components/rabwin-dashboard/rabwin-dashboard.module').then(m => m.RabwinDashboardModule) },
+{ path: 'new_dashboard', loadChildren: () => import('./Components/rabwin-dashboard/rabwin-dashboard.module').then(m => m.RabwinDashboardModule) },
   
 { path: 'tv', loadChildren: () => import('./Components/tv/tv.module').then(m => m.TvModule) },
   
@@ -46,7 +46,7 @@ const routes: Routes = [
   
 { path: 'newdash', loadChildren: () => import('./Components/newdash/newdash.module').then(m => m.NewdashModule) },
   
-{ path: 'cycle', loadChildren: () => import('./Components/cycle/cycle.module').then(m => m.CycleModule) },
+// { path: 'cycle', loadChildren: () => import('./Components/cycle/cycle.module').then(m => m.CycleModule) },
 
 {path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule),canActivate: [AuthGuard]},
 {path:'logactivity',loadChildren: ()=>import('./Components/logdetails/logdetails.module').then(m=>m.LogdetailModule),canActivate: [AuthGuard]},
