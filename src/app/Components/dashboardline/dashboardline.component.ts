@@ -14,7 +14,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   styleUrls: ['./dashboardline.component.scss']
 })
 export class DashboardlineComponent implements OnInit {
-  Highcharts = Highcharts;
+  // Highcharts = Highcharts;
   axis2:any;
   spi_count:any;
   spid_check_line:any;

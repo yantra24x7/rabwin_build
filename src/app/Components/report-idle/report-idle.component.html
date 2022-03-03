@@ -183,11 +183,15 @@
         
 
         </mat-card>
-        <div class="container_chrt" *ngIf="chartlist">
+        <!-- <div class="container_chrt" *ngIf="chartlist">
             <div id="comparepie2"></div>
+            
           </div>
-          <h2 *ngIf="chart_pie?.length==0">No Chart datas found</h2>
-
+          <h2 *ngIf="chart_pie?.length==0">No Chart datas found</h2> -->
+          <div class="container_chrt" *ngIf="chartlist">
+            <canvas id="myChart"></canvas>
+          </div>
+         
 
     </div>
     <div *ngIf="myLoader" class="spinner">

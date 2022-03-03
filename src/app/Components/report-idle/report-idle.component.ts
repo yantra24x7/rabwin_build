@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var Highcharts: any;
 import { NavbarService } from '../../Nav/navbar.service';
 import { ReportIldeService } from '../../Service/app/report-ilde.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -9,15 +10,14 @@ import { map } from 'rxjs/operators';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 declare var gtag;
-declare var Highcharts: any;
-
+declare var Chart
 @Component({ 
   selector: 'app-report-idle',
   templateUrl: './report-idle.component.html',
   styleUrls: ['./report-idle.component.scss']
 })
 export class ReportIdleComponent implements OnInit {
-
+  // Highcharts = Highcharts;
   rolename:any;
   g_report:any;
   time:any;
@@ -242,8 +242,10 @@ fiesr_date:any;
   }
 
   chart(){
+   
     this.chartlist = true;
     this.reportList = false;
+    this.myLoader = true;
     // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
     this.sdate = localStorage.getItem('SDATE');
     this.edate = localStorage.getItem('EDATE');
@@ -258,53 +260,121 @@ fiesr_date:any;
 
    this.service.Idle_chart(volko_chart).subscribe(res => {
      this.chart_pie = res;
-     Highcharts.chart('comparepie2', {
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+     this.myLoader = false;
+        //extra 
+    var xValues = this.chart_pie.map(  x=>{return x.name})
+    var yValues = this.chart_pie.map(x=>{ return x.y})
+
+    console.log(xValues)
+    console.log(yValues)
+    var barColors = [
+      "#CD5C5C",
+      "#b91d47",
+      "#00aba9",
+      "#2b5797",
+      "#e8c3b9",
+      "#1e7145",
+      "#F08080",
+      "#FA8072",
+      "#E9967A",
+      "#DB7093",
+      "#FF4500",
+      "#FF8C00",
+      "#FFA500",
+      "#FFFF00",
+      "#FFFACD",
+      "#FAFAD2",
+      "#FFEFD5",
+      "#F0E68C",
+      "#D8BFD8",
+      "#EE82EE",
+      "#DA70D6",
+      "#FF00FF",
+      "#9370DB",
+      "#800080",
+
+    ];
+    
+    new Chart("myChart", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
       },
-      title: {
-        text: 'Idle Reason chart' 
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-        point: {
-          valueSuffix: '%'
-        }
-      },
-      credits: {
-           enabled: false
-           },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-            connectorColor: 'silver'
+      options: {
+        title: {
+          display: true,
+          text: "Idle Reason chart"
+        },
+        tooltips: {
+          enabled: true
+        },
+        plugins: {
+          datalabels: {
+            formatter: (value, myChart) => {
+          //  console.log(myChart.dataset._meta[0].total)
+              let sum =100
+              let percentage = (value * 100 / sum).toFixed(2) + "%";
+              return percentage;
+      
+      
+            },
+            color: '#fff',
           }
         }
+      
       },
-      series: [{
-        name: 'Share',
-        data: this.chart_pie
-
-        // this.chart_pie
-          //  { name: 'Internet Explorer', y: 11.84 },
-          //  { name: 'Firefox', y: 10.85 },
-          // { name: 'Edge', y: 4.67 },
-          // { name: 'Safari', y: 4.18 },
-          // { name: 'Other', y: 7.05 }
-        
-      }]
+      
     });
+  //    Highcharts.chart('comparepie2', {
+  //     chart: {
+  //       plotBackgroundColor: null,
+  //       plotBorderWidth: null,
+  //       plotShadow: false,
+  //       type: 'pie'
+  //     },
+  //     title: {
+  //       text: 'Idle Reason chart' 
+  //     },
+  //     tooltip: {
+  //       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  //     },
+  //     accessibility: {
+  //       point: {
+  //         valueSuffix: '%'
+  //       }
+  //     },
+  //     credits: {
+  //          enabled: false
+  //          },
+  //     plotOptions: {
+  //       pie: {
+  //         allowPointSelect: true,
+  //         cursor: 'pointer',
+  //         dataLabels: {
+  //           enabled: true,
+  //           format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+  //           connectorColor: 'silver'
+  //         }
+  //       }
+  //     },
+  //     series: [{
+  //       name: 'Share',
+  //       data: this.chart_pie
+
+    
+        
+  //     }]
+  //   });
+
    })
 
+
+
+  
   }
       export(){
         this.sdate = localStorage.getItem('SDATE');
