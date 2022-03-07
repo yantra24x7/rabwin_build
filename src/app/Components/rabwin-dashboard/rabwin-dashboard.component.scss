@@ -1136,6 +1136,11 @@ margin-top: -6px;}
   // }
   .dashboard_page_sec .line_desc{
     width: 36%;
+    background: #4A4A4A;
+    padding: 20px;
+    border-bottom-right-radius: 10px !important;
+    border-top-right-radius: 10px;
+    border: 2px solid #646569;
   }
   .idle_wrap, .disconnect_wrap, .run_wrap{
     height: 45px !important;
