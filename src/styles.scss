@@ -3734,7 +3734,7 @@ body .compare_page .chart_sec .ulitization_chart {
 }
 .dashboard_page_sec .circle_chart_inner{
     display: flex;
-}   
+}   align
 .dashboard_page_sec .line_desc{
     width: 40%;
     padding: 3px 10px;
@@ -4724,7 +4724,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
         width: 50%;
     }
     .dashboardline_page .right_side .overall_utilization .job_desc p{
-        font-size: 31px;
+        font-size: 21px;
     }
     .dashboardline_page .right_side .overall_utilization{
         display: flex;
@@ -4743,7 +4743,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
         margin-top: 1rem;
     }
     .line_desc .time_sec li p {
-        font-size: 22px;
+        font-size: 16px;
         white-space: nowrap;
         margin-top: 1rem;
     }
