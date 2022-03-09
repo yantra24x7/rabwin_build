@@ -131,7 +131,7 @@
                                     innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                                 </circle-progress>
                                 <div class="chart_text">
-                                    <h3><span class="value">{{operator?.effe}}</span> %</h3>
+                                    <h3><span class="value">{{operator?.effe| number:'1.0-2'}}</span> %</h3>
                                     <!-- <p>Efficiency</p> -->
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                             </circle-progress>
                            
                             <div class="chart_text">
-                                <h3><span class="value">{{spindle_load}}</span> %</h3>
+                                <h3><span class="value">{{spindle_load| number:'1.0-2'}}</span> %</h3>
                             </div>
                         </div>
                         <!-- <figure class="highcharts-figure">
@@ -197,7 +197,7 @@
                                 innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                             </circle-progress>
                             <div class="chart_text">
-                                <h3><span class="value">{{servo_load}}</span> %</h3>
+                                <h3><span class="value">{{servo_load| number:'1.0-2'}}</span> %</h3>
                             </div>
                             <div class="chart_sub_title">{{axis1}}</div>
                         </div>
@@ -206,7 +206,7 @@
                                 innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                             </circle-progress>
                             <div class="chart_text">
-                                <h3><span class="value">{{servo_load1}}</span> %</h3>
+                                <h3><span class="value">{{servo_load1| number:'1.0-2'}}</span> %</h3>
                             </div>
                             <div class="chart_sub_title">{{axis2}}</div>
                         </div>
@@ -216,7 +216,7 @@
                                 innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                             </circle-progress>
                             <div class="chart_text">
-                                <h3><span class="value">{{servo_load2}}</span> %</h3>
+                                <h3><span class="value">{{servo_load2| number:'1.0-2'}}</span> %</h3>
                             </div>
                             <div class="chart_sub_title">{{axis3}}</div>
                         </div>
@@ -228,7 +228,7 @@
                                 innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                             </circle-progress>
                             <div class="chart_text">
-                                <h3><span class="value">{{servo_load3}}</span> %</h3>
+                                <h3><span class="value">{{servo_load3| number:'1.0-2'}}</span> %</h3>
                             </div>
                             <div class="chart_sub_title">{{axis4}}</div>
                         </div>
@@ -238,7 +238,7 @@
                                 innerStrokeColor="#1E2634" animation="true" animationDuration="300">
                             </circle-progress>
                             <div class="chart_text">
-                                <h3><span class="value">{{servo_load4}}</span> %</h3>
+                                <h3><span class="value">{{servo_load4 | number:'1.0-2'}}</span> %</h3>
                             </div>
                             <div class="chart_sub_title">{{axis5}}</div>
                         </div>
