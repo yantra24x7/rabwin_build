@@ -1,1 +1,314 @@
-<p>maintenancedb works!</p>
+<section class="page">
+    <div *ngIf="myLoader" class="spinner">
+        <img src="assets/images/spinner.gif">
+    </div>
+    <div class="section_top_padding">
+      <div class="page_title_sec fo-sep">
+        <h2>Dashboard - Casting Bay</h2>
+        <p>Total Machine <span>(2)</span></p>
+        </div> 
+
+      <div class="maintanence-db-wrapper">
+        <div class="machine-status">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="card machine-st fo-alarm">
+                <div class="heading">
+                  <h5>Casting Bay - STUI</h5>
+                <div class="dot"></div>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>40%</h1>
+                  <div class="chart-details">
+                    <div class="circle-wrap">
+                      <div class="circle">
+                        <div class="mask half">
+                          <div class="fill"></div>
+                      </div>
+                      <div class="mask full">
+                        <div class="fill"></div>
+                     </div>
+
+                     <div class="inside-circle">  </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6>Mode:<br>
+                    MDI</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="card machine-st">
+                <div class="heading">
+                  <h5>Casting Bay - STUI</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>40%</h1>
+                  <div class="chart-details">
+                    <div class="circle-wrap">
+                      <div class="circle">
+                        <div class="mask half">
+                          <div class="fill"></div>
+                      </div>
+                      <div class="mask full">
+                        <div class="fill"></div>
+                     </div>
+
+                     <div class="inside-circle">  </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6>Mode:<br>
+                    Memory</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="card machine-st">
+                <div class="heading">
+                  <h5>Casting Bay - STUI</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>40%</h1>
+                  <div class="chart-details">
+                    <div class="circle-wrap">
+                      <div class="circle">
+                        <div class="mask half">
+                          <div class="fill"></div>
+                      </div>
+                      <div class="mask full">
+                        <div class="fill"></div>
+                     </div>
+
+                     <div class="inside-circle">  </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6>Mode:<br>
+                    Edit</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="card machine-st">
+                <div class="heading">
+                  <h5>Casting Bay - STUI</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>40%</h1>
+                  <div class="chart-details">
+                    <div class="circle-wrap">
+                      <div class="circle">
+                        <div class="mask half">
+                          <div class="fill"></div>
+                      </div>
+                      <div class="mask full">
+                        <div class="fill"></div>
+                     </div>
+
+                     <div class="inside-circle">  </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6>Mode:<br>
+                    MDI</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="machine-status-slide">
+          <div class="card machine-st fo-slide">
+            <div class="contents">
+              <h6>Program No: <strong>0010</strong></h6>
+              <div class="divider"></div>
+              <h6>Product Name: <strong>Rotor</strong></h6>
+              <div class="divider"></div>
+              <h6>Power on Time: <strong>18112022 hr</strong></h6>
+              <div class="divider"></div>
+              <h6>Run Time: <strong>521456</strong></h6>
+            </div>
+          </div> 
+
+        </div>
+
+        <div class="machine-details-section">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Servo Load <span>(%)</span></h4>
+                <div class="image-wrapper text-center">
+                  <img src="assets/images/chart1.png">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Servo Temperature <span>(°C)</span></h4>
+                <div class="image-wrapper text-center">
+                  <img src="assets/images/chart2.png">           
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Pulse Code Temperature <span>(°C)</span></h4>
+                <div class="image-wrapper text-center">
+                  <img src="assets/images/chart3.png">           
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="machine-details-section twin" style="margin-top: 8px;">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Servo Load Current <span>(A)</span></h4>
+                <div class="content">
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>X</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>Y</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>Z</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>A</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>B</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card machine-st fo-chart-wrapper" style="margin-top: 10px;">
+                <h4>Absolute Postion <span>(%)</span></h4>
+                <div class="content">
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>X</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>Y</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>Z</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>A</p>
+                  </div>
+                  <div class="text-wrapper">
+                    <h3>10</h3>
+                    <p>B</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Pulse Code Temperature <span>(°C)</span></h4>
+                <div class="image-wrapper text-center">
+                  <img src="assets/images/chart4.png">           
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-12 col-sm-12 fo-right">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Fan Speed</h4>
+                <div class="usables">
+                    <div class="item-wrapper">
+                      <p>Fan1</p>
+                      <img src="assets/icons/fanw.png" alt="">
+                      <p>10513</p>
+                    </div>
+
+                    <div class="item-wrapper">
+                      <p>Fan2</p>
+                      <img src="assets/icons/fanw.png" alt="">
+                      <p>10513</p>
+                    </div>
+                </div>
+              </div>
+
+              <div class="card machine-st fo-chart-wrapper" style="margin-top: 8px;">
+                <h4>Fan Status</h4>
+                <div class="usables">
+                    <div class="item-wrapper green">
+                      <p>Fan1</p>
+                      <img src="assets/icons/fanw.png" alt="">
+                      <p>10513</p>
+                    </div>
+
+                    <div class="item-wrapper red">
+                      <p>Fan2</p>
+                      <img src="assets/icons/fanw.png" alt="">
+                      <p>10513</p>
+                    </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-12 col-sm-12 ">
+              <div class="card machine-st fo-chart-wrapper">
+                <h4>Battery Status</h4>
+                 <div class="fo-icons-wrapper">
+                   <div class="bt-icon">
+                     <img src="assets/icons/bt-green.png" alt="">
+                     <p>X</p>
+                   </div>
+                   <div class="bt-icon">
+                    <img src="assets/icons/bt-red.png" alt="">
+                    <p>Y</p>
+                  </div>
+                  <div class="bt-icon">
+                    <img src="assets/icons/bt-green.png" alt="">
+                    <p>Z</p>
+                  </div>
+                  <div class="bt-icon">
+                    <img src="assets/icons/bt-green.png" alt="">
+                    <p>A</p>
+                  </div>
+                  <div class="bt-icon">
+                    <img src="assets/icons/bt-green.png" alt="">
+                    <p>B</p>
+                  </div>
+                  
+                 </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+            
+    </div>
+  
+</section>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/Nav/navbar.service';
+declare var Highcharts: any;
 
 @Component({
   selector: 'app-maintenancedb',
@@ -12,7 +13,8 @@ export class MaintenancedbComponent implements OnInit {
     this.nav.show()
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+ 
   }
 
 }

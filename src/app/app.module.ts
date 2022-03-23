@@ -11,6 +11,8 @@
     import { HighchartsChartModule } from 'highcharts-angular';
     import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     import { CountUpModule } from 'ngx-countup';
+    import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
     import { ChartModule } from 'angular-highcharts';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -43,6 +45,7 @@ import { environment } from '../environments/environment';
        CoreModule,
        HighchartsChartModule,
        CountUpModule,
+       CarouselModule,
        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })      
     
  ],

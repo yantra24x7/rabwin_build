@@ -7,7 +7,6 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
 declare var Highcharts: any;
 
-
 declare var gtag;
 
 @Component({

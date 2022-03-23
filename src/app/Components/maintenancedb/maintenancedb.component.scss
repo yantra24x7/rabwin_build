@@ -1,0 +1,244 @@
+.card.machine-st {
+    background: hsl(233deg 19% 17%);
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 0.8px solid #6b6b6b;
+    
+}
+
+.card.machine-st.fo-alarm .dot {
+    background: #ff0f0f;
+}
+
+.card.machine-st.fo-alarm{
+    border: 4px solid hsl(0deg 100% 53%) !important;
+}
+
+.card.machine-st .heading h5 {
+    font-size: 24px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    border-bottom: 2px solid hsl(118deg 24% 46%);
+}
+
+.chart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chart-wrapper h1 {
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.chart-wrapper h6 {
+    font-size: 16px;
+    text-align: initial;
+    font-weight: 400;
+}
+
+// circle progress css starts //
+
+.circle-wrap {
+    // margin: 150px auto;
+    width: 45px;
+    height: 45px;
+    background: #fefcff;
+    border-radius: 50%;
+    border: 1px solid #cdcbd0;
+  }
+
+  .circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  border-radius: 50%;
+}
+ 
+.mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: hsl(112deg 100% 32%);
+}
+
+.circle-wrap .circle .mask {
+    clip: rect(0px, 70px, 70px, 22px);
+  }
+   
+  .mask.full,
+  .circle .fill {
+    animation: fill ease-in-out 3s;
+    transform: rotate(85deg);
+  }
+    
+  @keyframes fill{
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(135deg);
+    }
+  }
+  
+  .circle-wrap .inside-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: hsl(233deg 19% 17%);
+    line-height: 120px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+   
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+  }
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: #16a300;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.card.machine-st.fo-alarm .heading h5 {
+    border-bottom: 1px solid #ff0f0f !important;
+}
+
+.card.machine-st.fo-alarm .mask .fill {
+    background: #ff0f0f;
+}
+
+.card.machine-st.fo-slide {
+    margin: 8px 0;
+}
+
+.card.machine-st.fo-slide .contents {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card.machine-st.fo-slide .contents h6 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.divider {
+    width: 1px;
+    background: #8f8f8f;
+}
+
+.page_title_sec.fo-sep p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.maintanence-db-wrapper {
+    margin-top: 10px;
+}
+
+.card.machine-st.fo-slide {
+    border: 3px solid #8f8f8f;
+}
+
+.card.machine-st.fo-chart-wrapper {
+    text-align: left;
+}
+
+.card.machine-st.fo-chart-wrapper h4 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.maintanence-db-wrapper .col-lg-3.col-md-6.col-sm-12 {
+    padding-right: 0;
+}
+
+.maintanence-db-wrapper .col-lg-3.col-md-6.col-sm-12:last-child {
+    padding-right: 15px;
+}
+
+.machine-details-section .col-lg-4.col-md-12.col-sm-12 {
+    padding-right: 0;
+}
+
+.machine-details-section .col-lg-4.col-md-12.col-sm-12:last-child {
+    padding-right: 15px;
+}
+
+.machine-details-section .image-wrapper.text-center {
+    height: 230px;
+    overflow: hidden;
+}
+
+.machine-details-section.twin .image-wrapper.text-center img {
+    width: 90%;
+}
+
+.machine-details-section.twin .card.machine-st.fo-chart-wrapper .content {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.machine-details-section.twin .card.machine-st.fo-chart-wrapper .content .text-wrapper h3 {
+    background: #444444;
+    border: 1px solid #707070;
+    padding: 7px 25px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.machine-details-section.twin .card.machine-st.fo-chart-wrapper .content .text-wrapper p{
+    margin-bottom: 0;
+}
+
+.card.machine-st.fo-chart-wrapper .usables {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.card.machine-st.fo-chart-wrapper .usables .item-wrapper {
+    background: #4B4B4B;
+    border-radius: 10px;
+    padding: 9px 23px;
+}
+
+.card.machine-st.fo-chart-wrapper .usables .item-wrapper p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.card.machine-st.fo-chart-wrapper .usables .item-wrapper.green {
+    background: #16A500;
+}
+
+.card.machine-st.fo-chart-wrapper .usables .item-wrapper.red {
+    background: #FF1111;
+}
+
+.card.machine-st.fo-chart-wrapper .fo-icons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 47px 0;
+}
+
+.card.machine-st.fo-chart-wrapper .fo-icons-wrapper .bt-icon {
+    text-align: center;
+    width: 33%;
+}
+
+.col-lg-2.col-md-12.col-sm-12.fo-right {
+    padding-right: 0;
+}

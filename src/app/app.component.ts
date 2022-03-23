@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarService} from './Nav/navbar.service';
 
+
 @Component({
       selector: 'app-root',
       templateUrl: './app.component.html',

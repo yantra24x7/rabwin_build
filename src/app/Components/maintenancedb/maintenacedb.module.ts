@@ -7,6 +7,7 @@ import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DashboardService} from '../../Service/app/dashboard.service';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DashboardService} from '../../Service/app/dashboard.service';
   imports: [    MaintenanceDbRoutingModule, 
     CommonModule,SharedModule,
     CountUpModule,HighchartsChartModule,
+    CarouselModule,
     NgCircleProgressModule.forRoot({
       "backgroundColor": "#0e121b",
       backgroundOpacity: 1,
