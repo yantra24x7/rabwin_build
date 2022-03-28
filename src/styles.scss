@@ -4851,3 +4851,18 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     border-top-right-radius: 10px;
     border: 2px solid #646569;
   }
+
+  mat-dialog-container#mat-dialog-0 {
+    background: #484848 !important;
+    border: 1px solid #6A6A6A;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing {
+    background: #000000 !important;
+    opacity: 50%;
+}
+
+.dropdown-wrapper .mat-form-field-flex {
+    background: #293243 !important;
+    border-radius: 10px !important;
+}
