@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/Nav/navbar.service';
 declare var Highcharts: any;
 import { LinearGauge, Annotations, ILoadEventArgs, LinearGaugeTheme } from '@syncfusion/ej2-lineargauge';
+import { reduce } from 'highcharts';
 LinearGauge.Inject(Annotations);
 declare var Chart
 @Component({
@@ -112,7 +113,7 @@ var gaugeOptions = {
 
   pane: {
       center: ['50%', '85%'],
-      size: '140%',
+      size: '100%',
       startAngle: -90,
       endAngle: 90,
       background: {
@@ -235,14 +236,16 @@ Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
       // custom code end
       allowMargin: false,
       orientation: 'Horizontal',
+      
       axes: [{
           labelStyle: {
               format: '{value}',
-              offset: 30,
+              offset: 20,
               font: {
                   fontFamily: 'Segoe UI'
               }
           },
+          
           line: {
               width: 0
           },
@@ -253,7 +256,8 @@ Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
                   width: 10,
                   markerType: 'Triangle',
                   placement: 'Near',
-                  offset: -40,
+                  offset: -20,
+                  color:'white',
               }
           ],
           majorTicks: {
@@ -285,10 +289,10 @@ Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
           }]
       }],
       annotations: [{
-          content: '<div id="pointer" style="width:20px"><h1 style="font-size:18px; font-family: Segoe UI;">35</h1></div>',
+          
           axisIndex: 0, zIndex: '1',
-          axisValue: 35,
-          y: -50
+          axisValue: 40,
+          y: -100
       }]
   });
   return gauge;

@@ -150,7 +150,26 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Load <span>(%)</span></h4>
-                <div *ngFor="let data of servoload;let k=index">  <canvas id="oilChart{{k}}" height="80"></canvas></div>
+               <div class="row">
+                 <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload;let k=index">
+                  <div >  <canvas id="oilChart{{k}}" width="400" height="350"></canvas></div>
+                 </div>
+               </div>
+
+               <div class="indicator-wrapper">
+                 <div class="item-wrpper">
+                   <div class="mini green"></div>
+                   <p>0-50</p>
+                 </div>
+                 <div class="item-wrpper">
+                  <div class="mini yellow"></div>
+                  <p>50-75</p>
+                </div>
+                <div class="item-wrpper">
+                  <div class="mini red"></div>
+                  <p>75-100</p>
+                </div>
+               </div>
               
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart1.png">
@@ -161,20 +180,49 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Temperature <span>(°C)</span></h4>
-                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ></div>
+                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{i}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart2.png">           
                 </div> -->
+
+                <div class="indicator-wrapper">
+                  <div class="item-wrpper">
+                    <div class="mini green"></div>
+                    <p>0-50</p>
+                  </div>
+                  <div class="item-wrpper">
+                   <div class="mini yellow"></div>
+                   <p>50-75</p>
+                 </div>
+                 <div class="item-wrpper">
+                   <div class="mini red"></div>
+                   <p>75-100</p>
+                 </div>
+                </div>
               </div>
             </div>
 
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}" ></div>
+                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{i}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
                 </div> -->
+                <div class="indicator-wrapper">
+                  <div class="item-wrpper">
+                    <div class="mini green"></div>
+                    <p>0-50</p>
+                  </div>
+                  <div class="item-wrpper">
+                   <div class="mini yellow"></div>
+                   <p>50-75</p>
+                 </div>
+                 <div class="item-wrpper">
+                   <div class="mini red"></div>
+                   <p>75-100</p>
+                 </div>
+                </div>
               </div>
             </div>
           </div>
