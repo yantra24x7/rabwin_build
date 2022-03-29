@@ -152,7 +152,8 @@
                 <h4>Servo Load <span>(%)</span></h4>
                <div class="row">
                  <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload;let k=index">
-                  <div >  <canvas id="oilChart{{k}}" width="400" height="350"></canvas></div>
+                   <p style="margin-bottom: 0; text-align: center; font-size: 20px;">z</p>
+                  <div >  <canvas id="oilChart{{k}}"  height="200"></canvas></div>
                  </div>
                </div>
 
@@ -286,10 +287,17 @@
 
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
-                <h4>Spindle Load<span>(%)</span></h4>
+                <h4>Spindle Load(%) <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">Spindle Speed</span></h4>
               
-                <div class="image-wrapper text-center"> 
-               <img src="assets/images/chart4.png">     
+                <div class="row"> 
+                  <div class="col-lg-8 col-sm-12">
+                  <circle-progress radius="65" percent="80%" outerStrokeColor="#4B4B4B" innerStrokeColor="#FFAD31" animation="true"
+                animationDuration="300">
+              </circle-progress>
+            </div>
+                  <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload1;let k=index">
+                    <div >  <canvas id="oilCharts{{k}}" width="400" height="350"></canvas></div>
+                   </div>
                  
                   
            

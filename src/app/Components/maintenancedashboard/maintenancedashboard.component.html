@@ -15,7 +15,7 @@
                     <div class="circle-text">1</div>
                     <div class="min-fo-header">
                         <img src="/assets/icons/connectivity.svg" alt="">
-                        <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="48" height="38.864" viewBox="0 0 48 38.864">
+                        <!-- <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="48" height="38.864" viewBox="0 0 48 38.864">
                             <g id="connectivity" transform="translate(-232 -172.5)">
                               <g id="Group_65" data-name="Group 65" transform="translate(37 53)">
                                 <g id="_6588914_and_computers_hardware_monitor_pc_icon" data-name="6588914_and_computers_hardware_monitor_pc_icon" transform="translate(223.5 116)">
@@ -60,7 +60,7 @@
                                 </g>
                               </g>
                             </g>
-                          </svg>
+                          </svg> -->
                           
                         <div class="dropdown">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -176,8 +176,8 @@
                             </button>
                             <div class="dropdown-menu">
                                <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
-                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
-                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" (click)="speedmodal()">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" (click)="temperaturemodal()">Servo/ Pulse code Temp</a>
                               <a class="dropdown-item" (click)="setting_viewnew()">Spindle & Servo Load</a>
                               <a class="dropdown-item" href="#">Macro</a>
                             </div>
