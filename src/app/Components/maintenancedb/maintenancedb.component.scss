@@ -247,3 +247,15 @@
 tspan {
     display: none !important;
 }
+.e-control{
+    height: 60px;
+    display: flex;
+}
+.e-control rect {
+    fill: transparent!important;
+}
+span.gauge-title {
+    float: left;
+    padding-top: 14px;
+    color: #B4B4B4;
+}

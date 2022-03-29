@@ -161,7 +161,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Temperature <span>(°C)</span></h4>
-                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ></div>
+                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{i}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart2.png">           
                 </div> -->
@@ -171,7 +171,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}" ></div>
+                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{i}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
                 </div> -->
