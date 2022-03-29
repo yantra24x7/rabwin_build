@@ -5,7 +5,7 @@ import { AuthGuard} from '../app/Service/core/authentication/auths.guard';
     
    
 const routes: Routes = [
-  
+    { path: 'm-dashboard', loadChildren: () => import('./Components/mdashboard/mdashboard.module').then(m => m.MdashboardModule) },
 { path: '', loadChildren: () => import('./Components/login/login.module').then(m => m.LoginModule) },
 { path: 'register', loadChildren: () => import('./Components/register/register.module').then(m => m.RegisterModule) },
 { path: 'sidebar', loadChildren: () => import('./Nav/sidebar/sidebar.module').then(m => m.SidebarModule) },
@@ -57,7 +57,8 @@ const routes: Routes = [
 { path: 'trendcharts', loadChildren: () => import('./Components/trendingchart/trending.module').then(m => m.TrendingChartModule) },
 { path: 'alarmreport', loadChildren: () => import('./Components/alarmreports/alarmreports.module').then(m => m.AlarmReportModule) },
 { path: 'maintenance-report', loadChildren: () => import('./Components/maintenancereport/maintenancereport.module').then(m => m.MaintenancereportModule) },
-{ path: 'maintenance-dashboard', loadChildren: () => import('./Components/maintenancedashboard/maintenancedashboard.module').then(m => m.MaintenancedashboardModule) },
+{ path: 'machine', loadChildren: () => import('./Components/maintenancedashboard/maintenancedashboard.module').then(m => m.MaintenancedashboardModule) },
+
 
 
 

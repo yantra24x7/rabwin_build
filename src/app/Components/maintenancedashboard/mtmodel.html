@@ -1,7 +1,7 @@
 <div class="fo-model-wrapper">
     <div class="fo-mod-header">
         <h4>Spindle/ Servo Load Settings</h4>
-        <mat-icon>clear</mat-icon>
+        <mat-icon (click)="dialogclose()">clear</mat-icon>
     </div>
     <div class="fo-mod-content">
         <h6>Assign Options</h6>
@@ -14,10 +14,11 @@
                     <div class="bar green"></div>
                     </th>
                     <th  class="text-center">Warning <br>
-                        <div class="bar yellow"></div>
+                      <div class="bar red"></div>
                     </th>
                     <th class="text-center">Critical <br>
-                        <div class="bar red"></div>
+                      <div class="bar yellow"></div>
+                     
                     </th>
 
                     <th></th>
@@ -275,7 +276,7 @@
 
         <div class="button text-right d-flex">
             <button type="button" class="btn btn-warning">Save</button>
-            <button type="button" class="btn btn-basic">Close</button>
+            <button type="button" class="btn btn-basic" (click)="dialogclose()">Close</button>
         </div>
     </div>
 </div>
