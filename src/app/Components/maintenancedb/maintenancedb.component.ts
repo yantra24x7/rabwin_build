@@ -82,7 +82,7 @@ for(let j=0;j<this.servoload.length;j++){
       layout: {
         padding: {
           bottom: 3
-        }
+        },
       },
       tooltips: {
         enabled: false,

@@ -13,14 +13,7 @@ export class TrendingchartComponent implements OnInit {
   }
 
   ngOnInit() {
-    var date = new Date(1167609700000 * 1000);
-    var date1 = new Date(1167609500000 * 1000);
-    var date2 = new Date(1167609400000 * 1000);
-    var date3 = new Date(1167609300000 * 1000);
-console.log(date.toUTCString())
-console.log(date1.toUTCString())
-console.log(date2.toUTCString())
-console.log(date3.toUTCString())
+   
     Highcharts.chart('container', {
       chart: {
         zoomType: 'x',
@@ -48,7 +41,7 @@ console.log(date3.toUTCString())
         }
         ,labels: {
           formatter: function() {
-            return Highcharts.dateFormat('%b. %e, %H:%M:%S', this.value);
+            return Highcharts.dateFormat('%Y %b. %e, %H:%M:%S', this.value);
           }
         }
       },

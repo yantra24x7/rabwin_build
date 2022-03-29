@@ -10,11 +10,11 @@
 
       <div class="maintanence-db-wrapper">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-12"  *ngFor="let machine of machine_list; let i = index">
                 <div class="card connectivity">
-                    <div class="circle-text">1</div>
+                    <div class="circle-text">{{i+1}}</div>
                     <div class="min-fo-header">
-                        <img src="/assets/icons/connectivity.svg" alt="">
+                        <!-- <img src="/assets/icons/connectivity.svg" alt=""> -->
                         <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="48" height="38.864" viewBox="0 0 48 38.864">
                             <g id="connectivity" transform="translate(-232 -172.5)">
                               <g id="Group_65" data-name="Group 65" transform="translate(37 53)">
@@ -68,23 +68,23 @@
                             </button>
                             <div class="dropdown-menu">
                                <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
-                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
-                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
-                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
-                              <a class="dropdown-item" href="#">Macro</a>
+                              <a class="dropdown-item" >Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" >Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" (click)="setting_viewnew()">Spindle & Servo Load</a>
+                              <a class="dropdown-item" >Macro</a>
                             </div>
                           </div>
                     </div>
 
                     <div class="fo-content">
-                        <h1>VALVE-C46</h1>
-                        <h6>Line: VALVE</h6>
-                        <h6>IP: 192.168.4.46</h6>
+                        <h1>{{machine?.L0Name}}</h1>
+                        <h6>Line: {{machine?.line}}</h6>
+                        <h6>IP: {{machine?.ip}}</h6>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="card connectivity">
                     <div class="circle-text">2</div>
                     <div class="min-fo-header">
@@ -271,7 +271,7 @@
                         <h6>IP: 192.168.4.46</h6>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
       </div>
             
