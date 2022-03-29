@@ -150,7 +150,11 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Load <span>(%)</span></h4>
-                <div *ngFor="let data of servoload;let k=index">  <canvas id="oilChart{{k}}" height="80"></canvas></div>
+               <div class="row">
+                 <div class="col-lg-4" *ngFor="let data of servoload;let k=index">
+                  <div >  <canvas id="oilChart{{k}}" height="250"></canvas></div>
+                 </div>
+               </div>
               
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart1.png">

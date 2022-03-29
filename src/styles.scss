@@ -4866,3 +4866,23 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     background: #293243 !important;
     border-radius: 10px !important;
 }
+
+.dropdown-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-wrapper .mat-form-field-type-mat-select .mat-form-field-label {
+    color: white;
+}
+
+.dropdown-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.dropdown-wrapper mat-form-field {
+    width: 23.5%;
+}
