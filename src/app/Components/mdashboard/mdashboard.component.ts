@@ -204,7 +204,7 @@ export class MdashboardComponent implements OnInit {
   char(line){
      
     localStorage.setItem('line_name',line);
-    this.router.navigate(['/dashboardline'], { queryParams: { line_name: line } });
+    this.router.navigate(['/maintenancedb'], { queryParams: { line_name: line } });
 
   }
 

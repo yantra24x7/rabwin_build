@@ -4,14 +4,14 @@
     </div>
     <div class="section_top_padding">
       <div class="page_title_sec fo-sep">
-        <h2>Dashboard - Casting Bay</h2>
-        <p>Total Machine <span>(2)</span></p>
+        <h2>Dashboard - {{lname}}</h2>
+        <p>Total Machine <span>({{alname.length==''?0:alname.length}})</span></p>
         </div> 
 
       <div class="maintanence-db-wrapper">
         <div class="machine-status">
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card machine-st fo-alarm">
                 <div class="heading">
                   <h5>Casting Bay - STUI</h5>
@@ -38,32 +38,90 @@
                     MDI</h6>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-              <div class="card machine-st">
+            </div> -->
+            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let val of alname">
+              <div class="card machine-st" *ngIf="val.status === 'OPERATE'">
                 <div class="heading">
-                  <h5>Casting Bay - STUI</h5>
+                  <h5>{{val?.machine}}</h5>
                 <span class="dot"></span>
                 </div>
                 <div class="chart-wrapper">
-                  <h1>40%</h1>
+                  <h1>{{val?.run}}%</h1>
                   <div class="chart-details">
-                    <!-- <div class="circle-wrap"> -->
-                    
-                      <div class="circle">
-                        <circle-progress radius="20" percent='40' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
+                    <div class="circle">
+                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
                         animationDuration="300">
                       </circle-progress>
-                        <!-- <div class="mask half">
-                          <div class="fill"></div>
-                      </div>
-                      <div class="mask full">
-                        <div class="fill"></div>
-                     </div>
-
-                     <div class="inside-circle">  </div> -->
+                      
                       </div> 
-                    <!-- </div> -->
+                
+                  </div>
+
+                  <h6>Mode:<br>
+                    Memory</h6>
+                </div>
+              </div>
+              <div class="card machine-st fo-alarmss" *ngIf="val.status === 'DISCONNECT'">
+                <div class="heading">
+                  <h5>{{val?.machine}}</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>{{val?.run}}%</h1>
+                  <div class="chart-details">
+                    
+                      <div class="circle">
+                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#939393" innerStrokeColor="#ffffff" animation="true"
+                        animationDuration="300">
+                      </circle-progress>
+                        
+                      </div> 
+                
+                  </div>
+
+                  <h6>Mode:<br>
+                    Memory</h6>
+                </div>
+              </div>
+              <div class="card machine-st fo-alarms" *ngIf="val.status === 'CRITICAL'">
+                <div class="heading">
+                  <h5>{{val?.machine}}</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>{{val?.run}}%</h1>
+                  <div class="chart-details">
+                    
+                      <div class="circle">
+                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ff0f0f" innerStrokeColor="#ffffff" animation="true"
+                        animationDuration="300">
+                      </circle-progress>
+                        
+                      </div> 
+                
+                  </div>
+
+                  <h6>Mode:<br>
+                    Memory</h6>
+                </div>
+              </div>
+              <div class="card machine-st fo-alarms" *ngIf="val.status === 'STOP'">
+                <div class="heading">
+                  <h5>{{val?.machine}}</h5>
+                <span class="dot"></span>
+                </div>
+                <div class="chart-wrapper">
+                  <h1>{{val?.run}}%</h1>
+                  <div class="chart-details">
+                    
+                    
+                      <div class="circle">
+                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ffdf00" innerStrokeColor="#ffffff" animation="true"
+                        animationDuration="300">
+                      </circle-progress>
+                      
+                      </div> 
+             
                   </div>
 
                   <h6>Mode:<br>
@@ -71,7 +129,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card machine-st">
                 <div class="heading">
                   <h5>Casting Bay - STUI</h5>
@@ -126,7 +184,7 @@
                     MDI</h6>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 

@@ -3,6 +3,9 @@ import { NavbarService } from 'src/app/Nav/navbar.service';
 declare var Highcharts: any;
 import { LinearGauge, Annotations, ILoadEventArgs, LinearGaugeTheme } from '@syncfusion/ej2-lineargauge';
 import { reduce } from 'highcharts';
+import { ActivatedRoute } from '@angular/router';
+import { DashboardService } from 'src/app/Service/app/dashboard.service';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 LinearGauge.Inject(Annotations);
 declare var Chart
 @Component({
@@ -14,8 +17,28 @@ export class MaintenancedbComponent implements OnInit {
   pulsecodevalue: any=[];
   servotemperature:any=[]
   servoload: any=[];
-  constructor(private nav:NavbarService) {
+  lname: any;
+  myLoader: boolean=false;
+  fline: any;
+  fname: any;
+  alname: any=[];
+  constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
     this.nav.show()
+    this.lname = this.route.snapshot.queryParamMap.get('line_name');
+    // this.lname='VALVE'
+    this.myLoader = true;
+
+    this.service.form_line(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
+        this.myLoader = false;
+        this.fline = res[0].line;
+        this.fname = res[0].machine;
+        this.myLoader = true;
+        this.service.pie(this.fline,this.fname).pipe(untilDestroyed(this)).subscribe(res=>{
+          this.myLoader=false
+          console.log(this.alname)
+        })
+        this.alname = res;
+    })
    }
 
   ngOnInit(): void {  
@@ -105,129 +128,6 @@ for(let j=0;j<this.servoload.length;j++){
 }, 1000);
     
 
-var gaugeOptions = {
-  chart: {
-      type: 'solidgauge'
-  },
-
-  title: null,
-
-  pane: {
-      center: ['50%', '85%'],
-      size: '100%',
-      startAngle: -90,
-      endAngle: 90,
-      background: {
-        borderWidth: 5,
-          backgroundColor:
-              Highcharts.defaultOptions.legend.backgroundColor || '#000',
-          innerRadius: '60%',
-          outerRadius: '80%',
-          shape: 'arc',
-          borderColor: 'red'
-      }
-  },
-
-  exporting: {
-      enabled: false
-  },
-
-  tooltip: {
-      enabled: false
-  },
-
-  // the value axis
-  yAxis: {
-      stops: [
-          [0.1, '#55BF3B'], // green
-          [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'] // red
-      ],
-      lineWidth: 0,
-      tickWidth: 0,
-      minorTickInterval: null,
-      tickAmount: 0,
-      title: {
-          y: -70
-      },
-      labels: {
-          y: 16
-      }
-  },
-
-  plotOptions: {
-      solidgauge: {
-        innerRadius: '75%',
-          dataLabels: {
-            y: -45,
-              borderWidth: 0,
-              useHTML: true
-          }
-      }
-  }
-};
-
-// The speed gauge
-Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
-  yAxis: {
-    lineWidth: 0,
-      min: 0,
-      max: 200,
-      title: {
-          text: 'Speed'
-      }
-  },
-
-  credits: {
-      enabled: false
-  },
-
-  series: [{
-      name: 'Speed',
-      data: [80],
-      dataLabels: {
-          format:
-              '<div style="text-align:center">' +
-              '<span style="font-size:25px">{y}</span><br/>' +
-              '<span style="font-size:12px;opacity:0.4">km/h</span>' +
-              '</div>'
-      },
-      tooltip: {
-          valueSuffix: ' km/h'
-      }
-  }]
-
-}));
-
-// The RPM gauge
-Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
-  yAxis: {
-    lineWidth: 0,
-      min: 0,
-      max: 5,
-      title: {
-          text: 'RPM'
-      }
-  },
-
-  series: [{
-      name: 'RPM',
-      data: [1],
-      dataLabels: {
-          format:
-              '<div style="text-align:center">' +
-              '<span style="font-size:25px">{y:.1f}</span><br/>' +
-              '<span style="font-size:12px;opacity:0.4">' +
-              '* 1000 / min' +
-              '</span>' +
-              '</div>'
-      },
-      tooltip: {
-          valueSuffix: ' revolutions/min'
-      }
-  }]
-
-}));
   }
 
   chart(val){
@@ -303,4 +203,6 @@ Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
   });
   return gauge;
   }
+
+  ngOnDestroy(){}
 }

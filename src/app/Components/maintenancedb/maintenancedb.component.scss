@@ -14,6 +14,17 @@
 .card.machine-st.fo-alarm{
     border: 4px solid hsl(0deg 100% 53%) !important;
 }
+.card.machine-st.fo-alarms .dot {
+    background: #ffdf00;
+}
+
+.card.machine-st.fo-alarmss .dot {
+    background: #939393;
+}
+
+// .card.machine-st.fo-alarms{
+//     border: 4px solid rgb(251, 255, 15) !important;
+// }
 
 .card.machine-st .heading h5 {
     font-size: 24px;
@@ -114,6 +125,19 @@
 
 .card.machine-st.fo-alarm .mask .fill {
     background: #ff0f0f;
+}
+.card.machine-st.fo-alarms .heading h5 {
+    border-bottom: 1px solid #ffdf00 !important;
+}
+.card.machine-st.fo-alarmss .heading h5 {
+    border-bottom: 1px solid #939393 !important;
+}
+
+.card.machine-st.fo-alarms .mask .fill {
+    background: #ffdf00;
+}
+.card.machine-st.fo-alarmss .mask .fill {
+    background: #939393;
 }
 
 .card.machine-st.fo-slide {
