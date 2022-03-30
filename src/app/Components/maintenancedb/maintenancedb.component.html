@@ -7,9 +7,10 @@
         <h2>Dashboard - {{lname}}</h2>
         <p>Total Machine <span>({{alname.length==''?0:alname.length}})</span></p>
         </div> 
-
+       
       <div class="maintanence-db-wrapper">
         <div class="machine-status">
+       
           <div class="row">
             <!-- <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card machine-st fo-alarm">
@@ -39,7 +40,22 @@
                 </div>
               </div>
             </div> -->
-            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let val of alname">
+            <!-- <owl-carousel-o [options]="customOptions">
+
+              <ng-container *ngFor="let val of alname;let j=index;">
+                <ng-template class="slide" carouselSlide [id]="j">
+                
+                    <label >{{val?.machine}}</label>
+               
+                
+                </ng-template>
+              </ng-container>
+          
+            </owl-carousel-o>  -->
+          
+            <!-- <owl-carousel-o [options]="customOptions">class="slide" carouselSlide [id]="j" -->
+
+            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let val of alname" >
               <div class="card machine-st" *ngIf="val.status === 'OPERATE'">
                 <div class="heading">
                   <h5>{{val?.machine}}</h5>
@@ -129,6 +145,7 @@
                 </div>
               </div>
             </div>
+            <!-- </owl-carousel-o> -->
             <!-- <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card machine-st">
                 <div class="heading">
@@ -210,7 +227,7 @@
                 <h4>Servo Load <span>(%)</span></h4>
                <div class="row">
                  <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload;let k=index">
-                   <p style="margin-bottom: 0; text-align: center; font-size: 20px;">z</p>
+                   <p style="margin-bottom: 0; text-align: center; font-size: 20px;">{{this.servoloadaxis[k]}}</p>
                   <div >  <canvas id="oilChart{{k}}"  height="200"></canvas></div>
                  </div>
                </div>
@@ -239,7 +256,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Temperature <span>(°C)</span></h4>
-                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{i}}</span></div>
+                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{this.servoloadaxis[i]}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart2.png">           
                 </div> -->
@@ -264,7 +281,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{i}}</span></div>
+                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{this.servoloadaxis[i]}}</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
                 </div> -->

@@ -6,6 +6,8 @@ import { reduce } from 'highcharts';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardService } from 'src/app/Service/app/dashboard.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+
+import { OwlOptions } from 'ngx-owl-carousel-o';
 LinearGauge.Inject(Annotations);
 declare var Chart
 @Component({
@@ -23,6 +25,26 @@ export class MaintenancedbComponent implements OnInit {
   fname: any;
   alname: any=[];
   servoload1: any=[];
+  servoloadaxis: any=[];
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1000: {
+        items: 1,
+      }
+    }
+  }
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -48,6 +70,8 @@ export class MaintenancedbComponent implements OnInit {
     this.pulsecodevalue=[10,20,30,40,50]
     this.servotemperature=[10,20,30,40,50]
     this.servoload=[10,20,30,40,50]
+    this.servoloadaxis=['X','Y','Z','A','B']
+    console.log(this.servoloadaxis)
     this.servoload1=[10,20]
     setTimeout(() => {
       for(let i=0;i<this.pulsecodevalue.length;i++){
