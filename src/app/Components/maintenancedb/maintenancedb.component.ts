@@ -54,7 +54,7 @@ for(let j=0;j<this.servoload.length;j++){
         ctx.rotate(angle);
         ctx.beginPath();
         ctx.moveTo(0, -3);
-        ctx.lineTo(ch - 60, 0);
+        ctx.lineTo(ch - 40, 0);
         ctx.lineTo(0, 3);
         ctx.fillStyle = 'rgb(256, 256, 256)';
         ctx.fill();
@@ -72,6 +72,7 @@ for(let j=0;j<this.servoload.length;j++){
       borderWidth: 0,
       datasets: [{
         data: [25, 25, 50],
+        borderWidth: 0,
         needleValue: this.servoload[j],
         backgroundColor: [
           '#96d617',
@@ -101,7 +102,18 @@ for(let j=0;j<this.servoload.length;j++){
         animateRotate: false,
         animateScale: true
       }
+    },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          enabled: false
+        },
+        shadow: false,
+        center: ['50%', '50%'],
+        borderWidth: 0 // < set this option
+      }
     }
+    
   });
 }
 }, 1000);
@@ -120,11 +132,11 @@ setTimeout(() => {
           var cx = cw / 2;
           var cy = ch - 6;
     
-          ctx.translate(cx, cy);
+        ctx.translate(cx, cy);
         ctx.rotate(angle);
         ctx.beginPath();
         ctx.moveTo(0, -3);
-        ctx.lineTo(ch - 60, 0);
+        ctx.lineTo(ch - 40, 0);
         ctx.lineTo(0, 3);
         ctx.fillStyle = 'rgb(256, 256, 256)';
         ctx.fill();
@@ -141,7 +153,8 @@ setTimeout(() => {
         ],
         
         datasets: [{
-          data: [25, 25, 50],
+          data: [50, 75, 100],
+          borderWidth: 0,
           needleValue: this.servoload1[j],
           backgroundColor: [
             '#96d617',
