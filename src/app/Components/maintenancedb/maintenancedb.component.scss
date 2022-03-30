@@ -272,7 +272,7 @@ tspan {
     display: none !important;
 }
 .e-control{
-    height: 45px;
+    height: 47.5px;
     display: flex;
 }
 .e-control rect {
@@ -324,4 +324,12 @@ span.gauge-title {
 
 .card.machine-st.fo-chart-wrapper .row .col-lg-4.col-sm-12 {
     margin-bottom: 13px;
+}
+
+.dropdown-wrapper .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.row.Speed {
+    justify-content: right !important;
 }

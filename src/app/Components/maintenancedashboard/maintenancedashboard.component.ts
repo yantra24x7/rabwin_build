@@ -40,6 +40,26 @@ export class MaintenancedashboardComponent implements OnInit {
       this.ngOnInit(); 
     });
   }
+  spindle(){
+    const dialogRef = this.dialog.open(Speedmodal, {
+      width: '900px',
+      
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit(); 
+    });
+  }
+  temperature(){
+    const dialogRef = this.dialog.open(Temperaturemodal, {
+      width: '900px',
+      
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit(); 
+    });
+  }
   ngOnDestroy(){}
 }
 
@@ -56,6 +76,52 @@ export class Maintenancedashboardmtmodal implements OnInit {
   dialogclose(){
 this.dialogRef.close();
   }
+  ngOnInit() {
+  }
+
+}
+
+@Component({
+  selector: 'app-maintenancedashboard',
+  templateUrl: './speedmodal.html',
+  styleUrls: ['./maintenancedashboard.component.scss']
+})
+export class Speedmodal implements OnInit {
+
+  constructor(private nav:NavbarService) { 
+    this.nav.show()
+  }
+
+  ngOnInit() {
+  }
+
+}
+@Component({
+  selector: 'app-maintenancedashboard',
+  templateUrl: './temperaturemodal.html',
+  styleUrls: ['./maintenancedashboard.component.scss']
+})
+export class Temperaturemodal implements OnInit {
+
+  constructor(private nav:NavbarService) { 
+    this.nav.show()
+  }
+
+  ngOnInit() {
+  }
+
+}
+@Component({
+  selector: 'app-maintenancedashboard',
+  templateUrl: './macromodal.html',
+  styleUrls: ['./maintenancedashboard.component.scss']
+})
+export class Macromodal implements OnInit {
+
+  constructor(private nav:NavbarService) { 
+    this.nav.show()
+  }
+
   ngOnInit() {
   }
 

@@ -22,7 +22,10 @@ export class MaintenancedbComponent implements OnInit {
   fline: any;
   fname: any;
   alname: any=[];
+  servoload1: any=[];
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
+
+
     this.nav.show()
     this.lname = this.route.snapshot.queryParamMap.get('line_name');
     // this.lname='VALVE'
@@ -45,6 +48,7 @@ export class MaintenancedbComponent implements OnInit {
     this.pulsecodevalue=[10,20,30,40,50]
     this.servotemperature=[10,20,30,40,50]
     this.servoload=[10,20,30,40,50]
+    this.servoload1=[10,20]
     setTimeout(() => {
       for(let i=0;i<this.pulsecodevalue.length;i++){
         let gauge: LinearGauge = new LinearGauge(this.chart(this.pulsecodevalue[i]));
@@ -126,7 +130,76 @@ for(let j=0;j<this.servoload.length;j++){
   });
 }
 }, 1000);
+setTimeout(() => {
+  for(let j=0;j<this.servoload1.length;j++){
+    new Chart('oilCharts'+j, {
+      type: 'doughnut',
+      plugins: [{
+        afterDraw: chart => {
+          var needleValue = chart.chart.config.data.datasets[0].needleValue;
+          var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
+          var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
+          var ctx = chart.chart.ctx;
+          var cw = chart.chart.canvas.offsetWidth;
+          var ch = chart.chart.canvas.offsetHeight;
+          var cx = cw / 2;
+          var cy = ch - 6;
     
+          ctx.translate(cx, cy);
+        ctx.rotate(angle);
+        ctx.beginPath();
+        ctx.moveTo(0, -3);
+        ctx.lineTo(ch - 60, 0);
+        ctx.lineTo(0, 3);
+        ctx.fillStyle = 'rgb(256, 256, 256)';
+        ctx.fill();
+        ctx.rotate(-angle);
+        ctx.translate(-cx, -cy);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+        ctx.fill();
+        }
+      }],
+      data: {
+        labels: [
+   
+        ],
+        
+        datasets: [{
+          data: [25, 25, 50],
+          needleValue: this.servoload1[j],
+          backgroundColor: [
+            '#96d617',
+            '#f2f207',
+            '#f21a07'
+          ]
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+            bottom: 3
+          },
+        },
+        tooltips: {
+          enabled: false,
+        },
+        
+        rotation: -Math.PI,
+        cutoutPercentage: 50,
+        circumference: Math.PI,
+        legend: {
+          display:false,
+          position: 'left'
+        },
+        animation: {
+          animateRotate: false,
+          animateScale: true
+        }
+      }
+    });
+  }
+  }, 1000);
 
   }
 
