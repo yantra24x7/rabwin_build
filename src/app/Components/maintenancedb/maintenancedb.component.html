@@ -366,13 +366,15 @@
               
                 <div class="row Speed"> 
                   <div class="col-lg-7 col-sm-12">
+                    
                   <circle-progress radius="80" percent="80%" outerStrokeColor="#4B4B4B" innerStrokeColor="#FFAD31" animation="true"
-                animationDuration="300">
+                animationDuration="300" innerStrokeWidth="40">
               </circle-progress>
             </div>
 
             
                   <div class="col-lg-5"  >
+                    <h4>Spindle Speed</h4>
                     <div class="fo-cht" *ngFor="let data of servoload1;let k=index">  
                       <canvas id="oilCharts{{k}}" height="160"></canvas>
                     </div>

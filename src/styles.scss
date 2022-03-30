@@ -3746,7 +3746,7 @@ body .compare_page .chart_sec .ulitization_chart {
 }
 
 rect.highcharts-background {
-    fill: #fff;
+    fill: #242635;
 }
 
 .mat-select-value {
@@ -4895,4 +4895,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+path.highcharts-area {
+    fill: none!important;
 }
