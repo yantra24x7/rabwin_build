@@ -40,6 +40,26 @@ export class MaintenancedashboardComponent implements OnInit {
       this.ngOnInit(); 
     });
   }
+  spindle(){
+    const dialogRef = this.dialog.open(Speedmodal, {
+      width: '900px',
+      
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit(); 
+    });
+  }
+  temperature(){
+    const dialogRef = this.dialog.open(Temperaturemodal, {
+      width: '900px',
+      
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit(); 
+    });
+  }
   ngOnDestroy(){}
 }
 
