@@ -48,18 +48,22 @@
                 <div class="chart-wrapper">
                   <h1>40%</h1>
                   <div class="chart-details">
-                    <div class="circle-wrap">
+                    <!-- <div class="circle-wrap"> -->
+                    
                       <div class="circle">
-                        <div class="mask half">
+                        <circle-progress radius="20" percent='40' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
+                        animationDuration="300">
+                      </circle-progress>
+                        <!-- <div class="mask half">
                           <div class="fill"></div>
                       </div>
                       <div class="mask full">
                         <div class="fill"></div>
                      </div>
 
-                     <div class="inside-circle">  </div>
-                      </div>
-                    </div>
+                     <div class="inside-circle">  </div> -->
+                      </div> 
+                    <!-- </div> -->
                   </div>
 
                   <h6>Mode:<br>
@@ -146,17 +150,54 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Load <span>(%)</span></h4>
-                <div class="image-wrapper text-center">
-                  <img src="assets/images/chart1.png">
+               <div class="row">
+                 <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload;let k=index">
+                  <div >  <canvas id="oilChart{{k}}" width="400" height="350"></canvas></div>
+                 </div>
+               </div>
+
+               <div class="indicator-wrapper">
+                 <div class="item-wrpper">
+                   <div class="mini green"></div>
+                   <p>0-50</p>
+                 </div>
+                 <div class="item-wrpper">
+                  <div class="mini yellow"></div>
+                  <p>50-75</p>
                 </div>
+                <div class="item-wrpper">
+                  <div class="mini red"></div>
+                  <p>75-100</p>
+                </div>
+               </div>
+              
+                <!-- <div class="image-wrapper text-center">
+                  <img src="assets/images/chart1.png">
+                </div> -->
               </div>
             </div>
 
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Temperature <span>(°C)</span></h4>
-                <div class="image-wrapper text-center">
+                <div *ngFor="let data of servotemperature;let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{i}}</span></div>
+                <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart2.png">           
+                </div> -->
+
+                <div class="indicator-wrapper">
+                  <div class="item-wrpper">
+                    <div class="mini green"></div>
+                    <p>0-50</p>
+                  </div>
+                  <div class="item-wrpper">
+                   <div class="mini yellow"></div>
+                   <p>50-75</p>
+                 </div>
+                 <div class="item-wrpper">
+                   <div class="mini red"></div>
+                   <p>75-100</p>
+                 </div>
                 </div>
               </div>
             </div>
@@ -164,8 +205,23 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                <div class="image-wrapper text-center">
+                  <div *ngFor="let data of pulsecodevalue;let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{i}}</span></div>
+                <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
+                </div> -->
+                <div class="indicator-wrapper">
+                  <div class="item-wrpper">
+                    <div class="mini green"></div>
+                    <p>0-50</p>
+                  </div>
+                  <div class="item-wrpper">
+                   <div class="mini yellow"></div>
+                   <p>50-75</p>
+                 </div>
+                 <div class="item-wrpper">
+                   <div class="mini red"></div>
+                   <p>75-100</p>
+                 </div>
                 </div>
               </div>
             </div>
@@ -230,10 +286,14 @@
 
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
-                <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                <div class="image-wrapper text-center">
-                  <img src="assets/images/chart4.png">           
-                </div>
+                <h4>Spindle Load<span>(%)</span></h4>
+              
+                <div class="image-wrapper text-center"> 
+               <img src="assets/images/chart4.png">     
+                 
+                  
+           
+               </div>
               </div>
             </div>
 

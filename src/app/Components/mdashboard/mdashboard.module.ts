@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule} from '../shared/shared.module';
-import { MaintenancedashboardbRoutingModule } from './maintenancedashboard-routing.module';
-import { MaintenancedashboardComponent, Maintenancedashboardmtmodal } from './maintenancedashboard.component';
+import { MdashboardRoutingModule } from './maindashboard-routing.module';
+
 import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DashboardService} from '../../Service/app/dashboard.service';
+import { MdashboardComponent } from './mdashboard.component';
 
 
 @NgModule({
-  declarations: [MaintenancedashboardComponent,Maintenancedashboardmtmodal],
-  imports: [    MaintenancedashboardbRoutingModule, 
+  declarations: [MdashboardComponent],
+  imports: [    MdashboardRoutingModule, 
     CommonModule,SharedModule,
     CountUpModule,HighchartsChartModule,
     NgCircleProgressModule.forRoot({
@@ -42,8 +43,8 @@ import { DashboardService} from '../../Service/app/dashboard.service';
   ],
   providers:[DashboardService],
 
-  entryComponents:[Maintenancedashboardmtmodal],
+  entryComponents:[],
 
 })
-export class MaintenancedashboardModule { }
+export class MdashboardModule { }
  

@@ -1,1 +1,280 @@
-<p>maintenancedashboard works!</p>
+<section class="page">
+    <div *ngIf="myLoader" class="spinner">
+        <img src="assets/images/spinner.gif">
+    </div>
+    <div class="section_top_padding">
+      <div class="page_title_sec fo-sep">
+        <h2>Machine List</h2>
+        
+        </div> 
+
+      <div class="maintanence-db-wrapper">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12"  *ngFor="let machine of machine_list; let i = index">
+                <div class="card connectivity">
+                    <div class="circle-text">{{i+1}}</div>
+                    <div class="min-fo-header">
+                        <!-- <img src="/assets/icons/connectivity.svg" alt=""> -->
+                        <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="48" height="38.864" viewBox="0 0 48 38.864">
+                            <g id="connectivity" transform="translate(-232 -172.5)">
+                              <g id="Group_65" data-name="Group 65" transform="translate(37 53)">
+                                <g id="_6588914_and_computers_hardware_monitor_pc_icon" data-name="6588914_and_computers_hardware_monitor_pc_icon" transform="translate(223.5 116)">
+                                  <path id="Path_43" data-name="Path 43" d="M3,4.833V11.08a.835.835,0,0,0,.833.833H13a.835.835,0,0,0,.833-.833V4.833A.835.835,0,0,0,13,4H3.833A.835.835,0,0,0,3,4.833Z" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_35" data-name="Line 35" x2="11" transform="translate(3 10)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_36" data-name="Line 36" x2="5" transform="translate(6 14)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_44" data-name="Path 44" d="M11.95,23a4.432,4.432,0,0,1-.75,2.5" transform="translate(-4.785 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_45" data-name="Path 45" d="M19.75,25.5A4.432,4.432,0,0,1,19,23" transform="translate(-9.337 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                </g>
+                                <g id="_6588914_and_computers_hardware_monitor_pc_icon-2" data-name="6588914_and_computers_hardware_monitor_pc_icon" transform="translate(212.5 143.25)">
+                                  <path id="Path_43-2" data-name="Path 43" d="M3,4.833V11.08a.835.835,0,0,0,.833.833H13a.835.835,0,0,0,.833-.833V4.833A.835.835,0,0,0,13,4H3.833A.835.835,0,0,0,3,4.833Z" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_35-2" data-name="Line 35" x2="11" transform="translate(3 10)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_36-2" data-name="Line 36" x2="5" transform="translate(6 14)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_44-2" data-name="Path 44" d="M11.95,23a4.432,4.432,0,0,1-.75,2.5" transform="translate(-4.785 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_45-2" data-name="Path 45" d="M19.75,25.5A4.432,4.432,0,0,1,19,23" transform="translate(-9.337 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                </g>
+                                <g id="Rectangle_137" data-name="Rectangle 137" transform="translate(205 135)" fill="none" stroke="#0fb103" stroke-width="2">
+                                  <rect width="6" height="6" stroke="none"/>
+                                  <rect x="1" y="1" width="4" height="4" fill="none"/>
+                                </g>
+                                <rect id="Rectangle_140" data-name="Rectangle 140" width="12" height="2" transform="translate(195 137)" fill="#0fb103"/>
+                                <g id="Rectangle_141" data-name="Rectangle 141" transform="translate(218 135)" fill="none" stroke="#0fb103" stroke-width="2">
+                                  <rect width="6" height="6" stroke="none"/>
+                                  <rect x="1" y="1" width="4" height="4" fill="none"/>
+                                </g>
+                                <g id="Rectangle_142" data-name="Rectangle 142" transform="translate(230 135)" fill="none" stroke="#0fb103" stroke-width="2">
+                                  <rect width="6" height="6" stroke="none"/>
+                                  <rect x="1" y="1" width="4" height="4" fill="none"/>
+                                </g>
+                                <rect id="Rectangle_143" data-name="Rectangle 143" width="7" height="2" transform="translate(211 137)" fill="#0fb103"/>
+                                <rect id="Rectangle_144" data-name="Rectangle 144" width="7" height="2" transform="translate(223 137)" fill="#0fb103"/>
+                                <rect id="Rectangle_145" data-name="Rectangle 145" width="7" height="2" transform="translate(236 137)" fill="#0fb103"/>
+                                <rect id="Rectangle_146" data-name="Rectangle 146" width="4.25" height="2" transform="translate(222 140.5) rotate(90)" fill="#0fb103"/>
+                                <rect id="Rectangle_147" data-name="Rectangle 147" width="2.25" height="2" transform="translate(209 132.75) rotate(90)" fill="#0fb103"/>
+                                <rect id="Rectangle_148" data-name="Rectangle 148" width="4.25" height="2" transform="translate(234 132.75) rotate(90)" fill="#0fb103"/>
+                                <g id="_6588914_and_computers_hardware_monitor_pc_icon-3" data-name="6588914_and_computers_hardware_monitor_pc_icon" transform="translate(199.5 116)">
+                                  <path id="Path_43-3" data-name="Path 43" d="M3,4.833V11.08a.835.835,0,0,0,.833.833H13a.835.835,0,0,0,.833-.833V4.833A.835.835,0,0,0,13,4H3.833A.835.835,0,0,0,3,4.833Z" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_35-3" data-name="Line 35" x2="11" transform="translate(3 10)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <line id="Line_36-3" data-name="Line 36" x2="5" transform="translate(6 14)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_44-3" data-name="Path 44" d="M11.95,23a4.432,4.432,0,0,1-.75,2.5" transform="translate(-4.785 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                  <path id="Path_45-3" data-name="Path 45" d="M19.75,25.5A4.432,4.432,0,0,1,19,23" transform="translate(-9.337 -11.087)" fill="none" stroke="#0fb103" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                          
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" >Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" >Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" (click)="setting_viewnew()">Spindle & Servo Load</a>
+                              <a class="dropdown-item" >Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>{{machine?.L0Name}}</h1>
+                        <h6>Line: {{machine?.line}}</h6>
+                        <h6>IP: {{machine?.ip}}</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">2</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/connectivtyw.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">3</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/tconnectivity.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">1</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/connectivity.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">1</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/connectivityf.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" (click)="setting_viewnew()">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">2</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/connectivtyw.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">3</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/tconnectivity.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card connectivity">
+                    <div class="circle-text">1</div>
+                    <div class="min-fo-header">
+                        <img src="/assets/icons/connectivity.png" alt="">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/icons/3dots.png" alt="">
+                            </button>
+                            <div class="dropdown-menu">
+                               <h6 ><span><img src="/assets/icons/settings.png" alt=""></span>Settings</h6>
+                              <a class="dropdown-item" href="#">Spindle Speed/ Feed Rate</a>
+                              <a class="dropdown-item" href="#">Servo/ Pulse code Temp</a>
+                              <a class="dropdown-item" href="#">Spindle & Servo Load</a>
+                              <a class="dropdown-item" href="#">Macro</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="fo-content">
+                        <h1>VALVE-C46</h1>
+                        <h6>Line: VALVE</h6>
+                        <h6>IP: 192.168.4.46</h6>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+      </div>
+            
+    </div>
+  
+</section>

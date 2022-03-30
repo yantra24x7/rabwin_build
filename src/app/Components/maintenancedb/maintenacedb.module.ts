@@ -17,28 +17,35 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CountUpModule,HighchartsChartModule,
     CarouselModule,
     NgCircleProgressModule.forRoot({
-      "backgroundColor": "#0e121b",
+      radius: 35,
       backgroundOpacity: 1,
-      "backgroundStroke": "#0e121b",
-      backgroundStrokeWidth: 12,
+      // backgroundStrokeWidth: 15,
+      // "responsive": false,
+      //space: -17,
+      //maxPercent: 100,
+      //outerStrokeWidth: 15,
+     // innerStrokeWidth: 15,
+
+    //  "showTitle": true,
+    //  "showSubtitle": false,
+      backgroundStrokeWidth: 0,
       backgroundPadding: 0,
-      radius: 36,
-      space: -14,
-      "subtitle": [
-        "OEE"
-      ],
-      "titleFontSize": "30",
-      "subtitleFontSize": "20",
-      "subtitleFontWeight": "800",
-  "titleFontWeight": "500",
-  "titleColor": "#ffffff",
+     // "responsive": true,
+      space: -8,
       toFixed: 0,
       maxPercent: 100,
-      outerStrokeWidth: 14,
-      innerStrokeWidth: 14,
-      "showSubtitle": true,
-      "showUnits": false,
+      outerStrokeWidth: 8,
       outerStrokeLinecap: "square",
+      innerStrokeWidth: 8,
+      imageHeight: 20,
+      imageWidth: 20,
+      // lazy: true,
+
+
+
+      "subtitle": [
+        ""
+      ],
     })
   
   ],

@@ -1,6 +1,6 @@
 .card.machine-st {
     background: hsl(233deg 19% 17%);
-    padding: 10px;
+    padding: 5px 10px;
     text-align: center;
     border-radius: 10px;
     border: 0.8px solid #6b6b6b;
@@ -18,7 +18,7 @@
 .card.machine-st .heading h5 {
     font-size: 24px;
     font-weight: 400;
-    padding-bottom: 20px;
+    padding-bottom:8px;
     border-bottom: 2px solid hsl(118deg 24% 46%);
 }
 
@@ -105,7 +105,7 @@
     background: #16a300;
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 10px;
 }
 
 .card.machine-st.fo-alarm .heading h5 {
@@ -128,6 +128,7 @@
 .card.machine-st.fo-slide .contents h6 {
     font-size: 24px;
     font-weight: 400;
+    margin-bottom: 0;
 }
 
 .divider {
@@ -196,6 +197,7 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 0px;
 }
 
 .machine-details-section.twin .card.machine-st.fo-chart-wrapper .content .text-wrapper p{
@@ -211,7 +213,7 @@
 .card.machine-st.fo-chart-wrapper .usables .item-wrapper {
     background: #4B4B4B;
     border-radius: 10px;
-    padding: 9px 23px;
+    padding: 0px 23px;
 }
 
 .card.machine-st.fo-chart-wrapper .usables .item-wrapper p {
@@ -231,7 +233,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 47px 0;
+    margin: 24px 0;
 }
 
 .card.machine-st.fo-chart-wrapper .fo-icons-wrapper .bt-icon {
@@ -241,4 +243,61 @@
 
 .col-lg-2.col-md-12.col-sm-12.fo-right {
     padding-right: 0;
+}
+tspan {
+    display: none !important;
+}
+.e-control{
+    height: 45px;
+    display: flex;
+}
+.e-control rect {
+    fill: transparent!important;
+}
+span.gauge-title {
+    float: left;
+    padding-top: 14px;
+    color: #B4B4B4;
+}
+
+.card.machine-st.fo-chart-wrapper .row {
+    justify-content: center;
+}
+
+.indicator-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.mini {
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    margin-right: 5px;
+}
+
+.item-wrpper {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.mini.green {
+    background: #30b32d;
+}
+
+.mini.yellow {
+    background: #ffdf00;
+}
+
+.mini.red {
+    background: #f03e3e;
+}
+
+.item-wrpper p {
+    margin: 0;
+}
+
+.card.machine-st.fo-chart-wrapper .row .col-lg-4.col-sm-12 {
+    margin-bottom: 13px;
 }
