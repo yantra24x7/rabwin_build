@@ -121,18 +121,18 @@ setTimeout(() => {
           var cy = ch - 6;
     
           ctx.translate(cx, cy);
-          ctx.rotate(angle);
-          ctx.beginPath();
-          ctx.moveTo(0, -3);
-          ctx.lineTo(ch - 20, 0);
-          ctx.lineTo(0, 3);
-          ctx.fillStyle = 'rgb(0, 0, 0)';
-          ctx.fill();
-          ctx.rotate(-angle);
-          ctx.translate(-cx, -cy);
-          ctx.beginPath();
-          ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-          ctx.fill();
+        ctx.rotate(angle);
+        ctx.beginPath();
+        ctx.moveTo(0, -3);
+        ctx.lineTo(ch - 60, 0);
+        ctx.lineTo(0, 3);
+        ctx.fillStyle = 'rgb(256, 256, 256)';
+        ctx.fill();
+        ctx.rotate(-angle);
+        ctx.translate(-cx, -cy);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+        ctx.fill();
         }
       }],
       data: {
@@ -154,13 +154,14 @@ setTimeout(() => {
         layout: {
           padding: {
             bottom: 3
-          }
+          },
         },
         tooltips: {
           enabled: false,
         },
+        
         rotation: -Math.PI,
-        cutoutPercentage: 30,
+        cutoutPercentage: 50,
         circumference: Math.PI,
         legend: {
           display:false,
