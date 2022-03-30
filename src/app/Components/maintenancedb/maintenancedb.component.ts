@@ -54,9 +54,9 @@ for(let j=0;j<this.servoload.length;j++){
         ctx.rotate(angle);
         ctx.beginPath();
         ctx.moveTo(0, -3);
-        ctx.lineTo(ch - 20, 0);
+        ctx.lineTo(ch - 60, 0);
         ctx.lineTo(0, 3);
-        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillStyle = 'rgb(256, 256, 256)';
         ctx.fill();
         ctx.rotate(-angle);
         ctx.translate(-cx, -cy);
@@ -69,7 +69,7 @@ for(let j=0;j<this.servoload.length;j++){
       labels: [
  
       ],
-      
+      borderWidth: 0,
       datasets: [{
         data: [25, 25, 50],
         needleValue: this.servoload[j],
@@ -84,13 +84,14 @@ for(let j=0;j<this.servoload.length;j++){
       layout: {
         padding: {
           bottom: 3
-        }
+        },
       },
       tooltips: {
         enabled: false,
       },
+      
       rotation: -Math.PI,
-      cutoutPercentage: 30,
+      cutoutPercentage: 50,
       circumference: Math.PI,
       legend: {
         display:false,
@@ -187,11 +188,13 @@ var gaugeOptions = {
       startAngle: -90,
       endAngle: 90,
       background: {
+        // borderWidth: 5,
           backgroundColor:
-              Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+              Highcharts.defaultOptions.legend.backgroundColor || '#000',
           innerRadius: '60%',
-          outerRadius: '100%',
-          shape: 'arc'
+          outerRadius: '80%',
+          shape: 'arc',
+          borderColor: 'red'
       }
   },
 
@@ -213,7 +216,7 @@ var gaugeOptions = {
       lineWidth: 0,
       tickWidth: 0,
       minorTickInterval: null,
-      tickAmount: 2,
+      tickAmount: 0,
       title: {
           y: -70
       },
@@ -224,8 +227,9 @@ var gaugeOptions = {
 
   plotOptions: {
       solidgauge: {
+        innerRadius: '75%',
           dataLabels: {
-              y: 5,
+            y: -45,
               borderWidth: 0,
               useHTML: true
           }
@@ -236,6 +240,7 @@ var gaugeOptions = {
 // The speed gauge
 Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
   yAxis: {
+    lineWidth: 0,
       min: 0,
       max: 200,
       title: {
@@ -267,6 +272,7 @@ Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
 // The RPM gauge
 Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
   yAxis: {
+    lineWidth: 0,
       min: 0,
       max: 5,
       title: {

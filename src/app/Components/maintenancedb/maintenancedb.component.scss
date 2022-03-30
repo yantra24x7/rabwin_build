@@ -248,7 +248,7 @@ tspan {
     display: none !important;
 }
 .e-control{
-    height: 45px;
+    height: 47.5px;
     display: flex;
 }
 .e-control rect {
@@ -304,4 +304,8 @@ span.gauge-title {
 
 .dropdown-wrapper .mat-form-field-wrapper {
     padding-bottom: 0;
+}
+
+.row.Speed {
+    justify-content: right !important;
 }

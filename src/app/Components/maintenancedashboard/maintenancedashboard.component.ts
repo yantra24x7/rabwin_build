@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { untilDestroyed } from 'ngx-take-until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/Nav/navbar.service';
+import { MachineService } from 'src/app/Service/app/machine.service';
 
 @Component({
   selector: 'app-maintenancedashboard',
@@ -8,12 +12,23 @@ import { NavbarService } from 'src/app/Nav/navbar.service';
   styleUrls: ['./maintenancedashboard.component.scss']
 })
 export class MaintenancedashboardComponent implements OnInit {
+  myLoader: boolean=false;
+  machine_list: any=[];
 
-  constructor(private nav:NavbarService, public dialog: MatDialog,) { 
+  constructor(private fb: FormBuilder, private nav: NavbarService, public dialog: MatDialog, private machine: MachineService,private toast: ToastrService) { 
     this.nav.show()
   }
-
   ngOnInit() {
+    this.getMachines();
+  }
+  getMachines() {
+    this.myLoader = true;
+
+    this.machine.machine_get().pipe(untilDestroyed(this)).subscribe(res => {
+      this.myLoader = false;
+
+      this.machine_list = res;
+    })
   }
   setting_viewnew() {
     const dialogRef = this.dialog.open(Maintenancedashboardmtmodal, {
@@ -25,26 +40,7 @@ export class MaintenancedashboardComponent implements OnInit {
       this.ngOnInit(); 
     });
   }
-  speedmodal() {
-    const dialogRef = this.dialog.open(Speedmodal, {
-      width: '900px',
-      
-
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit(); 
-    });
-  }
-  temperaturemodal() {
-    const dialogRef = this.dialog.open(Temperaturemodal, {
-      width: '900px',
-      
-
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit(); 
-    });
-  }
+  ngOnDestroy(){}
 }
 
 @Component({
@@ -54,10 +50,12 @@ export class MaintenancedashboardComponent implements OnInit {
 })
 export class Maintenancedashboardmtmodal implements OnInit {
 
-  constructor(private nav:NavbarService) { 
+  constructor(private nav:NavbarService,public dialogRef: MatDialogRef<Maintenancedashboardmtmodal>) { 
     this.nav.show()
   }
-
+  dialogclose(){
+this.dialogRef.close();
+  }
   ngOnInit() {
   }
 

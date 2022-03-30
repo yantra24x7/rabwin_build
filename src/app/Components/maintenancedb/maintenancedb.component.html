@@ -289,14 +289,18 @@
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Spindle Load(%) <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">Spindle Speed</span></h4>
               
-                <div class="row"> 
-                  <div class="col-lg-8 col-sm-12">
-                  <circle-progress radius="65" percent="80%" outerStrokeColor="#4B4B4B" innerStrokeColor="#FFAD31" animation="true"
+                <div class="row Speed"> 
+                  <div class="col-lg-7 col-sm-12">
+                  <circle-progress radius="80" percent="80%" outerStrokeColor="#4B4B4B" innerStrokeColor="#FFAD31" animation="true"
                 animationDuration="300">
               </circle-progress>
             </div>
-                  <div class="col-lg-4 col-sm-12" *ngFor="let data of servoload1;let k=index">
-                    <div >  <canvas id="oilCharts{{k}}" width="400" height="350"></canvas></div>
+
+            
+                  <div class="col-lg-5"  >
+                    <div class="fo-cht" *ngFor="let data of servoload1;let k=index">  
+                      <canvas id="oilCharts{{k}}" height="200"></canvas>
+                    </div>
                    </div>
                  
                   
