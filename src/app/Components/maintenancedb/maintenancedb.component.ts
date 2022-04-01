@@ -45,6 +45,8 @@ export class MaintenancedbComponent implements OnInit {
       }
     }
   }
+  servoload2: any=[];
+  servoload3: any=[];
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -73,6 +75,8 @@ export class MaintenancedbComponent implements OnInit {
     this.servoloadaxis=['X','Y','Z','A','B']
     console.log(this.servoloadaxis)
     this.servoload1=[10,20]
+    this.servoload2=['Spindle Speed','Feed']
+    this.servoload3=['1000 Rpm','120 mm']
     setTimeout(() => {
       for(let i=0;i<this.pulsecodevalue.length;i++){
         let gauge: LinearGauge = new LinearGauge(this.chart(this.pulsecodevalue[i]));
@@ -202,7 +206,7 @@ setTimeout(() => {
         ],
         
         datasets: [{
-          data: [50, 75, 100],
+          data: [25, 25, 50],
           borderWidth: 0,
           needleValue: this.servoload1[j],
           backgroundColor: [

@@ -334,5 +334,14 @@ span.gauge-title {
     justify-content: right !important;
 }
 .fo-cht{
-    margin-bottom: 10px;
+  
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
 }
+// canvas {
+//     width: 70% !IMPORTANT;
+//     height: 60px !important;
+//     margin: auto;
+// }

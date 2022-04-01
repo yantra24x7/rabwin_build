@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SharedModule} from '../shared/shared.module';
 import { AlarmReportRoutingModule } from './alarmreports-routing.module';
 import { AlarmreportsComponent } from './alarmreports.component';
 import { CountUpModule } from 'ngx-countup';
-import { HighchartsChartModule } from 'highcharts-angular';
+
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { DashboardService} from '../../Service/app/dashboard.service';
+
+import { ReportService } from 'src/app/Service/app/report.service';
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -14,6 +18,7 @@ import { DashboardService} from '../../Service/app/dashboard.service';
   imports: [    AlarmReportRoutingModule, 
     CommonModule,SharedModule,
     CountUpModule,HighchartsChartModule,
+    SatNativeDateModule,SatDatepickerModule,NgMultiSelectDropDownModule.forRoot(),
     NgCircleProgressModule.forRoot({
       "backgroundColor": "#0e121b",
       backgroundOpacity: 1,
@@ -40,7 +45,7 @@ import { DashboardService} from '../../Service/app/dashboard.service';
     })
   
   ],
-  providers:[DashboardService]
+  providers:[ReportService,DatePipe]
 
 })
 export class AlarmReportModule { }

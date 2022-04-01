@@ -362,7 +362,7 @@
 
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
-                <h4>Spindle Load(%) <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">Spindle Speed</span></h4>
+                <h4>Spindle Load(%) </h4>
               
                 <div class="row Speed"> 
                   <div class="col-lg-7 col-sm-12">
@@ -374,9 +374,11 @@
 
             
                   <div class="col-lg-5"  >
-                    <h4>Spindle Speed</h4>
+                    <!-- <h4>Spindle Speed</h4> -->
                     <div class="fo-cht" *ngFor="let data of servoload1;let k=index">  
-                      <canvas id="oilCharts{{k}}" height="160"></canvas>
+                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{this.servoload2[k]}}</span>
+                      <canvas id="oilCharts{{k}}" width="20" ></canvas>
+                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{servoload3[k]}}</span>
                     </div>
                    </div>
                  

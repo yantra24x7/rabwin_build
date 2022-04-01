@@ -40,6 +40,17 @@ export class MaintenancedashboardComponent implements OnInit {
       this.ngOnInit(); 
     });
   }
+
+  setting() {
+    const dialogRef = this.dialog.open(Settingmodal, {
+      width: '900px',
+      
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit(); 
+    });
+  }
   spindle(){
     const dialogRef = this.dialog.open(Speedmodal, {
       width: '900px',
@@ -113,10 +124,10 @@ export class Temperaturemodal implements OnInit {
 }
 @Component({
   selector: 'app-maintenancedashboard',
-  templateUrl: './macromodal.html',
+  templateUrl: './settingmodal.html',
   styleUrls: ['./maintenancedashboard.component.scss']
 })
-export class Macromodal implements OnInit {
+export class Settingmodal implements OnInit {
 
   constructor(private nav:NavbarService) { 
     this.nav.show()
