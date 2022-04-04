@@ -27,7 +27,7 @@
         <td>{{i+1}}</td>
         <td>{{VAPMS[0] | date:'dd-MM-yyyy ; HH:mm:ss a'}}</td>
         <td>{{VAPMS[1] | date:'dd-MM-yyyy ; HH:mm:ss a'}}</td>
-        <td>{{VAPMS[2]}}</td>
+        <td>{{VAPMS[2] | number:'1.0-2'}}</td>
     </tr>  
 </tbody>
 <div class="fo-center" *ngIf="sppivaluedle.length==0" >

@@ -51,4 +51,16 @@ export class MachineService {
   update_macro_axis(ids: any,datap: any, ):Observable<any> {
     return this.http.put('edit_settings?id=' + ids, datap);
   }
+
+  settingget(){
+    return this.http.get('setting_lists')
+  }
+
+  addsetting(val){
+    return this.http.post('settings',val)
+  }
+
+  getsets(name,signal){
+return this.http.get('mac_settings?L1Name='+name+'&&group_signal='+signal+'')
+  }
 }

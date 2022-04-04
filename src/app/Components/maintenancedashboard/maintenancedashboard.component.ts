@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/Nav/navbar.service';
@@ -15,7 +16,8 @@ export class MaintenancedashboardComponent implements OnInit {
   myLoader: boolean=false;
   machine_list: any=[];
 
-  constructor(private fb: FormBuilder, private nav: NavbarService, public dialog: MatDialog, private machine: MachineService,private toast: ToastrService) { 
+  constructor(private fb: FormBuilder, private nav: NavbarService, public dialog: MatDialog, private machine: MachineService,private toast: ToastrService,
+    public router:Router) { 
     this.nav.show()
   }
   ngOnInit() {
@@ -41,15 +43,17 @@ export class MaintenancedashboardComponent implements OnInit {
     });
   }
 
-  setting() {
-    const dialogRef = this.dialog.open(Settingmodal, {
-      width: '900px',
+  setting(machinename) {
+    // const dialogRef = this.dialog.open(Settingmodal, {
+    //   width: '900px',
       
 
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit(); 
-    });
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.ngOnInit(); 
+    // });
+    localStorage.setItem("machine-name",machinename)
+    this.router.navigate(['/Setting'])
   }
   spindle(){
     const dialogRef = this.dialog.open(Speedmodal, {
@@ -128,12 +132,34 @@ export class Temperaturemodal implements OnInit {
   styleUrls: ['./maintenancedashboard.component.scss']
 })
 export class Settingmodal implements OnInit {
+  myLoader: boolean=false;
+  values: any=[];
 
-  constructor(private nav:NavbarService) { 
+  constructor(private nav:NavbarService, private machine: MachineService) { 
     this.nav.show()
-  }
+    this.myLoader=true;
+    this.machine.settingget().pipe(untilDestroyed(this)).subscribe(res => {
+      this.myLoader = false;
+        console.log(res)
+        this.values=res
+    })
 
+  }
+    
+    select(i:any){
+      var acc = document.getElementsByClassName("accordion");
+      acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    })
+  }
   ngOnInit() {
   }
+  ngOnDestroy(){}
 
 }

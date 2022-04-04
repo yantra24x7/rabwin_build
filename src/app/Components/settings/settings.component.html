@@ -1,0 +1,240 @@
+
+<section class="page">
+    <div *ngIf="myLoader" class="spinner">
+        <img src="assets/images/spinner.gif">
+    </div>
+    <div class="section_top_padding">
+      <div class="page_title_sec fo-sep">
+        <h2>Setting</h2>
+        
+        </div> 
+
+      <div class="maintanence-db-wrapper">
+        
+          <div *ngFor="let data of values;let j=index">
+                <button class="accordion" (click)="select(j)">{{data}}</button>
+                <div class="panel">
+                    <form [formGroup]="settingsform0" *ngIf="j==0">
+                       <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform0.get('setting')['controls']; let i = index">
+                   
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField0(i)">remove</button>
+                        
+                        </div>
+                        <button (click)="addNewInputField0(this.machinename,j)">Add</button>
+                       </div> 
+                 
+                </form>     
+                <form [formGroup]="settingsform1" *ngIf="j==1">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform1.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField1(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField1(this.machinename,j)">Add</button>
+                       
+                    </div>
+                
+                </form>
+                <form [formGroup]="settingsform2" *ngIf="j==2">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform2.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField2(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField2(this.machinename,j)">Add</button>
+                        
+                    </div>
+                   
+                </form>
+                <form [formGroup]="settingsform3" *ngIf="j==3">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform3.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField3(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField3(this.machinename,j)">Add</button>
+                       
+                    </div>
+                 
+               
+                </form>
+                <form [formGroup]="settingsform4" *ngIf="j==4">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform4.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField4(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField4(this.machinename,j)">Add</button>
+                       
+                    </div>
+                   
+               
+                </form>
+                <form [formGroup]="settingsform5" *ngIf="j==5">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                    *ngFor="let ques of settingsform5.get('setting')['controls']; let i = index">
+                    <input formControlName="L1Name" type="text" >
+                    <input formControlName="group_signal" type="text" >
+                    <input formControlName="mt_signal" type="text" >
+                    <input formControlName="mt_value" type="text" >
+                    <input formControlName="normal" type="text" >
+                    <input formControlName="warning" type="text" >
+                    <input formControlName="critical" type="text" >
+                    <mat-checkbox  formControlName="active" ></mat-checkbox>
+                    <button (click)="submit(ques)">Submit</button>
+                    <button>Update</button>
+                    <button (click)="removeInputField5(i)">remove</button>
+                    </div>
+                    <button (click)="addNewInputField5(this.machinename,j)">Add</button>
+                   
+                    </div>
+                    
+               
+                </form>
+                <form [formGroup]="settingsform6" *ngIf="j==6">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform6.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField6(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField6(this.machinename,j)">Add</button>
+                       
+                    </div>
+                  
+               
+                </form>
+                <form [formGroup]="settingsform7" *ngIf="j==7">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                    *ngFor="let ques of settingsform7.get('setting')['controls']; let i = index">
+                    <input formControlName="L1Name" type="text" >
+                    <input formControlName="group_signal" type="text" >
+                    <input formControlName="mt_signal" type="text" >
+                    <input formControlName="mt_value" type="text" >
+                    <input formControlName="normal" type="text" >
+                    <input formControlName="warning" type="text" >
+                    <input formControlName="critical" type="text" >
+                    <mat-checkbox  formControlName="active" ></mat-checkbox>
+                    <button (click)="submit(ques)">Submit</button>
+                    <button>Update</button>
+                    <button (click)="removeInputField7(i)">remove</button>
+                    </div>
+                    <button (click)="addNewInputField7(this.machinename,j)">Add</button>
+                   
+                    </div>
+                    
+                </form>
+                <form [formGroup]="settingsform8" *ngIf="j==8">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                        *ngFor="let ques of settingsform8.get('setting')['controls']; let i = index">
+                        <input formControlName="L1Name" type="text" >
+                        <input formControlName="group_signal" type="text" >
+                        <input formControlName="mt_signal" type="text" >
+                        <input formControlName="mt_value" type="text" >
+                        <input formControlName="normal" type="text" >
+                        <input formControlName="warning" type="text" >
+                        <input formControlName="critical" type="text" >
+                        <mat-checkbox  formControlName="active" ></mat-checkbox>
+                        <button (click)="submit(ques)">Submit</button>
+                        <button>Update</button>
+                        <button (click)="removeInputField8(i)">remove</button>
+                        </div>
+                        <button (click)="addNewInputField8(this.machinename,j)">Add</button>
+                        
+                    </div>
+                   
+                </form>
+                <form [formGroup]="settingsform9" *ngIf="j==9">
+                    <div formArrayName="setting">
+                        <div  [formGroupName]="i"
+                    *ngFor="let ques of settingsform9.get('setting')['controls']; let i = index">
+                    <input formControlName="L1Name" type="text" >
+                    <input formControlName="group_signal" type="text" >
+                    <input formControlName="mt_signal" type="text" >
+                    <input formControlName="mt_value" type="text" >
+                    <input formControlName="normal" type="text" >
+                    <input formControlName="warning" type="text" >
+                    <input formControlName="critical" type="text" >
+                    <mat-checkbox  formControlName="active" ></mat-checkbox>
+                    <button (click)="submit(ques)">Submit</button>
+                    <button>Update</button>
+                    <button (click)="removeInputField9(i)">remove</button>
+
+                    </div>
+                    <button (click)="addNewInputField9(this.machinename,j)">Add</button>
+                    </div>
+                    
+               
+                </form>
+                </div>
+            </div>
+        
+
+</div></div>
+</section>
+
+
