@@ -231,10 +231,43 @@
                
                 </form>
                 </div>
+
+
+
+
+
+   
+           </div>
+
+
+           <!-- <div>
+            <form [formGroup]="settingsformss">
+            <div formArrayName="setting">
+            <div [formGroupName]="j" *ngFor="let ques of settingsformss.get('setting')['controls'];let j=index">
+                <button class="accordion" (click)="select(j)">button</button>
+                <div class="panel">
+                    
+                    <div  [formGroupName]="i"
+                    *ngFor="let quess of ques.get('setting')['controls']; let i = index">
+        
+                    <input type="text" formcontrolName="L1Name">
+                    </div>
+
+                </div>
+          
+           
             </div>
+            </div> 
+
+            </form>  
         
 
-</div></div>
+          </div> -->
+            </div>
+
+       
+
+</div>
 </section>
 
 

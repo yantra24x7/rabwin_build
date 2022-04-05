@@ -60,7 +60,7 @@ export class MachineService {
     return this.http.post('settings',val)
   }
 
-  getsets(name,signal){
-return this.http.get('mac_settings?L1Name='+name+'&&group_signal='+signal+'')
+  getsets(name){
+return this.http.get('mac_settings?L1Name='+name+'')
   }
 }
