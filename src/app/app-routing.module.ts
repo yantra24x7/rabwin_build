@@ -53,7 +53,7 @@ const routes: Routes = [
 {path:'Spindle',loadChildren: ()=>import('./Components/spindle/spindle.module').then(m=>m.SpindleModule),canActivate: [AuthGuard]},
 
 
-// { path: 'maintenancedb', loadChildren: () => import('./Components/maintenancedb/maintenacedb.module').then(m => m.MaintenancedbModule) },
+{ path: 'maintenancedb', loadChildren: () => import('./Components/maintenancedb/maintenacedb.module').then(m => m.MaintenancedbModule) },
 // { path: 'trendcharts', loadChildren: () => import('./Components/trendingchart/trending.module').then(m => m.TrendingChartModule) },
 { path: 'alarmreport', loadChildren: () => import('./Components/alarmreports/alarmreports.module').then(m => m.AlarmReportModule) },
 // { path: 'maintenance-report', loadChildren: () => import('./Components/maintenancereport/maintenancereport.module').then(m => m.MaintenancereportModule) },

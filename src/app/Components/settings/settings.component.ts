@@ -75,9 +75,7 @@ export class SettingsComponent implements OnInit {
      this.settingsformss = this.fb.group({
       setting: this.fb.array([]),
      });
-this.add()
-this.add()
-this.add()
+
 console.log(this.settingsformss.value)
      //new concept
    
@@ -89,11 +87,29 @@ console.log(this.settingsformss.value)
         this.values=res
         this.myLoader = false;
          this.getdetails=[]
+         for(let i=0;i<this.values.length;i++){
+          this.add()
+          // this.adds()
+         }
     
         this.machine.getsets(this.machinename).pipe(untilDestroyed(this)).subscribe(res => {
           this.myLoader=false
            this.getdetails=res
            console.log(this.getdetails)
+           for(let i=0;i<this.values.length;i++){
+          //  for(let j=0;j<this.getdetails.length;j++){
+                if(Array.isArray(this.getdetails[this.values[i]]) && this.getdetails[this.values[i]].length){
+                  for(let k=0;k<this.getdetails[this.values[i]].length;k++){
+                    this.adds(this.machinename,i,this.values[i],this.getdetails[this.values[i]][k].mt_signal,this.getdetails[this.values[i]][k].mt_value,this.getdetails[this.values[i]][k].normal,
+                      this.getdetails[this.values[i]][k].warning,this.getdetails[this.values[i]][k].critical,this.getdetails[this.values[i]][k].active) 
+                  }
+                  
+                 }else{
+                  this.adds(this.machinename,i,this.values[i],'','','','','','')
+                }
+          //  }
+          }
+          console.log(this.settingsformss.value)
            this.callmethod()
         })     
         
@@ -217,14 +233,14 @@ this.myLoader=false;
         this.init()
       );
     }
-   remove(i: any) {
-    const control = <FormArray>this.settingsform0.controls['setting'];
-    control.removeAt(i);
+   remove(i: any,j:any) {
+    const control = <FormArray>this.settingsformss.get(['setting',i,'setting'])['controls'];
+    control.removeAt(j);
    
    }
-   adds(){
-    (<FormArray>this.settingsformss.get(['setting',0,'setting'])).push(
-      this.initTechnology()
+   adds(machinename,i,group_signal,mtsignal,mt_value,normal,warning,critical,active){
+    (<FormArray>this.settingsformss.get(['setting',i,'setting'])).push(
+      this.initTechnology(i,machinename,group_signal,mtsignal,mt_value,normal,warning,critical,active)
     );
    }
 init(){
@@ -233,16 +249,16 @@ init(){
   })
 }
 
-   initTechnology() {
+   initTechnology(i,machinename,group_signal,mtsignal,mt_value,normal,warning,critical,active) {
     return this.fb.group({
-      L1Name: ['',Validators.required],
-      group_signal: [''],
-      mt_signal:[''],
-      mt_value:[''],
-      normal: [''],
-      warning:[''],
-      critical:[''],
-      active:['']
+      L1Name: [machinename,Validators.required],
+      group_signal: [group_signal],
+      mt_signal:[mtsignal],
+      mt_value:[mt_value],
+      normal: [normal],
+      warning:[warning],
+      critical:[critical],
+      active:[active]
     });
    }
 
