@@ -7,7 +7,7 @@ import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SettingsComponent } from './settings.component';
-import { MachineService } from 'src/app/Service/app/machine.service';
+import { MachineService } from '../../Service/app/machine.service';
 
 
 @NgModule({
