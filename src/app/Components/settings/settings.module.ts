@@ -6,12 +6,12 @@ import { SettingsRoutingModule } from './setting-routing.module';
 import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { SettingsComponent } from './settings.component';
+import { SettingsComponent, settingsmodals } from './settings.component';
 import { MachineService } from '../../Service/app/machine.service';
 
 
 @NgModule({
-  declarations: [SettingsComponent],
+  declarations: [SettingsComponent,settingsmodals],
   imports: [    SettingsRoutingModule, 
     CommonModule,SharedModule,
     CountUpModule,HighchartsChartModule,
@@ -41,7 +41,8 @@ import { MachineService } from '../../Service/app/machine.service';
     })
   
   ],
-  providers:[MachineService]
+  providers:[MachineService],
+  entryComponents:[settingsmodals]
 
 })
 export class SettingsModule { }

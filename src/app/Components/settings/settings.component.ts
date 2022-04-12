@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/Nav/navbar.service';
 import { MachineService } from 'src/app/Service/app/machine.service';
+import { Maintenancedashboardmtmodal } from '../maintenancedashboard/maintenancedashboard.component';
 
 @Component({
   selector: 'app-settings',
@@ -24,7 +26,7 @@ export class SettingsComponent implements OnInit {
   datas: any=[];
 
 
-  constructor(private nav:NavbarService, private machine: MachineService,private fb: FormBuilder,public toaster:ToastrService) { 
+  constructor(private nav:NavbarService, private machine: MachineService,private fb: FormBuilder,public toaster:ToastrService,public dialog:MatDialog) { 
     this.nav.show()
     
   
@@ -167,10 +169,40 @@ let data={
 })
    }
 
+   update(val){
+   
+      const dialogRef = this.dialog.open(settingsmodals, {
+        width: '900px',
+        data: val
+  
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.ngOnInit(); 
+      });
+    
+   }
+
 
   ngOnDestroy(){}
 }
 
+@Component({
+  selector: 'app-settings',
+  templateUrl: './settingsmod.html',
+  styleUrls: ['./settings.component.scss']
+})
+export class settingsmodals implements OnInit {
+
+  constructor(private nav:NavbarService,public dialogRef: MatDialogRef<settingsmodals>) { 
+    this.nav.show()
+  }
+  dialogclose(){
+this.dialogRef.close();
+  }
+  ngOnInit() {
+  }
+
+}
 
 // settingsform0: FormGroup;
 // settingsform1: FormGroup;
