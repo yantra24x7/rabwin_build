@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>Setting Update</h2>
+<div class="close_modal">
+    <mat-icon mat-dialog-close  class="v-align-middle display" matTooltip="Close">close
+    </mat-icon>
+</div>
+<mat-dialog-content class="mat-typography">
+    <div class="filter_sec">
+        <form [formGroup]="settingForm" (ngSubmit)="submit(settingForm.value)" class="form_sec settingForm">
+            <div class="row_sec">
+                <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Machine Name</mat-label>
+                    <input readonly matInput formControlName="L1Name" type="text">
+                    <mat-error *ngIf="settingForm.controls['L1Name'].errors?.required">Machine Name is Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Group Signal</mat-label>
+                    <input matInput [disabled]="disable" readonly formControlName="group_signal" type="text">
+                    <mat-error *ngIf="settingForm.controls['group_signal'].errors?.required">Group Signal is Required
+                    </mat-error>
+                </mat-form-field>
+          
+             
+            
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>MT Signal</mat-label>
+                    <input matInput formControlName="mt_signal" type="text">
+                    <mat-error *ngIf="settingForm.controls['mt_signal'].errors?.required">MT Signal is Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>MT Value</mat-label>
+                    <input matInput formControlName="mt_value" type="number">
+                    <mat-error *ngIf="settingForm.controls['mt_value'].errors?.required">MT value is Required
+                    </mat-error>
+                </mat-form-field>
+              
+              
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Normal</mat-label>
+                        <input matInput formControlName="normal" type="number">
+                        <mat-error *ngIf="settingForm.controls['normal'].errors?.required">Normal is Required
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Warning</mat-label>
+                        <input matInput formControlName="warning" type="number">
+                        <mat-error *ngIf="settingForm.controls['warning'].errors?.required">Warning is Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Critical</mat-label>
+                        <input matInput formControlName="critical" type="number">
+                        <mat-error *ngIf="settingForm.controls['critical'].errors?.required">Critical is Required
+                        </mat-error>
+                    </mat-form-field>
+                   
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" formControlName="active">Active</mat-checkbox>
+                        </section>
+                    <div class="form-button text-right">
+                        <button mat-raised-button type="submit" class="filter_btn btn_orange">
+                            Save</button>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+            
+        </form>
+
+    </div>
+</mat-dialog-content>

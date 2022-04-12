@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/Nav/navbar.service';
 import { MachineService } from 'src/app/Service/app/machine.service';
-import { Maintenancedashboardmtmodal } from '../maintenancedashboard/maintenancedashboard.component';
+
 
 @Component({
   selector: 'app-settings',
@@ -120,7 +120,18 @@ init(){
    }
 
       
-         
+//    disabling(id,id1){
+//      if((<HTMLInputElement>document.getElementById("L1Name"+id+id1)).value.length !=0 && (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value.length !=0 &&
+//      (<HTMLInputElement>document.getElementById("mt_signal"+id+id1)).value.length !=0 && (<HTMLInputElement>document.getElementById("mt_value"+id+id1)).value.length !=0 &&
+//      (<HTMLInputElement>document.getElementById("normal"+id+id1)).value.length !=0 && (<HTMLInputElement>document.getElementById("warning"+id+id1)).value.length !=0 &&
+//      (<HTMLInputElement>document.getElementById("critical"+id+id1)).value.length !=0){
+// return false
+//      }else{
+//        return true
+//      }
+ 
+  
+//    } 
        
   
     select(i:any){
@@ -173,7 +184,7 @@ let data={
    
       const dialogRef = this.dialog.open(settingsmodals, {
         width: '900px',
-        data: val
+        data: val.value
   
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -192,14 +203,33 @@ let data={
   styleUrls: ['./settings.component.scss']
 })
 export class settingsmodals implements OnInit {
-
-  constructor(private nav:NavbarService,public dialogRef: MatDialogRef<settingsmodals>) { 
+  settingForm: FormGroup;
+  datas: any=[];
+disable:boolean=false
+  constructor(private nav:NavbarService,public dialogRef: MatDialogRef<settingsmodals>,public fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data1: settingsmodals) { 
     this.nav.show()
+    console.log(data1)
+    this.datas=data1
+    this.settingForm = this.fb.group({
+      L1Name: [this.datas.L1Name, Validators.required],
+      group_signal: [this.datas.group_signal, Validators.required],
+      mt_signal: [this.datas.mt_signal, Validators.required],
+      mt_value: [this.datas.mt_value, Validators.required],
+      normal: [this.datas.normal, Validators.required],
+      warning: [this.datas.warning, Validators.required],
+      critical: [this.datas.critical, Validators.required],
+      active: [this.datas.active, Validators.required],
+    })
   }
   dialogclose(){
 this.dialogRef.close();
   }
   ngOnInit() {
+   
+  }
+  submit(val)
+  {
+console.log(val)
   }
 
 }

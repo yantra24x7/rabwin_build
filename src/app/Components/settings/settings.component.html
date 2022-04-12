@@ -250,15 +250,15 @@
                                 <input id="group_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.group_signal}}" disabled type="text" >
                                 <input id="mt_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_signal}}" type="text" >
                                 <input id="mt_value{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_value}}" type="text" >
-                                <input id="normal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.normal}}" type="text" >
-                                <input id="warning{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.warning}}" type="text" >
-                                <input id="critical{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.critical}}" type="text" >
+                                <input id="normal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.normal}}" type="number" >
+                                <input id="warning{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.warning}}" type="number" >
+                                <input id="critical{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.critical}}" type="number" >
                                 <mat-checkbox [disabled]="quess.value.id.length==''?false:true" id="active{{j}}{{k}}" checked="{{quess.value.active}}" [(ngModel)]="quess.value.active" [ngModelOptions]="{standalone: true}"></mat-checkbox>
-                                <button *ngIf="quess.value.id.length==''?true:false" (click)="submit(j,k,quess.value.active)">Submit</button>
+                                <button *ngIf="quess.value.id.length==''?true:false" (click)="submit(j,k,quess.value.active)" >Submit</button>
                                 <button *ngIf="quess.value.id.length==''?false:true" (click)="update(quess)">Update</button>
-                                <button (click)="remove(j,k)">remove</button>
+                                <button (click)="remove(j,k)" *ngIf="ques?.controls?.setting?.controls.length > 1">remove</button>
                             </div>
-                            <button (click)="adds(machinename,j,quess.value.group_signal,'','','','','','','')">Add</button>
+                            <button (click)="adds(machinename,j,quess.value.group_signal,'','','','','','','')" >Add</button>
                         </div> 
             
                     </div> 
