@@ -246,8 +246,8 @@
                     <div >  
                         <div   *ngFor="let quess of ques.get('setting')['controls'];let k=index">
                             <div >
-                                <input id="L1Name{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.L1Name}}" disabled type="text" >
-                                <input id="group_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.group_signal}}" disabled type="text" >
+                                <input id="L1Name{{j}}{{k}}"  readonly value="{{quess.value.L1Name}}" disabled type="text" >
+                                <input id="group_signal{{j}}{{k}}" readonly   value="{{quess.value.group_signal}}" disabled type="text" >
                                 <input id="mt_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_signal}}" type="text" >
                                 <input id="mt_value{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_value}}" type="text" >
                                 <input id="normal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.normal}}" type="number" >

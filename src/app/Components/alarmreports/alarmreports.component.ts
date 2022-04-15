@@ -179,8 +179,8 @@ export class AlarmreportsComponent implements OnInit {
            "Alarm Number": this.alarmreports[i].number || '---',
            "Machine Name": this.alarmreports[i].L1Name || '---',
            "Message":this.alarmreports[i].message || '---',
-           "Start Time":this.datepipe.transform(this.alarmreports[i].updatedate, 'yyyy-MM-dd')  || '---',
-           "End Time": this.datepipe.transform(this.alarmreports[i].enddate , 'yyyy-MM-dd')|| '---',
+           "Start Time":this.datepipe.transform(this.alarmreports[i].updatedate, 'yyyy-MM-dd ; HH:mm:ss')  || '---',
+           "End Time": this.datepipe.transform(this.alarmreports[i].enddate , 'yyyy-MM-dd ; HH:mm:ss')|| '---',
            "Duration":this.toHoursMinutesSeconds(this.alarmreports[i].timespan) || '---',
           
         });
