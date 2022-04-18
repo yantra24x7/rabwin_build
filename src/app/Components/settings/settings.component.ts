@@ -193,6 +193,16 @@ let data={
     
    }
 
+   delete(id){
+    this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res)
+      this.toaster.success("Deleted Successfully")
+      this.ngOnInit(); 
+    
+    })
+     
+   }
+
 
   ngOnDestroy(){}
 }
@@ -206,7 +216,7 @@ export class settingsmodals implements OnInit {
   settingForm: FormGroup;
   datas: any=[];
 disable:boolean=false
-  constructor(private nav:NavbarService,public dialogRef: MatDialogRef<settingsmodals>,public fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data1: settingsmodals) { 
+  constructor(private nav:NavbarService,public toaster:ToastrService,private machine: MachineService,public dialogRef: MatDialogRef<settingsmodals>,public fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data1: settingsmodals) { 
     this.nav.show()
     console.log(data1)
     this.datas=data1
@@ -230,8 +240,15 @@ this.dialogRef.close();
   submit(val)
   {
 console.log(val)
-  }
+// updatesets
+this.machine.updatesets(this.datas.id,val).pipe(untilDestroyed(this)).subscribe(res => {
+console.log(res)
+this.dialogRef.close();
+this.toaster.success("Setting Updated Successfully")
+})
 
+  }
+ngOnDestroy(){}
 }
 
 // settingsform0: FormGroup;

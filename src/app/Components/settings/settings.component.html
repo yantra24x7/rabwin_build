@@ -256,7 +256,7 @@
                                 <mat-checkbox [disabled]="quess.value.id.length==''?false:true" id="active{{j}}{{k}}" checked="{{quess.value.active}}" [(ngModel)]="quess.value.active" [ngModelOptions]="{standalone: true}"></mat-checkbox>
                                 <button *ngIf="quess.value.id.length==''?true:false" (click)="submit(j,k,quess.value.active)" >Submit</button>
                                 <button *ngIf="quess.value.id.length==''?false:true" (click)="update(quess)">Update</button>
-                                <button (click)="remove(j,k)" *ngIf="ques?.controls?.setting?.controls.length > 1">remove</button>
+                                <button (click)="delete(quess.value.id)" (click)="remove(j,k)" *ngIf="ques?.controls?.setting?.controls.length > 1" >remove</button>
                             </div>
                             <button (click)="adds(machinename,j,quess.value.group_signal,'','','','','','','')" >Add</button>
                         </div> 
