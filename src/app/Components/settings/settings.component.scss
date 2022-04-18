@@ -1,5 +1,5 @@
 .accordion {
-    background-color: #eee;
+    background-color: #f7f7f7;
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -11,12 +11,13 @@
     transition: 0.4s;
   }
   
+  
   .active, .accordion:hover {
     background-color: #ccc; 
   }
   
   .panel {
-    padding: 0 18px;
+    padding: 20px;
     display: none;
     background-color: white;
     overflow: hidden;
@@ -56,9 +57,82 @@
 .row_sec .mat-form-field {
     width: 100%;
 }
-.mat-form-field{
-    font-family: 'Barlow Condensed', sans-serif!important;
+// .mat-form-field{
+//     font-family: 'Barlow Condensed', sans-serif!important;
+// }
+// .mat-form-field-infix{
+//     font-family: 'Barlow Condensed', sans-serif!important;
+// }
+
+button.accordion {
+    font-family: "Mulish", sans-serif;
+    font-weight: 500;
 }
-.mat-form-field-infix{
-    font-family: 'Barlow Condensed', sans-serif!important;
+
+.active, .accordion:hover{
+background-color: #f7941e;
+color: #ffffff;
+}
+
+button.accordion span {
+    float: right;
+    font-size: 16px;
+}
+
+.form-wrapper-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-wrapper-main .form-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    margin-bottom: 15px;
+}
+
+.form-wrapper-main .form-wrap label {
+    color: #767676;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+}
+
+.form-wrap span {
+    color: #767676 !important;
+}
+
+.form-wrapper-main .form-wrap input {
+    height: 50px;
+    border: 1px solid #c5c5c5;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+    background: #f8f9fa;
+}
+
+.acc-btn-wrap {
+    float: right;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+
+.acc-btn-wrap button {
+    padding: 10px 25px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+    border: none;
+    box-shadow: none;
+}
+
+.acc-btn-wrap button.btn.btn-warning {
+    color: white;
+    background: #f7941e;
+}
+.acc-btn-wrap button.btn.btn-warning:hover {
+    color: white;
+    background: #d37403;
 }

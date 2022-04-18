@@ -50,7 +50,7 @@
             <div class="line_item_content">
               <div class="circle_chart" (click)="char(value?.Line)">
                 <h3>{{value?.Line}}</h3>
-                <div class="circle_chart_inner">
+                <!-- <div class="circle_chart_inner">
                 <div class="circle_chart_left">
                 
                 <circle-progress radius="20" percent={{value?.eff}} outerStrokeColor="#21a477" innerStrokeColor="#1f2635" animation="true"
@@ -64,18 +64,10 @@
                   <p>Efficiency</p>
                 </div>
                 <ul>
-                  <!-- <li>
-                    <p class="run"><span></span> Run</p>
-                  </li> -->
-                  <!-- <li>
-                    <p class="idle"><span></span>Idle</p>
-                  </li>
-                  <li>
-                    <p class="disconnect"><span></span>Disconnect</p>
-                  </li> -->
+                 
                 </ul>
               </div>
-            </div>
+            </div> -->
                 
               </div>
               <div class="machine_status_sec">
@@ -126,7 +118,7 @@
                 
                 
               </div> 
-              <div class="line_desc">
+              <!-- <div class="line_desc">
                 <div class="line_desc_inner">
                 <h3>{{value.low_perf_machine}}</h3>
                 <div class="line_mac_target">
@@ -144,9 +136,7 @@
                   <li>
                     <span>{{vaul.run_time}}%</span>
                     <div class="progress">
-                      <!-- <div class="bar run" style="width:35%">
-                        <p class="percent">50%</p>
-                      </div> -->
+                     
   
                       <progress class="bar run" max="100" value={{vaul?.run_time}}>
                       </progress>
@@ -157,9 +147,7 @@
                   <li>
                     <span>{{vaul.stop}}%</span>
                     <div class="progress">
-                      <!-- <div class="bar idle" style="width:35%">
-                        <p class="percent">35%</p>
-                      </div> -->
+                    
                       <progress class="bar idle" max="100" value={{vaul?.stop}}>
                       </progress>
   
@@ -169,9 +157,7 @@
                   <li>
                     <span>{{vaul.disconnect}}%</span>
                     <div class="progress">
-                      <!-- <div class="bar disconnect" style="width:35%">
-                        <p class="percent">20%</p>
-                      </div> -->
+                    
                       <progress class="bar disconnect" max="100" value={{vaul?.disconnect}}>
                       </progress>
   
@@ -179,7 +165,7 @@
                     <p>Disconnect /Balance</p>
                   </li>
                 </ul>
-              </div>
+              </div> -->
   
             </div>
           </div>

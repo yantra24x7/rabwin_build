@@ -193,9 +193,10 @@ let data={
     
    }
 
-   delete(id){
+   delete(id ,j,k){
     this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res)
+      this.remove(j,k)
       this.toaster.success("Deleted Successfully")
       this.ngOnInit(); 
     

@@ -5,7 +5,7 @@
     </div>
     <div class="section_top_padding">
       <div class="page_title_sec fo-sep">
-        <h2>Setting</h2>
+        <h2>{{machinename}} Settings</h2>
         
         </div> 
 
@@ -241,24 +241,72 @@
 
 <form [formGroup]="settingsformss">
     <div *ngFor="let ques of settingsformss.get('setting')['controls'];let j=index">
-        <button class="accordion" (click)="select(j)">{{this.values[j]}}</button>
+        <button class="accordion" (click)="select(j)">{{this.values[j]}} <span>+</span></button>
                 <div class="panel">
                     <div >  
                         <div   *ngFor="let quess of ques.get('setting')['controls'];let k=index">
-                            <div >
+                            <div class="form-wrapper-main">
+
+                              
+
+                          
+                                <div class="form-wrap">
+                                    <label>Machine Name</label>
                                 <input id="L1Name{{j}}{{k}}"  readonly value="{{quess.value.L1Name}}" disabled type="text" >
-                                <input id="group_signal{{j}}{{k}}" readonly   value="{{quess.value.group_signal}}" disabled type="text" >
-                                <input id="mt_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_signal}}" type="text" >
-                                <input id="mt_value{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_value}}" type="text" >
-                                <input id="normal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.normal}}" type="number" >
-                                <input id="warning{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.warning}}" type="number" >
-                                <input id="critical{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.critical}}" type="number" >
-                                <mat-checkbox [disabled]="quess.value.id.length==''?false:true" id="active{{j}}{{k}}" checked="{{quess.value.active}}" [(ngModel)]="quess.value.active" [ngModelOptions]="{standalone: true}"></mat-checkbox>
-                                <button *ngIf="quess.value.id.length==''?true:false" (click)="submit(j,k,quess.value.active)" >Submit</button>
-                                <button *ngIf="quess.value.id.length==''?false:true" (click)="update(quess)">Update</button>
-                                <button (click)="delete(quess.value.id)" (click)="remove(j,k)" *ngIf="ques?.controls?.setting?.controls.length > 1" >remove</button>
                             </div>
-                            <button (click)="adds(machinename,j,quess.value.group_signal,'','','','','','','')" >Add</button>
+
+                            <div class="form-wrap">
+                                <label>Group Signal</label>
+                                <input id="group_signal{{j}}{{k}}" readonly   value="{{quess.value.group_signal}}" disabled type="text">
+                            </div>
+
+                            <div class="form-wrap">
+                                <label>MT Signal</label>
+                                <input id="mt_signal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_signal}}" type="text" >
+
+                            </div>
+                            
+                            
+                            <div class="form-wrap">
+                                <label>MT Value</label>
+                                <input id="mt_value{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.mt_value}}" type="text" >
+
+                            </div>
+                            
+                            <div class="form-wrap">
+                                <label>Noral</label>
+                                <input id="normal{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.normal}}" type="number" >
+
+                            </div>
+                            
+                            <div class="form-wrap"> 
+                                <label>Warning</label>
+                                <input id="warning{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.warning}}" type="number" >
+                            </div>
+                            
+                            <div class="form-wrap">  
+                                <label>Critical</label>  
+                                <input id="critical{{j}}{{k}}"  [disabled]="quess.value.id.length==''?false:true" value="{{quess.value.critical}}" type="number" >
+                            </div>
+                            
+                                <div class="form-wrap" style="flex-direction: row; align-items: baseline; margin-top: 45px;">
+                                    
+
+                                <mat-checkbox style="margin-right: 10px; margin-bottom: 0;"  [disabled]="quess.value.id.length==''?false:true" id="active{{j}}{{k}}" checked="{{quess.value.active}}" [(ngModel)]="quess.value.active" [ngModelOptions]="{standalone: true}"> </mat-checkbox>
+                                <span>Active</span>
+
+                            </div>
+
+                            <div class="acc-btn-wrap">
+                                <button class="btn btn-warning" *ngIf="quess.value.id.length==''?true:false" (click)="submit(j,k,quess.value.active)" >Submit</button>
+                                <button  class="btn btn-light" *ngIf="quess.value.id.length==''?false:true" (click)="update(quess)">Update</button>
+                                <button  class="btn btn-secondary" (click)="delete(quess.value.id,j,k)"  *ngIf="ques?.controls?.setting?.controls.length > 1">remove</button>
+                                <button class="btn btn-success" (click)="adds(machinename,j,quess.value.group_signal,'','','','','','','')" >Add</button>
+                            </div>
+                               
+                            </div>
+
+                            
                         </div> 
             
                     </div> 
