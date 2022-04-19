@@ -3,11 +3,116 @@
         <img src="assets/images/spinner.gif">
     </div>
     <div class="section_top_padding">
+      
       <div class="page_title_sec fo-sep">
         <h2>Dashboard - {{lname}}</h2>
         <p>Total Machine <span>({{alname.length==''?0:alname.length}})</span></p>
         </div> 
-       
+
+        <div class="m-dashboard">
+
+        
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let val of alname">
+            
+              <!-- Carousel item -->
+              <div class="">
+                <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
+                  <div class="heading">
+                    <h5>{{val?.machine}}</h5>
+                  <span class="dot"></span>
+                  </div>
+                  <div class="chart-wrapper">
+                    <h1>{{val?.run}}%</h1>
+                    <div class="chart-details">
+                      <div class="circle">
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
+                          animationDuration="300">
+                        </circle-progress>
+                        
+                        </div> 
+                  
+                    </div>
+  
+                    <h6>Mode:<br>
+                      Memory</h6>
+                  </div>
+                </div>
+                <div class="card machine-st fo-alarmss" *ngIf="val.status === 'DISCONNECT'" (click)="getmachinedet(val?.machine)">
+                  <div class="heading">
+                    <h5>{{val?.machine}}</h5>
+                  <span class="dot"></span>
+                  </div>
+                  <div class="chart-wrapper">
+                    <h1>{{val?.run}}%</h1>
+                    <div class="chart-details">
+                      
+                        <div class="circle">
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#939393" innerStrokeColor="#ffffff" animation="true"
+                          animationDuration="300">
+                        </circle-progress>
+                          
+                        </div> 
+                  
+                    </div>
+  
+                    <h6>Mode:<br>
+                      Memory</h6>
+                  </div>
+                </div>
+                <div class="card machine-st fo-alarms" *ngIf="val.status === 'CRITICAL'" (click)="getmachinedet(val?.machine)">
+                  <div class="heading">
+                    <h5>{{val?.machine}}</h5>
+                  <span class="dot"></span>
+                  </div>
+                  <div class="chart-wrapper">
+                    <h1>{{val?.run}}%</h1>
+                    <div class="chart-details">
+                      
+                        <div class="circle">
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ff0f0f" innerStrokeColor="#ffffff" animation="true"
+                          animationDuration="300">
+                        </circle-progress>
+                          
+                        </div> 
+                  
+                    </div>
+  
+                    <h6>Mode:<br>
+                      Memory</h6>
+                  </div>
+                </div>
+                <div class="card machine-st fo-alarms" *ngIf="val.status === 'STOP'" (click)="getmachinedet(val?.machine)">
+                  <div class="heading">
+                    <h5>{{val?.machine}}</h5>
+                  <span class="dot"></span>
+                  </div>
+                  <div class="chart-wrapper">
+                    <h1>{{val?.run}}%</h1>
+                    <div class="chart-details">
+                      
+                      
+                        <div class="circle">
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ffdf00" innerStrokeColor="#ffffff" animation="true"
+                          animationDuration="300">
+                        </circle-progress>
+                        
+                        </div> 
+               
+                    </div>
+  
+                    <h6>Mode:<br>
+                      Memory</h6>
+                  </div>
+                </div>
+              
+              <!-- carousel end -->
+            </div>
+          </ng-template>  
+ 
+        </owl-carousel-o>
+
+      </div>
       <div class="maintanence-db-wrapper">
         <div class="machine-status">
        
@@ -52,99 +157,10 @@
               </ng-container>
           
             </owl-carousel-o>  -->
-          
+            
             <!-- <owl-carousel-o [options]="customOptions">class="slide" carouselSlide [id]="j" -->
 
-            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let val of alname" >
-              <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
-                <div class="heading">
-                  <h5>{{val?.machine}}</h5>
-                <span class="dot"></span>
-                </div>
-                <div class="chart-wrapper">
-                  <h1>{{val?.run}}%</h1>
-                  <div class="chart-details">
-                    <div class="circle">
-                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
-                        animationDuration="300">
-                      </circle-progress>
-                      
-                      </div> 
-                
-                  </div>
-
-                  <h6>Mode:<br>
-                    Memory</h6>
-                </div>
-              </div>
-              <div class="card machine-st fo-alarmss" *ngIf="val.status === 'DISCONNECT'" (click)="getmachinedet(val?.machine)">
-                <div class="heading">
-                  <h5>{{val?.machine}}</h5>
-                <span class="dot"></span>
-                </div>
-                <div class="chart-wrapper">
-                  <h1>{{val?.run}}%</h1>
-                  <div class="chart-details">
-                    
-                      <div class="circle">
-                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#939393" innerStrokeColor="#ffffff" animation="true"
-                        animationDuration="300">
-                      </circle-progress>
-                        
-                      </div> 
-                
-                  </div>
-
-                  <h6>Mode:<br>
-                    Memory</h6>
-                </div>
-              </div>
-              <div class="card machine-st fo-alarms" *ngIf="val.status === 'CRITICAL'" (click)="getmachinedet(val?.machine)">
-                <div class="heading">
-                  <h5>{{val?.machine}}</h5>
-                <span class="dot"></span>
-                </div>
-                <div class="chart-wrapper">
-                  <h1>{{val?.run}}%</h1>
-                  <div class="chart-details">
-                    
-                      <div class="circle">
-                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ff0f0f" innerStrokeColor="#ffffff" animation="true"
-                        animationDuration="300">
-                      </circle-progress>
-                        
-                      </div> 
-                
-                  </div>
-
-                  <h6>Mode:<br>
-                    Memory</h6>
-                </div>
-              </div>
-              <div class="card machine-st fo-alarms" *ngIf="val.status === 'STOP'" (click)="getmachinedet(val?.machine)">
-                <div class="heading">
-                  <h5>{{val?.machine}}</h5>
-                <span class="dot"></span>
-                </div>
-                <div class="chart-wrapper">
-                  <h1>{{val?.run}}%</h1>
-                  <div class="chart-details">
-                    
-                    
-                      <div class="circle">
-                        <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ffdf00" innerStrokeColor="#ffffff" animation="true"
-                        animationDuration="300">
-                      </circle-progress>
-                      
-                      </div> 
-             
-                  </div>
-
-                  <h6>Mode:<br>
-                    Memory</h6>
-                </div>
-              </div>
-            </div>
+            
             <!-- </owl-carousel-o> -->
             <!-- <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card machine-st">
@@ -367,9 +383,9 @@
                 <div class="row Speed"> 
                   <div class="col-lg-7 col-sm-12">
                     
-                  <circle-progress radius="80" percent="80%" outerStrokeColor="#4B4B4B" innerStrokeColor="#FFAD31" animation="true"
-                animationDuration="300" innerStrokeWidth="40">
-              </circle-progress>
+                    <circle-progress radius="60" percent="50" outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
+                    animationDuration="300">
+                  </circle-progress>
             </div>
 
             
