@@ -4899,3 +4899,59 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
 path.highcharts-area {
     fill: none!important;
 }
+
+
+.m-dashboard .owl-prev {
+    background: none !important;
+    padding: 0 !IMPORTANT;
+}
+
+.m-dashboard .owl-next {
+    background: none !important;
+    padding: 0 !IMPORTANT;
+}
+
+.m-dashboard .nav-button.owl-prev {
+    background: #232534 !important;
+    padding: 0 10px !important;
+}
+
+.m-dashboard .nav-button.owl-next {
+    background: #232534 !important;
+    padding: 0 10px !important;
+}
+
+.m-dashboard .nav-button {
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.m-dashboard .owl-next {
+    margin: 0 !important;
+}
+
+.m-dashboard .owl-nav {
+    position: absolute;
+    right: 105px;
+    top: -50.5px;
+}
+
+.m-dashboard .owl-dots {
+    position: absolute;
+    top: -26.5px;
+    right: 170px;
+}
+
+.m-dashboard .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #ffad31;
+    margin-right: 2px;
+}
+
+.m-dashboard .owl-theme .owl-dots .owl-dot span {
+    background: #424558;
+    margin-right: 2px;
+}
+
+.m-dashboard text {
+    display: none;
+}

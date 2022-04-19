@@ -15,6 +15,7 @@ declare var Chart
   templateUrl: './maintenancedb.component.html',
   styleUrls: ['./maintenancedb.component.scss']
 })
+
 export class MaintenancedbComponent implements OnInit {
   pulsecodevalue: any=[];
   servotemperature:any=[]
@@ -30,9 +31,11 @@ export class MaintenancedbComponent implements OnInit {
     loop: true,
     autoplay: true,
     center: true,
-    dots: false,
+    dots: true,
     autoHeight: true,
     autoWidth: true,
+    nav: true,
+    navText : ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
     responsive: {
       0: {
         items: 1,
@@ -41,7 +44,7 @@ export class MaintenancedbComponent implements OnInit {
         items: 1,
       },
       1000: {
-        items: 1,
+        items: 5,
       }
     }
   }
@@ -349,4 +352,6 @@ setTimeout(() => {
   {
     return x+y
   }
+ 
+  
 }
