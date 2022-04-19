@@ -194,9 +194,11 @@ let data={
    }
 
    delete(id ,j,k){
+    this.myLoader=true;
     this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res)
       this.remove(j,k)
+      this.myLoader=false;
       this.toaster.success("Deleted Successfully")
       this.ngOnInit(); 
     
@@ -217,6 +219,7 @@ export class settingsmodals implements OnInit {
   settingForm: FormGroup;
   datas: any=[];
 disable:boolean=false
+  myLoader: boolean=false;
   constructor(private nav:NavbarService,public toaster:ToastrService,private machine: MachineService,public dialogRef: MatDialogRef<settingsmodals>,public fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data1: settingsmodals) { 
     this.nav.show()
     console.log(data1)
@@ -240,10 +243,12 @@ this.dialogRef.close();
   }
   submit(val)
   {
+    this.myLoader=true;
 console.log(val)
 // updatesets
 this.machine.updatesets(this.datas.id,val).pipe(untilDestroyed(this)).subscribe(res => {
 console.log(res)
+this.myLoader=false
 this.dialogRef.close();
 this.toaster.success("Setting Updated Successfully")
 })

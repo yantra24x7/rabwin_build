@@ -47,6 +47,7 @@ export class MaintenancedbComponent implements OnInit {
   }
   servoload2: any=[];
   servoload3: any=[];
+  maintenancedetails: any=[];
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -64,11 +65,114 @@ export class MaintenancedbComponent implements OnInit {
           this.myLoader=false
           console.log(this.alname)
         })
+        this.maintenancedetails=[]
         this.alname = res;
+        this.service.machinedetails(this.alname[0].machine).pipe(untilDestroyed(this)).subscribe(res=>{
+         this.maintenancedetails=res
+         console.log(this.maintenancedetails)
+         this.servoloads()
+        })
     })
    }
 
-  ngOnInit(): void {  
+servoloads(){
+  setTimeout(() => {
+    for(let j=0;j<this.maintenancedetails['SERVOLOAD'].length;j++){
+      new Chart('oilChart'+j, {
+        type: 'doughnut',
+        plugins: [{
+          afterDraw: chart => {
+            var needleValue = chart.chart.config.data.datasets[0].needleValue;
+            var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
+            var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
+            var ctx = chart.chart.ctx;
+            var cw = chart.chart.canvas.offsetWidth;
+            var ch = chart.chart.canvas.offsetHeight;
+            var cx = cw / 2;
+            var cy = ch - 6;
+      
+            ctx.translate(cx, cy);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.moveTo(0, -3);
+            ctx.lineTo(ch - 40, 0);
+            ctx.lineTo(0, 3);
+            ctx.fillStyle = 'rgb(256, 256, 256)';
+            ctx.fill();
+            ctx.rotate(-angle);
+            ctx.translate(-cx, -cy);
+            ctx.beginPath();
+            ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }],
+        data: {
+          labels: [
+     
+          ],
+          borderWidth: 0,
+          datasets: [{
+            data: [this.maintenancedetails['SERVOLOAD'][j].color_code[0], this.maintenancedetails['SERVOLOAD'][j].color_code[1], this.maintenancedetails['SERVOLOAD'][j].color_code[2]],
+            borderWidth: 0,
+            needleValue: this.maintenancedetails['SERVOLOAD'][j].value,
+            backgroundColor: [
+              '#96d617',
+              '#f2f207',
+              '#f21a07'
+            ]
+          }]
+        },
+        options: {
+          layout: {
+            padding: {
+              bottom: 3
+            },
+          },
+          tooltips: {
+            enabled: false,
+          },
+          
+          rotation: -Math.PI,
+          cutoutPercentage: 50,
+          circumference: Math.PI,
+          legend: {
+            display:false,
+            position: 'left'
+          },
+          animation: {
+            animateRotate: false,
+            animateScale: true
+          }
+        },
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: false
+            },
+            shadow: false,
+            center: ['50%', '50%'],
+            borderWidth: 0 // < set this option
+          }
+        }
+        
+      });
+    }
+    }, 1000);
+
+    setTimeout(() => {
+      for(let i=0;i<this.maintenancedetails['PULSECODETEMPERATURE'].length;i++){
+        let gauge: LinearGauge = new LinearGauge(this.chart(this.maintenancedetails['PULSECODETEMPERATURE'][i].value,this.maintenancedetails['PULSECODETEMPERATURE'][i].color_code[0],this.maintenancedetails['PULSECODETEMPERATURE'][i].color_code[1],this.maintenancedetails['PULSECODETEMPERATURE'][i].color_code[2]));
+        gauge.appendTo('#rangeContainer'+i);
+      }
+      for(let i=0;i<this.maintenancedetails['SERVOTEMPERATURE'].length;i++){
+        let gauge: LinearGauge = new LinearGauge(this.chart(this.maintenancedetails['SERVOTEMPERATURE'][i].value,this.maintenancedetails['SERVOTEMPERATURE'][i].color_code[0],this.maintenancedetails['SERVOTEMPERATURE'][i].color_code[1],this.maintenancedetails['SERVOTEMPERATURE'][i].color_code[2]));
+        gauge.appendTo('#rangeContainers'+i);
+      }
+    }, 1000);
+}
+
+  ngOnInit() {  
+    
     this.pulsecodevalue=[10,20,30,40,50]
     this.servotemperature=[10,20,30,40,50]
     this.servoload=[10,20,30,40,50]
@@ -77,99 +181,9 @@ export class MaintenancedbComponent implements OnInit {
     this.servoload1=[10,20]
     this.servoload2=['Spindle Speed','Feed']
     this.servoload3=['1000 Rpm','120 mm']
-    setTimeout(() => {
-      for(let i=0;i<this.pulsecodevalue.length;i++){
-        let gauge: LinearGauge = new LinearGauge(this.chart(this.pulsecodevalue[i]));
-        gauge.appendTo('#rangeContainer'+i);
-      }
-      for(let i=0;i<this.servotemperature.length;i++){
-        let gauge: LinearGauge = new LinearGauge(this.chart(this.servotemperature[i]));
-        gauge.appendTo('#rangeContainers'+i);
-      }
-    }, 1000);
+   
 
-    setTimeout(() => {
-for(let j=0;j<this.servoload.length;j++){
-  new Chart('oilChart'+j, {
-    type: 'doughnut',
-    plugins: [{
-      afterDraw: chart => {
-        var needleValue = chart.chart.config.data.datasets[0].needleValue;
-        var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
-        var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
-        var ctx = chart.chart.ctx;
-        var cw = chart.chart.canvas.offsetWidth;
-        var ch = chart.chart.canvas.offsetHeight;
-        var cx = cw / 2;
-        var cy = ch - 6;
-  
-        ctx.translate(cx, cy);
-        ctx.rotate(angle);
-        ctx.beginPath();
-        ctx.moveTo(0, -3);
-        ctx.lineTo(ch - 40, 0);
-        ctx.lineTo(0, 3);
-        ctx.fillStyle = 'rgb(256, 256, 256)';
-        ctx.fill();
-        ctx.rotate(-angle);
-        ctx.translate(-cx, -cy);
-        ctx.beginPath();
-        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }],
-    data: {
-      labels: [
  
-      ],
-      borderWidth: 0,
-      datasets: [{
-        data: [25, 25, 50],
-        borderWidth: 0,
-        needleValue: this.servoload[j],
-        backgroundColor: [
-          '#96d617',
-          '#f2f207',
-          '#f21a07'
-        ]
-      }]
-    },
-    options: {
-      layout: {
-        padding: {
-          bottom: 3
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      
-      rotation: -Math.PI,
-      cutoutPercentage: 50,
-      circumference: Math.PI,
-      legend: {
-        display:false,
-        position: 'left'
-      },
-      animation: {
-        animateRotate: false,
-        animateScale: true
-      }
-    },
-    plotOptions: {
-      pie: {
-        dataLabels: {
-          enabled: false
-        },
-        shadow: false,
-        center: ['50%', '50%'],
-        borderWidth: 0 // < set this option
-      }
-    }
-    
-  });
-}
-}, 1000);
 setTimeout(() => {
   for(let j=0;j<this.servoload1.length;j++){
     new Chart('oilCharts'+j, {
@@ -244,7 +258,18 @@ setTimeout(() => {
 
   }
 
-  chart(val){
+  getmachinedet(machinename){
+    // machinedetails
+    this.myLoader=true
+    this.service.machinedetails(machinename).pipe(untilDestroyed(this)).subscribe(res=>{
+      this.maintenancedetails=[]
+    this.maintenancedetails=res
+    this.myLoader=false
+    this.servoloads()
+    })
+  }
+  chart(val,val1,val2,val3){
+
     let gauge: LinearGauge = new LinearGauge({
       load: (args: ILoadEventArgs) => {
           // custom code start
@@ -288,20 +313,20 @@ setTimeout(() => {
           },
           ranges: [{
               start: 0,
-              end: 32,
+              end: val1,
               color: '#30B32D',
               startWidth: 15,
               endWidth: 15
           },
           {
-              start: 32,
-              end: 68,
+              start:val1,
+              end:this.addition(val1,val2),
               startWidth: 15,
               endWidth: 15,
               color: '#FFDF00'
           },
           {
-              start: 68,
+              start:this.addition(val1,val2),
               end: 100,
               startWidth: 15,
               endWidth: 15,
@@ -319,4 +344,9 @@ setTimeout(() => {
   }
 
   ngOnDestroy(){}
+
+  addition(x,y)
+  {
+    return x+y
+  }
 }

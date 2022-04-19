@@ -43,7 +43,11 @@ export class DashboardService {
   reason(name):Observable<any>{
     return this.http.get('current_idle_reasons?machine='+name)
   }
+  machinedetails(machinename){
+    return this.http.get('maintenance_dashboard?machinename='+machinename)
+  }
 }
+
 
 
 
