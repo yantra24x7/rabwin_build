@@ -12,10 +12,10 @@
         <div class="m-dashboard">
 
         
-        <owl-carousel-o [options]="customOptions">
+   <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let val of alname">
             
-              <!-- Carousel item -->
+             
               <div class="">
                 <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
                   <div class="heading">
@@ -106,7 +106,7 @@
                   </div>
                 </div>
               
-              <!-- carousel end -->
+           
             </div>
           </ng-template>  
  
@@ -224,13 +224,13 @@
         <div class="machine-status-slide">
           <div class="card machine-st fo-slide">
             <div class="contents">
-              <h6>Program No: <strong>0010</strong></h6>
+              <h6>Program No: <strong>{{programnumber}}</strong></h6>
               <div class="divider"></div>
               <h6>Product Name: <strong>Rotor</strong></h6>
               <div class="divider"></div>
-              <h6>Power on Time: <strong>18112022 hr</strong></h6>
+              <h6>Power on Time: <strong>{{powerontime}} hr</strong></h6>
               <div class="divider"></div>
-              <h6>Run Time: <strong>521456</strong></h6>
+              <h6>Run Time: <strong>{{runtime}}</strong></h6>
             </div>
           </div> 
 
@@ -248,20 +248,20 @@
                  </div>
                </div>
 
-               <div class="indicator-wrapper">
-                 <div class="item-wrpper">
-                   <div class="mini green"></div>
-                   <p>0-50</p>
-                 </div>
-                 <div class="item-wrpper">
-                  <div class="mini yellow"></div>
-                  <p>50-75</p>
+               <div class="indicator-wrapper"  *ngIf="maintenancedetails['SERVOLOAD']">
+                <div class="item-wrpper">
+                  <div class="mini green"></div>
+                  <p>0-{{maintenancedetails['SERVOLOAD'][0].color_code[0]}}</p>
                 </div>
                 <div class="item-wrpper">
-                  <div class="mini red"></div>
-                  <p>75-100</p>
-                </div>
+                 <div class="mini yellow"></div>
+                 <p>{{maintenancedetails['SERVOLOAD'][0].color_code[0]}}-{{maintenancedetails['SERVOLOAD'][0].color_code[0] + maintenancedetails['SERVOLOAD'][0].color_code[1]}}</p>
                </div>
+               <div class="item-wrpper">
+                 <div class="mini red"></div>
+                 <p>{{maintenancedetails['SERVOLOAD'][0].color_code[0] + maintenancedetails['SERVOLOAD'][0].color_code[1]}}-100</p>
+               </div>
+              </div>
               
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart1.png">
@@ -277,7 +277,7 @@
                   <img src="assets/images/chart2.png">           
                 </div> -->
 
-                <div class="indicator-wrapper">
+                <div class="indicator-wrapper"  *ngIf="maintenancedetails['SERVOTEMPERATURE']">
                   <div class="item-wrpper">
                     <div class="mini green"></div>
                     <p>0-{{maintenancedetails['SERVOTEMPERATURE'][0].color_code[0]}}</p>
@@ -301,7 +301,7 @@
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
                 </div> -->
-                <div class="indicator-wrapper">
+                <div class="indicator-wrapper" *ngIf="maintenancedetails['PULSECODETEMPERATURE']">
                   <div class="item-wrpper">
                     <div class="mini green"></div>
                     <p>0-{{maintenancedetails['PULSECODETEMPERATURE'][0].color_code[0]}}</p>
@@ -381,20 +381,24 @@
                 <h4>Spindle Load(%) </h4>
               
                 <div class="row Speed"> 
-                  <div class="col-lg-7 col-sm-12">
+                  <div class="col-lg-5" *ngFor="let data of loads">
+                    <div>
+                      <circle-progress  radius="60" percent="{{data.value}}" outerStrokeColor="{{colorcode(data.color_code,data.value)}}" innerStrokeColor="#ffffff" animation="true"
+                        animationDuration="300">
+                      </circle-progress>
+                     
+                    </div>
                     
-                    <circle-progress radius="60" percent="50" outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
-                    animationDuration="300">
-                  </circle-progress>
-            </div>
+                    
+                 </div>
 
             
                   <div class="col-lg-5"  >
-                    <!-- <h4>Spindle Speed</h4> -->
-                    <div class="fo-cht" *ngFor="let data of servoload1;let k=index">  
-                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{this.servoload2[k]}}</span>
+                  
+                    <div class="fo-cht" *ngFor="let data of temp;let k=index">  
+                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}}</span>
                       <canvas id="oilCharts{{k}}" width="20" ></canvas>
-                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{servoload3[k]}}</span>
+                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
                     </div>
                    </div>
                  
@@ -408,33 +412,38 @@
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Fan Speed</h4>
                 <div class="usables">
-                    <div class="item-wrapper">
-                      <p>Fan1</p>
+                    <div class="item-wrapper" *ngFor="let data of maintenancedetails['FANSPEED'];let i=index">
+                      <p>Fan{{i+1}}</p>
                       <img src="assets/icons/fanw.png" alt="">
-                      <p>10513</p>
+                      <p>{{data.value}}</p>
                     </div>
 
-                    <div class="item-wrapper">
+                    <!-- <div class="item-wrapper">
                       <p>Fan2</p>
                       <img src="assets/icons/fanw.png" alt="">
                       <p>10513</p>
-                    </div>
+                    </div> -->
                 </div>
               </div>
 
               <div class="card machine-st fo-chart-wrapper" style="margin-top: 8px;">
                 <h4>Fan Status</h4>
-                <div class="usables">
-                    <div class="item-wrapper green">
-                      <p>Fan1</p>
+                <div class="usables" *ngFor="let data of maintenancedetails['FANSTATUS'];let i=index">
+                    <div class="item-wrapper green" *ngIf="data.value==='NORMAL'">
+                      <p>Fan{{i+1}}</p>
                       <img src="assets/icons/fanw.png" alt="">
-                      <p>10513</p>
+                      <p>{{data.value}}</p>
                     </div>
 
-                    <div class="item-wrapper red">
-                      <p>Fan2</p>
+                    <div class="item-wrapper red" *ngIf="data.value !='NORMAL' && data.value !='NON'">
+                      <p>Fan{{i+1}}</p>
                       <img src="assets/icons/fanw.png" alt="">
-                      <p>10513</p>
+                      <p>{{data.value}}</p>
+                    </div>
+                    <div class="item-wrapper" *ngIf="data.value =='NON'">
+                      <p>Fan{{i+1}}</p>
+                      <img src="assets/icons/fanw.png" alt="">
+                      <p>{{data.value}}</p>
                     </div>
                 </div>
               </div>
