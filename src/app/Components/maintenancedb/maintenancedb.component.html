@@ -244,7 +244,7 @@
                <div class="row">
                  <div class="col-lg-4 col-sm-12" *ngFor="let data of maintenancedetails['SERVOLOAD'];let k=index">
                    <p style="margin-bottom: 0; text-align: center; font-size: 20px;">{{data.axis}}({{data.value}})</p>
-                  <div >  <canvas id="oilChart{{k}}"  height="200"></canvas></div>
+                  <div >  <canvas id="oilChart{{k}}"  height="160"></canvas></div>
                  </div>
                </div>
 
@@ -323,7 +323,7 @@
         <div class="machine-details-section twin" style="margin-top: 8px;">
           <div class="row">
             <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="card machine-st fo-chart-wrapper">
+              <div class="card machine-st fo-chart-wrapper" style="overflow-x:auto;">
                 <h4>Servo Load Current <span>(A)</span></h4>
                 <div class="content">
                   <div class="text-wrapper" *ngFor="let data of maintenancedetails['SERVOLOADCURRENT']">
@@ -349,7 +349,7 @@
                 </div>
               </div>
 
-              <div class="card machine-st fo-chart-wrapper" style="margin-top: 10px;">
+              <div class="card machine-st fo-chart-wrapper" style="margin-top: 10px; overflow-x:auto;" >
                 <h4>Absolute Postion <span>(%)</span></h4>
                 <div class="content">
                   <div class="text-wrapper" *ngFor="let data of maintenancedetails['ABSOLUTEPOSITION']">
@@ -376,14 +376,15 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="card machine-st fo-chart-wrapper">
-                <h4>Spindle Load(%) </h4>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+              <div class="card machine-st fo-chart-wrapper sep">
+                <h4>Spindle (%) </h4>
               
-                <div class="row Speed"> 
-                  <div class="col-lg-5" *ngFor="let data of loads">
+                <div class="row" style="align-items: center;"> 
+                  <div class="col-lg-3" *ngFor="let data of loads" style="text-align: center;">
                     <div>
-                      <circle-progress  radius="60" percent="{{data.value}}" outerStrokeColor="{{colorcode(data.color_code,data.value)}}" innerStrokeColor="#ffffff" animation="true"
+                      <span>Spindle Load</span>
+                      <circle-progress  radius="80" percent="{{data.value}}" outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true"
                         animationDuration="300">
                       </circle-progress>
                      
@@ -393,13 +394,17 @@
                  </div>
 
             
-                  <div class="col-lg-5"  >
+                  <div class="col-lg-9"  >
+                  <div class="chrt-flx" style="padding: 23px;">
+
                   
                     <div class="fo-cht" *ngFor="let data of temp;let k=index">  
-                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
-                      <canvas id="oilCharts{{k}}" width="20" ></canvas>
-                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
+                      <canvas class="cht-wi" id="oilCharts{{k}}" width="30%"></canvas>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
                     </div>
+
+                  </div>
                    </div>
                  
                   
@@ -408,7 +413,7 @@
               </div>
             </div>
 
-            <div class="col-lg-2 col-md-12 col-sm-12 fo-right">
+            <div class="col-lg-5 col-md-12 col-sm-12 fo-right" style="margin-top: 8px; padding-right: 0;">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Fan Speed</h4>
                 <div class="usables">
@@ -426,8 +431,16 @@
                 </div>
               </div>
 
-              <div class="card machine-st fo-chart-wrapper" style="margin-top: 8px;">
+              
+
+
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12 fo-right" style="margin-top: 8px; padding-right: 0;">
+              <div class="card machine-st fo-chart-wrapper" >
                 <h4>Fan Status</h4>
+                <div class="fo-flx">
+
+                
                 <div class="usables" *ngFor="let data of maintenancedetails['FANSTATUS'];let i=index">
                     <div class="item-wrapper green" *ngIf="data.value==='NORMAL'">
                       <p>Fan{{i+1}}</p>
@@ -446,12 +459,12 @@
                       <p>{{data.value}}</p>
                     </div>
                 </div>
+
               </div>
-
-
+              </div>
             </div>
 
-            <div class="col-lg-2 col-md-12 col-sm-12 ">
+            <div class="col-lg-2 col-md-12 col-sm-12 " style="margin-top: 8px;">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Battery Status</h4>
                  <div class="fo-icons-wrapper">
