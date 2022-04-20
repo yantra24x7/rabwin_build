@@ -294,6 +294,17 @@ servoloads(){
 
   }
 
+  datashow(value){
+if(value=="Spindle Feed"){
+ return "mm"
+}
+else if(value=="Spindle Speed"){
+  return "rpm"
+}else{
+return "°C"
+}
+  }
+
   colorcode(value1,value2){
 
     if(value1[0]>=value2){

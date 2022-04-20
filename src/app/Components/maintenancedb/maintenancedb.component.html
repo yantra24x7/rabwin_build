@@ -396,7 +396,7 @@
                   <div class="col-lg-5"  >
                   
                     <div class="fo-cht" *ngFor="let data of temp;let k=index">  
-                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}}</span>
+                      <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
                       <canvas id="oilCharts{{k}}" width="20" ></canvas>
                       <span style="float:right; font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
                     </div>
@@ -456,8 +456,8 @@
                 <h4>Battery Status</h4>
                  <div class="fo-icons-wrapper">
                    <div class="bt-icon" *ngFor="let data of maintenancedetails['BATTERYSTATUS']">
-                     <img *ngIf="data.value==true" src="assets/icons/bt-green.png" alt="">
-                     <img  *ngIf="data.value==false" src="assets/icons/bt-red.png" alt="">
+                     <img *ngIf="data.value==false" src="assets/icons/bt-green.png" alt="">
+                     <img  *ngIf="data.value==true" src="assets/icons/bt-red.png" alt="">
                      <p>{{data.axis}}</p>
                    </div>
                    <!-- <div class="bt-icon">
