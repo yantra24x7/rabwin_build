@@ -194,15 +194,20 @@ let data={
    }
 
    delete(id ,j,k){
-    this.myLoader=true;
-    this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res)
+     if(id){
+      this.myLoader=true;
+      this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
+        console.log(res)
+        this.remove(j,k)
+        this.myLoader=false;
+        this.toaster.success("Deleted Successfully")
+        this.ngOnInit(); 
+      
+      })
+     }else{
       this.remove(j,k)
-      this.myLoader=false;
-      this.toaster.success("Deleted Successfully")
-      this.ngOnInit(); 
-    
-    })
+     }
+
      
    }
 

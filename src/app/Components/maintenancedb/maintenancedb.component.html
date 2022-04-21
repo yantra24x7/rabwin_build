@@ -378,12 +378,12 @@
 
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper sep">
-                <h4>Spindle (%) </h4>
+                <h4>Spindle</h4>
               
                 <div class="row" style="align-items: center;"> 
                   <div class="col-lg-3" *ngFor="let data of loads" style="text-align: center;">
                     <div>
-                      <span>Spindle Load</span>
+                      <span>Spindle Load (%)</span>
                       <circle-progress  radius="80" percent="{{data.value}}" outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true"
                         animationDuration="300">
                       </circle-progress>
@@ -401,7 +401,7 @@
                     <div class="fo-cht" *ngFor="let data of temp;let k=index">  
                       <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
                       <canvas class="cht-wi" id="oilCharts{{k}}" width="30%"></canvas>
-                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}} {{datashow(data.axis)}}</span>
                     </div>
 
                   </div>
