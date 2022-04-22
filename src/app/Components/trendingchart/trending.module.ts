@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SharedModule} from '../shared/shared.module';
 import { TrendingChartRoutingModule } from './trendingchart-routing.module';
 import { TrendingchartComponent } from './trendingchart.component';
@@ -7,12 +7,14 @@ import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DashboardService} from '../../Service/app/dashboard.service';
+import { ReportService } from 'src/app/Service/app/report.service';
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 
 
 @NgModule({
   declarations: [TrendingchartComponent],
   imports: [    TrendingChartRoutingModule, 
-    CommonModule,SharedModule,
+    CommonModule,SharedModule, SatDatepickerModule, SatNativeDateModule,
     CountUpModule,HighchartsChartModule,
     NgCircleProgressModule.forRoot({
       "backgroundColor": "#0e121b",
@@ -40,7 +42,7 @@ import { DashboardService} from '../../Service/app/dashboard.service';
     })
   
   ],
-  providers:[DashboardService]
+  providers:[ReportService,DatePipe]
 
 })
 export class TrendingChartModule { }

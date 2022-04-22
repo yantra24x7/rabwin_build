@@ -54,7 +54,7 @@ const routes: Routes = [
 
 
 { path: 'maintenancedb', loadChildren: () => import('./Components/maintenancedb/maintenacedb.module').then(m => m.MaintenancedbModule) },
-// { path: 'trendcharts', loadChildren: () => import('./Components/trendingchart/trending.module').then(m => m.TrendingChartModule) },
+{ path: 'trendcharts', loadChildren: () => import('./Components/trendingchart/trending.module').then(m => m.TrendingChartModule) },
 { path: 'alarmreport', loadChildren: () => import('./Components/alarmreports/alarmreports.module').then(m => m.AlarmReportModule) },
 // { path: 'maintenance-report', loadChildren: () => import('./Components/maintenancereport/maintenancereport.module').then(m => m.MaintenancereportModule) },
 { path: 'machine', loadChildren: () => import('./Components/maintenancedashboard/maintenancedashboard.module').then(m => m.MaintenancedashboardModule) },
