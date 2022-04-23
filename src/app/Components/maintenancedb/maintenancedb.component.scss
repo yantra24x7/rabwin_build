@@ -282,7 +282,7 @@ tspan {
 span.gauge-title {
     float: left;
     padding-top: 14px;
-    color: #B4B4B4;
+    color: #ffffff;
 }
 
 .card.machine-st.fo-chart-wrapper .row {
@@ -363,9 +363,25 @@ span.gauge-title {
     margin-right: 10px;
 }
 
+.card.machine-st.fo-alarms.fo-blink{
+    border: 2px solid #f03e3e !important ;
+    animation: blink 0.8s;
+    animation-iteration-count: 1500;
+}
 
+.machine-details-section.min-h .col-lg-4.col-md-12.col-sm-12 .card.machine-st.fo-chart-wrapper {
+    min-height: 100%;
+}
 
-
+.card.machine-st.fo-alarms.as-selected-yellow {
+    border: 3px solid #ffdf00;
+}
+.card.machine-st.as-selected-green {
+    border: 3px solid #16a300;
+}
+.card.machine-st.fo-alarmss.as-selected-grey {
+    border: 3px solid #6b6b6b;
+}
 
 // canvas {
 //     width: 70% !IMPORTANT;

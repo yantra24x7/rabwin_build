@@ -17,7 +17,7 @@
             
              
               <div class="">
-                <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
+                <div class="card machine-st as-selected-green" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
                   <div class="heading">
                     <h5>{{val?.machine}}</h5>
                   <span class="dot"></span>
@@ -38,7 +38,7 @@
                       Memory</h6>
                   </div>
                 </div>
-                <div class="card machine-st fo-alarmss" *ngIf="val.status === 'DISCONNECT'" (click)="getmachinedet(val?.machine)">
+                <div class="card machine-st fo-alarmss as-selected-grey" *ngIf="val.status === 'DISCONNECT'" (click)="getmachinedet(val?.machine)">
                   <div class="heading">
                     <h5>{{val?.machine}}</h5>
                   <span class="dot"></span>
@@ -60,7 +60,7 @@
                       Memory</h6>
                   </div>
                 </div>
-                <div class="card machine-st fo-alarms" *ngIf="val.status === 'CRITICAL'" (click)="getmachinedet(val?.machine)">
+                <div class="card machine-st fo-alarms fo-blink" *ngIf="val.status === 'CRITICAL'" (click)="getmachinedet(val?.machine)">
                   <div class="heading">
                     <h5>{{val?.machine}}</h5>
                   <span class="dot"></span>
@@ -82,7 +82,7 @@
                       Memory</h6>
                   </div>
                 </div>
-                <div class="card machine-st fo-alarms" *ngIf="val.status === 'STOP'" (click)="getmachinedet(val?.machine)">
+                <div class="card machine-st fo-alarms as-selected-yellow" *ngIf="val.status === 'STOP'" (click)="getmachinedet(val?.machine)">
                   <div class="heading">
                     <h5>{{val?.machine}}</h5>
                   <span class="dot"></span>
@@ -236,7 +236,7 @@
 
         </div>
 
-        <div class="machine-details-section">
+        <div class="machine-details-section min-h">
           <div class="row">
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
