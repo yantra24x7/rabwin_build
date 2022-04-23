@@ -4955,3 +4955,13 @@ path.highcharts-area {
 .m-dashboard text {
     display: none;
 }
+
+text {
+    fill: white !important;
+}
+
+tspan {
+    font-size: 17px;
+    overflow: hidden;
+    fill: white;
+}

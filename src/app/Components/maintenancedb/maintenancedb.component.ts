@@ -33,7 +33,7 @@ export class MaintenancedbComponent implements OnInit {
   maintenancedetails: any=[];
   customOptions: OwlOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     center: true,
     dots: true,
     autoHeight: true,
