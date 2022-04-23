@@ -26,7 +26,8 @@
                     <h1>{{val?.run}}%</h1>
                     <div class="chart-details">
                       <div class="circle">
-                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" animation="true"
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#16a300" innerStrokeColor="#ffffff" 
+                          animation="true"
                           animationDuration="300">
                         </circle-progress>
                         
@@ -390,8 +391,7 @@
                   <div class="col-lg-3" *ngFor="let data of loads" style="text-align: center;">
                     <div>
                       <span>Spindle Load (%)</span>
-                      <circle-progress  radius="80" percent="{{data.value}}"  outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true"
-                        animationDuration="300">
+                      <circle-progress  radius="60" percent="{{data.value}}"  outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true" animationDuration="300" innerstrokeradius="60">
                       </circle-progress>
                      
                     </div>
