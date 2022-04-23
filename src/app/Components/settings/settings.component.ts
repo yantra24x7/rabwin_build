@@ -157,27 +157,54 @@ init(){
 
    submit(id,id1,active){
      
-let data={
-  "L1Name":(<HTMLInputElement>document.getElementById("L1Name"+id+id1)).value,
-  "group_signal": (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value,
-  "mt_signal":(<HTMLInputElement>document.getElementById("mt_signal"+id+id1)).value,
-  "mt_value":(<HTMLInputElement>document.getElementById("mt_value"+id+id1)).value,
-  "normal": (<HTMLInputElement>document.getElementById("normal"+id+id1)).value,
-  "warning":(<HTMLInputElement>document.getElementById("warning"+id+id1)).value,
-  "critical":(<HTMLInputElement>document.getElementById("critical"+id+id1)).value,
-  "active":active
-}
+    if((<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value=="SERVOLOAD" || (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value=="SERVOTEMPERATURE" || (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value=="PULSECODETEMPERATURE" ||
+    (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value=="SPINDLE"){
 
-        
-        this.myLoader=true
-        this.machine.addsetting(data).pipe(untilDestroyed(this)).subscribe(res => {
-        console.log(res)
-        this.myLoader=false
-        setTimeout(()=> {
-        this.getdata()
-        }, 3000);
+      let data={
+        "L1Name":(<HTMLInputElement>document.getElementById("L1Name"+id+id1)).value,
+        "group_signal": (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value,
+        "mt_signal":(<HTMLInputElement>document.getElementById("mt_signal"+id+id1)).value,
+        "mt_value":(<HTMLInputElement>document.getElementById("mt_value"+id+id1)).value,
+        "normal": (<HTMLInputElement>document.getElementById("normal"+id+id1)).value,
+        "warning":(<HTMLInputElement>document.getElementById("warning"+id+id1)).value,
+        "critical":(<HTMLInputElement>document.getElementById("critical"+id+id1)).value,
+        "active":active
+      }
+      this.myLoader=true
+      this.machine.addsetting(data).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res)
+      this.myLoader=false
+      setTimeout(()=> {
+      this.getdata()
+      }, 3000);
 
 })
+    }else{
+      let data={
+        "L1Name":(<HTMLInputElement>document.getElementById("L1Name"+id+id1)).value,
+        "group_signal": (<HTMLInputElement>document.getElementById("group_signal"+id+id1)).value,
+        "mt_signal":(<HTMLInputElement>document.getElementById("mt_signal"+id+id1)).value,
+        "mt_value":(<HTMLInputElement>document.getElementById("mt_value"+id+id1)).value,
+        "normal": "",
+        "warning":"",
+        "critical":"",
+        "active":active
+      }
+      this.myLoader=true
+      this.machine.addsetting(data).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res)
+      this.myLoader=false
+      setTimeout(()=> {
+      this.getdata()
+      }, 3000);
+
+})
+    }
+     
+
+
+        
+       
    }
 
    update(val){

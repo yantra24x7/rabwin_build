@@ -59,6 +59,8 @@ export class MaintenancedbComponent implements OnInit {
   runtime: any;
   timout: any;
   timeout1: any;
+  partscount: any;
+  cuttime: any;
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -88,6 +90,11 @@ export class MaintenancedbComponent implements OnInit {
           this.powerontime=this.maintenancedetails['POWERONTIME'][0].value
          }if(Array.isArray(this.maintenancedetails['RUNTIME'])){
           this.runtime=this.maintenancedetails['RUNTIME'][0].value     
+         }if(Array.isArray(this.maintenancedetails['PARTSCOUNT'])){
+          this.partscount=this.maintenancedetails['PARTSCOUNT'][0].value     
+         }
+         if(Array.isArray(this.maintenancedetails['CUTTIME'])){
+          this.cuttime=this.maintenancedetails['CUTTIME'][0].value     
          }
          
          console.log(this.maintenancedetails)
@@ -357,6 +364,12 @@ console.log(value.includes("Spindle Speed"));
       this.powerontime=this.maintenancedetails['POWERONTIME'][0].value
      }if(Array.isArray(this.maintenancedetails['RUNTIME'])){
       this.runtime=this.maintenancedetails['RUNTIME'][0].value     
+     }
+     if(Array.isArray(this.maintenancedetails['PARTSCOUNT'])){
+      this.partscount=this.maintenancedetails['PARTSCOUNT'][0].value     
+     }
+     if(Array.isArray(this.maintenancedetails['CUTTIME'])){
+      this.cuttime=this.maintenancedetails['CUTTIME'][0].value     
      }
      
    if(Array.isArray(this.maintenancedetails['SPINDLE'])){

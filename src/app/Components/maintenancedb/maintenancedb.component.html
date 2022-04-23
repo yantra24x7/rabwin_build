@@ -17,7 +17,7 @@
             
              
               <div class="">
-                <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)">
+                <div class="card machine-st" *ngIf="val.status === 'OPERATE'" (click)="getmachinedet(val?.machine)" >
                   <div class="heading">
                     <h5>{{val?.machine}}</h5>
                   <span class="dot"></span>
@@ -228,9 +228,15 @@
               <div class="divider"></div>
               <h6>Product Name: <strong>Rotor</strong></h6>
               <div class="divider"></div>
-              <h6>Power on Time: <strong>{{powerontime}} hr</strong></h6>
+              <h6>Power on Time (Hr): <strong>{{powerontime}}</strong></h6>
               <div class="divider"></div>
-              <h6>Run Time: <strong>{{runtime}}</strong></h6>
+              <h6>Run Time (Hr): <strong>{{runtime}}</strong></h6>
+              <div class="divider"></div>
+              <h6>Cut Time (Sec): <strong>{{cuttime}}</strong></h6>
+              <div class="divider"></div>
+              <h6>Parts Count: <strong>{{partscount}}</strong></h6>
+              <div class="divider"></div>
+              <h6>Cycle Time (Sec): <strong>-----</strong></h6>
             </div>
           </div> 
 
