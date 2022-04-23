@@ -194,15 +194,20 @@ let data={
    }
 
    delete(id ,j,k){
-    this.myLoader=true;
-    this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res)
+     if(id){
+      this.myLoader=true;
+      this.machine.deletesets(id).pipe(untilDestroyed(this)).subscribe(res => {
+        console.log(res)
+        this.remove(j,k)
+        this.myLoader=false;
+        this.toaster.success("Deleted Successfully")
+        this.ngOnInit(); 
+      
+      })
+     }else{
       this.remove(j,k)
-      this.myLoader=false;
-      this.toaster.success("Deleted Successfully")
-      this.ngOnInit(); 
-    
-    })
+     }
+
      
    }
 
@@ -220,20 +225,37 @@ export class settingsmodals implements OnInit {
   datas: any=[];
 disable:boolean=false
   myLoader: boolean=false;
+  hide: boolean;
   constructor(private nav:NavbarService,public toaster:ToastrService,private machine: MachineService,public dialogRef: MatDialogRef<settingsmodals>,public fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data1: settingsmodals) { 
     this.nav.show()
     console.log(data1)
     this.datas=data1
-    this.settingForm = this.fb.group({
-      L1Name: [this.datas.L1Name, Validators.required],
-      group_signal: [this.datas.group_signal, Validators.required],
-      mt_signal: [this.datas.mt_signal, Validators.required],
-      mt_value: [this.datas.mt_value, Validators.required],
-      normal: [this.datas.normal, Validators.required],
-      warning: [this.datas.warning, Validators.required],
-      critical: [this.datas.critical, Validators.required],
-      active: [this.datas.active, Validators.required],
-    })
+
+    if(this.datas.group_signal=="SERVOLOAD" || this.datas.group_signal=="SERVOTEMPERATURE" || this.datas.group_signal=="PULSECODETEMPERATURE" ||
+    this.datas.group_signal=="SPINDLE"){
+      this.hide=true
+      this.settingForm = this.fb.group({
+        L1Name: [this.datas.L1Name, Validators.required],
+        group_signal: [this.datas.group_signal, Validators.required],
+        mt_signal: [this.datas.mt_signal, Validators.required],
+        mt_value: [this.datas.mt_value, Validators.required],
+        normal: [this.datas.normal, Validators.required],
+        warning: [this.datas.warning, Validators.required],
+        critical: [this.datas.critical, Validators.required],
+        active: [this.datas.active, Validators.required],
+      })
+
+    }else{
+      this.hide=false
+      this.settingForm = this.fb.group({
+        L1Name: [this.datas.L1Name, Validators.required],
+        group_signal: [this.datas.group_signal, Validators.required],
+        mt_signal: [this.datas.mt_signal, Validators.required],
+        mt_value: [this.datas.mt_value, Validators.required],
+        active: [this.datas.active, Validators.required],
+      })
+    }
+  
   }
   dialogclose(){
 this.dialogRef.close();

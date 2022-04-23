@@ -8,7 +8,8 @@
         
         </div> 
 
-      <div class="maintanence-db-wrapper">
+      <!-- <div class="maintanence-db-wrapper">
+
         <div class="dropdown-wrapper">
             <mat-form-field appearance="fill">
                 <mat-label>Select Line</mat-label>
@@ -46,8 +47,74 @@
                 </mat-select>
               </mat-form-field>
         </div>
-      </div>
+      </div> -->
+
+      <div class="filter_sec mt-10">
+        <form [formGroup]="login" (ngSubmit)="logintest('true')">
+            <div class="filter_fields">
+
+
+          
+                <div class="filter_field">
+                    <mat-form-field appearance="outline">
+                        <mat-select placeholder="Select Module" matNativeControl required
+                            formControlName="line" (selectionChange)="getsplit($event.value)">
+                            <mat-option *ngFor="let mod of module_response" [value]="mod">
+                              {{mod}}
+                          </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="filter_field">
+                 
+                    <mat-form-field appearance="outline">
+                        <mat-select placeholder="Select Machine" matNativeControl required
+                            formControlName="machine_name" (selectionChange)="getm($event.value)">
+
+                            <mat-option *ngFor="let Machine of mac_response" [value]="Machine">
+                                {{Machine}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="filter_field">
+                 
+                  <mat-form-field appearance="outline">
+                      <mat-select placeholder="Select signal" matNativeControl required
+                          formControlName="signal" (selectionChange)="getsignal($event.value)">
+
+                          <mat-option *ngFor="let val of values" [value]="val">
+                              {{val}}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+
+
+                <div class="filter_field date_picker" color="primary">
+                 <mat-form-field class="date_select" (click)="picker.open()">
+                    <input matInput placeholder="Choose a date" class="date_select" formControlName="date"
+                      [satDatepicker]="picker" [max]="maxDate" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" >
+                    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+                    <sat-datepicker #picker [rangeMode]="true" >
+                    </sat-datepicker>
+                  </mat-form-field>
+    
+                </div>
+               
+              
+
+                <button type="submit" color="primary" mat-raised-button>Submit</button>
+            </div>
+
+        </form>
+
+     
+    </div>
       <div  id="container" ></div>
     </div>
-  
+    <div *ngIf="myLoader" class="spinner">
+      <img src="assets/images/spinner.gif">
+  </div>
 </section>

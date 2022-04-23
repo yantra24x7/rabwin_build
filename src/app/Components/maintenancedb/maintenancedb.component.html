@@ -48,7 +48,7 @@
                     <div class="chart-details">
                       
                         <div class="circle">
-                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#939393" innerStrokeColor="#ffffff" animation="true"
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#878a86" innerStrokeColor="#ffffff" animation="true"
                           animationDuration="300">
                         </circle-progress>
                           
@@ -93,7 +93,7 @@
                       
                       
                         <div class="circle">
-                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#ffdf00" innerStrokeColor="#ffffff" animation="true"
+                          <circle-progress radius="20" percent='{{val?.run}}' outerStrokeColor="#f2f207" innerStrokeColor="#ffffff" animation="true"
                           animationDuration="300">
                         </circle-progress>
                         
@@ -378,13 +378,13 @@
 
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper sep">
-                <h4>Spindle (%) </h4>
+                <h4>Spindle</h4>
               
                 <div class="row" style="align-items: center;"> 
                   <div class="col-lg-3" *ngFor="let data of loads" style="text-align: center;">
                     <div>
-                      <span>Spindle Load</span>
-                      <circle-progress  radius="80" percent="{{data.value}}" outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true"
+                      <span>Spindle Load (%)</span>
+                      <circle-progress  radius="80" percent="{{data.value}}"  outerStrokeColor="{{colorcode(data.color_code,data.value)}}" outerStrokeColor="80" innerStrokeColor="#ffffff" animation="true"
                         animationDuration="300">
                       </circle-progress>
                      
@@ -399,9 +399,9 @@
 
                   
                     <div class="fo-cht" *ngFor="let data of temp;let k=index">  
-                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}}</span>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
                       <canvas class="cht-wi" id="oilCharts{{k}}" width="30%"></canvas>
-                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}}</span>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}} {{datashow(data.axis)}}</span>
                     </div>
 
                   </div>
@@ -469,8 +469,8 @@
                 <h4>Battery Status</h4>
                  <div class="fo-icons-wrapper">
                    <div class="bt-icon" *ngFor="let data of maintenancedetails['BATTERYSTATUS']">
-                     <img *ngIf="data.value==true" src="assets/icons/bt-green.png" alt="">
-                     <img  *ngIf="data.value==false" src="assets/icons/bt-red.png" alt="">
+                     <img *ngIf="data.value==false" src="assets/icons/bt-green.png" alt="">
+                     <img  *ngIf="data.value==true" src="assets/icons/bt-red.png" alt="">
                      <p>{{data.axis}}</p>
                    </div>
                    <!-- <div class="bt-icon">
