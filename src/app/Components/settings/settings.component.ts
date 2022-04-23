@@ -24,7 +24,7 @@ export class SettingsComponent implements OnInit {
   getdetails: any=[];
   processdone: boolean=false;
   datas: any=[];
-
+  plusintomark:any=[]
 
   constructor(private nav:NavbarService, private machine: MachineService,private fb: FormBuilder,public toaster:ToastrService,public dialog:MatDialog) { 
     this.nav.show()
@@ -53,13 +53,15 @@ console.log(this.settingsformss.value)
         this.values=res
         this.myLoader = false;
          this.getdetails=[]
+         this.plusintomark=[]
          for(let i=0;i<this.values.length;i++){
           this.add()
+        
           // this.adds()
          }
-    
+       
         this.machine.getsets(this.machinename).pipe(untilDestroyed(this)).subscribe(res => {
-          this.myLoader=false
+        
            this.getdetails=res
            console.log(this.getdetails)
            for(let i=0;i<this.values.length;i++){
@@ -75,10 +77,15 @@ console.log(this.settingsformss.value)
                 }
           //  }
           }
+          for(let l=0;l<this.values.length;l++){
+            var formElement1 = <HTMLFormElement>document.getElementById('intomark'+l);
+          formElement1.style.display='none';
+        }
           console.log(this.settingsformss.value)
           //  this.callmethod()
+          this.myLoader=false
         })     
-        
+      
    })
    
    
@@ -135,16 +142,28 @@ init(){
        
   
     select(i:any){
+      
       var acc = document.getElementsByClassName("accordion");
       acc[i].addEventListener("click", function() {
       this.classList.toggle("active");
       var panel = this.nextElementSibling;
       if (panel.style.display === "block") {
+ 
         panel.style.display = "none";
+        var formElement = <HTMLFormElement>document.getElementById('plus'+i);
+        formElement.style.display='block';
+        var formElement1 = <HTMLFormElement>document.getElementById('intomark'+i);
+        formElement1.style.display='none';
       } else {
+    
         panel.style.display = "block";
+        var formElement = <HTMLFormElement>document.getElementById('plus'+i);
+        formElement.style.display='none';
+        var formElement1 = <HTMLFormElement>document.getElementById('intomark'+i);
+        formElement1.style.display='block';
+     
       }
-    })
+    }, {once : true})
   }
 
 

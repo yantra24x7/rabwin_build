@@ -6,6 +6,7 @@
     <div class="section_top_padding">
       <div class="page_title_sec fo-sep">
         <h2>{{machinename}} Settings</h2>
+        <button style="margin-left: opx;text-align: center;width: 100px;background-color: #f7941e; color: white;" class="btn" [routerLink]="['/machine']">Back</button>
         
         </div> 
 
@@ -241,7 +242,7 @@
 
 <form [formGroup]="settingsformss">
     <div *ngFor="let ques of settingsformss.get('setting')['controls'];let j=index">
-        <button class="accordion" (click)="select(j)">{{this.values[j]}} <span>+</span></button>
+        <button class="accordion" (click)="select(j)">{{this.values[j]}} <span id="plus{{j}}"><b>+</b></span><span id="intomark{{j}}"><b>x</b></span></button>
                 <div class="panel">
                     <div >  
                         <div   *ngFor="let quess of ques.get('setting')['controls'];let k=index">
