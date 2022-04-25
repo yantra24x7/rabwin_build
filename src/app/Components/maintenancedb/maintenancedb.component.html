@@ -5,7 +5,7 @@
     <div class="section_top_padding">
       
       <div class="page_title_sec fo-sep">
-        <h2>Dashboard - {{lname}}</h2>
+        <h2>Maintenance Dashboard - {{lname}}({{selectedmachine}})</h2>
         <p>Total Machine <span>({{alname.length==''?0:alname.length}})</span></p>
         </div> 
 
@@ -250,7 +250,7 @@
                 <h4>Servo Load <span>(%)</span></h4>
                <div class="row">
                  <div class="col-lg-4 col-sm-12" *ngFor="let data of maintenancedetails['SERVOLOAD'];let k=index">
-                   <p style="margin-bottom: 0; text-align: center; font-size: 20px;">{{data.axis}}({{data.value}})</p>
+                   <p style="margin-bottom: 0; text-align: center; font-size: 20px;">{{data.axis}}({{data.value==null?'N/A':data.value}})</p>
                   <div >  <canvas id="oilChart{{k}}"  height="160"></canvas></div>
                  </div>
                </div>
@@ -279,7 +279,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Servo Temperature <span>(°C)</span></h4>
-                <div *ngFor="let data of maintenancedetails['SERVOTEMPERATURE'];let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{data.axis}}({{data.value}})</span></div>
+                <div *ngFor="let data of maintenancedetails['SERVOTEMPERATURE'];let i=index" id="rangeContainers{{i}}" ><span class="gauge-title">{{data.axis}}({{data.value==null?'N/A':data.value}})</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart2.png">           
                 </div> -->
@@ -304,7 +304,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="card machine-st fo-chart-wrapper">
                 <h4>Pulse Code Temperature <span>(°C)</span></h4>
-                  <div *ngFor="let data of maintenancedetails['PULSECODETEMPERATURE'];let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{data.axis}}({{data.value}})</span></div>
+                  <div *ngFor="let data of maintenancedetails['PULSECODETEMPERATURE'];let i=index" id="rangeContainer{{i}}"><span class="gauge-title">{{data.axis}}({{data.value==null?'N/A':data.value}})</span></div>
                 <!-- <div class="image-wrapper text-center">
                   <img src="assets/images/chart3.png">           
                 </div> -->
@@ -334,7 +334,7 @@
                 <h4>Servo Load Current <span>(A)</span></h4>
                 <div class="content">
                   <div class="text-wrapper" *ngFor="let data of maintenancedetails['SERVOLOADCURRENT']">
-                    <h3>{{data.value}}</h3>
+                    <h3>{{data.value==null?'N/A':data.value}}</h3>
                     <p>{{data.axis}}</p>
                   </div>
                   <!-- <div class="text-wrapper">
@@ -360,7 +360,7 @@
                 <h4>Absolute Postion <span>(%)</span></h4>
                 <div class="content">
                   <div class="text-wrapper" *ngFor="let data of maintenancedetails['ABSOLUTEPOSITION']">
-                    <h3>{{data.value}}</h3>
+                    <h3>{{data.value==null?'N/A':data.value}}</h3>
                     <p>{{data.axis}}</p>
                   </div>
                   <!-- <div class="text-wrapper">
@@ -407,7 +407,7 @@
                     <div class="fo-cht" *ngFor="let data of temp;let k=index">  
                       <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.axis}} ({{datashow(data.axis)}})</span>
                       <canvas class="cht-wi" id="oilCharts{{k}}" width="30%"></canvas>
-                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value}} {{datashow(data.axis)}}</span>
+                      <span  style=" font-size: 18px; font-weight: 400; margin-top: 5px;">{{data.value==null?'0':data.value}} {{datashow(data.axis)}}</span>
                     </div>
 
                   </div>

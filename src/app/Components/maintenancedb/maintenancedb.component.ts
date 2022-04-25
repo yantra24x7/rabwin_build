@@ -61,6 +61,7 @@ export class MaintenancedbComponent implements OnInit {
   timeout1: any;
   partscount: any;
   cuttime: any;
+  selectedmachine: any;
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -82,6 +83,7 @@ export class MaintenancedbComponent implements OnInit {
         this.alname = res;
         this.service.machinedetails(this.alname[0].machine).pipe(untilDestroyed(this)).subscribe(res=>{
           localStorage.setItem("clickmachine",this.alname[0].machine)
+          this.selectedmachine=this.alname[0].machine
          this.maintenancedetails=res
          this.myLoader=false
          if(Array.isArray(this.maintenancedetails['PROGRAMNUMBER'])){
@@ -278,6 +280,7 @@ servoloads(){
               }]
             },
             options: {
+              
               layout: {
                 padding: {
                   bottom: 3
@@ -286,7 +289,12 @@ servoloads(){
               tooltips: {
                 enabled: false,
               },
-              
+            //   scale: {
+            //     ticks: {
+            //         min: 0,
+            //         max: 0
+            //     }
+            // },
               rotation: -Math.PI,
               cutoutPercentage: 50,
               circumference: Math.PI,
@@ -317,7 +325,9 @@ servoloads(){
     },60000)
 this.timeout1=setInterval(()=>{
   this.getmachinedet(localStorage.getItem("clickmachine"))
+
 },60000)
+
   }
 
   datashow(value){
@@ -353,6 +363,7 @@ console.log(value.includes("Spindle Speed"));
     // machinedetails
     this.myLoader=true
     localStorage.setItem("clickmachine",machinename)
+    this.selectedmachine=machinename
     this.service.machinedetails(machinename).pipe(untilDestroyed(this)).subscribe(res=>{
       this.maintenancedetails=[]
       this.loads=[]
@@ -412,7 +423,7 @@ console.log(value.includes("Spindle Speed"));
                   fontFamily: 'Segoe UI'
               }
           },
-          
+         
           line: {
               width: 0
           },
