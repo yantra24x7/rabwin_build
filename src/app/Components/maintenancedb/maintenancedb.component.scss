@@ -365,6 +365,7 @@ span.gauge-title {
 }
 
 .card.machine-st.fo-alarms.fo-blink{
+    background-color:#f03e3e ;
     border: 2px solid #f03e3e !important ;
     animation: blink 0.8s;
     animation-iteration-count: 1500;
