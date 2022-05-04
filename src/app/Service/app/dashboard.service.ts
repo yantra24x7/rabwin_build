@@ -34,6 +34,9 @@ export class DashboardService {
   andon():Observable<any>{
     return this.http.get('r_get_status')
   }
+  mainandon():Observable<any>{
+    return this.http.get('m_get_status')
+  }
   form_line(line):Observable<any>{
     return this.http.get('line_wise_dashboards?line=' + line)
   }

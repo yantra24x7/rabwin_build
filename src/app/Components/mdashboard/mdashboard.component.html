@@ -107,6 +107,12 @@
                 }">
                     <h3    matTooltip="{{val.machine}}">{{i+1}}</h3>
                   </div>
+
+                  
+                  <div class="machine_status_item active critical_wrap"  *ngIf="val.value === 'ALARM'|| val.value === 'EMERGENCY'"
+                  >
+                  <h3    matTooltip="{{val.machine}}">{{i+1}}</h3>
+                  </div>
   
                   <div >
                     <h5 *ngFor="let val of value.status" >

@@ -62,6 +62,11 @@ export class MaintenancedbComponent implements OnInit {
   partscount: any;
   cuttime: any;
   selectedmachine: any;
+  previousvalue: any=[];
+  partscounts: any=[];
+  partscount1: any=[];
+  timeout2: any;
+  productname: any;
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service: DashboardService) {
 
 
@@ -98,6 +103,9 @@ export class MaintenancedbComponent implements OnInit {
          if(Array.isArray(this.maintenancedetails['CUTTIME'])){
           this.cuttime=this.maintenancedetails['CUTTIME'][0].value     
          }
+         if(Array.isArray(this.maintenancedetails['PRODUCTNAME'])){
+          this.productname=this.maintenancedetails['PRODUCTNAME'][0].value  
+         }
          
          console.log(this.maintenancedetails)
           this.loads=[]
@@ -116,12 +124,12 @@ export class MaintenancedbComponent implements OnInit {
           }
 
          this.servoloads()
-    
-         
+
 
         })
     })
    }
+
 
    
 
@@ -313,11 +321,12 @@ servoloads(){
    
       }, 1000);
 
-
+     
 }
 
   ngOnInit() {  
-
+    // this.partscount1=0
+    // this.previousvalue=[]
     this.timout=setInterval(() => {
       this.service.form_line(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
         this.alname = res;
@@ -325,8 +334,9 @@ servoloads(){
     },60000)
 this.timeout1=setInterval(()=>{
   this.getmachinedet(localStorage.getItem("clickmachine"))
-
+  // this.method()
 },60000)
+
 
   }
 
@@ -382,6 +392,9 @@ console.log(value.includes("Spindle Speed"));
      if(Array.isArray(this.maintenancedetails['CUTTIME'])){
       this.cuttime=this.maintenancedetails['CUTTIME'][0].value     
      }
+     if(Array.isArray(this.maintenancedetails['PRODUCTNAME'])){
+      this.productname=this.maintenancedetails['PRODUCTNAME'][0].value  
+     }
      
    if(Array.isArray(this.maintenancedetails['SPINDLE'])){
 
@@ -395,12 +408,32 @@ console.log(value.includes("Spindle Speed"));
         });
        
       }
+  
+
+
     //  console.log(this.loads)
     this.myLoader=false
    
     this.servoloads()
+    
     })
   }
+  // method() {
+  //   this.partscount1= this.partscount1+1
+  // if(!this.previousvalue.length && !this.partscounts.length){
+  //   this.previousvalue=this.cuttime
+  //   this.partscounts=this.partscount1
+  //   console.log("called1",this.previousvalue,this.partscounts)
+  //  }
+  //  else if(this.partscount1>this.partscounts){
+  //   console.log("called2")
+   
+  //  console.log(this.previousvalue,this.cuttime)
+  //  this.previousvalue=[]
+  //  this.partscounts=[]
+  //  }
+  
+  // }
   chart(val,val1,val2,val3){
 
     let gauge: LinearGauge = new LinearGauge({
@@ -486,5 +519,16 @@ console.log(value.includes("Spindle Speed"));
     return x+y
   }
  
-  
+   secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    // var s = Math.floor(d % 3600 % 60);
+
+    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes ") : "";
+    // var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    return hDisplay + mDisplay 
+    // + sDisplay; 
+}
 }

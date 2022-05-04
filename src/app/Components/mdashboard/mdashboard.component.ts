@@ -35,7 +35,7 @@ export class MdashboardComponent implements OnInit {
 
    this.myLoader = true;
 
-    this.service.andon().pipe(untilDestroyed(this)).subscribe(res=>{
+    this.service.mainandon().pipe(untilDestroyed(this)).subscribe(res=>{
     
        this.a_dashboard = res;
       //  this.s_num = res.shift_no[0];

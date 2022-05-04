@@ -36,7 +36,7 @@
                     </div>
   
                     <h6>Mode:<br>
-                      Memory</h6>
+                      N/A</h6>
                   </div>
                 </div>
                 <div class="card machine-st fo-alarmss as-selected-{{val?.machine==selectedmachine?'grey':''}}" *ngIf="val.status === 'DISCONNECT'" (click)="getmachinedet(val?.machine)">
@@ -58,7 +58,7 @@
                     </div>
   
                     <h6>Mode:<br>
-                      Memory</h6>
+                      N/A</h6>
                   </div>
                 </div>
                 <div class="card machine-st fo-alarms fo-blink" *ngIf="val.status === 'CRITICAL'" (click)="getmachinedet(val?.machine)">
@@ -80,7 +80,7 @@
                     </div>
   
                     <h6>Mode:<br>
-                      Memory</h6>
+                      N/A</h6>
                   </div>
                 </div>
                 <div class="card machine-st fo-alarms as-selected-{{val?.machine==selectedmachine?'yellow':''}}" *ngIf="val.status === 'STOP'" (click)="getmachinedet(val?.machine)">
@@ -103,7 +103,7 @@
                     </div>
   
                     <h6>Mode:<br>
-                      Memory</h6>
+                      N/A</h6>
                   </div>
                 </div>
               
@@ -225,17 +225,17 @@
         <div class="machine-status-slide">
           <div class="card machine-st fo-slide">
             <div class="contents">
-              <h6>Program No: <strong>{{programnumber}}</strong></h6>
+              <h6>Program No: <strong>{{programnumber==null?'N/A':programnumber}}</strong></h6>
               <div class="divider"></div>
-              <h6>Product Name: <strong>Rotor</strong></h6>
+              <h6>Product Name: <strong>{{productname==null?'N/A':productname}}</strong></h6>
               <div class="divider"></div>
-              <h6>Power on Time (Hr): <strong>{{powerontime}}</strong></h6>
+              <h6>Power on Time (Hr): <strong>{{powerontime==null?'N/A':secondsToHms(powerontime)}}</strong></h6>
               <div class="divider"></div>
-              <h6>Run Time (Hr): <strong>{{runtime}}</strong></h6>
+              <h6>Run Time (Hr): <strong>{{runtime==null?'N/A':secondsToHms(runtime)}}</strong></h6>
               <div class="divider"></div>
-              <h6>Cut Time (Sec): <strong>{{cuttime}}</strong></h6>
+              <h6>Cut Time (Sec): <strong>{{cuttime==null?'N/A':cuttime}}</strong></h6>
               <div class="divider"></div>
-              <h6>Parts Count: <strong>{{partscount}}</strong></h6>
+              <h6>Parts Count: <strong>{{partscount==null?'N/A':partscount}}</strong></h6>
               <!-- <div class="divider"></div>
               <h6>Cycle Time (Sec): <strong>-----</strong></h6> -->
             </div>

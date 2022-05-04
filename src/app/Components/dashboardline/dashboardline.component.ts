@@ -76,7 +76,7 @@ export class DashboardlineComponent implements OnInit {
           
     this.fline = res[0].line;
     this.fname = res[0].machine;
-    this.selectedItem = res[0].machine;
+    this.selectedItem = res[0];
     console.log(this.selectedItem);
     this.utlization = res[0].run;
     this.run_time = res[0].run_time;

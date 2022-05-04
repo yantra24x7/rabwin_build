@@ -49,6 +49,25 @@
         clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   
   }
+  .critical_wrap{
+    // background-image: url(../../../assets/images/hexagon_hover.png) !important;
+    background-image: none !important;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-size: 25px;
+    font-weight: 700;
+    -webkit-text-stroke: 0.7px #000000;
+    line-height: 28px;
+    height: 40px;
+    background-position: center;
+    background-size: contain;
+    // background-color: var(--red) !important;   
+    animation: blink 0.8s;
+    animation-iteration-count: 1500;
+    -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+         
+    }
   .idle_wrap{
   
   background-image: none !important;
@@ -1231,3 +1250,25 @@
 width: 78% !important;
 
 }
+.machine_status_item.active.critical_wrap{
+  color: #fff;
+       
+       
+        border-radius: 5px;
+        animation: blinkingBackground 0.7s infinite;
+}
+
+
+@keyframes blinkingBackground{
+  // 0%        { background-color: #10c018;}
+  // 25%        { background-color: #1056c0;}
+  // 50%        { background-color: #ef0a1a;}
+  // 75%        { background-color: #254878;}
+  100%            { background-color: #d4170a;}
+}
+
+.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec .machine_status_list .machine_status_item.active h3{
+  color: #ffffff !important;
+}
+ 
+ 
