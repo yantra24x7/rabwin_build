@@ -24,9 +24,23 @@ export class TrendingchartComponent implements OnInit {
   dat2: string;
   myLoader: boolean;
   values: any;
+  shift_response: any;
+  status: any;
+  chartdata: any;
+  signal: any;
+  chartdata1: any=[];
 
   constructor(private nav:NavbarService,public fb:FormBuilder,public service:ReportService,public datepipe:DatePipe,public machine:MachineService) { 
     this.nav.show()
+
+    // var s = new Date(1651693540).toLocaleDateString("en-US")
+    // console.log(s)
+
+//     let unix_timestamp = 1651693540
+
+// var date = new Date(unix_timestamp * 1000);
+// console.log(date)
+
   }
 
   ngOnInit() {
@@ -34,10 +48,14 @@ export class TrendingchartComponent implements OnInit {
       line:[""],
       machine_name: [""],
       date: [""],
-      signal:['']
+      signal:[""],
+      shift_num:[""]
 
     })
-     this.myLoader=true
+   
+
+    this.myLoader = true;
+
     this.service.getmodule().subscribe(res => {
       this.module_response = res;
       this.login.patchValue({
@@ -53,20 +71,23 @@ export class TrendingchartComponent implements OnInit {
         this.login.patchValue({
           machine_name: this.mac_response[0],
         })
-      })
-
-      if(Array.isArray(this.mac_response)){
         localStorage.setItem('MACHINE', this.mac_response[0]);
-      }
-       
-      })
-      this.machine.settingget().subscribe(res => {
-        this.values=res
-        this.login.patchValue({
-          signal: this.values[0],
-        })  
-      })
+        let hadokmac = localStorage.getItem('MACHINE');
 
+
+    // this.service.getmachines().subscribe(res => {
+    //   this.machine_response = res;
+    //   this.login.patchValue({
+    //     machine_name: this.machine_response[0],
+    //   })
+      this.service.getshift(this.module_response[0]).subscribe(res => {
+        this.shift_response = res;
+        this.login.patchValue({
+          shift_num: this.shift_response[0].shift_no,
+        })
+        localStorage.setItem('SHHIFT', this.shift_response[0].shift_no);
+
+        let hadok = localStorage.getItem('SHHIFT');
         this.service.first_page_loading().subscribe(res => {
           this.first_loading = res; 
           this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
@@ -77,7 +98,13 @@ export class TrendingchartComponent implements OnInit {
 
             date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
           })
-
+          this.machine.settingget().subscribe(res => {
+                  this.values=res
+                  this.login.patchValue({
+                    signal: this.values[0],
+                  })  
+                  this.signal= this.values[0]
+                })
           // this.stamps = { begin: this.datepipe.transform(begin, 'yyyy-MM-dd'), end: this.datepipe.transform(end, 'yyyy-MM-dd') };
 
           
@@ -87,106 +114,133 @@ export class TrendingchartComponent implements OnInit {
           this.edate = localStorage.getItem('EDATE');
           this.myLoader = false;
 
-        
+          // this.new_date = new DatePipe('en-US').transform(this.first_loading['from_date'], 
+          // 'dd/MM/yyyy');
+          // this.new_date1 = new DatePipe('en-US').transform(this.first_loading['to_date'], 
+          // 'dd/MM/yyyy');
+          // this.login.patchValue({
+          //   date : [  this.new_date,  this.new_date1]
+          // })
+          // this.minDate = this.first_loading['from_date']
+          // this.maxDate = this.first_loading['to_date']
           this.logintest('true');
         })
-    Highcharts.chart('container', {
-      chart: {
-        zoomType: 'x',
-        backgroundColor: '#1A1A1A',
-      },
-      title: {
-        text: 'Spindle'
-      },
-      subtitle: {
-        text: document.ontouchstart === undefined ?
-          'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-      },
-      xAxis: {
-        type: 'datetime',
-        dateTimeLabelFormats: {
-          // day: '%B-%d-%Y-%I:%M-%p',
-          // month: '%b \'%y'
-          second: '%H:%M:%S %P',
-          minute: '%H:%M',
-          hour: '%H:%M',
-          day: '%b. %e',
-          week: '%b. %e',
-          month: '%b. %y',
-          year: '%Y'
-        }
-        ,labels: {
-          formatter: function() {
-            return Highcharts.dateFormat('%Y %b. %e, %H:%M:%S', this.value);
-          }
-        }
-      },
-      yAxis: {
-        title: {
-          text: 'Spindle Speed',
-         
-        }
-        
-      },
-      legend: {
-        enabled: false
-      },
-      plotOptions: {
-        area: {
-          fillColor: {
-            linearGradient: {
-              x1: 0,
-              y1: 0,
-              x2: 0,
-              y2: 1
-            },
-            stops: [
-              [0, 'rgb(255, 255, 255)'],
-              [1, 'rgb(240, 240, 255)']
-          ]
-          },
-          marker: {
-            radius: 2
-          },
-          lineWidth: 1,
-          states: {
-            hover: {
-              lineWidth: 1
-            }
-          },
-          threshold: null
-        }
-      },
-
-      series: [{
-        type: 'area',
-        name: 'Spindle max value',
-        color: '#FCAF26',
-        lineWidth: 5,
-        data: [
-          [
-		1167609300000,
-		0.7537
-	],
-  [
-		1167609400000,
-		0.7538
-	],
-  [
-		1167609500000,
-		0.7540
-	],
-  [
-		1167609600000,
-		0.7545
-	],
-	
-        ]
-      }]
-    });
+      })
+      //})
+    })
+    })
+     
+   
 
   }
   logintest(arg0: string) {
+    this.status = arg0;
+    this.myLoader = true;
+    
+    if (this.status == 'true') {
+ 
+    this.chartdata1=[]
+    this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,this.sdate + '-' + this.edate,this.login.value.signal).subscribe(res => {
+      console.log(res)
+      this.chartdata=res
+     for(let i=0;i<this.chartdata.length;i++){
+       this.chartdata1.push([
+         this.chartdata[i][0]*1000,this.chartdata[i][1]
+       ]
+
+       )
+
+     }
+     console.log(this.chartdata1)
+      this.myLoader=false
+  
+      Highcharts.chart('container', {
+        
+
+        chart: {
+          zoomType: 'x',
+          backgroundColor: '#1A1A1A',
+        },
+        title: {
+          text: this.signal
+        },
+        subtitle: {
+          text: document.ontouchstart === undefined ?
+            'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: {
+            
+            second: '%H:%M:%S %P',
+            minute: '%H:%M',
+            hour: '%H:%M',
+            day: '%b. %e',
+            week: '%b. %e',
+            month: '%b. %y',
+            year: '%Y'
+          }
+          ,labels: {
+            formatter: function() {
+            //  return this.date=new Date(this.value);
+            return Highcharts.dateFormat('%Y %b. %e, %H:%M:%S', this.value);
+            }
+          
+          }
+        },
+        yAxis: {
+          title: {
+            text: this.signal,
+           
+          }
+          
+        },
+        credits: {
+          enabled: false
+         },
+        legend: {
+          enabled: true
+        },
+        plotOptions: {
+          area: {
+            fillColor: {
+              linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+              },
+              stops: [
+                [0, 'rgb(255, 255, 255)'],
+                [1, 'rgb(240, 240, 255)']
+            ]
+            },
+            marker: {
+              radius: 2
+            },
+            lineWidth: 1,
+            states: {
+              hover: {
+                lineWidth: 1
+              }
+            },
+            threshold: null
+          }
+        },
+  
+        series: [{
+          type: 'area',
+          name: this.signal +' value',
+          color: '#FCAF26',
+          lineWidth: 5,
+          data: 
+  
+    this.chartdata1 },
+  ]
+      });
+  
+    } )
+  }
    
   }
   getm(val){
@@ -209,6 +263,14 @@ export class TrendingchartComponent implements OnInit {
       this.login.patchValue({
         machine_name: this.mac_response[0],
       })
+      this.service.getshift(this.reportblock).subscribe(res => {
+        this.shift_response = res;
+        this.login.patchValue({
+          shift_num: this.shift_response[0].shift_no,
+        })
+        localStorage.setItem('SHHIFT', this.shift_response[0].shift_no);
+      })
+
       localStorage.setItem('MACHINE', this.mac_response[0]);
       let hadokmac = localStorage.getItem('MACHINE');
    
@@ -225,6 +287,7 @@ export class TrendingchartComponent implements OnInit {
 
       }
       getsignal(val){
-
+    this.signal=val
       }
 }
+ 

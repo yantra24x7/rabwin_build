@@ -74,8 +74,8 @@ export class MaintenancedbComponent implements OnInit {
     this.lname = this.route.snapshot.queryParamMap.get('line_name');
     // this.lname='VALVE'
     this.myLoader = true;
-
-    this.service.form_line(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
+  
+    this.service.form_line1(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
         this.myLoader = false;
         this.fline = res[0].line;
         this.fname = res[0].machine;
@@ -143,6 +143,7 @@ servoloads(){
           type: 'doughnut',
           plugins: [{
             afterDraw: chart => {
+              Chart.defaults.global.defaultFontSize = 0;
               var needleValue = chart.chart.config.data.datasets[0].needleValue;
               var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
               var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
@@ -180,7 +181,9 @@ servoloads(){
                 '#96d617',
                 '#f2f207',
                 '#f21a07'
-              ]
+              ],
+              
+              
             }]
           },
           options: {
@@ -199,6 +202,7 @@ servoloads(){
             legend: {
               display:false,
               position: 'left'
+              
             },
             animation: {
               animateRotate: false,
@@ -247,6 +251,7 @@ servoloads(){
             type: 'doughnut',
             plugins: [{
               afterDraw: chart => {
+                Chart.defaults.global.defaultFontSize = 0;
                 var needleValue = chart.chart.config.data.datasets[0].needleValue;
                 var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
                 var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
@@ -328,9 +333,10 @@ servoloads(){
     // this.partscount1=0
     // this.previousvalue=[]
     this.timout=setInterval(() => {
-      this.service.form_line(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
+      this.service.form_line1(this.lname).pipe(untilDestroyed(this)).subscribe(res=>{
         this.alname = res;
       })
+      
     },60000)
 this.timeout1=setInterval(()=>{
   this.getmachinedet(localStorage.getItem("clickmachine"))

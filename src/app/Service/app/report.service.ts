@@ -70,6 +70,10 @@ put_rreport(data: any):Observable<any> {
   alarmoverall_report(register):Observable<any>{
     return this.http.post('alarm_reports',register)
   }
+
+  trendchart(name,module,shift_num,date,groupsignal){
+    return this.http.get('signal_charts?machine_name='+name+'&&module='+module+'&&shift_num='+shift_num+'&&from_date='+date+'&&signal='+groupsignal+'')
+  }
 }
 
 

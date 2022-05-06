@@ -1267,8 +1267,8 @@ width: 78% !important;
   100%            { background-color: #d4170a;}
 }
 
-.dashboard_page_sec .line_list .line_item .line_item_content .machine_status_sec .machine_status_list .machine_status_item.active h3{
-  color: #ffffff !important;
+.machine_status_item.active.critical_wrap h3.white {
+  color: white !important;
 }
  
  

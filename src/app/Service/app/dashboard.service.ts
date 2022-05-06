@@ -40,6 +40,9 @@ export class DashboardService {
   form_line(line):Observable<any>{
     return this.http.get('line_wise_dashboards?line=' + line)
   }
+  form_line1(line):Observable<any>{
+    return this.http.get('m_line_wise_dashboards?line=' + line)
+  }
   pie(line,name):Observable<any>{
     return this.http.get('live_machine_detail?line=' + line + '&&machine=' + name )
   }
