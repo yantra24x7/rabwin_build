@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SharedModule} from '../shared/shared.module';
 import { MaintenancereportRoutingModule } from './maintenancereport-routing.module';
 import { MaintenancereportComponent } from './maintenancereport.component';
@@ -7,6 +7,7 @@ import { CountUpModule } from 'ngx-countup';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DashboardService} from '../../Service/app/dashboard.service';
+import { ReportService } from 'src/app/Service/app/report.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { DashboardService} from '../../Service/app/dashboard.service';
     })
   
   ],
-  providers:[DashboardService]
+  providers:[ReportService,DatePipe]
 
 })
 export class MaintenancereportModule { }

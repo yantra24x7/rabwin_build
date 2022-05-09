@@ -29,7 +29,8 @@ export class TrendingchartComponent implements OnInit {
   chartdata: any;
   signal: any;
   chartdata1: any=[];
-
+  fiesr_date: any;
+  public maxDate: Object = new Date();
   constructor(private nav:NavbarService,public fb:FormBuilder,public service:ReportService,public datepipe:DatePipe,public machine:MachineService) { 
     this.nav.show()
 
@@ -89,14 +90,10 @@ export class TrendingchartComponent implements OnInit {
 
         let hadok = localStorage.getItem('SHHIFT');
         this.service.first_page_loading().subscribe(res => {
-          this.first_loading = res; 
-          this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
-          this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
+          this.first_loading = res;
+          this.fiesr_date = new DatePipe('en-US').transform(res.from_date, 'yyyy-MM-dd');
           this.login.patchValue({
-         
-
-
-            date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+            date : this.fiesr_date
           })
           this.machine.settingget().subscribe(res => {
                   this.values=res
@@ -133,6 +130,25 @@ export class TrendingchartComponent implements OnInit {
    
 
   }
+
+  colorfucntion(i){
+    if(i==0){
+      return "#FCAF26"
+    }else if(i==1){
+      return "#067E22"
+    }else if(i==2){
+    return "#3A85BB"
+    }else if(i==3){
+      return "#DC6236"
+    }else if(i==4){
+      return "#13f2f2"
+    }
+  
+  }
+     // '#FCAF26'
+        // #067E22
+        // #3A85BB
+        // #DC6236
   logintest(arg0: string) {
     this.status = arg0;
     this.myLoader = true;
@@ -140,17 +156,26 @@ export class TrendingchartComponent implements OnInit {
     if (this.status == 'true') {
  
     this.chartdata1=[]
-    this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,this.sdate + '-' + this.edate,this.login.value.signal).subscribe(res => {
+    this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,this.sdate,this.login.value.signal).subscribe(res => {
       console.log(res)
       this.chartdata=res
      for(let i=0;i<this.chartdata.length;i++){
-       this.chartdata1.push([
-         this.chartdata[i][0]*1000,this.chartdata[i][1]
-       ]
+      let data={
+        type: 'area',
+        name:this.signal +":"+this.chartdata[i].key +" Axis",
+        color: this.colorfucntion(i),
+     
+        lineWidth: 5,
+        data: this.chartdata[i].value }
 
-       )
-
+        this.chartdata1.push(data)
      }
+     this.chartdata1.push({
+        type: 'area',
+        name:"No Data",
+        color: '#404047',
+        lineWidth: 5,
+        data: [] })
      console.log(this.chartdata1)
       this.myLoader=false
   
@@ -228,15 +253,27 @@ export class TrendingchartComponent implements OnInit {
           }
         },
   
-        series: [{
-          type: 'area',
-          name: this.signal +' value',
-          color: '#FCAF26',
-          lineWidth: 5,
-          data: 
+        series: this.chartdata1
+        // [
+    //       {
+    //       type: 'area',
+    //       name: this.signal +' value',
+    //       color: '#FCAF26',
+        
+    //       // #067E22
+    //       // #3A85BB
+    //       // #DC6236
+    //       lineWidth: 5,
+    //       data: 
   
-    this.chartdata1 },
-  ]
+    // this.chartdata1 },
+    // {
+    //   type: 'area',
+    //   name:"No Data",
+    //   color: '#404047',
+    //   lineWidth: 5,
+    //   data: [] }
+  // ]
       });
   
     } )

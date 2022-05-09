@@ -21,22 +21,26 @@ export class MdashboardComponent implements OnInit {
   myLoader = false;
   today: number = Date.now();
   rolename:any;
-  timout: any;
+  timouts: any;
   constructor(private router:Router,private nav:NavbarService,private service: DashboardService) {
     this.nav.show();
     setInterval(() => {this.today = Date.now()}, 1);
+
+   
 
 
    }
 
 
   ngOnInit() {
-
-  this.dashboard()
-  this.timout=setInterval(() => {
-  this.dashboard()
-  },60000)
+    this.dashboard()
+ 
     
+  }
+  ngAfterViewInit(){
+    this.timouts=setInterval(()=> {
+      this.dashboard()
+      },60000)
   }
 
   dashboard(){
@@ -220,6 +224,6 @@ export class MdashboardComponent implements OnInit {
  
 
   ngOnDestroy() { 
-    clearInterval(this.timout)
+    clearInterval(this.timouts)
   }
 }

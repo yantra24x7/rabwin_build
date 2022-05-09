@@ -45,7 +45,7 @@ export class AlarmreportsComponent implements OnInit {
       date: [""],
 
     })
-    
+    this.myLoader=true
     this.service.getmodule().subscribe(res => {
       this.module_response = res;
       this.login.patchValue({

@@ -14,8 +14,8 @@
                 <div class="card connectivity">
                     <div class="circle-text">{{i+1}}</div>
                     <div class="min-fo-header">
-                        <img src="../../../assets/images/m.green.png">
-                        <img src="../../../assets/images/m.grey.png">
+                        <img *ngIf="machine.status==='OPERATE'" src="../../../assets/images/m.green.png">
+                        <img *ngIf="machine.status==='DISCONNECT'" src="../../../assets/images/m.grey.png">
                         <!-- <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="48" height="38.864" viewBox="0 0 48 38.864">
                             <g id="connectivity" transform="translate(-232 -172.5)">
                               <g id="Group_65" data-name="Group 65" transform="translate(37 53)">

@@ -143,7 +143,7 @@ servoloads(){
           type: 'doughnut',
           plugins: [{
             afterDraw: chart => {
-              Chart.defaults.global.defaultFontSize = 0;
+              
               var needleValue = chart.chart.config.data.datasets[0].needleValue;
               var dataTotal = chart.chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
               var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
@@ -166,6 +166,7 @@ servoloads(){
               ctx.beginPath();
               ctx.arc(cx, cy, 5, 0, Math.PI * 2);
               ctx.fill();
+              Chart.defaults.global.defaultFontSize = 0;
             }
           }],
           data: {
@@ -337,11 +338,11 @@ servoloads(){
         this.alname = res;
       })
       
-    },60000)
+    },180000)
 this.timeout1=setInterval(()=>{
   this.getmachinedet(localStorage.getItem("clickmachine"))
   // this.method()
-},60000)
+},180000)
 
 
   }

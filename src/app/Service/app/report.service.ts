@@ -74,6 +74,10 @@ put_rreport(data: any):Observable<any> {
   trendchart(name,module,shift_num,date,groupsignal){
     return this.http.get('signal_charts?machine_name='+name+'&&module='+module+'&&shift_num='+shift_num+'&&from_date='+date+'&&signal='+groupsignal+'')
   }
+  
+  maintenancereport(name,module,shift_num,date,groupsignal){
+    return this.http.get('maintenance_reports?machine='+name+'&&module='+module+'&&shift='+shift_num+'&&from_date='+date+'&&signal='+groupsignal+'')
+  }
 }
 
 

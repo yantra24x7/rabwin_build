@@ -106,12 +106,19 @@
 
 
                 <div class="filter_field date_picker" color="primary">
-                 <mat-form-field class="date_select" (click)="picker.open()">
+                 <!-- <mat-form-field class="date_select" (click)="picker.open()">
                     <input matInput placeholder="Choose a date" class="date_select" formControlName="date"
                       [satDatepicker]="picker" [max]="maxDate" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" >
                     <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
                     <sat-datepicker #picker [rangeMode]="true" >
                     </sat-datepicker>
+                  </mat-form-field> -->
+                  
+                  <mat-form-field> 
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker"  [max]="maxDate" formControlName="date" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year"></mat-datepicker>
                   </mat-form-field>
     
                 </div>
