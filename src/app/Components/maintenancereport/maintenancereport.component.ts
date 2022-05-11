@@ -31,6 +31,7 @@ export class MaintenancereportComponent implements OnInit {
   status: any;
   maintenancereport: any=[];
   export_excel: any=[];
+  public maxDate: Object = new Date();
   constructor(private nav:NavbarService,public fb:FormBuilder,public service:ReportService,public datepipe:DatePipe,
     public machine:MachineService, private exportService: ExportService) { 
     this.nav.show()
@@ -192,5 +193,14 @@ export class MaintenancereportComponent implements OnInit {
        }
        
      }
+
+     getshift(shift){
+      localStorage.setItem('SHHIFT',shift);
+  
+      let hadok = localStorage.getItem('SHHIFT');
+    
+  
+     
+  }
 
         }

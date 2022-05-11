@@ -36,8 +36,11 @@ export class AlarmreportsComponent implements OnInit {
   totals: number;
   get_duration: any;
   timeduration: any;
+  rolename: any;
+  public maxDate: Object = new Date();
   constructor(private datepipe: DatePipe, private nav: NavbarService, private service: ReportService, private fb: FormBuilder, private exportService: ExportService) {
     this.nav.show()
+    this.rolename = localStorage.getItem('role_name');
     this.login = this.fb.group({
       line:["",],
       machine_name: [""],

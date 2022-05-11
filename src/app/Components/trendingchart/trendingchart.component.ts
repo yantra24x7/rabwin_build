@@ -164,8 +164,7 @@ export class TrendingchartComponent implements OnInit {
         type: 'area',
         name:this.signal +":"+this.chartdata[i].key +" Axis",
         color: this.colorfucntion(i),
-     
-        lineWidth: 5,
+        lineWidth: 3,
         data: this.chartdata[i].value }
 
         this.chartdata1.push(data)
@@ -174,7 +173,7 @@ export class TrendingchartComponent implements OnInit {
         type: 'area',
         name:"No Data",
         color: '#404047',
-        lineWidth: 5,
+        lineWidth: 3,
         data: [] })
      console.log(this.chartdata1)
       this.myLoader=false
@@ -236,11 +235,13 @@ export class TrendingchartComponent implements OnInit {
                 y2: 1
               },
               stops: [
-                [0, 'rgb(255, 255, 255)'],
-                [1, 'rgb(240, 240, 255)']
+                
+                [0, 'rgb(88 88 88)'],
+                [1, 'rgb(88 88 88)']
             ]
             },
             marker: {
+              // backgroundColor: '#1A1A1A',
               radius: 2
             },
             lineWidth: 1,
@@ -314,17 +315,30 @@ export class TrendingchartComponent implements OnInit {
       })
     }
 
-    addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-      console.log("triggered")
-        this.date = event.value;
-        this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
-        this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
-        localStorage.setItem('SDATE', this.sdate);
-        localStorage.setItem('EDATE', this.edate);
+    // addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    //   console.log("triggered")
+    //     this.date = event.value;
+    //     this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
+    //     this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
+    //     localStorage.setItem('SDATE', this.sdate);
+    //     localStorage.setItem('EDATE', this.edate);
 
+    //   }
+      addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+        this.date = event.value;
+        this.sdate = new DatePipe('en-US').transform(this.date, 'dd/MM/yyyy');
       }
       getsignal(val){
     this.signal=val
       }
+      getshift(shift){
+        localStorage.setItem('SHHIFT',shift);
+    
+        let hadok = localStorage.getItem('SHHIFT');
+      
+    
+       
+    }
+
 }
  
