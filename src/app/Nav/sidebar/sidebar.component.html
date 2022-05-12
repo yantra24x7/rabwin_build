@@ -89,7 +89,7 @@
        
 
 
-        <!-- <li [routerLink]="['/new_dashboard']"  (click)="shift()" routerLinkActive="active-link">
+        <li [routerLink]="['/new_dashboard']"  (click)="shift()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">dashboard
             </mat-icon>
@@ -114,18 +114,18 @@
             </mat-icon>
             <span>OEE Report</span>
           </a>
-        </li> -->
-<!-- 
-        <li [routerLink]="['/efficiency']" (click)="shifting()" routerLinkActive="active-link">
+        </li> 
+
+  <li [routerLink]="['/efficiency']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">timelapse
             </mat-icon>
             <span>Efficiency Report</span>
           </a>                       
-        </li> -->
+        </li> 
 
         
-        <!-- <li [routerLink]="['/report']" (click)="shifting()" routerLinkActive="active-link">
+     <li [routerLink]="['/report']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">file_copy
             </mat-icon>
@@ -152,38 +152,7 @@
         </li>
 
         
-     -->
-     <li [routerLink]="['/m-dashboard']" (click)="shifting()" routerLinkActive="active-link">
-      <a href="javascript:;">
-        <mat-icon class="v-align-middle display">dashboard
-        </mat-icon>
-        <span>M-DashBoard</span>
-      </a>
-    </li> 
-  
-    <li [routerLink]="['/trendcharts']" (click)="shifting()" routerLinkActive="active-link">
-      <a href="javascript:;">
-        <mat-icon class="v-align-middle display">timelapse
-        </mat-icon>
-        <span>Trend Chart</span>
-      </a>
-    </li>
-
-    <li [routerLink]="['/maintenance-report']" (click)="shifting()" routerLinkActive="active-link">
-      <a href="javascript:;">
-        <mat-icon class="v-align-middle display">list
-        </mat-icon>
-        <span>M-Report</span>
-      </a>
-    </li>
- 
-    <li [routerLink]="['/machine']" (click)="shifting()" routerLinkActive="active-link">
-      <a href="javascript:;">
-        <mat-icon class="v-align-middle display">widgets
-        </mat-icon>
-        <span>M-Machine</span>
-      </a>
-    </li> 
+   
         <li [routerLink]="['/alarm']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">notifications
@@ -204,24 +173,13 @@
       
 
 
-
-       
-
-      
-
-
-        
-
-
-
-
-        <!-- <li [routerLink]="['/quality']" (click)="shifting()" routerLinkActive="active-link">
+        <li [routerLink]="['/quality']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">timelapse
             </mat-icon>
             <span>Quality Entry</span>
           </a>
-        </li> -->
+        </li>
 
 
         <li [routerLink]="['/machine_registration']" (click)="shifting()" routerLinkActive="active-link">
@@ -249,32 +207,61 @@
             <span>User</span>
           </a>
         </li>
-        <!-- <li [routerLink]="['/component']" routerLinkActive="active-link">
+        <li [routerLink]="['/component']" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">markunread_mailbox
             </mat-icon>
             <span>Component</span>
           </a>
-        </li> -->
+        </li>
 
 
-        <!-- <li [routerLink]="['/operator_registration']" (click)="shifting()" routerLinkActive="active-link">
+        <li [routerLink]="['/operator_registration']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">account_circle
             </mat-icon>
             <span>Operator</span>
           </a>
-        </li> -->
+        </li>
 
-
-        <!-- <li [routerLink]="['/reason_lmw']" (click)="shifting()" routerLinkActive="active-link">
+ <li [routerLink]="['/reason_lmw']" (click)="shifting()" routerLinkActive="active-link">
           <a href="javascript:;">
             <mat-icon class="v-align-middle display">list
             </mat-icon>
             <span>Reason</span>
           </a>
-        </li> -->
+        </li> 
+        <li [routerLink]="['/m-dashboard']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">dashboard
+            </mat-icon>
+            <span>M-DashBoard</span>
+          </a>
+        </li> 
       
+        <li [routerLink]="['/trendcharts']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">timelapse
+            </mat-icon>
+            <span>Trend Chart</span>
+          </a>
+        </li>
+    
+        <li [routerLink]="['/maintenance-report']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">list
+            </mat-icon>
+            <span>M-Report</span>
+          </a>
+        </li>
+     
+        <li [routerLink]="['/machine']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">widgets
+            </mat-icon>
+            <span>M-Machine</span>
+          </a>
+        </li> 
       </ul>
     </div>
 <div *ngIf="rolename === 'Yantra_Admin'" class="sidenav_view">
