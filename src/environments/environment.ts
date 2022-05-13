@@ -14,8 +14,8 @@ export const environment = {
    //serverUrl: 'http://192.168.1.166:3000//api/v1/',
    //serverUrl: 'http://192.168.1.191:3001//api/v1/',
 
-   serverUrl: 'http://103.44.98.132:3001/api/v1/',//rabwin live backend url
-
+   // serverUrl: 'http://103.44.98.132:3001/api/v1/',//rabwin live backend url
+   serverUrl:'http://10.172.0.103:3001/api/v1/'
     //serverUrl: 'http://65.0.250.235:3000//api/v1/',
 
    //serverUrl: 'http://15.207.212.223:3000//api/v1/',
