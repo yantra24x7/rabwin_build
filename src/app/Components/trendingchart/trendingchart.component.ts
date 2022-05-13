@@ -156,7 +156,7 @@ export class TrendingchartComponent implements OnInit {
     if (this.status == 'true') {
  
     this.chartdata1=[]
-    this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,this.sdate,this.login.value.signal).subscribe(res => {
+    this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,new DatePipe('en-US').transform(this.sdate, 'dd/MM/yyyy'),this.login.value.signal).subscribe(res => {
       console.log(res)
       this.chartdata=res
      for(let i=0;i<this.chartdata.length;i++){
