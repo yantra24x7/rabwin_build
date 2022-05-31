@@ -2,10 +2,12 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material';
+import * as Chart from 'chart.js';
 import { NavbarService } from 'src/app/Nav/navbar.service';
 import { MachineService } from 'src/app/Service/app/machine.service';
 import { ReportService } from 'src/app/Service/app/report.service';
 declare var Highcharts: any;
+declare const CanvasJS: any;
 @Component({
   selector: 'app-trendingchart',
   templateUrl: './trendingchart.component.html',
@@ -31,6 +33,9 @@ export class TrendingchartComponent implements OnInit {
   chartdata1: any=[];
   fiesr_date: any;
   public maxDate: Object = new Date();
+  dataSeries: any;
+  chartdata2: any=[];
+  chartvalues: any=[];
   constructor(private nav:NavbarService,public fb:FormBuilder,public service:ReportService,public datepipe:DatePipe,public machine:MachineService) { 
     this.nav.show()
 
@@ -156,26 +161,141 @@ export class TrendingchartComponent implements OnInit {
     if (this.status == 'true') {
  
     this.chartdata1=[]
+    this.chartdata2=[]
     this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,new DatePipe('en-US').transform(this.sdate, 'dd/MM/yyyy'),this.login.value.signal).subscribe(res => {
       console.log(res)
       this.chartdata=res
-     for(let i=0;i<this.chartdata.length;i++){
-      let data={
-        type: 'area',
-        name:this.signal +":"+this.chartdata[i].key +" Axis",
-        color: this.colorfucntion(i),
-        lineWidth: 3,
-        data: this.chartdata[i].value }
+    //  for(let i=0;i<this.chartdata.length;i++){
+    //   let data={
+    //     type: 'area',
+    //     name:this.signal +":"+this.chartdata[i].key +" Axis",
+    //     color: this.colorfucntion(i),
+    //     lineWidth: 3,
+    //     data: this.chartdata[i].value }
 
-        this.chartdata1.push(data)
-     }
-     this.chartdata1.push({
-        type: 'area',
-        name:"No Data",
-        color: '#404047',
-        lineWidth: 3,
-        data: [] })
-     console.log(this.chartdata1)
+    //     this.chartdata1.push(data)
+    //  }
+    //  this.chartdata1.push({
+    //     type: 'area',
+    //     name:"No Data",
+    //     color: '#404047',
+    //     lineWidth: 3,
+    //     data: [] })
+    //  console.log(this.chartdata1)
+
+
+
+//offline code for chart
+for(let i=0;i<this.chartdata.length;i++){
+
+  for(let k=0;k<this.chartdata[i].value.length;k++){
+ this.chartvalues.push({
+  "x":this.chartdata[i].value[k][0],"y":this.chartdata[i].value[k][1]
+    })
+  }
+let data=
+  {
+    label: this.signal +":"+this.chartdata[i].key +" Axis",
+    data: this.chartvalues,
+    showLine: true,
+    fill: false,
+    borderColor: this.colorfucntion(i)
+  }
+  this.chartdata2.push(data)
+  this.chartvalues=[];
+  console.log(i)
+}
+this.chartdata2.push({
+    label: "No Data",
+    data: [],
+    showLine: true,
+    fill: false,
+    borderColor: "#404047"
+})
+console.log(this.chartdata2)
+
+
+// setTimeout(() => {
+
+
+  new Chart('myChart', {
+    type: 'scatter',
+    data: {
+      datasets: 
+        this.chartdata2
+        // {
+        //   label: 'Chart 1',
+        //   data: [{x: 1651566969000, y: 2}, {x: 2, y: 4}, {x: 3, y: 8},{x: 4, y: 16}],
+        //   showLine: true,
+        //   fill: false,
+        //   borderColor: '#FCAF26'
+        // },
+        // {
+        //   label: 'Chart 2',
+        //   data: [{x: 1, y: 3}, {x: 3, y: 4}, {x: 4, y: 6}, {x: 6, y: 9}],
+        //   showLine: true,
+        //   fill: false,
+        //   borderColor: 'rgba(200, 0, 0, 1)'
+        // }
+      
+    },
+    
+    options: {
+      title: {
+        display: true,
+        text: this.signal
+    },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: this.signal
+          }
+        }],
+        xAxes:[{
+          type: 'time',
+          display: true,
+          
+        }],
+      },
+      
+        plugins: {
+          responsive: true,
+          maintainAspectRatio: false,
+          zoom: {
+            zoom: {
+              wheel: {
+                enabled: true
+              },
+              pinch: {
+                enabled: true
+              },
+              mode: 'xy'
+            }
+          }
+    
+        }
+    }
+  });
+
+// },1000)
+
+//end code for chart
+
+
+
+
       this.myLoader=false
   
       Highcharts.chart('container', {
@@ -278,9 +398,13 @@ export class TrendingchartComponent implements OnInit {
       });
   
     } )
-  }
+
+  
+
+  
    
-  }
+    }}
+  
   getm(val){
     
     localStorage.setItem('MACHINE', val);
@@ -325,8 +449,8 @@ export class TrendingchartComponent implements OnInit {
 
     //   }
       addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-        this.date = event.value;
-        this.sdate = new DatePipe('en-US').transform(this.date, 'dd/MM/yyyy');
+        this.sdate = event.value;
+        // this.sdate = new DatePipe('en-US').transform(this.date, 'dd/MM/yyyy');
       }
       getsignal(val){
     this.signal=val
