@@ -454,12 +454,12 @@
                       <p>{{data.value}}</p>
                     </div>
 
-                    <div class="item-wrapper red" *ngIf="data.value !='NORMAL' && data.value !='NON'">
+                    <div class="item-wrapper red" *ngIf="data.value !='NORMAL' && data.value !='NON' &&  data.value !='' && data.value !=0">
                       <p>Fan{{i+1}}</p>
                       <img src="assets/icons/fanw.png" alt="">
                       <p>{{data.value}}</p>
                     </div>
-                    <div class="item-wrapper" *ngIf="data.value =='NON'">
+                    <div class="item-wrapper" *ngIf="data.value =='NON' || data.value =='' || data.value ==0">
                       <p>Fan{{i+1}}</p>
                       <img src="assets/icons/fanw.png" alt="">
                       <p>{{data.value}}</p>
@@ -475,8 +475,15 @@
                 <h4>Battery Status</h4>
                  <div class="fo-icons-wrapper">
                    <div class="bt-icon" *ngFor="let data of maintenancedetails['BATTERYSTATUS']">
-                     <img *ngIf="data.value==false" src="assets/icons/bt-green.png" alt="">
-                     <img  *ngIf="data.value==true" src="assets/icons/bt-red.png" alt="">
+                    <div *ngIf="data.value==false"> 
+                      <img  src="assets/icons/bt-green.png" alt="">
+                    </div>
+                    <div *ngIf="data.value==true">
+                      <img   src="assets/icons/bt-red.png" alt="">
+                    </div>
+                    <div *ngIf="data.value=='' && data.value==0 && data.value==null">
+                      (N/A)
+                    </div>
                      <p>{{data.axis}}</p>
                    </div>
                    <!-- <div class="bt-icon">
