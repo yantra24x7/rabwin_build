@@ -475,10 +475,10 @@
                 <h4>Battery Status</h4>
                  <div class="fo-icons-wrapper">
                    <div class="bt-icon" *ngFor="let data of maintenancedetails['BATTERYSTATUS']">
-                    <div *ngIf="data.value==false && data.value !='' && data.value !=0 && data.value !=null"> 
+                    <div *ngIf="data.value==false"> 
                       <img  src="assets/icons/bt-green.png" alt="">
                     </div>
-                    <div *ngIf="data.value==true && data.value !='' && data.value !=0 && data.value !=null">
+                    <div *ngIf="data.value==true">
                       <img   src="assets/icons/bt-red.png" alt="">
                     </div>
                     <div *ngIf="data.value=='' && data.value==0 && data.value==null">
