@@ -7,6 +7,7 @@ import { AuthGuard} from '../app/Service/core/authentication/auths.guard';
 const routes: Routes = [
   
 { path: '', loadChildren: () => import('./Components/login/login.module').then(m => m.LoginModule) },
+{ path: 'm-dashboard', loadChildren: () => import('./Components/mdashboard/mdashboard.module').then(m => m.MdashboardModule) },
 { path: 'register', loadChildren: () => import('./Components/register/register.module').then(m => m.RegisterModule) },
 { path: 'sidebar', loadChildren: () => import('./Nav/sidebar/sidebar.module').then(m => m.SidebarModule) },
 { path: 'alarm', loadChildren: () => import('./Components/alarm/alarm.module').then(m => m.AlarmModule) },
@@ -50,7 +51,14 @@ const routes: Routes = [
 
 {path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule),canActivate: [AuthGuard]},
 {path:'logactivity',loadChildren: ()=>import('./Components/logdetails/logdetails.module').then(m=>m.LogdetailModule),canActivate: [AuthGuard]},
-{path:'Spindle',loadChildren: ()=>import('./Components/spindle/spindle.module').then(m=>m.SpindleModule),canActivate: [AuthGuard]}
+{path:'Spindle',loadChildren: ()=>import('./Components/spindle/spindle.module').then(m=>m.SpindleModule),canActivate: [AuthGuard]},
+
+{ path: 'maintenancedb', loadChildren: () => import('./Components/maintenancedb/maintenacedb.module').then(m => m.MaintenancedbModule) },
+{ path: 'trendcharts', loadChildren: () => import('./Components/trendingchart/trending.module').then(m => m.TrendingChartModule) },
+{ path: 'alarmreport', loadChildren: () => import('./Components/alarmreports/alarmreports.module').then(m => m.AlarmReportModule) },
+{ path: 'maintenance-report', loadChildren: () => import('./Components/maintenancereport/maintenancereport.module').then(m => m.MaintenancereportModule) },
+{ path: 'machine', loadChildren: () => import('./Components/maintenancedashboard/maintenancedashboard.module').then(m => m.MaintenancedashboardModule) },
+{ path: 'Setting', loadChildren: () => import('./Components/settings/settings.module').then(m => m.SettingsModule) },
 ]
     
 @NgModule({

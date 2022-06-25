@@ -1,0 +1,144 @@
+.accordion {
+    background-color: #232534;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+  
+  .panel {
+    padding: 20px;
+    display: none;
+    background-color: #232534;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .mat-form-field-outline {
+    background: #990000!important;
+    
+}
+// .mat-form-field-flex{
+//     height: 59px!important;
+// }
+// .mat-input-element{
+//     height: 40px;
+// }
+.mat-form-field-wrapper{
+    background: #990000!important;
+}
+::ng-deep .mat-form-field-appearance-outline{
+    .mat-form-field-outline {
+    background: #202739;
+    border-radius: 5px!important;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    }
+}
+::ng-deep .mat-select-content{
+    width:2000px;
+    background-color: red;
+    font-size: 10px;   
+}
+
+.form_sec .mat-form-field {
+    margin-bottom: 10px;
+}
+
+.row_sec .mat-form-field {
+    width: 100%;
+}
+// .mat-form-field{
+//     font-family: 'Barlow Condensed', sans-serif!important;
+// }
+// .mat-form-field-infix{
+//     font-family: 'Barlow Condensed', sans-serif!important;
+// }
+
+button.accordion {
+    font-family: "Mulish", sans-serif;
+    font-weight: 500;
+}
+
+.active, .accordion:hover{
+background-color: #f7941e;
+color: #ffffff;
+}
+
+button.accordion span {
+    float: right;
+    font-size: 20px;
+}
+
+.form-wrapper-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-wrapper-main .form-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    margin-bottom: 15px;
+}
+
+.form-wrapper-main .form-wrap label {
+    color: #c7c7c7;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+}
+
+.form-wrap span {
+    color: #767676 !important;
+    font-family: "Mulish", sans-serif;
+}
+
+.form-wrapper-main .form-wrap input {
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    font-family: "Mulish", sans-serif;
+    background: #35383f;
+}
+
+.acc-btn-wrap {
+    float: right;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+
+.acc-btn-wrap button {
+    padding: 10px 25px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+    border: none;
+    box-shadow: none;
+}
+
+.acc-btn-wrap button.btn.btn-warning {
+    color: white;
+    background: #f7941e;
+}
+.acc-btn-wrap button.btn.btn-warning:hover {
+    color: white;
+    background: #d37403;
+}

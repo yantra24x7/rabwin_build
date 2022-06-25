@@ -190,7 +190,13 @@
             <span>Alarms</span>
           </a>
         </li>
-
+        <li [routerLink]="['/alarmreport']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">notifications
+            </mat-icon>
+            <span>Alarm Report</span>
+          </a>
+        </li>
 
 
 
@@ -274,6 +280,38 @@
           </a>
         </li>
     
+
+        <li [routerLink]="['/m-dashboard']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">dashboard
+            </mat-icon>
+            <span>M-DashBoard</span>
+          </a>
+        </li> 
+      
+        <li [routerLink]="['/trendcharts']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">list
+            </mat-icon>
+            <span>Trend Chart</span>
+          </a>
+        </li>
+  
+        <li [routerLink]="['/maintenance-report']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">list
+            </mat-icon>
+            <span>M-Report</span>
+          </a>
+        </li>
+     
+        <li [routerLink]="['/machine']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">widgets
+            </mat-icon>
+            <span>M-Machine</span>
+          </a>
+        </li> 
       </ul>
     </div>
 <div *ngIf="rolename === 'Yantra_Admin'" class="sidenav_view">

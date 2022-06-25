@@ -4678,7 +4678,19 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
 
 @media (min-width: 1920px) and (max-width: 2560px)  {
    
-    .dashboardline_page .right_side .utilization_load .bg.axis_chart .circle_chart .chart_text {
+    .machine_name.pl-2 h3 {
+        font-size: 26px !IMPORTANT;
+        margin-top: 0 !important;
+    }
+
+    .machine_header .machine_title span.material-icons {
+        font-size: 35px !IMPORTANT;
+    }
+
+    .machines_collections .machine_prod h3{
+        font-size: 24px !important;
+    } 
+       .dashboardline_page .right_side .utilization_load .bg.axis_chart .circle_chart .chart_text {
         top: 28%;
         left: 50%;
     }
@@ -4829,4 +4841,126 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
     -webkit-backface-visibility: hidden;
     -webkit-touch-callout: none;
     color: yellowgreen;
+}
+.dashboard_page_sec .line_desc{
+    width: 36%;
+    background: #4A4A4A;
+    padding:0 20px;
+    border-bottom-right-radius: 10px !important;
+    border-top-right-radius: 10px;
+    border: 2px solid #646569;
+  }
+
+  .mat-dialog-container#mat-dialog-0 {
+    background: #484848 !important;
+    border: 1px solid #6A6A6A;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing {
+    background: #000000 !important;
+    opacity: 50%;
+}
+
+.dropdown-wrapper .mat-form-field-flex {
+    background: #293243 !important;
+    border-radius: 10px !important;
+}
+
+.dropdown-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-wrapper .mat-form-field-type-mat-select .mat-form-field-label {
+    color: white;
+}
+
+.dropdown-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.dropdown-wrapper mat-form-field {
+    width: 23.5%;
+}
+
+.e-control rect {
+    fill: transparent;
+}
+
+.spindle-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+path.highcharts-area {
+    fill: none!important;
+}
+
+
+.m-dashboard .owl-prev {
+    background: none !important;
+    padding: 0 !IMPORTANT;
+}
+
+.m-dashboard .owl-next {
+    background: none !important;
+    padding: 0 !IMPORTANT;
+}
+
+.m-dashboard .nav-button.owl-prev {
+    background: #232534 !important;
+    padding: 0 10px !important;
+}
+
+.m-dashboard .nav-button.owl-next {
+    background: #232534 !important;
+    padding: 0 10px !important;
+}
+
+.m-dashboard .nav-button {
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.m-dashboard .owl-next {
+    margin: 0 !important;
+}
+
+.m-dashboard .owl-nav {
+    position: absolute;
+    right: 105px;
+    top: -50.5px;
+}
+
+.m-dashboard .owl-dots {
+    position: absolute;
+    top: -26.5px;
+    right: 170px;
+}
+
+.m-dashboard .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #ffad31;
+    margin-right: 2px;
+}
+
+.m-dashboard .owl-theme .owl-dots .owl-dot span {
+    background: #424558;
+    margin-right: 2px;
+}
+
+.m-dashboard text {
+    display: none;
+}
+
+// text {
+//     fill: white !important;
+// }
+
+tspan {
+    font-size: 17px;
+    overflow: hidden;
+    fill: white;
 }
