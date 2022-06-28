@@ -9,16 +9,18 @@ export const environment = {
     //serverUrl: 'http://192.168.0.237:5000/api/v1/',
    //serverUrl: ' http://13.235.142.89:81/api/v1/',
    // serverUrl: 'http://3.7.120.8:3000//api/v1/',
-   // serverUrl: 'http://3.7.120.8:3000/api/v1/',
+   serverUrl: 'http://3.7.120.8:3000/api/v1/',
    // serverUrl: 'http://192.168.2.230:3000//api/v1/',
    //serverUrl: 'http://192.168.1.166:3000//api/v1/',
    //serverUrl: 'http://192.168.1.191:3001//api/v1/',
 
    // serverUrl: 'http://103.44.98.132:3001/api/v1/',//rabwin live backend url
-   serverUrl:'http://10.172.0.103:3001/api/v1/'
+   
     //serverUrl: 'http://65.0.250.235:3000//api/v1/',
 
    //serverUrl: 'http://15.207.212.223:3000//api/v1/',
+
+   // serverUrl:'http://10.172.0.103:3001/api/v1/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
