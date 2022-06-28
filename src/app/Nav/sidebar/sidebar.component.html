@@ -29,7 +29,7 @@
         <!-- <div class="block primary-background">Primary</div>    -->
       </div>
       <a href="javascript:;" class="sidenav_logo1 d-lg-none1 d-sm-block1 d-none">
-        <img src="../../../assets/images/ZF_Rane_RGB.jpg">
+        <img src="../../../assets/images/unitech.jpg">
       </a>
       <a class="logout">
         <div class="dropdown">
@@ -61,7 +61,7 @@
   
   <div class="sidenav_view" *ngIf="rolename === 'QA'">
     <a href="javascript:;" class="sidenav_logo">
-      <img src="../../../assets/images/ZF_Rane_RGB.jpg">
+      <img src="../../../assets/images/unitech.jpg">
     </a>
     <ul class="sidenav_links ">
       <!-- <li (click)=shift() routerLinkActive="active-link">
@@ -82,7 +82,7 @@
     </div>
     <div *ngIf="rolename === 'Admin'" class="sidenav_view"> 
       <a href="javascript:;" class="sidenav_logo">
-        <img src="../../../assets/images/ZF_Rane_RGB.jpg">
+        <img src="../../../assets/images/unitech.jpg">
       </a>
 
       <ul class="sidenav_links">
@@ -191,7 +191,13 @@
           </a>
         </li>
 
-
+        <li [routerLink]="['/alarmreport']" (click)="shifting()" routerLinkActive="active-link">
+          <a href="javascript:;">
+            <mat-icon class="v-align-middle display">notifications
+            </mat-icon>
+            <span>Alarm Report</span>
+          </a>
+        </li>
 
 
         <!-- <li [routerLink]="['/eff_report']" routerLinkActive="active-link">
@@ -278,7 +284,7 @@
     </div>
 <div *ngIf="rolename === 'Yantra_Admin'" class="sidenav_view">
   <a href="javascript:;" class="sidenav_logo">
-    <img src="../../../assets/images/ZF_Rane_RGB.jpg">
+    <img src="../../../assets/images/unitech.jpg">
   </a>
 
   <ul class="sidenav_links">
@@ -300,7 +306,7 @@
 </div>
     <div *ngIf="rolename === 'Supervisor'" class="sidenav_view">
       <a href="javascript:;" class="sidenav_logo">
-        <img src="../../../assets/images/ZF_Rane_RGB.jpg">
+        <img src="../../../assets/images/unitech.jpg">
       </a>
 
       <ul class="sidenav_links">

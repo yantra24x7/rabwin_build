@@ -47,7 +47,7 @@ const routes: Routes = [
 { path: 'newdash', loadChildren: () => import('./Components/newdash/newdash.module').then(m => m.NewdashModule) },
   
 { path: 'cycle', loadChildren: () => import('./Components/cycle/cycle.module').then(m => m.CycleModule) },
-
+{ path: 'alarmreport', loadChildren: () => import('./Components/alarmreports/alarmreports.module').then(m => m.AlarmReportModule) },
 {path:'loghistory',loadChildren: ()=>import('./Components/loghistory/loghistory.module').then(m=>m.LoghistoryModule),canActivate: [AuthGuard]},
 {path:'logactivity',loadChildren: ()=>import('./Components/logdetails/logdetails.module').then(m=>m.LogdetailModule),canActivate: [AuthGuard]},
 {path:'Spindle',loadChildren: ()=>import('./Components/spindle/spindle.module').then(m=>m.SpindleModule),canActivate: [AuthGuard]}
