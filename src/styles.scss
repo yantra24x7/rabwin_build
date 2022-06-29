@@ -4963,4 +4963,11 @@ tspan {
     font-size: 17px;
     overflow: hidden;
     fill: white;
+    stroke: unset;
+}
+.fill text.highcharts-title {
+    fill: white !important;
+}
+.fill rect.highcharts-background {
+    fill: #202739;
 }
