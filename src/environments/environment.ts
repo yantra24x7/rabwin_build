@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   version: '1.0.0',
 
-   serverUrl: 'http://3.7.120.8:3000//api/v1/',
-  //  serverUrl: 'http://192.168.1.217:3000/api/v1/',
+  //  serverUrl: 'http://3.7.120.8:3000//api/v1/',
+   serverUrl: 'http://192.168.1.217:3000/api/v1/',
  
 
 
