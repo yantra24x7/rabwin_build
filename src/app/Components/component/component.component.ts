@@ -21,7 +21,7 @@ export class ComponentComponent implements OnInit {
   myLoader = false;
   operators: any;
   seconds = true;
-  displayedColumns: string[] = ['machine_name', 'component_name', 'id', 'cycle_time', 'target', 'multiplication_factor', 'action'];
+  displayedColumns: string[] = ['machine_name', 'component_name', 'id', 'cycle_time', 'multiplication_factor', 'action'];
   dataSource = new MatTableDataSource();
   pageNo: any;
   total_count: any;
@@ -123,7 +123,7 @@ export class operator {
       this.componentForm = this.fb.group({
         name: ["", Validators.required],
         spec_id: ["", Validators.required],
-        target: ["", Validators.required],
+        target: [""],
         multiplication_factor: [1, Validators.required],
         L0_name: ["", Validators.required],
         cycle_time: ["", Validators.required],
@@ -132,7 +132,7 @@ export class operator {
       this.componentForm = this.fb.group({
         name: [this.value.edit_component.name, Validators.required],
         spec_id: [this.value.edit_component.spec_id, Validators.required],
-        target: [this.value.edit_component.target, Validators.required],
+        target: [this.value.edit_component.target],
         multiplication_factor: [this.value.edit_component.multiplication_factor, Validators.required],
         L0_name: [this.value.edit_component.L0_name, Validators.required],
         cycle_time: [this.Time(this.value.edit_component.cycle_time_factor), Validators.required],

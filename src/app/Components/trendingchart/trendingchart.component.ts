@@ -36,6 +36,7 @@ export class TrendingchartComponent implements OnInit {
   dataSeries: any;
   chartdata2: any=[];
   chartvalues: any=[];
+  charts: any;
   constructor(private nav:NavbarService,public fb:FormBuilder,public service:ReportService,public datepipe:DatePipe,public machine:MachineService) { 
     this.nav.show()
 
@@ -162,6 +163,7 @@ export class TrendingchartComponent implements OnInit {
  
     this.chartdata1=[]
     this.chartdata2=[]
+    Chart.defaults.global.defaultFontColor='white';
     this.service.trendchart(this.login.value.machine_name,this.login.value.line,this.login.value.shift_num,new DatePipe('en-US').transform(this.sdate, 'dd/MM/yyyy'),this.login.value.signal).subscribe(res => {
       console.log(res)
       this.chartdata=res
@@ -216,9 +218,10 @@ console.log(this.chartdata2)
 
 
 // setTimeout(() => {
-
-
-  new Chart('myChart', {
+  Chart.helpers.each(Chart.instances, function (instance) {
+    instance.destroy();
+  }); 
+ this.charts=new Chart('myChart', {
     type: 'scatter',
     data: {
       datasets: 
@@ -244,6 +247,7 @@ console.log(this.chartdata2)
       title: {
         display: true,
         text: this.signal
+        
     },
       tooltips: {
         mode: 'index',
@@ -256,7 +260,8 @@ console.log(this.chartdata2)
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero:false
+            beginAtZero:false,
+            
           },
           scaleLabel: {
             display: true,
@@ -272,7 +277,9 @@ console.log(this.chartdata2)
       
         plugins: {
           responsive: true,
+         
           maintainAspectRatio: false,
+     
           zoom: {
             zoom: {
               wheel: {
