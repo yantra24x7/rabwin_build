@@ -195,22 +195,25 @@ export class Add {
   ngOnInit() {
 
     this.machine.man_get_sett(this.edit_data2.L0Name).pipe(untilDestroyed(this)).subscribe(res => {
-      this.lockMS = res[2];
-      
-      
 
+    for(let i=0;i<res.length;i++){
 
-      localStorage.setItem('Macro_var', res[2]._id.$oid);
+        if(res[i].group_signal==="MacroVar"){
+          this.lockMS = res[i];
+           localStorage.setItem('Macro_var', res[i]._id.$oid);
+           this.get_macro = res[i];
+          this.operator_id = new FormControl(this.get_macro.signal[0].operator_id, [Validators.required]);
+          this.route_card = new FormControl(this.get_macro.signal[1].route_card, [Validators.required]);
+          this.operation_number = new FormControl(this.get_macro.signal[2].operation_number, [Validators.required]);
+          this.idle_reason = new FormControl(this.get_macro.signal[3].idle_reason, [Validators.required]);
+          this.rejection1 = new FormControl(this.get_macro.signal[4].rejection, [Validators.required]);
+          this.rework = new FormControl(this.get_macro.signal[5].rework, [Validators.required]);
+        }
+
+    }
+
 
     
-
-      this.get_macro = res[2];
-      this.operator_id = new FormControl(this.get_macro.signal[0].operator_id, [Validators.required]);
-      this.route_card = new FormControl(this.get_macro.signal[1].route_card, [Validators.required]);
-      this.operation_number = new FormControl(this.get_macro.signal[2].operation_number, [Validators.required]);
-      this.idle_reason = new FormControl(this.get_macro.signal[3].idle_reason, [Validators.required]);
-      this.rejection1 = new FormControl(this.get_macro.signal[4].rejection, [Validators.required]);
-      this.rework = new FormControl(this.get_macro.signal[5].rework, [Validators.required]);
       // this.myLoader1 = false;
 
 

@@ -217,7 +217,7 @@ this.chartdata2.push({
 console.log(this.chartdata2)
 
 
-// setTimeout(() => {
+setTimeout(() => {
   Chart.helpers.each(Chart.instances, function (instance) {
     instance.destroy();
   }); 
@@ -296,7 +296,7 @@ console.log(this.chartdata2)
     }
   });
 
-// },1000)
+},1000)
 
 //end code for chart
 
