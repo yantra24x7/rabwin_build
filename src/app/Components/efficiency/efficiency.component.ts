@@ -189,10 +189,10 @@ export class EfficiencyComponent implements OnInit {
          "Operation Number":this.get_report[i].route_card_report[j].opeation_no || 'No Operation Number',
          "Mode":this.get_report[i].route_card_report[j].mode || '---',
 
-         "Route Card Number": this.get_report[i].route_card_report[j].card_no || '---',
-         "Route Card Start Time": this.get_report[i].route_card_report[j].rout_start || '---',
+         "Part Number": this.get_report[i].route_card_report[j].card_no || '---',
+         "Part Start Time": this.get_report[i].route_card_report[j].rout_start || '---',
        
-         "Route Card End Time": this.get_report[i].route_card_report[j].rout_end || '---',
+         "Part End Time": this.get_report[i].route_card_report[j].rout_end || '---',
         //  "Duration": this.get_report[i].duration || '---',
 
          "Target": this.get_report[i].route_card_report[j].tar ,

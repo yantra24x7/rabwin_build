@@ -273,9 +273,9 @@
                   </ng-container>
 
                   <ng-container matColumnDef="root_card">
-                    <th mat-header-cell *matHeaderCellDef>Route Card Number</th>
+                    <th mat-header-cell *matHeaderCellDef>Part Number</th>
                     <td mat-cell *matCellDef="let element"> 
-                      <span *ngIf="element.root_card.length === 0">No Route Card Number</span>
+                      <span *ngIf="element.root_card.length === 0">No Part Number</span>
                       <span *ngIf="element.root_card.length != 0">{{element.root_card}}</span>
 
                     </td>
