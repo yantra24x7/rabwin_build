@@ -31,17 +31,29 @@
                   </mat-form-field> -->
 
 
-                  <mat-form-field class="date_select" (click)="picker.open()">
+                  <!-- <mat-form-field class="date_select" (click)="picker.open()">
                     <input matInput placeholder="Choose a date" class="date_select" formControlName="date"
                       [satDatepicker]="picker" [max]="maxDate" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" >
                     <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
                     <sat-datepicker #picker [rangeMode]="true" >
                     </sat-datepicker>
+                  </mat-form-field> -->
+                  <mat-form-field> 
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate"  formControlName="start_date" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                   </mat-form-field>
-
                 </div>
 
-              
+                <div class="filter_field date_picker" color="primary">
+                  <mat-form-field> 
+                    <mat-label>End Date</mat-label>
+                    <input matInput [matDatepicker]="picker1"  [max]="maxDate" formControlName="end_date">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1 startView="year" [startAt]="endDate"></mat-datepicker>
+                  </mat-form-field>
+                </div>
                     <div class="filter_field">
                         <mat-form-field appearance="outline">
                             <mat-select placeholder="Select Module" matNativeControl required
@@ -347,7 +359,7 @@
                   </ng-container>
 
                   <ng-container matColumnDef="disconnect">
-                    <th mat-header-cell *matHeaderCellDef>Non Utillized Time(min)</th>
+                    <th mat-header-cell *matHeaderCellDef>Power off Time(min)</th>
                     <td mat-cell *matCellDef="let element"> {{element.disconnect || '---'}} </td>
                   </ng-container>
 

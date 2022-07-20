@@ -156,7 +156,9 @@ export class ComparechartComponent implements OnInit {
         machine_name:["",],
         shift_num:[""],
         type:[""],
-        date:["",],
+        // date:["",],
+        start_date:[""],
+        end_date:[""],
         operator:[""]
   
       })
@@ -195,10 +197,9 @@ export class ComparechartComponent implements OnInit {
             this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
             this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
             this.login.patchValue({
-           
-  
-  
-              date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+              start_date : this.dat1,
+              end_date: this.dat2
+              // date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
             })
             
            
@@ -248,9 +249,10 @@ export class ComparechartComponent implements OnInit {
           this.datpre2 = new DatePipe('en-US').transform(this.first_pge_loading.to_date, 'yyyy-MM-dd');
           this.test.patchValue({
            
+            start_date : this.datpre1,
+            end_date: this.datpre2
   
-  
-            date: {begin: this.datepipe.transform(this.datpre1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.datpre2, 'yyyy-MM-dd')}
+            // date: {begin: this.datepipe.transform(this.datpre1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.datpre2, 'yyyy-MM-dd')}
           })
           
        
@@ -274,7 +276,9 @@ export class ComparechartComponent implements OnInit {
     type:[""],
     machine_name:["",],
     shift_num:["",],
-    date:["",],
+    // date:["",],
+    start_date:[""],
+    end_date:[""],
     operator:[""]
   })   
     
@@ -392,6 +396,8 @@ export class ComparechartComponent implements OnInit {
     
     let register = this.login.value;
     if(this.status == 'true'){
+      this.ndate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+      this.ndate2 = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
       if(this.login.value.type === 'Shiftwise'){
         // alert("shift");
         let register = {
@@ -724,6 +730,8 @@ else{
     this.myLoader1 = true;
     let value = this.test.value;
     if(this.status == 'true'){
+      this.Rdate = new DatePipe('en-US').transform(this.test.value.start_date, 'MM/dd/yyyy');
+    this.Rdate2 = new DatePipe('en-US').transform(this.test.value.end_date, 'MM/dd/yyyy');
       if(this.test.value.type === 'Shiftwise'){
         // alert("shift")
       let value = {

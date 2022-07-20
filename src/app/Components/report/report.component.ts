@@ -178,7 +178,9 @@ export class ReportComponent implements OnInit {
       machine_name: [""],
       shift_num: [""],
       type:[""],
-      date: [""],
+      // date: [""],
+      start_date:[""],
+      end_date:[""],
       operator:[""],
 
     })
@@ -223,9 +225,10 @@ export class ReportComponent implements OnInit {
           this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
           this.login.patchValue({
          
+            start_date : this.dat1,
+            end_date: this.dat2
 
-
-            date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+            // date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
           })
 
           // this.stamps = { begin: this.datepipe.transform(begin, 'yyyy-MM-dd'), end: this.datepipe.transform(end, 'yyyy-MM-dd') };
@@ -276,6 +279,8 @@ export class ReportComponent implements OnInit {
 
   }
   export(){
+    this.new_date = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+    this.new_date1 = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
    let register = {
         "machine_name": this.login.value.machine_name,
         "shift_num": this.login.value.shift_num,
@@ -314,7 +319,7 @@ export class ReportComponent implements OnInit {
          "Run Time (in mins)": this.get_report[i].run_time || '---',
          "Setup Idle (in mins)": this.get_report[i].idle_time || '---',
          "Alarm Time": this.get_report[i].alarm_time || '---',
-         "Non Utilized Time": this.get_report[i].disconnect || '---',
+         "Power off Time": this.get_report[i].disconnect || '---',
           "Duration": this.get_report[i].duration || '---',
 
 
@@ -341,6 +346,8 @@ export class ReportComponent implements OnInit {
     // console.log(this.sdate);
     // this.edate = localStorage.getItem('EDATE');
     // console.log(this.edate)
+    this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+    this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
     if (this.status == 'true') {
       if(this.login.value.type === 'Shiftwise'){
         // alert("shift");

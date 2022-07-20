@@ -263,7 +263,7 @@
                                 </e-presets>
                             </ejs-daterangepicker> -->
 
-                            <mat-form-field>
+                            <!-- <mat-form-field>
                                 <input matInput
                                        placeholder="Choose a date"
                                        [satDatepicker]="picker2" 
@@ -271,8 +271,22 @@
                                 <sat-datepicker #picker2 [rangeMode]="true">
                                 </sat-datepicker>
                                 <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>
-                            </mat-form-field>
+                            </mat-form-field> -->
+                            <mat-form-field> 
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="picker" [max]="maxDate"  formControlName="start_date" >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                              </mat-form-field>
                         </div> 
+                        <div class="filter_field date_picker" color="primary">
+                            <mat-form-field> 
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="picker1"  [max]="maxDate" formControlName="end_date">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1 startView="year" [startAt]="endDate"></mat-datepicker>
+                              </mat-form-field>
+                        </div>
                         <div class="filter_field">
                             <mat-form-field appearance="outline">
                                 <mat-select placeholder="Select Module" matNativeControl required
@@ -381,7 +395,7 @@
                             <circle-progress radius="70" outerStrokeColor="#919191" innerStrokeColor="#1E2634"
                                 animation="true" animationDuration="300" percent={{utili3}} >
                             </circle-progress>
-                            <p>Disconnect</p>
+                            <p>Power off</p>
                             <div class="chart_text">
                                 <h3><span class="value">{{utili3}}</span> %</h3>
                             </div>
@@ -450,7 +464,7 @@
                         <div class="filter_field date_picker" color="primary">
 
                             
-                            <mat-form-field>
+                            <!-- <mat-form-field>
                                 <input matInput
                                        placeholder="Choose a date"
                                        [satDatepicker]="picker3"
@@ -458,7 +472,21 @@
                                 <sat-datepicker #picker3 [rangeMode]="true">
                                 </sat-datepicker>
                                 <sat-datepicker-toggle matSuffix [for]="picker3"></sat-datepicker-toggle>
-                            </mat-form-field>
+                            </mat-form-field> -->
+                            <mat-form-field> 
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="picker3" [max]="maxDate"  formControlName="start_date" >
+                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                <mat-datepicker #picker3 startView="year" [startAt]="startDate"></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+                        <div class="filter_field date_picker" color="primary">
+                            <mat-form-field> 
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="picker4"  [max]="maxDate" formControlName="end_date">
+                                <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                <mat-datepicker #picker4 startView="year" [startAt]="endDate"></mat-datepicker>
+                              </mat-form-field>
                         </div>
                         <div class="filter_field">
                             <mat-form-field appearance="outline">
@@ -574,7 +602,7 @@
                             <circle-progress radius="70" outerStrokeColor="#919191" innerStrokeColor="#1E2634"
                                 animation="true" animationDuration="300" percent={{secdis}}>
                             </circle-progress>
-                            <p>Disconnect</p>
+                            <p>Power off</p>
                             <div class="chart_text">
                                 <h3><span class="value">{{secdis}}</span> %</h3>
                             </div>

@@ -246,6 +246,19 @@ export class EfficiencyComponent implements OnInit {
   })
 
  }
+
+
+ 
+  
+//  getDifferenceInMinutes(date1, date2) {
+//   this. dates = new Date(date1);
+//   const datess = new Date('12/15/2010');
+//   const diffInMs = Math.abs(date2 - dates);
+//   return diffInMs / (1000 * 60);
+// }
+
+  
+ 
   logintest(s) {
     this.status = s;
     this.myLoader = true;

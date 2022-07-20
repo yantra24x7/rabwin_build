@@ -184,7 +184,9 @@ fiesr_date:any;
         line:[""],
         machine_name: [""],
         shift_num: [""],
-        date: [""],
+        // date: [""],
+        start_date:[""],
+            end_date:[""]
       })
       this.myLoader = true;
 
@@ -219,7 +221,9 @@ fiesr_date:any;
             this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
             this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
             this.login.patchValue({
-           date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+              start_date : this.dat1,
+          end_date: this.dat2
+          //  date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
             })
             localStorage.setItem('SDATE', this.first_loading['from_date']);
             localStorage.setItem('EDATE', this.first_loading['to_date']);
@@ -247,8 +251,10 @@ fiesr_date:any;
     this.reportList = false;
     this.myLoader = true;
     // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
-    this.sdate = localStorage.getItem('SDATE');
-    this.edate = localStorage.getItem('EDATE');
+    // this.sdate = localStorage.getItem('SDATE');
+    // this.edate = localStorage.getItem('EDATE');
+    this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+    this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
     let volko_chart = {
       "module":this.login.value.line,
   //  "machine": this.login.value.machine_name.split(','),
@@ -377,8 +383,10 @@ fiesr_date:any;
   
   }
       export(){
-        this.sdate = localStorage.getItem('SDATE');
-        this.edate = localStorage.getItem('EDATE');
+        // this.sdate = localStorage.getItem('SDATE');
+        // this.edate = localStorage.getItem('EDATE');
+        this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+        this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
    let register = {
     "machine": this.selectedMachines,
     "shift": this.selectedShifts,
@@ -447,19 +455,21 @@ fiesr_date:any;
   })
 
  }  
- addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-  this.date = event.value;
-        this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
-        this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
-        localStorage.setItem('SDATE', this.sdate);
-        localStorage.setItem('EDATE', this.edate);
-}
+//  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+//   this.date = event.value;
+//         this.sdate = new DatePipe('en-US').transform(this.date.begin, 'MM/dd/yyyy');
+//         this.edate= new DatePipe('en-US').transform(this.date.end, 'MM/dd/yyyy');
+//         localStorage.setItem('SDATE', this.sdate);
+//         localStorage.setItem('EDATE', this.edate);
+// }
   logintest(s) { 
     this.reportList = true;
     this.chartlist = false;
     this.status = s;
-    this.sdate = localStorage.getItem('SDATE');
-    this.edate = localStorage.getItem('EDATE');
+    // this.sdate = localStorage.getItem('SDATE');
+    // this.edate = localStorage.getItem('EDATE');
+    this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+    this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
     // this.login.value.date = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
          let register = {
            "module":this.login.value.line,

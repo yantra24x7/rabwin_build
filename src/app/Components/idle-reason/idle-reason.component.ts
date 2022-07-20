@@ -59,6 +59,8 @@ startDate:any;
       new_date1: any;
       mac_response:any;
       module_response:any;
+     sdate: any;
+     edate: any;
       constructor(private nav:NavbarService,private datepipe: DatePipe,private service:IdleReasonService,private fb:FormBuilder,private exportService: ExportService  ) { 
         this.nav.show()
       }
@@ -87,7 +89,9 @@ gtag('config', 'G-JRVTCZ20DE');
 
             machine_name: [""],
             shift_num: [""],
-            date: [""],
+            // date: [""],
+            start_date:[""],
+            end_date:[""]
           })
           this.myLoader = true;
 
@@ -120,8 +124,9 @@ gtag('config', 'G-JRVTCZ20DE');
         this.dat1 = new DatePipe('en-US').transform(this.first_loading.from_date, 'yyyy-MM-dd');
         this.dat2 = new DatePipe('en-US').transform(this.first_loading.to_date, 'yyyy-MM-dd');
         this.login.patchValue({
-         
-           date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
+          start_date : this.dat1,
+          end_date: this.dat2
+          //  date: {begin: this.datepipe.transform(this.dat1, 'yyyy-MM-dd'), end: this.datepipe.transform(this.dat2, 'yyyy-MM-dd')}
         })
                  
              this.myLoader = false;
@@ -158,12 +163,15 @@ gtag('config', 'G-JRVTCZ20DE');
            
         }
     export(){
+      this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+      this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
    let register = {
         "line":this.login.value.line,
         "machine_name": this.login.value.machine_name,
         "shift_num": this.login.value.shift_num,
         // "date": this.new_date + '-' + this.new_date1
-        "date" : this.login.value.date
+        // "date" : this.login.value.date
+        "date" : this.sdate+"-"+this.edate
       }
   this.service.overall_report(register).subscribe(res => {
     // this.myLoader = false;
@@ -206,14 +214,16 @@ gtag('config', 'G-JRVTCZ20DE');
        if (this.status == 'true') {
         // this.new_date = new DatePipe('en-US').transform(this.login.value.date[0], 'MM/dd/yyyy');
         // this.new_date1 = new DatePipe('en-US').transform(this.login.value.date, 'MM/dd/yyyy');
-        this.new_date = new DatePipe('en-US').transform(this.login.value.date.begin, 'MM/dd/yyyy');
-        this.new_date1 = new DatePipe('en-US').transform(this.login.value.date.end, 'MM/dd/yyyy');
+        // this.new_date = new DatePipe('en-US').transform(this.login.value.date.begin, 'MM/dd/yyyy');
+        // this.new_date1 = new DatePipe('en-US').transform(this.login.value.date.end, 'MM/dd/yyyy');
+        this.sdate = new DatePipe('en-US').transform(this.login.value.start_date, 'MM/dd/yyyy');
+        this.edate = new DatePipe('en-US').transform(this.login.value.end_date, 'MM/dd/yyyy');
         let register = {
           "module":this.login.value.line,
             "machine_name": this.login.value.machine_name,
            "shift_num": this.login.value.shift_num,
           //  "date": this.new_date + '-' + this.new_date1
-          "date":this.new_date + '-' + this.new_date1,
+          "date":this.sdate + '-' + this.edate,
           "line":this.login.value.line
         }
 
