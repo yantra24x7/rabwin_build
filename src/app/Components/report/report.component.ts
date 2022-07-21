@@ -311,7 +311,7 @@ export class ReportComponent implements OnInit {
          "Shift": this.get_report[i].shift_num || '---',
          "Operator Name": this.opera || '---',
          "Operator ID": this.operaid || '---',
-         "Route Card Number": this.get_report[i].root_card[m] || '---',
+         "Program No": this.get_report[i].root_card[m] || '---',
          "Target": this.get_report[i].target,
          "Actual Parts Produced": this.get_report[i].actual,
          "Efficiency": this.get_report[i].efficiency || '---',
